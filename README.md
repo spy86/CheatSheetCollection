@@ -1,5 +1,3 @@
 # CheatSheetCollection
 
-# CheatSheetCollection
-
-- [Containera](Containers/List.md)
+- [Containers](Containers/List.md)
