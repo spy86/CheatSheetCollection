@@ -1,8 +1,8 @@
 ## Collection cheat sheet for agile:
 
-- ###[ADR Templates]()
-- ###[ADR]()
-- ###[Agile Pulse Model]()
+- ###[ADR Templates](https://github.com/joelparkerhenderson/architecture_decision_record)
+- ###[ADR](https://www.thoughtworks.com/de/radar/techniques/lightweight-architecture-decision-records)
+- ###[Agile Pulse Model](https://www.parmatur.com/agile-pulse-model/portfolio-pulse/)
 - ###[Agile Roles]()
 - ###[Consensus by RFC]()
 - ###[Decision Boards]()
