@@ -1,8 +1,8 @@
 ## Collection cheat sheet for DevOps Automation:
 
-- ### [Ansible]()
-- ###[Bower]()
-- ###[CI-CD]()
+- ### [Ansible](Ansible.md)
+- ###[Bower](Bower.md)
+- ###[CI/CD](CI_CD.md)
 - ###[Chef]()
 - ###[Gerrit]()
 - ###[Git]()
