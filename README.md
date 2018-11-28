@@ -8,7 +8,7 @@
 - #[DevOps Linux](DevOps Linux/List.md)
 - #[DevOps Services]
 - #[Languages]
-- #[Network]
+- #[Network](Network/List.md)
 - #[Scripting]
 - #[Security]
 - #[Solutions]
