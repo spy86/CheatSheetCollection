@@ -2,7 +2,7 @@ This sheet cheat covers IT Ops solutions, roughly organized per process.
 For a similar index have a loot at
 [http://sysadmin.it-landscape.info/](http://sysadmin.it-landscape.info/).
 
-See also <?add topic='Solutions Automation'?> <?add topic='Solutions Monitoring'?> <?add topic='Solutions NoSQL'?> <?add topic='Solutions Virtualization'?>
+See also Solutions Automation Cheat Sheet, Solutions Monitoring Cheat Sheet, Solutions NoSQL Cheat Sheet, Solutions Virtualization Cheat Sheet
 
 ### Software Firewalls, LBs
 
