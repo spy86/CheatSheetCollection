@@ -5,7 +5,7 @@
 - #[Containers](Containers/List.md)
 - #[Agile](Agile/List.md)
 - #[DevOps Automation](DevOps Automation/List.md)
-- #[DevOps Linux]
+- #[DevOps Linux](DevOps Linux/List.md)
 - #[DevOps Services]
 - #[Languages]
 - #[Network]
