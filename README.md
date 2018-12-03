@@ -2,6 +2,8 @@
 
 ![alt text](https://www.researchgate.net/profile/Henrique_Gaspar/publication/325361376/figure/fig2/AS:630135694831618@1527247465316/DevOps-as-culture-in-software-development-Kornilova-2018.png)
 
+![](https://cookbook.fortinet.com/wp-content/uploads/sysadmin_notes-logo-2.gif)
+
 # List of contents:
 - #[Containers](Containers/List.md)
 - #[Agile](Agile/List.md)
