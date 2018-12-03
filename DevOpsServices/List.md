@@ -1,1 +1,33 @@
-###List
+## Collection cheat sheet for DevOps Services:
+
+- ###[Apache](Apache.md)
+- ###[Ceph](Ceph.md)
+- ###[Consul](Consul.md)
+- ###[CouchDB](CouchDB.md)
+- ###[Couchbase](Couchbase.md)
+- ###[ElasticSearch](ElasticSearch.md)
+- ###[Eureka]
+- ###[F5]
+- ###[GlusterFS]
+- ###[Graphite]
+- ###[Hadoop]
+- ###[Java]
+- ###[Kafka]
+- ###[MongoDB]
+- ###[MySQL]
+- ###[NFS]
+- ###[Nodejs]
+- ###[PgBouncer]
+- ###[Postgres]
+- ###[RabbitMQ]
+- ###[Redis Sentinel]
+- ###[Redis]
+- ###[Squid]
+- ###[Tomcat]
+- ###[Webserver]
+- ###[Zookeeper]
+- ###[etcd]
+- ###[htaccess Checker]
+- ###[htaccess]
+- ###[memcached]
+- ###[nginx]
