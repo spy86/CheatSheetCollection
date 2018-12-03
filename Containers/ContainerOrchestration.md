@@ -8,8 +8,6 @@
 - kubernetes
 - Mesosphere Marathon
 
-See also <?add topic='kubernetes'?>
-
 ## Container Source To Image Solutions / CaaS
 
 Integrated Products:
@@ -23,8 +21,6 @@ Kubernetes Ecosystem [Cluster Deployment Solutions](https://blog.hasura.io/draft
   - Ksonnet
   - Metaparticle
   - Skaffold
-
-See also <?add topic='Openshift'?>
 
 ## Infrastructure as Code
 
