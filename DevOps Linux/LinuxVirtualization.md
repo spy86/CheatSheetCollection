@@ -1,17 +1,3 @@
-Most of the content is now in separate cheat sheets:
-
-<?add topic='Docker'?>
-<?add topic='KVM'?>
-<?add topic='LXC'?>
-<?add topic='OpenNebula'?>
-<?add topic='OpenVZ'?>
-<?add topic='systemd'?>
-<?add topic='Vagrant'?>
-<?add topic='VirtualBox'?>
-<?add topic='VM Tuning'?>
-<?add topic='Xen'?>
-
-
 ### Misc
 
 -   [AWS - Using Chef to manage EC2

@@ -1,5 +1,3 @@
-See Also: <?add topic='DRBD'?> <?add topic='LVM'?> <?add topic='Partitioning'?>
-
 ### Misc
 
 -   [detox](http://detox.sourceforge.net/): Tool for recursive cleanup

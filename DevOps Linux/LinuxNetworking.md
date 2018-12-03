@@ -1,5 +1,3 @@
-See also: <?add topic='NFS'?> <?add topic='SSH'?>
-
 ## Basics
 
 -   netcat Commands

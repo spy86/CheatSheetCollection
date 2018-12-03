@@ -1,5 +1,3 @@
-See Also: <?add topic='LVM'?>
-
 ### Disks
 
 Setting/Listing disk UUIDs

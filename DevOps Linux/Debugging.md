@@ -1,5 +1,3 @@
-See Also: <?add topic='Kernel Tracing'?> <?add topic='GCC'?>
-
 ### Debugging / Performance Tools
 
 -   List last reboots
