@@ -6,7 +6,11 @@
 - #[Agile](Agile/List.md)
 - #[DevOps Automation](DevOps Automation/List.md)
 - #[DevOps Linux](DevOps Linux/List.md)
+<<<<<<< HEAD
 - #[DevOps Services](DevOpsServices/List.md)
+=======
+- #[DevOps Services] (DevOpsServices/List.md)
+>>>>>>> 3d9a5d31f5a6c339e5dc40259d3b5e718e791a36
 - #[Languages]
 - #[Network](Network/List.md)
 - #[Scripting]
