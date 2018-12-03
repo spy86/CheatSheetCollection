@@ -1,5 +1,3 @@
-See also <?add topic='Puppet'?>
-
 ## Hiera Queries
 
 On Puppet master:

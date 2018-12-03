@@ -1,5 +1,3 @@
-See also <?add topic='Mcollective'?> <?add topic='Puppet - Hiera'?>
-
 ### Puppet CLI
 
 - Bootstrap client
