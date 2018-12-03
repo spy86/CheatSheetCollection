@@ -1,16 +1,16 @@
 ## Collection cheat sheet for DevOps Services:
 
 - ###[Apache](Apache.md)
-- ###[Ceph](Ceph.md)
+- ###[Ceph](https://sabaini.at/pages/ceph-cheatsheet.html)
 - ###[Consul](Consul.md)
 - ###[CouchDB](CouchDB.md)
 - ###[Couchbase](Couchbase.md)
 - ###[ElasticSearch](ElasticSearch.md)
-- ###[Eureka]
+- ###[Eureka](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
 - ###[F5]
 - ###[GlusterFS]
 - ###[Graphite]
-- ###[Hadoop]
+- ###[Hadoop](http://www.dummies.com/how-to/content/hadoop-for-dummies-cheat-sheet.html)
 - ###[Java]
 - ###[Kafka]
 - ###[MongoDB]
@@ -27,7 +27,7 @@
 - ###[Webserver]
 - ###[Zookeeper]
 - ###[etcd]
-- ###[htaccess Checker]
+- ###[htaccess Checker]()
 - ###[htaccess]
 - ###[memcached]
 - ###[nginx]
