@@ -1,5 +1,3 @@
-<?add topic='Helm'?>
-
 ## Client Setup
 
     # Follow instructions from GUI setup and download client

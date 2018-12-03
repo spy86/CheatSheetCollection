@@ -1,5 +1,3 @@
-See also <?add topic='Openshift'?> <?add topic='kubernetes'?>
-
 ## Setup
 
 For instructions check [here](https://docs.helm.sh/using_helm/#quickstart-guide)
