@@ -6,7 +6,7 @@
 - #[Agile](Agile/List.md)
 - #[DevOps Automation](DevOps Automation/List.md)
 - #[DevOps Linux](DevOps Linux/List.md)
-- #[DevOps Services]
+- #[DevOps Services] (DevOpsServices/List.md)
 - #[Languages]
 - #[Network](Network/List.md)
 - #[Scripting]
