@@ -1,6 +1,6 @@
 # CheatSheetCollection
 
-![alt text](https://us.123rf.com/450wm/outchill/outchill1711/outchill171116976/90318817-cheat-sheet-text-written-on-black-simple-circle-rubber-vintage-stamp-.jpg?ver=6)
+![alt text](https://www.researchgate.net/profile/Henrique_Gaspar/publication/325361376/figure/fig2/AS:630135694831618@1527247465316/DevOps-as-culture-in-software-development-Kornilova-2018.png)
 
 - #[Containers](Containers/List.md)
 - #[Agile](Agile/List.md)
