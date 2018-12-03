@@ -1,5 +1,3 @@
-See also <?add topic='Couchbase'?>
-
 ### Monitoring
 
     GET /_stats
