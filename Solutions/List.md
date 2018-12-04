@@ -8,3 +8,5 @@
 - ### [Solutions NoSQL](SolutionsNoSQL.md)
 - ### [Solutions Virtualization](SolutionsVirtualization.md)
 - ### [Status Pages](StatusPages.md)
+- ### [Free Tier Compilation](https://github.com/ripienaar/free-for-dev)
+- ### [Availability Data](http://www.cloudharmony.com/status)
