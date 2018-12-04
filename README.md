@@ -14,7 +14,7 @@
 - #[Network](Network/List.md)
 - #[Scripting]
 - #[Security]
-- #[Solutions]
+- #[Solutions](Solutions/List.md)
 - #[Virtualization]
 - #[Windows](Windows/List.md)
 - #[Glib Examples]
