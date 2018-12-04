@@ -1,0 +1,29 @@
+## Collection cheat sheet for Languages:
+
+- ### [CSS]
+- ### [Dev-Misc]
+- ### [GCC]
+- ### [GraphQL](https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6)
+- ### [JSON Schema](https://tools.ietf.org/html/draft-zyp-json-schema-04)
+- ### [JSON](https://dzone.com/refcardz/core-json)
+- ### [Javascript](https://code.google.com/archive/p/jslibs/wikis/JavascriptTips.wiki)
+- ### [Linting]
+- ### [Linux HTML Widgets]
+- ### [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- ### [PHP]
+- ### [Perl]
+- ### [Regex101](https://regex101.com/)
+- ### [Ruby Bundler]
+- ### [Ruby]
+- ### [SQL]
+- ### [SVG Attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
+- ### [SVG Elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
+- ### [Syndication]
+- ### [XHTML](https://www.w3.org/TR/xhtml1/)
+- ### [XML 1.0](http://www.w3.org/TR/2008/REC-xml-20081126/)
+- ### [XML 1.1](https://www.w3.org/TR/2006/REC-xml11-20060816/)
+- ### [XPath]
+- ### [XSD](https://www.w3.org/XML/Schema)
+- ### [XSLT 2.0](https://www.w3.org/TR/xslt20/)
+- ### [YAML]
+- ### [autotools]
