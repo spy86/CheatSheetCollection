@@ -10,7 +10,7 @@
 - #[DevOps Automation](DevOps Automation/List.md)
 - #[DevOps Linux](DevOps Linux/List.md)
 - #[DevOps Services](DevOpsServices/List.md)
-- #[Languages]
+- #[Languages](Languages/List.md)
 - #[Network](Network/List.md)
 - #[Scripting]
 - #[Security]
