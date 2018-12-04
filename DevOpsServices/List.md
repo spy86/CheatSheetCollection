@@ -23,12 +23,11 @@
 - ###[RabbitMQ](RabbitMQ.md)
 - ###[Redis Sentinel](Redis Sentinel.md)
 - ###[Redis](Redis.md)
-- ###[Squid]
-- ###[Tomcat]
-- ###[Webserver]
-- ###[Zookeeper]
-- ###[etcd]
+- ###[Squid](Squid.md)
+- ###[Tomcat](Tomcat.md)
+- ###[Webserver](Webserver.md)
+- ###[Zookeeper](Zookeeper.md)
 - ###[htaccess Checker](http://htaccess.mwl.be/)
-- ###[htaccess]
+- ###[htaccess](htaccess.md)
 - ###[memcached](memcached.md)
-- ###[nginx]
+- ###[nginx](nginx.md)
