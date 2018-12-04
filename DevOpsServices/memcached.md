@@ -296,7 +296,7 @@ Below you find a screenshot of what stats-proxy looks like:
 ### memcache.php
 
 Using [this PHP
-script](http://livebookmark.net/journal/2008/05/21/memcachephp-stats-like-apcphp/)
+(http://livebookmark.net/journal/2008/05/21/memcachephp-stats-like-apcphp/)
 you can quickly add memcached statistics to a webserver of your choice.
 Most useful is the global memory usage graph which helps to identify
 problematic instances in a distributed environment. Here is how it
@@ -465,20 +465,20 @@ There are different dumping tools sometimes just scripts out there that
 help you with printing memcache keys:
 
 +--------------------------+--------------------------+--------------------------+
-| PHP                      | [simple                  | Prints key names.        |
-|                          | script](http://snipt.org |                          |
+| PHP                      |                          | Prints key names.        |
+|                          | (http://snipt.org        |                          |
 |                          | /xtP)                    |                          |
 +--------------------------+--------------------------+--------------------------+
-| Perl                     | [simple                  | Prints keys and values   |
-|                          | script](https://wiki.jas |                          |
+| Perl                     |                          | Prints keys and values   |
+|                          | (https://wiki.jas        |                          |
 |                          | ig.org/download/attachme |                          |
 |                          | nts/13572172/memcached-c |                          |
 |                          | lean.pl?version=1&modifi |                          |
 |                          | cationDate=1229693957401 |                          |
 |                          | )                        |                          |
 +--------------------------+--------------------------+--------------------------+
-| Ruby                     | [simple                  | Prints key names.        |
-|                          | script](https://gist.git |                          |
+| Ruby                     |                          | Prints key names.        |
+|                          | (https://gist.git        |                          |
 |                          | hub.com/1365005)         |                          |
 +--------------------------+--------------------------+--------------------------+
 | Perl                     | [memdump](http://search. | Tool in CPAN module      |
