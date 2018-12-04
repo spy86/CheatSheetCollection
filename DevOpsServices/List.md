@@ -14,10 +14,10 @@
 - ###[Java](Java.md)
 - ###[Etcd](etcd.md)
 - ###[Kafka](Kafka.md)
-- ###[MongoDB]
-- ###[MySQL]
-- ###[NFS]
-- ###[Nodejs]
+- ###[MongoDB](MongoDB.md)
+- ###[MySQL](MySQL.md)
+- ###[NFS](NFS.md)
+- ###[Nodejs](Nodejs.md)
 - ###[PgBouncer]
 - ###[Postgres]
 - ###[RabbitMQ]
@@ -28,7 +28,7 @@
 - ###[Webserver]
 - ###[Zookeeper]
 - ###[etcd]
-- ###[htaccess Checker]()
+- ###[htaccess Checker](http://htaccess.mwl.be/)
 - ###[htaccess]
-- ###[memcached]
+- ###[memcached](memcached.md)
 - ###[nginx]
