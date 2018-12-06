@@ -12,7 +12,7 @@
 - #[DevOps Services](DevOpsServices/List.md)
 - #[Languages](Languages/List.md)
 - #[Network](Network/List.md)
-- #[Scripting]
+- #[Scripting](Scripts/List.md)
 - #[Security]
 - #[Solutions](Solutions/List.md)
 - #[Virtualization]
