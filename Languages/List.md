@@ -1,13 +1,13 @@
 ## Collection cheat sheet for Languages:
 
 - ### [CSS]
-- ### [Dev-Misc]
-- ### [GCC]
+- ### [Dev-Misc](Dev-Misc.md)
+- ### [GCC](GCC.md)
 - ### [GraphQL](https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6)
 - ### [JSON Schema](https://tools.ietf.org/html/draft-zyp-json-schema-04)
 - ### [JSON](https://dzone.com/refcardz/core-json)
 - ### [Javascript](https://code.google.com/archive/p/jslibs/wikis/JavascriptTips.wiki)
-- ### [Linting]
+- ### [Linting](Linting.md)
 - ### [Linux HTML Widgets]
 - ### [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - ### [PHP]
@@ -26,4 +26,5 @@
 - ### [XSD](https://www.w3.org/XML/Schema)
 - ### [XSLT 2.0](https://www.w3.org/TR/xslt20/)
 - ### [YAML]
-- ### [autotools]
+- ### [GDB](gdb.md)
+- ### [autotools](autotools.md)
