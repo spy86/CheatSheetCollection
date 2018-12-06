@@ -10,11 +10,11 @@
 - ### [Linting](Linting.md)
 - ### [Linux HTML Widgets]
 - ### [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-- ### [PHP]
-- ### [Perl]
+- ### [PHP](PHP.md)
+- ### [Perl](Perl.md)
 - ### [Regex101](https://regex101.com/)
-- ### [Ruby Bundler]
-- ### [Ruby]
+- ### [Ruby Bundler](Ruby Bundler.md)
+- ### [Ruby](Ruby.md)
 - ### [SQL]
 - ### [SVG Attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
 - ### [SVG Elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
