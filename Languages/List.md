@@ -15,16 +15,16 @@
 - ### [Regex101](https://regex101.com/)
 - ### [Ruby Bundler](Ruby Bundler.md)
 - ### [Ruby](Ruby.md)
-- ### [SQL]
+- ### [SQL](SQL.md)
 - ### [SVG Attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
 - ### [SVG Elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
-- ### [Syndication]
+- ### [Syndication](Syndication.md)
 - ### [XHTML](https://www.w3.org/TR/xhtml1/)
 - ### [XML 1.0](http://www.w3.org/TR/2008/REC-xml-20081126/)
 - ### [XML 1.1](https://www.w3.org/TR/2006/REC-xml11-20060816/)
-- ### [XPath]
+- ### [XPath](XPath.md)
 - ### [XSD](https://www.w3.org/XML/Schema)
 - ### [XSLT 2.0](https://www.w3.org/TR/xslt20/)
-- ### [YAML]
+- ### [YAML](YAML.md)
 - ### [GDB](gdb.md)
 - ### [autotools](autotools.md)
