@@ -11,17 +11,17 @@
 - ###[GCE](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/google-compute-engine-cheat-sheet)
 - ###[Heroku](http://ruten.ca/2012/02/15/heroku-cheatsheet-useful-heroku-commands-reference/)
 - ###[Juju](https://github.com/juju/cheatsheet)
-- ###[KVM]
-- ###[LXC]
+- ###[KVM](KVM.md)
+- ###[LXC](LXC.md)
 - ###[LXD](https://insights.ubuntu.com/2015/03/20/installing-lxd-and-the-command-line-tool/)
-- ###[OpenNebula]
+- ###[OpenNebula](OpenNebula.md)
 - ###[OpenStack](http://docs.openstack.org/user-guide/cli_cheat_sheet.html)
-- ###[OpenVZ]
-- ###[S3]
-- ###[VM Tuning]
-- ###[Vagrant]
+- ###[OpenVZ](OpenVZ.md)
+- ###[S3](AWSS3.md)
+- ###[VM Tuning](VmTunning.md)
+- ###[Vagrant](Vagrant.md)
 - ###[Vagrantfile](http://ricostacruz.com/cheatsheets/vagrantfile.html)
-- ###[VirtualBox]
-- ###[Xen]
+- ###[VirtualBox](VBOX.md)
+- ###[Xen](XEN.md)
 - ###[heroku](http://ricostacruz.com/cheatsheets/heroku.html)
 - ###[vSphere](http://jungar.net/vmwarecheatsheet.html)
