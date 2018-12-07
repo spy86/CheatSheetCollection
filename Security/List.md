@@ -1,11 +1,11 @@
 ## Collection cheat sheet for security:
 
 - ###[AppArmor](AppArmor.md)
-- ###[HTTPS]9HTTPS.md)
+- ###[HTTPS](HTTPS.md)
 - ###[Incident Handling](IncidentHandling.md)
 - ###[Nmap](https://hackertarget.com/nmap-cheatsheet-a-quick-reference-guide/)
 - ###[OpenSSL](OpenSSL.md)
-- ###[Package Vulnerabilities]
+- ###[Package Vulnerabilities](PackageVulnerabilities.md)
 - ###[SELinux](SELinux.md)
 - ###[SIEM](SIEM.md)
 - ###[SSL-Certificates](SSLCertificates.md)
