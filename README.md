@@ -23,13 +23,17 @@
 - #[PHP Examples]
 - #[Python Examples](Python Examples/List.md)
 
-### Slack groups:
-- ###[devopsengineers.slack.com](https://devopsengineers.slack.com/)
-- ###[securityhq.slack.com](https://devopsengineers.slack.com/)
-- ###[redhat-admins.slack.com](https://devopsengineers.slack.com/)
-- ###[devopslinks.slack.com](https://devopsengineers.slack.com/)
-- ###[devspl.slack.com](https://devspl.slack.com/)
-- ###[chefcommunity.slack.com](https://chefcommunity.slack.com/)
-- ###[openstackcommunity.slack.com](https://openstackcommunity.slack.com/)
-- ###[puppetcommunity.slack.com](https://puppetcommunity.slack.com/)
-- ###[winadmins.slack.com](https://winadmins.slack.com/)
+
+# Slack groups:
+
+|   | Name               | URL                                   |
+|---|--------------------|---------------------------------------|
+|   | devopsengineers    | https://devopsengineers.slack.com/    |
+|   | securityhq         | https://devopsengineers.slack.com/    |
+|   | redhat-admins      | https://devopsengineers.slack.com/    |
+|   | devopslinks        | https://devopsengineers.slack.com/    |
+|   | devspl             | https://devspl.slack.com/             |
+|   | chefcommunity      | https://chefcommunity.slack.com/      |
+|   | openstackcommunity | https://openstackcommunity.slack.com/ |
+|   | puppetcommunity    | https://puppetcommunity.slack.com/    |
+|   | winadmins          | https://winadmins.slack.com/          |
