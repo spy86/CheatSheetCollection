@@ -19,7 +19,7 @@
 - #[Windows](Windows/List.md)
 - #[Glib Examples]
 - #[Go Examples]
-- #[Javascript Examples]
+- #[Javascript Examples](Javascript Examples/List.md)
 - #[PHP Examples]
 - #[Python Examples](Python Examples/List.md)
 
