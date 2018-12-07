@@ -2,8 +2,8 @@
 
 - ###[AWS - CLI](https://github.com/toddm92/aws/wiki/AWS-CLI-Cheat-Sheet)
 - ###[AWS - Cost](https://blog.copper.io/aws-cost-cheat-sheet-2/)
-- ###[AWS Lamba]
-- ###[AWS]
+- ###[AWS Lamba](AWSLambda.md)
+- ###[AWS](AWS.md)
 - ###[Deis](https://blog.copper.io/aws-cost-cheat-sheet-2/)
 - ###[EC2 API Tools](http://ricostacruz.com/cheatsheets/ec2.html)
 - ###[ESX](http://richgoldstein.net/KB/esx_cheatsheet.html)
