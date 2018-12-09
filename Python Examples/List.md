@@ -10,7 +10,7 @@
 - ###[Python Syntax](PythonSyntax.md)
 - ###[Python re.match](PythonReMatch.md)
 - ###[Python re](PythonRe.md)
-- ###[Python re.sub]
+- ###[Python re.sub](PythonReSub.md)
 - ###[Python simplehttpserver](Pythonsimplehttpserver.md)
 - ###[Python split](Pythonsplit.md)
 - ###[Python subprocess](Pythonsubprocess.md)
