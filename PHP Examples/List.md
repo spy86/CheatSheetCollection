@@ -1,0 +1,17 @@
+## Collection of PHP Examples:
+
+- ### [PHP Arrays]
+- ### [PHP curl_setopt]
+- ### [PHP date]
+- ### [PHP explode]
+- ### [PHP implode]
+- ### [PHP ini_set]
+- ### [PHP preg_match]
+- ### [PHP preg_replace]
+- ### [PHP stripos]
+- ### [PHP strpos]
+- ### [PHP strripos]
+- ### [PHP strrpos]
+- ### [PHP str_replace]
+- ### [PHP ternary operator]
+- ### [PHP unserialize]
