@@ -1,6 +1,6 @@
 ## Collection cheat sheet for Languages:
 
-- ### [CSS](CSS.html)
+- ### [CSS](CSS.md)
 - ### [Dev-Misc](Dev-Misc.md)
 - ### [GCC](GCC.md)
 - ### [GraphQL](https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6)
