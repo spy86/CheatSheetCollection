@@ -11,7 +11,7 @@
 - ###[Python re.match]
 - ###[Python re](PythonRe.md)
 - ###[Python re.sub]
-- ###[Python simplehttpserver]
-- ###[Python split]
+- ###[Python simplehttpserver](Pythonsimplehttpserver.md)
+- ###[Python split](Pythonsplit.md)
 - ###[Python subprocess](Pythonsubprocess.md)
 - ###[Python](Python.md)
