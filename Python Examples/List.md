@@ -3,7 +3,7 @@
 - ###[PyGI GStreamer]
 - ###[PyGI GTK Tutorial](http://python-gtk-3-tutorial.readthedocs.io/)
 - ###[PyGI GnomeKeyring](PythonGIGnomeKeyring.md)
-- ###[PyGI GtkStatusIcon]
+- ###[PyGI GtkStatusIcon](PythonGIGtkStatusIcon.md)
 - ###[PyGObject API](https://lazka.github.io/pgi-docs/)
 - ###[Python Dictionary](PythonDictionary.md)
 - ###[Python Sockets](http://pleac.sourceforge.net/pleac_python/sockets.html)
