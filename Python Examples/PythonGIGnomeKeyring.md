@@ -79,5 +79,3 @@ the session and give an output similar to this:
 You can also check the keyring contents using the **seahorse** GUI where
 you should see the \"test\" keyring with an entry with id \"1\" as in
 the screenshot below.
-
-![](/images/gnomekeyring.png)
