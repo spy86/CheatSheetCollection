@@ -13,5 +13,5 @@
 - ###[Python re.sub]
 - ###[Python simplehttpserver]
 - ###[Python split]
-- ###[Python subprocess]
+- ###[Python subprocess](Python subprocess.md)
 - ###[Python](Python.md)
