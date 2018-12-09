@@ -31,8 +31,9 @@
 
 ### Advanced CSS Style Overview
 
-| CSS 1 | No Wrapping             | white-space: nowrap;                                                                                                          |
+|       |                         |                                                                                                                               |
 |-------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| CSS 1 | No Wrapping             | white-space: nowrap;                                                                                                          |
 | CSS 1 | Inline Block Layout     | display: inline-block;                                                                                                        |
 | CSS 2 | Max Width               | max-width: 1024px                                                                                                             |
 | CSS 2 | Table - Border Collapse | border-collapse: collapse                                                                                                     |
