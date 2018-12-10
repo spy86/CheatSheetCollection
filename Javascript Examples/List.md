@@ -7,7 +7,7 @@
 - ###[Javascript Singleton](https://stackoverflow.com/questions/1635800/javascript-best-singleton-pattern#6733919)
 - ###[Javascript strptime]
 - ###[Javascript toggle visibility]
-- ###[Javascript void0]
+- ###[Javascript void0](Javascript_void0.md)
 - ###[Nodejs Compatibility](http://node.green/)
 - ###[Nodejs Express]
 - ###[React JSX](https://reactjs.org/docs/introducing-jsx.html)
