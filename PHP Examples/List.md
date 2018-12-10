@@ -10,8 +10,8 @@
 - ### [PHP preg_replace](PHP_str_replace.md)
 - ### [PHP stripos](PHP_stripos.md)
 - ### [PHP strpos](PHP_strrpos.md)
-- ### [PHP strripos]
-- ### [PHP strrpos]
-- ### [PHP str_replace]
+- ### [PHP strripos](PHP_strripos.md)
+- ### [PHP strrpos](PHP_strrpos.md)
+- ### [PHP str_replace](PHP_str_replace.md)
 - ### [PHP ternary operator](PHP_ternary_operator.md)
-- ### [PHP unserialize]
+- ### [PHP unserialize](PHP_unserialize.md)
