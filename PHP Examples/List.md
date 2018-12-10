@@ -2,7 +2,7 @@
 
 - ### [PHP Arrays](PHPArrays.md)
 - ### [PHP curl_setopt](PHP_curl_setopt.md)
-- ### [PHP date]
+- ### [PHP date](PHP_date.md)
 - ### [PHP explode](PHP_explode.md)
 - ### [PHP implode](PHP_implode.md)
 - ### [PHP ini_set](PHP_ini_set.md)
