@@ -22,6 +22,7 @@
 - ### [Javascript Examples](Javascript Examples/List.md)
 - ### [PHP Examples](PHP Examples/List.md)
 - ### [Python Examples](Python Examples/List.md)
+- ### [Programming Language Examples Alike Cookbook](Programming Language Examples Alike Cookbook/List.md)
 
 
 # Slack groups:
