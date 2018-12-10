@@ -32,7 +32,7 @@
 |   | devopsengineers    | https://devopsengineers.slack.com/    |
 |   | securityhq         | https://devopsengineers.slack.com/    |
 |   | redhat-admins      | https://devopsengineers.slack.com/    |
-|   | devopslinks        | https://devopsengineers.slack.com/    |
+|   | devopslinks        | https://devopslinks.slack.com/        |
 |   | devspl             | https://devspl.slack.com/             |
 |   | chefcommunity      | https://chefcommunity.slack.com/      |
 |   | openstackcommunity | https://openstackcommunity.slack.com/ |
