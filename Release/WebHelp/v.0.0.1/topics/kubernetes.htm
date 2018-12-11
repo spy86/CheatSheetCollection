@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Kubernetes</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 80;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Commands</span></p>
+<p class="ps9"><span class="ts5">kubectl cluster-info</span><br /><br /><span class="ts5"># In general query resource typs with</span><br /><span class="ts5">#</span><br /><span class="ts5"># kubectl get &lt;type&gt;</span><br /><span class="ts5"># kubectl describe namespaces &lt;ns&gt;</span><br /><br /><span class="ts5">kubectl get nodes</span><br /><span class="ts5">kubectl get pods</span><br /><span class="ts5">kubectl get rc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # replication controllers</span><br /><span class="ts5">kubectl get namespaces</span><br /><span class="ts5">kubectl get services</span><br /><span class="ts5">kubectl get deployments &lt;application&gt;</span><br /><span class="ts5">kubectl get replicasets</span><br /><span class="ts5">kubectl get sa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # secret attachements</span><br /><br /><span class="ts5">kubectl create -f some.json</span><br /><br /><span class="ts5">kubectl get rc &lt;node&gt; -o yaml &gt;some.yaml</span><br /><span class="ts5">kubectl uptate -f some.yaml</span><br /><br /><span class="ts5">kubectl delete pod -l name=&lt;name&gt;</span><br /><span class="ts5">kubectl delete services &amp;lt;service&gt;</span><br /><span class="ts5">kubectl delete deployment &amp;lt;application&gt;</span><br /><br /><span class="ts5">kubectl run-container &lt;name&gt; --image=&lt;image&gt; --port=&lt;port&gt;</span><br /><br /><span class="ts5">kubectl resize --replicas=4 rc &lt;name&gt;</span><br /><br /><span class="ts5">kubectl expose rc &lt;name&gt; --port=&lt;port&gt; --public-ip=&lt;ip&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Testing kubectl Commands</span></p>
+<p class="ps5"><span class="ts2">Several commands allow passing &quot;--dry-run&quot; to test impact</span></p>
+<p class="ps9"><span class="ts5">kubectl run --dry-run [...]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Defining Limits and Quotas</span></p>
+<p class="ps5"><span class="ts2">Conceptionally &quot;quotas&quot; limit the resource usage per namespace while &quot;limits&quot; are maximum allocation amounts per resource type (e.g. cpu, memory, storage, network policies...)</span></p>
+<p class="ps9"><span class="ts5">apiVersion: v1</span><br /><span class="ts5">kind: Template</span><br /><span class="ts5">objects:</span><br /><span class="ts5">- apiVersion: v1</span><br /><span class="ts5">&nbsp; kind: BuildConfig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # or any other...</span><br /><span class="ts5">&nbsp; spec:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; resources:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requests:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cpu: 1</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; memory: 2Gi</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; limits:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cpu: 2</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; memory: 4Gi</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">JVM and CFS problems/solutions: https://engineering.squarespace.com/blog/2017/understanding-linux-container-scheduling</span></p>
+<p class="ps0"><span class="ts0">Online Tutorials</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.katacoda.com/courses/kubernetes" class="hs0">Katacoda</a></p>
+<p class="ps0"><span class="ts0">Accessing Kubernetes API from pods</span></p>
+<p class="ps9"><span class="ts5">&nbsp;curl -k -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H &quot;Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)&quot; https://&lt;mycluster&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Migration Stories</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Saltside: https://engineering.saltside.se/migrating-to-kubernetes-day-20-problems-fbbda4905c23</span></p>
+<p class="ps0"><span class="ts0">Use Cases</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/Financial-Times?utf8=%E2%9C%93&amp;q=varnish" class="hs0">Web Caching with Kubernetes</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://pauldone.blogspot.de/2017/06/deploying-mongodb-on-kubernetes-gke25.html" class="hs0">MongoDB Replicas as Stateful Sets in GKE</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://vorozhko.net/kubernetes-sidecar-pattern-nginx-ssl-proxy-for-nodejs" class="hs0">nginx SSL sidecar</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Operators </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://github.com/strimzi/strimzi-kafka-operator" class="hs0">Kafka</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://blog.couchbase.com/couchbase-on-openshift-in-action/" class="hs0">Couchbase</a></p>
+<p class="ps0"><span class="ts0">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://linuxczar.net/blog/2017/06/15/prometheus-histogram-2/" class="hs0">Issues when monitoring with Prometheus</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

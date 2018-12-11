@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>YAML</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1280;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Links</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.yaml.org/spec/1.2/spec.html" class="hs0">YAML 1.2 Spec</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.yamllint.com/" class="hs0">Online YAML Linter (Ruby)</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://yaml-online-parser.appspot.com/" class="hs0">Online YAML Parser (Python)</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.kuwata-lab.com/kwalify/" class="hs0">kwalify - YAML schema validator (Ruby)</a></p>
+<p class="ps7"><span class="ts3">Syntax Snippets</span></p>
+<p class="ps5"><span class="ts2">+--------------------------------------+--------------------------------------+ | Scalars | # scalar = value | | | a: 1 | | | a: 1.234 | | | b: 'abc' | | | b: &quot;abc&quot; | | | b: abc | | | c: false # boolean type | | | d: 2015-04-05 # date type | | | | | | # Enforcing strings | | | b: !str 2015-04-05 | +--------------------------------------+--------------------------------------+ | Sequences | # sequence | | | array: | | | - 132 | | | - 2.434 | | | - 'abc' | | | | | | # sequence of sequences | | | my_array: | | | - [1, 2, 3] | | | - [4, 5, 6] | +--------------------------------------+--------------------------------------+ | Hashes | # Nested hash | | | my_hash: | | | subkey: | | | subsubkey1: 5 | | | subsubkey2: 6 | | | another: | | | somethingelse: 'Important!' | | | | | | # Hash of hashes | | | my_hash: {nr1: 5, nr2: 6} | +--------------------------------------+--------------------------------------+ | HereDoc | # block notation (newlines becom | | | e spaces) | | | content: | | | Arbitrary free text | | | over multiple lines stopping | | | after indentation changes... | | | | | | # literal style (newlines are pr | | | eserved) | | | content: | | | | Arbitrary free text | | | over &quot;multiple lines&quot; stopping | | | after indentation changes... | | | | | | # + indicator (keep extra newlin | | | es after block) | | | content: |+ | | | Arbitrary free text with two n | | | ewlines after | | | | | | | | | # - indicator (remove extra newl | | | ines after block) | | | content: |- | | | Arbitrary free text without ne | | | wlines after it | | | | | | | | | # folded style (folded newlines | | | are preserved) | | | content: &gt; | | | Arbitrary free text | | | over &quot;multiple lines&quot; stopping | | | after indentation changes... | +--------------------------------------+--------------------------------------+ | Multiple Documents | --- | | | content: doc1 | | | --- | | | content: doc2 | +--------------------------------------+--------------------------------------+ | Reference Content | --- | | | values: | | | - &amp;ref Something to reuse | | | - *ref # Reused content | +--------------------------------------+--------------------------------------+ | Merging Keys | default_settings: | | | install: | | | dir: /usr/local | | | owner: root | | | config: | | | enabled: false | | | | | | # Derive settings for 'my_app' f | | | rom default and change install::owne | | | r | | | my_app_settings: | | | &lt;&lt;: *default_settings | | | install: | | | owner: my_user | +--------------------------------------+--------------------------------------+ | Complex Mapping | --- | | | ? - key | | | : | | | - value | | | # Note: key and value can be mul | | | tiple, complex structures | +--------------------------------------+--------------------------------------+</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

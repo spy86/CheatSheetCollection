@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Squid</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 860;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Instant Squid</span></p>
+<p class="ps5"><span class="ts2">Ever needed to test your HTTP client app proxy support? Need an instant proxy test setup? Here is a fast way to set up a local proxy server on Debian using squid:</span></p>
+<p class="ps9"><span class="ts5">apt-get install squid</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Now edit the squid configuration /etc/squid/squid.conf.</span></p>
+<p class="ps8"><span class="ts4">Edit ACLs</span></p>
+<p class="ps5"><span class="ts2">Ensure to have something like the following:</span></p>
+<p class="ps9"><span class="ts5">acl all src all</span><br /><span class="ts5">acl users proxy_auth REQUIRED</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Edit access definitions</span></p>
+<p class="ps5"><span class="ts2">You need (order is important):</span></p>
+<p class="ps9"><span class="ts5">http_access allow users</span><br /><span class="ts5">http_access deny all</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Setup Dummy Auth</span></p>
+<p class="ps9"><span class="ts5">auth_param basic program /usr/local/bin/squid_dummy_auth</span><br /><span class="ts5">auth_param basic children 5</span><br /><span class="ts5">auth_param basic realm Squid proxy-caching web server</span><br /><span class="ts5">auth_param basic credentialsttl 2 hours</span><br /><span class="ts5">auth_param basic casesensitive off</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Create Auth Script</span></p>
+<p class="ps5"><span class="ts2">Create /usr/local/bin/squid_dummy_auth with something like:</span></p>
+<p class="ps9"><span class="ts5">#!/bin/sh</span><br /><br /><span class="ts5">while read dummy;</span><br /><span class="ts5">do</span><br /><span class="ts5">&nbsp;&nbsp; echo OK</span><br /><span class="ts5">done</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">and make it run</span></p>
+<p class="ps9"><span class="ts5">chmod a+x /usr/local/bin/squid_dummy_auth</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Restart</span></p>
+<p class="ps5"><span class="ts2">Finally restart squid</span></p>
+<p class="ps9"><span class="ts5">/etc/init.d/squid restart</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">With this you have a working Basic Auth proxy test setup running on localhost:3128.</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

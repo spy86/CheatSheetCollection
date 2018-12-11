@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>IT-Ops</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 170;
+</script>
+</head>
+<body>
+<p class="ps10"><span class="ts2">This sheet cheat covers IT Ops solutions, roughly organized per process. For a similar index have a loot at </span><a href="http://sysadmin.it-landscape.info/" class="hs0">http://sysadmin.it-landscape.info/</a><span class="ts2">.</span></p>
+<p><span class="ts2">See also:</span></p>
+<p class="ps16"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="Solutions/Solutions_Automation.md" class="hs2">Solutions Automation Cheat Sheet</a></p>
+<p class="ps17"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="Solutions/Solutions_Monitoring.md" class="hs2">Solutions Monitoring Cheat Sheet</a></p>
+<p class="ps17"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="Solutions/Solutions_NoSQL.md" class="hs2">Solutions NoSQL Cheat Sheet</a></p>
+<p class="ps17"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="Solutions/Solutions_Virtualizations.md" class="hs2">Solutions Virtualization Cheat Sheet</a></p>
+<p class="ps6"><span class="ts3">Software Firewalls, LBs</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://pfsense.org/" class="hs0">pfsense</a><span class="ts2">&nbsp;OpenBSD firewall</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://vyatta.org/" class="hs0">vyatta</a><span class="ts2">&nbsp;Linux firewall</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://zenloadbalancer.com/" class="hs0">Zen Load Balancer</a><span class="ts2">&nbsp;(virtual appliance)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://haproxy.1wt.eu/" class="hs0">HAProxy</a><span class="ts2">&nbsp;TCP LB</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.linuxvirtualserver.org/" class="hs0">Linux Virtual Server (LVS)</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://horms.net/projects/ldirectord/" class="hs0">ldirectord</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.ultramonkey.org/" class="hs0">Ulta Monkey</a><span class="ts2">&nbsp;(LVS based LB + Linux-HA)</span></p>
+<p class="ps7"><span class="ts3">Install Servers</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cobblerd.org/" class="hs0">Cobbler</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.ubuntu.com/cloud/tools/maas" class="hs0">MAAS</a><span class="ts2">&nbsp;- Ubuntu &quot;Metal As A Service&quot; install server</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://theforeman.org/" class="hs0">Foreman</a><span class="ts2">&nbsp;(integrated with puppet)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://spacewalk.redhat.com" class="hs0">SpaceWalk</a><span class="ts2">&nbsp;(Kickstart based for Redhat and Solaris)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/puppetlabs/razor-server" class="hs0">Razor</a><span class="ts2">&nbsp;(from Puppetlabs)</span></p>
+<p class="ps7"><span class="ts3">Deployment</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://cruisecontrol.sourceforge.net/" class="hs0">CruiseControl</a><span class="ts2">: CI</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://travis-ci.org" class="hs0">Travis CI</a><span class="ts2">: Easy to use CI SaaS</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.jenkins-ci.org" class="hs0">Jenkins CI</a><span class="ts2">: CI and Deployment Server</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.atlassian.com/software/bamboo/" class="hs0">Bamboo</a><span class="ts2">: (available hosted with Jira Studio)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">fabric: Language for deployment scripts</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://citconf.com/wiki/index.php?title=Different_CI_Tools" class="hs0">CI Tools Index by Price Segment</a></p>
+<p class="ps7"><span class="ts3">Orchestration Tools</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://launchpad.net/juju" class="hs0">JuJu</a><span class="ts2">: mostly for Ubuntu, service orchestration tool (Python, commercially backed)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.maestrodev.com/" class="hs0">Maestro</a><span class="ts2">&nbsp;(enterprise, commercial)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://puppetlabs.com/mcollective" class="hs0">mcollective</a><span class="ts2">&nbsp;- Puppet parallelizing and orchestration framework</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.saltstack.com/community/" class="hs0">SaltStack</a></p>
+<p class="ps7"><span class="ts3">Orchestration Standards</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca" class="hs0">TOSCA</a><span class="ts2">&nbsp;(OASIS)</span></p>
+<p class="ps7"><span class="ts3">Orchestration Frameworks</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://calm.io" class="hs0">calm.io</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://getcloudify.org/" class="hs0">Cloudify</a></p>
+<p class="ps7"><span class="ts3">Security</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://hackertarget.com/" class="hs0">hackertarget.com/:</a><span class="ts2">&nbsp;Online Vulnerabity Scan (SaaS)</span></p>
+<p class="ps7"><span class="ts3">Performance Debugging</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.brendangregg.com/usemethod.html" class="hs0">http://www.brendangregg.com/usemethod.html</a></p>
+<p class="ps15"><span class="ts3">Monitoring</span></p>
+<p class="ps8"><span class="ts4">Graphing/Trending</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">rrdtool (arkane, do not use directly)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Cacti (arkane, do not use)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Munin (easy to setup, good graphs, great defaults, aged)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Ganglia</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Graphite, Grafana, influxDB (good customization, aweful usability)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">collectd</span></p>
+<p class="ps8"><span class="ts4">Active Service Checking</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Nagios, Icinga</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Nagios frameworks with Vendor Lock-in: Groundworks, OpsView, Zabbix</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">check_mk (OSS, multi-site Nagios GUI)</span></p>
+<p class="ps8"><span class="ts4">SNMP based</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Naemon</span></p>
+<p class="ps5"><span class="ts2">Real Time Metrics</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Single Host only </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://github.com/firehol/netdata" class="hs0">netdata</a><span class="ts2">&nbsp;(basic /proc, also MySQL and cgroups)</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://unix4lyfe.org/darkstat/" class="hs0">darkstat</a><span class="ts2">&nbsp;(network only)</span></p>
+<p class="ps7"><span class="ts3">Hosting / ISP</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Hoster Index: </span><a href="http://whdb.com/providers" class="hs0">whdb.com/providers</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Hoster Lookup: </span><a href="http://www.whoishostingthis.com/" class="hs0">whoishosthingthis.com</a><span class="ts2">, </span><a href="http://who-hosts.com/" class="hs0">who-hosts.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://iplist.net" class="hs0">iplist.net</a><span class="ts2">: Simple reverse lookup of neighbour IPs</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Meta Status: </span><a href="https://downdetector.com/" class="hs0">downdetector.com</a><span class="ts2">, </span><a href="https://cloudharmony.com" class="hs0">cloudharmony.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://cloudharmony.com/cloudsquare" class="hs0">Cloud Provider Directory</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.thecloudcalculator.com/" class="hs0">Cloud Calculator</a><span class="ts2">&nbsp;(compares self-hosting with cloud pricing)</span></p>
+<p class="ps7"><span class="ts3">API Documentation</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">RAML</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://editor.swagger.io" class="hs0">Swagger</a></p>
+<p class="ps7"><span class="ts3">Software Architecture</span></p>
+<p class="ps5"><span class="ts2">F5 Series on Architecture</span></p>
+<p class="ps2"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Cloud/Automated Systems need an Architecture</span></p>
+<p class="ps5"><a href="https://devcentral.f5.com/articles/cloud-automated-systems-need-an-architecture-26975" class="hs0">https://devcentral.f5.com/articles/cloud-automated-systems-need-an-architecture-26975</a></p>
+<p class="ps2"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">The Service Model for Cloud/Automated Systems Architectures</span></p>
+<p class="ps5"><a href="https://devcentral.f5.com/articles/the-service-model-for-cloud-automated-systems-architectures-27129" class="hs0">https://devcentral.f5.com/articles/the-service-model-for-cloud-automated-systems-architectures-27129</a></p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">The Deployment Model for Cloud/Automated Systems Architectures</span></p>
+<p class="ps5"><a href="https://devcentral.f5.com/articles/the-deployment-model-for-cloud-automated-systems-architectures-27228" class="hs0">https://devcentral.f5.com/articles/the-deployment-model-for-cloud-automated-systems-architectures-27228</a></p>
+<p class="ps2"><span style="color: Black">4.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">The Operational Model for Cloud/Automated Systems Architectures</span></p>
+<p><a href="https://devcentral.f5.com/articles/the-operational-model-for-cloud-automated-systems-architectures-27254?sf92906191=1" class="hs0">https://devcentral.f5.com/articles/the-operational-model-for-cloud-automated-systems-architectures-27254?sf92906191=1</a></p>
+<p class="ps15"><span class="ts3">People</span></p>
+<p class="ps8"><span class="ts4">Feature Management</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://swreflections.blogspot.de/2014/08/feature-toggles-are-one-of-worst-kinds.html" class="hs0">Feature Flags</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://thenewstack.io/level-feature-management-right-team/?utm_content=buffer1b569&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer" class="hs0">Levels of Feature Management</a></p>
+<p class="ps8"><span class="ts4">Collaboration</span></p>
+<p class="ps5"><span class="ts2">Git Code Review Solutions</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://de.atlassian.com/software/stash" class="hs0">Atlassian Stash</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Gerrit (self-hosted, free)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://gerrithub.io/" class="hs0">https://gerrithub.io/</a><span class="ts2">&nbsp;(commercial)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Gitlab (self-hosted, free, support available)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com" class="hs0">github.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://gitorious.org/" class="hs0">gitorious.org</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://phabricator.org/comparison/" class="hs0">Phabricator</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://inch-ci.org/" class="hs0">Documentation Testing: Inch CI</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.jfrog.com/confluence/display/RTF/Welcome+to+Artifactory" class="hs0">Artifactory - Manage Binary Repositories</a></p>
+<p class="ps5"><span class="ts2">Skills:</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://webcache.googleusercontent.com/search?q=cache:umLUawx4v6IJ:www.verber.com/mark/sysadm/ops-8level-matrix.xls+verber+ops+level&amp;cd=1&amp;hl=en&amp;ct=clnk" class="hs0">Ops 8 Level Matrix</a><span class="ts2">&nbsp;(Skills per career level in Ops)</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

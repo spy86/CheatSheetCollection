@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>RabbitMQ</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 820;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Commands</span></p>
+<p class="ps9"><span class="ts5">rabbitmqctl list_vhosts</span><br /><span class="ts5">rabbitmqctl list_queues -p &lt;vhost&gt;</span><br /><br /><span class="ts5">rabbitmqctl cluster_status</span><br /><br /><span class="ts5">rabbitmqctl stop_app</span><br /><span class="ts5">rabbitmqctl join_cluster &lt;node&gt;</span><br /><span class="ts5">rabbitmqctl start_app</span><br /><br /><span class="ts5">rabbitmqctl report&nbsp;&nbsp;&nbsp; # Dump detailed report on RabbitMQ instance&nbsp; </span><br /><br /><span class="ts5"># Plugin management</span><br /><span class="ts5">/usr/lib/rabbitmq/bin/rabbitmq-plugins enable &lt;name&gt;</span><br /><span class="ts5">/usr/lib/rabbitmq/bin/rabbitmq-plugins list&nbsp;&nbsp; </span><br /><br /><span class="ts5"># Live modifications using eval</span><br /><span class="ts5">rabbitmqctl eval 'application:set_env(rabbit, reverse_dns_lookups, true).'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2"># Convert disk node to RAM node</span><br /><span class="ts2">&nbsp;rabbitmqctl change_cluster_node_type ram</span></p>
+<p class="ps7"><span class="ts3">Configuring Limits</span></p>
+<p class="ps5"><span class="ts2">Find out about actual limits</span></p>
+<p class="ps9"><span class="ts5">rabbitmqctl status | grep -A 4 file_descriptors</span><br /><span class="ts5">&nbsp;{file_descriptors,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp; [{total_limit,924},</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {total_used,831},</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {sockets_limit,829},</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {sockets_used,829}]},</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To increase it to e.g. 10000 open files:</span></p>
+<p class="ps9"><span class="ts5">rabbitmqctl eval 'file_handle_cache:set_limit(10000).'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Managment GUI on port 15627</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://lzone.de/Solving+100%+CPU+usage+of+Chef" class="hs0">RabbitMQ - Fix Chef 100% CPU usage</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://varwww.com/2013/06/17/clustering-and-queue-mirroring-in-rabbitmq-looks-easy/" class="hs0">RabbitMQ - Setup Clustering</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://lists.rabbitmq.com/pipermail/rabbitmq-discuss/2011-September/014878.html" class="hs0">RabbitMQ RAM Nodes</a><span class="ts2">: can be used only in cluster with at least one disk node</span></p>
+<p class="ps2"><span class="ts8"># /etc/rabbitmq.conf</span><br /><span class="ts8">&nbsp;{cluster_nodes, {['[emailÂ&nbsp;protected]', '[emailÂ&nbsp;protected]', ...], ram}},</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">On CLI:</span></p>
+<p class="ps2"><span class="ts8">rabbitmqctl join_cluster --ram [emailÂ&nbsp;protected]</span><br /><br /><span class="ts8"># or if it is already in cluster</span><br /><span class="ts8">rabbitmqctl change_cluster_node_type ram</span><br />&nbsp;</p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

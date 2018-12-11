@@ -1,0 +1,446 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>memcached</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 740;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Telnet Interface</span></p>
+<p><span class="ts2">This is a short summary of everything important that helps to inspect a running </span><a href="http://www.danga.com/memcached/" class="hs0">memcached</a><span class="ts2">&nbsp;instance. You need to know that memcached requires you to connect to it via telnet. The following post describes the usage of this interface.</span></p>
+<p class="ps7"><span class="ts3">How To Connect</span></p>
+<p class="ps5"><span class="ts2">Use &quot;ps -ef&quot; to find out which IP and port was passed when memcached was started and use the same with telnet to connect to memcache. Example:</span></p>
+<p class="ps9"><span class="ts5">telnet 10.0.0.2 11211</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Supported Commands</span></p>
+<p class="ps5"><span class="ts2">The supported commands (the official ones and some unofficial) are documented in the </span><a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" class="hs0">doc/protocol.txt</a><span class="ts2">&nbsp;document.</span></p>
+<p class="ps5"><span class="ts2">Sadly the syntax description isn't really clear and a simple help command listing the existing commands would be much better. Here is an overview of the commands you can find in the </span><a href="https://github.com/memcached/memcached" class="hs0">source</a><span class="ts2">&nbsp;(as of 16.12.2008):</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Command</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Description</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Example</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">get</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Reads a value</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">get mykey</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">set</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Set a key unconditionally</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">set mykey &lt;flags&gt; &lt;ttl&gt; &lt;size&gt;</span><span class="ts2">&lt;br/&gt;&lt;br/&gt;&lt;p&gt;Ensure to use \r\n als line breaks when using Unix CLI tools. For example&lt;/p&gt; </span><span class="ts8">printf &quot;set mykey 0 60 4\r\ndata\r\n&quot; \| nc localhost 11211</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">add</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Add a new key</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">add newkey 0 60 5</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">replace</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Overwrite existing key</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">replace key 0 60 5</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">append</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Append data to existing key</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">append key 0 60 15</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">prepend</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Prepend data to existing key</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">prepend key 0 60 15</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">incr</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Increments numerical key value by given number</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">incr mykey 2</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">decr</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Decrements numerical key value by given number</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">decr mykey 5</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">delete</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Deletes an existing key</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">delete mykey</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">flush_all</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Invalidate all items immediately</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">flush_all</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">flush_all</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Invalidate all items in n seconds</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">flush_all 900</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">stats</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Prints general statistics</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Prints memory statistics</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats slabs</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Print higher level allocation statistics</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats malloc</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Print info on items</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats items</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats detail</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats sizes</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p>&nbsp;</p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Resets statistics counters</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">stats reset</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">version</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Prints server version.</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">version</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">verbosity</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Increases log level</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">verbosity</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">quit</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Terminate session</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts8">quit</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps7"><span class="ts3">Traffic Statistics</span></p>
+<p class="ps5"><span class="ts2">You can query the current traffic statistics using the command</span></p>
+<p class="ps9"><span class="ts5">stats</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">You will get a listing which serves the number of connections, bytes in/out and much more.</span></p>
+<p class="ps5"><span class="ts2">Example Output:</span></p>
+<p class="ps9"><span class="ts5">STAT pid 14868</span><br /><span class="ts5">STAT uptime 175931</span><br /><span class="ts5">STAT time 1220540125</span><br /><span class="ts5">STAT version 1.2.2</span><br /><span class="ts5">STAT pointer_size 32</span><br /><span class="ts5">STAT rusage_user 620.299700</span><br /><span class="ts5">STAT rusage_system 1545.703017</span><br /><span class="ts5">STAT curr_items 228</span><br /><span class="ts5">STAT total_items 779</span><br /><span class="ts5">STAT bytes 15525</span><br /><span class="ts5">STAT curr_connections 92</span><br /><span class="ts5">STAT total_connections 1740</span><br /><span class="ts5">STAT connection_structures 165</span><br /><span class="ts5">STAT cmd_get 7411</span><br /><span class="ts5">STAT cmd_set 28445156</span><br /><span class="ts5">STAT get_hits 5183</span><br /><span class="ts5">STAT get_misses 2228</span><br /><span class="ts5">STAT evictions 0</span><br /><span class="ts5">STAT bytes_read 2112768087</span><br /><span class="ts5">STAT bytes_written 1000038245</span><br /><span class="ts5">STAT limit_maxbytes 52428800</span><br /><span class="ts5">STAT threads 1</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Memory Statistics</span></p>
+<p class="ps5"><span class="ts2">You can query the current memory statistics using</span></p>
+<p class="ps9"><span class="ts5">stats slabs</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Example Output:</span></p>
+<p class="ps9"><span class="ts5">STAT 1:chunk_size 80</span><br /><span class="ts5">STAT 1:chunks_per_page 13107</span><br /><span class="ts5">STAT 1:total_pages 1</span><br /><span class="ts5">STAT 1:total_chunks 13107</span><br /><span class="ts5">STAT 1:used_chunks 13106</span><br /><span class="ts5">STAT 1:free_chunks 1</span><br /><span class="ts5">STAT 1:free_chunks_end 12886</span><br /><span class="ts5">STAT 2:chunk_size 100</span><br /><span class="ts5">STAT 2:chunks_per_page 10485</span><br /><span class="ts5">STAT 2:total_pages 1</span><br /><span class="ts5">STAT 2:total_chunks 10485</span><br /><span class="ts5">STAT 2:used_chunks 10484</span><br /><span class="ts5">STAT 2:free_chunks 1</span><br /><span class="ts5">STAT 2:free_chunks_end 10477</span><br /><span class="ts5">[...]</span><br /><span class="ts5">STAT active_slabs 3</span><br /><span class="ts5">STAT total_malloced 3145436</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">If you are unsure if you have enough memory for your memcached instance always look out for the &quot;evictions&quot; counters given by the &quot;stats&quot; command. If you have enough memory for the instance the &quot;evictions&quot; counter should be 0 or at least not increasing.</span></p>
+<p class="ps7"><span class="ts3">Which Keys Are Used?</span></p>
+<p class="ps5"><span class="ts2">There is no builtin function to directly determine the current set of keys. However you can use the</span></p>
+<p class="ps9"><span class="ts5">stats items</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">command to determine how many keys do exist.</span></p>
+<p class="ps9"><span class="ts5">stats items</span><br /><span class="ts5">STAT items:1:number 220</span><br /><span class="ts5">STAT items:1:age 83095</span><br /><span class="ts5">STAT items:2:number 7</span><br /><span class="ts5">STAT items:2:age 1405</span><br /><span class="ts5">[...]</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">This at least helps to see if any keys are used. To dump the key names from a PHP script that already does the memcache access you can use the PHP code from </span><a href="http://100days.de/serendipity/archives/55-Dumping-MemcacheD-Content-Keys-with-PHP.html" class="hs0">100days.de</a><span class="ts2">.</span></p>
+<p class="ps0"><span class="ts0">Troubleshooting</span></p>
+<p class="ps6"><span class="ts3">1MB Data Limit</span></p>
+<p><span class="ts2">Note that prio to memcached 1.4 you cannot store objects larger than 1MB due to the default maximum slab size.</span></p>
+<p class="ps7"><span class="ts3">Never Set a Timeout &gt; 30 Days!</span></p>
+<p class="ps5"><span class="ts2">If you try to &quot;set&quot; or &quot;add&quot; a key with a timeout bigger than the allowed maximum you might not get what you expect because memcached then treats the value as a Unix timestamp. Also if the timestamp is in the past it will do nothing at all. Your command will silently fail.</span></p>
+<p class="ps5"><span class="ts2">So if you want to use the maximum lifetime specify 2592000. Example:</span></p>
+<p class="ps9"><span class="ts5">set my_key 0 2592000 1</span><br /><span class="ts5">1</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Disappearing Keys on Overflow</span></p>
+<p><span class="ts2">Despite the documentation saying something about wrapping around 64bit overflowing a value using &quot;incr&quot; causes the value to disappear. It needs to be created using &quot;add&quot;/&quot;set&quot; again.</span></p>
+<p class="ps0"><span class="ts0">Replication</span></p>
+<p class="ps5"><span class="ts2">memcached itself does not support replication. If you really need it you need to use 3rd party solutions:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://repcached.lab.klab.org/" class="hs0">repcached</a><span class="ts2">: Multi-master async replication (memcached 1.2 patch set)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.couchbase.com/memcached" class="hs0">Couchbase memcached interface</a><span class="ts2">: Use CouchBase as memcached drop-in</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://cybozu.github.io/yrmcds/" class="hs0">yrmcds</a><span class="ts2">: memcached compatible Master-Slave key value store</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/twitter/twemproxy" class="hs0">twemproxy</a><span class="ts2">&nbsp;(aka nutcracker): proxy with memcached support</span></p>
+<p class="ps0"><span class="ts0">Monitoring</span></p>
+<p class="ps5"><span class="ts2">When using </span><a href="http://memcached.org" class="hs0">memcached</a><span class="ts2">&nbsp;or memcachedb everything is fine as long as it is running. But from an operating perspective memcached is a black box. There is no real logging you can only use the -v/-vv/-vvv switches when not running in daemon mode to see what your instance does. And it becomes even more complex if you run multiple or distributed memcache instances available on different hosts and ports.</span></p>
+<p class="ps5"><span class="ts2">So the question is: </span><span class="ts4">How to monitor your distributed memcache setup?</span></p>
+<p class="ps5"><span class="ts2">There are not many tools out there, but some useful are. We'll have a look at the following tools. Note that some can monitor multiple memcached instances, while others can only monitor a single instance at a time.</span></p>
+<p class="ps5"><span class="ts2">Name</span></p>
+<p class="ps5"><span class="ts2">Multi-Instances</span></p>
+<p class="ps5"><span class="ts2">Complexity/Features</span></p>
+<p class="ps5"><span class="ts2">telnet</span></p>
+<p class="ps5"><span class="ts2">no</span></p>
+<p class="ps5"><span class="ts2">Simple CLI via telnet</span></p>
+<p class="ps5"><span class="ts2">memcached-top</span></p>
+<p class="ps5"><span class="ts2">no</span></p>
+<p class="ps5"><span class="ts2">CLI</span></p>
+<p class="ps5"><span class="ts2">stats-proxy</span></p>
+<p class="ps5"><span class="ts2">yes</span></p>
+<p class="ps5"><span class="ts2">Simple Web GUI</span></p>
+<p class="ps5"><span class="ts2">memcache.php</span></p>
+<p class="ps5"><span class="ts2">yes</span></p>
+<p class="ps5"><span class="ts2">Simple Web GUI</span></p>
+<p class="ps5"><a href="https://code.google.com/p/phpmemcacheadmin/" class="hs0">PhpMemcacheAdmin</a></p>
+<p class="ps5"><span class="ts2">yes</span></p>
+<p class="ps5"><span class="ts2">Complex Web GUI</span></p>
+<p class="ps5"><span class="ts2">Memcache Manager</span></p>
+<p class="ps5"><span class="ts2">yes</span></p>
+<p><span class="ts2">Complex Web GUI</span></p>
+<p class="ps8"><span class="ts4">memcached-top</span></p>
+<p class="ps5"><span class="ts2">You can use </span><a href="http://code.google.com/p/memcache-top/" class="hs0">memcache-top</a><span class="ts2">&nbsp;for live-monitoring a single memcached instance. It will give you the I/O throughput, the number of evictions, the current hit ratio and if run with &quot;--commands&quot; it will also provide the number of GET/SET operations per interval.</span></p>
+<p class="ps9"><span class="ts5">memcache-top v0.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (default port: 11211, color: on, refresh: 3 seconds)</span><br /><br /><span class="ts5">INSTANCE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; USAGE&nbsp;&nbsp; HIT %&nbsp;&nbsp; CONN&nbsp;&nbsp;&nbsp; TIME&nbsp;&nbsp;&nbsp; EVICT/s GETS/s&nbsp; SETS/s&nbsp; READ/s&nbsp; WRITE/s </span><br /><span class="ts5">10.50.11.5:11211&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 88.9%&nbsp;&nbsp; 69.7%&nbsp;&nbsp; 1661&nbsp;&nbsp;&nbsp; 0.9ms&nbsp;&nbsp; 0.3&nbsp;&nbsp;&nbsp;&nbsp; 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13.9K&nbsp;&nbsp; 9.8K&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">10.50.11.5:11212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 88.8%&nbsp;&nbsp; 69.9%&nbsp;&nbsp; 2121&nbsp;&nbsp;&nbsp; 0.7ms&nbsp;&nbsp; 1.3&nbsp;&nbsp;&nbsp;&nbsp; 168&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17.6K&nbsp;&nbsp; 68.9K&nbsp;&nbsp; </span><br /><span class="ts5">10.50.11.5:11213&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 88.9%&nbsp;&nbsp; 69.4%&nbsp;&nbsp; 1527&nbsp;&nbsp;&nbsp; 0.7ms&nbsp;&nbsp; 1.7&nbsp;&nbsp;&nbsp;&nbsp; 48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14.4K&nbsp;&nbsp; 13.6K&nbsp;&nbsp; </span><br /><span class="ts5">[...]</span><br /><br /><span class="ts5">AVERAGE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 84.7%&nbsp;&nbsp; 72.9%&nbsp;&nbsp; 1704&nbsp;&nbsp;&nbsp; 1.0ms&nbsp;&nbsp; 1.3&nbsp;&nbsp;&nbsp;&nbsp; 69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13.5K&nbsp;&nbsp; 30.3K&nbsp;&nbsp; </span><br /><br /><span class="ts5">TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19.9GB/ 23.4GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20.0K&nbsp;&nbsp; 11.7ms&nbsp; 15.3&nbsp;&nbsp;&nbsp; 826&nbsp;&nbsp;&nbsp;&nbsp; 132&nbsp;&nbsp;&nbsp;&nbsp; 162.6K&nbsp; 363.6K&nbsp; </span><br /><span class="ts5">(ctrl-c to quit.)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">(Example output)</span></p>
+<p class="ps8"><span class="ts4">statsproxy</span></p>
+<p class="ps5"><span class="ts2">Using the </span><a href="http://code.google.com/p/statsproxy/" class="hs0">statsproxy</a><span class="ts2">&nbsp;tool you get a browser-based statistics tool for multiple memcached instances. The basic idea of statsproxy is to provide the unmodified memcached statistics via HTTP. It also provide a synthetic health check for service monitoring tools like </span><a href="http://nagios.org" class="hs0">Nagios</a><span class="ts2">. To compile statsproxy on Debian:</span></p>
+<p class="ps9"><span class="ts5"># Ensure you have bison</span><br /><span class="ts5">sudo apt-get install bison</span><br /><br /><span class="ts5"># Download tarball</span><br /><span class="ts5">tar zxvf statsproxy-1.0.tgz</span><br /><span class="ts5">cd statsproxy-1.0</span><br /><span class="ts5">make</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Now you can run the &quot;statsproxy&quot; binary, but it will inform you that it needs a configuration file. I suggest to redirect the output to a new file e.g. &quot;statsproxy.conf&quot; and remove the information text on top and bottom and then to modify the configuration section as needed.</span></p>
+<p class="ps9"><span class="ts5">./statsproxy &gt; statsproxy.conf 2&gt;&amp;1</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Ensure to add as many &quot;proxy-mapping&quot; sections as you have memcached instances. In each &quot;proxy-mapping&quot; section ensure that &quot;backend&quot; points to your memcached instance and &quot;frontend&quot; to a port on your webserver where you want to access the information for this backend. Once finished run:</span></p>
+<p class="ps9"><span class="ts5">./statsproxy -F statsproxy.conf</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Below you find a screenshot of what stats-proxy looks like:</span></p>
+<p></p>
+<p class="ps7"><span class="ts3">memcache.php</span></p>
+<p><span class="ts2">Using [this PHP (http://livebookmark.net/journal/2008/05/21/memcachephp-stats-like-apcphp/) you can quickly add memcached statistics to a webserver of your choice. Most useful is the global memory usage graph which helps to identify problematic instances in a distributed environment. Here is how it should look (screenshot from the project homepage): </span><span class="ts2">When using this script ensure access is protected and not to trigger the &quot;flush_all&quot; menu option by default. Also on large memcached instances refrain from dumping the keys as it might cause some load on your server.</span></p>
+<p class="ps0"><span class="ts0">Memcached Bindings</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Tomcat: </span><a href="https://code.google.com/p/memcached-session-manager/wiki/SerializationStrategies" class="hs0">memcached-session-manager</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">libketama: </span><a href="https://github.com/RJ/ketama" class="hs0">https://github.com/RJ/ketama</a><span class="ts2">&nbsp;(supports C, PHP, Java, Python)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">libmemcached: </span><a href="http://libmemcached.org" class="hs0">http://libmemcached.org</a><span class="ts2">&nbsp;(used by PHP and others)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">python-memcached </span><a href="https://pypi.python.org/pypi/python-memcached" class="hs0">https://pypi.python.org/pypi/python-memcached</a><span class="ts2">&nbsp;(implemented in Python)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">pylibmc </span><a href="https://pypi.python.org/pypi/pylibmc/1.4.1" class="hs0">https://pypi.python.org/pypi/pylibmc/1.4.1</a><span class="ts2">&nbsp;(implemented in C)</span></p>
+<p class="ps7"><span class="ts3">Dumping Memcache Keys</span></p>
+<p class="ps5"><span class="ts2">You spent already 50GB on the memcache cluster, but you still see many evictions and the cache hit ratio doesn't look good since a few days. The developers swear that they didn't change the caching recently, they checked the code twice and have found no problem. What now? How to get some insight into the black box of memcached? One way would be to add logging to the application to see and count what is being read and written and then to guess from this about the cache efficiency. For to debug what's happening we need to set how the cache keys are used by the application. </span><span class="ts4">An Easier Way</span><span class="ts2">&nbsp;Memcache itself provides a means to peek into its content. The memcache protocol provides </span><a href="/articles/memcached.htm" class="hs0">commands</a><span class="ts2">&nbsp;to peek into the data that is organized by slabs (categories of data of a given size range). There are some significant limitations though:</span></p>
+<p class="ps1"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">You can only dump keys per slab class (keys with roughly the same content size)</span></p>
+<p class="ps1"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">You can only dump one page per slab class (1MB of data)</span></p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">This is an unofficial feature that </span><a href="https://groups.google.com/forum/?fromgroups=#!topic/memcached/1-T8I-RVGKM" class="hs0">might be removed anytime.</a></p>
+<p class="ps5"><span class="ts2">The second limitation is propably the hardest because 1MB of several gigabytes is almost nothing. Still it can be useful to watch how you use a subset of your keys. But this might depend on your use case. If you don't care about the technical details just skip to the </span><a href="memcached.htm#tools" class="hs0">tools section</a><span class="ts2">&nbsp;to learn about what tools allow you to easily dump everything. Alternatively follow the following guide and try the commands </span><a href="/articles/memcached.htm" class="hs0">using telnet</a><span class="ts2">&nbsp;against your memcached setup. </span><span class="ts4">How it Works</span><span class="ts2">&nbsp;First you need to know how memcache organizes its memory. If you start memcache with option &quot;-vv&quot; you see the slab classes it creates. For example</span></p>
+<p class="ps9"><span class="ts5">$ memcached -vv</span><br /><span class="ts5">slab class&nbsp;&nbsp; 1: chunk size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 96 perslab&nbsp;&nbsp; 10922</span><br /><span class="ts5">slab class&nbsp;&nbsp; 2: chunk size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 120 perslab&nbsp;&nbsp;&nbsp; 8738</span><br /><span class="ts5">slab class&nbsp;&nbsp; 3: chunk size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 152 perslab&nbsp;&nbsp;&nbsp; 6898</span><br /><span class="ts5">slab class&nbsp;&nbsp; 4: chunk size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192 perslab&nbsp;&nbsp;&nbsp; 5461</span><br /><span class="ts5">[...]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">In the configuration printed above memcache will keep fit 6898 pieces of data between 121 and 152 byte in a single slab of 1MB size (6898*152). All slabs are sized as 1MB per default. Use the following command to print all currently existing slabs:</span></p>
+<p class="ps9"><span class="ts5">stats slabs</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">If you've added a single key to an empty memcached 1.4.13 with</span></p>
+<p class="ps9"><span class="ts5">set mykey 0 60 1</span><br /><span class="ts5">1</span><br /><span class="ts5">STORED</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">you'll now see the following result for the &quot;stats slabs&quot; command:</span></p>
+<p class="ps9"><span class="ts5">stats slabs</span><br /><span class="ts5">STAT 1:chunk_size 96</span><br /><span class="ts5">STAT 1:chunks_per_page 10922</span><br /><span class="ts5">STAT 1:total_pages 1</span><br /><span class="ts5">STAT 1:total_chunks 10922</span><br /><span class="ts5">STAT 1:used_chunks 1</span><br /><span class="ts5">STAT 1:free_chunks 0</span><br /><span class="ts5">STAT 1:free_chunks_end 10921</span><br /><span class="ts5">STAT 1:mem_requested 71</span><br /><span class="ts5">STAT 1:get_hits 0</span><br /><span class="ts5">STAT 1:cmd_set 2</span><br /><span class="ts5">STAT 1:delete_hits 0</span><br /><span class="ts5">STAT 1:incr_hits 0</span><br /><span class="ts5">STAT 1:decr_hits 0</span><br /><span class="ts5">STAT 1:cas_hits 0</span><br /><span class="ts5">STAT 1:cas_badval 0</span><br /><span class="ts5">STAT 1:touch_hits 0</span><br /><span class="ts5">STAT active_slabs 1</span><br /><span class="ts5">STAT total_malloced 1048512</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The example shows that we have only one active slab type #1. Our key being just one byte large fits into this as the smallest possible chunk size. The slab statistics show that currently on one page of the slab class exists and that only one chunk is used. </span><span class="ts4">Most importantly it shows a counter for each write operation (set, incr, decr, cas, touch) and one for gets. Using those you can determine a hit ratio!</span><span class="ts2">&nbsp;You can also fetch another set of infos using &quot;stats items&quot; with interesting counters concerning evictions and out of memory counters.</span></p>
+<p class="ps9"><span class="ts5">stats items</span><br /><span class="ts5">STAT items:1:number 1</span><br /><span class="ts5">STAT items:1:age 4</span><br /><span class="ts5">STAT items:1:evicted 0</span><br /><span class="ts5">STAT items:1:evicted_nonzero 0</span><br /><span class="ts5">STAT items:1:evicted_time 0</span><br /><span class="ts5">STAT items:1:outofmemory 0</span><br /><span class="ts5">STAT items:1:tailrepairs 0</span><br /><span class="ts5">STAT items:1:reclaimed 0</span><br /><span class="ts5">STAT items:1:expired_unfetched 0</span><br /><span class="ts5">STAT items:1:evicted_unfetched 0</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">What We Can Guess Already...</span><span class="ts2">&nbsp;Given the statistics infos per slabs class we can already guess a lot of thing about the application behaviour:</span></p>
+<p class="ps2"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">How is the cache ratio for different content sizes?</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">How good is the caching of large HTML chunks?</span></p>
+<p class="ps22"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">How much memory do we spend on different content sizes?</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">How much do we spend on simple numeric counters?</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">How much do we spend on our session data?</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">How much do we spend on large HTML chunks?</span></p>
+<p class="ps22"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">How many large objects can we cache at all?</span></p>
+<p class="ps5"><span class="ts2">Of course to answer the questions you need to know about the cache objects of your application. </span><span class="ts4">Now: How to Dump Keys?</span><span class="ts2">&nbsp;Keys can be dumped per slabs class using the &quot;stats cachedump&quot; command.</span></p>
+<p class="ps9"><span class="ts5">stats cachedump &lt;slab class&gt; &lt;number of items to dump&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To dump our single key in class #1 run</span></p>
+<p class="ps9"><span class="ts5">stats cachedump 1 1000</span><br /><span class="ts5">ITEM mykey [1 b; 1350677968 s]</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The &quot;cachedump&quot; returns one item per line. The first number in the braces gives the size in bytes, the second the timestamp of the creation. Given the key name you can now also dump its value using</span></p>
+<p class="ps9"><span class="ts5">get mykey</span><br /><span class="ts5">VALUE mykey 0 1</span><br /><span class="ts5">1</span><br /><span class="ts5">END</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">This is it: iterate over all slabs classes you want, extract the key names and if need dump there contents.</span></p>
+<p class="ps8"><span class="ts4">Dumping Tools</span></p>
+<p class="ps5"><span class="ts2">There are different dumping tools sometimes just scripts out there that help you with printing memcache keys:</span></p>
+<p><span class="ts2">+--------------------------+--------------------------+--------------------------+ | PHP | | Prints key names. | | | (http://snipt.org | | | | /xtP) | | +--------------------------+--------------------------+--------------------------+ | Perl | | Prints keys and values | | | (https://wiki.jas | | | | ig.org/download/attachme | | | | nts/13572172/memcached-c | | | | lean.pl?version=1&amp;modifi | | | | cationDate=1229693957401 | | | | ) | | +--------------------------+--------------------------+--------------------------+ | Ruby | | Prints key names. | | | (https://gist.git | | | | hub.com/1365005) | | +--------------------------+--------------------------+--------------------------+ | Perl | [memdump](http://search. | Tool in CPAN module | | | cpan.org/~dmaki/Memcache | [Memcached-libmemcached] | | | d-libmemcached-0.4202/sr | (http://search.cpan.org/ | | | c/libmemcached/docs/memd | ~dmaki/Memcached-libmemc | | | ump.pod) | ached/) | +--------------------------+--------------------------+--------------------------+ | PHP | [memcache.php](http://li | Memcache Monitoring GUI | | | vebookmark.net/journal/2 | that also allows dumping | | | 008/05/21/memcachephp-st | keys | | | ats-like-apcphp/) | | +--------------------------+--------------------------+--------------------------+ | libmemcached | [peep](http://blog.evanw | </span><span class="ts4">Does freeze your | | | eaver.com/2009/04/20/pee | memcached process!!!</span><span class="ts2">&nbsp;| | | ping-into-memcached/) | | | | | Be careful when using | | | | this in production. | | | | Still using it you can | | | | workaround the 1MB | | | | limitation and really | | | | dump </span><span class="ts4">all</span><span class="ts2">&nbsp;keys. | +--------------------------+--------------------------+--------------------------+</span></p>
+<p class="ps7"><span class="ts3">Using Consistent Hashing</span></p>
+<p class="ps5"><span class="ts2">Papers:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www8.org/w8-papers/2a-webserver/caching/paper2.html" class="hs0">Web Caching with Consistent Hashing</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.akamai.com/dl/technical_publications/ConsistenHashingandRandomTreesDistributedCachingprotocolsforrelievingHotSpotsontheworldwideweb.pdf" class="hs0">Consistent Hashing and Random Trees</a><span class="ts2">&nbsp;(PDF)</span></p>
+<p class="ps8"><span class="ts4">nginx</span></p>
+<p class="ps9"><span class="ts5">&nbsp;upstream somestream {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consistent_hash $request_uri;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server 10.0.0.1:11211;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server 10.0.0.2:11211;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">PHP</span></p>
+<p class="ps5"><span class="ts2">Note: the order of setOption() and addServers() is important. When using OPT_LIBKETAMA_COMPATIBLE the hashing is compatible with all other runtimes using libmemcached.</span></p>
+<p class="ps9"><span class="ts5">$memcached = new Memcached();</span><br /><span class="ts5">$memcached-&gt;setOption(Memcached::OPT_DISTRIBUTION, Memcached::DISTRIBUTION_CONSISTENT);</span><br /><span class="ts5">$memcached-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, true);</span><br /><span class="ts5">$memcached-&gt;addServers($servers);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Perl</span></p>
+<p class="ps9"><span class="ts5">$m = new Memcached('mymemcache');</span><br /><span class="ts5">$m-&gt;setOptions(array(</span><br /><span class="ts5">&nbsp;&nbsp; ...</span><br /><span class="ts5">&nbsp;&nbsp; Memcached::OPT_LIBKETAMA_COMPATIBLE =&gt; true,</span><br /><span class="ts5">&nbsp;&nbsp; Memcached::OPT_DISTRIBUTION =&gt; Memcached::DISTRIBUTION_CONSISTENT,</span><br /><span class="ts5">&nbsp;&nbsp; ...</span><br /><span class="ts5">));</span><br /><span class="ts5">$m-&gt;addServers(...);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Memcache Alternatives</span></p>
+<p class="ps5"><span class="ts2">Below is a list of tools competing with memcached in some manner and a probably subjective rating of each.</span></p>
+<p class="ps5"><span class="ts2">Name</span></p>
+<p class="ps5"><span class="ts2">Difference</span></p>
+<p class="ps5"><span class="ts2">Why [Not] Use It?</span></p>
+<p class="ps5"><span class="ts2">memcached</span></p>
+<p class="ps5"><span class="ts2">%</span></p>
+<p class="ps5"><span class="ts2">Because it simple and fast</span></p>
+<p class="ps5"><span class="ts2">memcachedb</span></p>
+<p class="ps5"><span class="ts2">Persistence with BDB</span></p>
+<p class="ps5"><span class="ts2">Because it is a simple and fast as memcached and allows easy persistence and backup. But not maintained anymore since 2008!</span></p>
+<p class="ps5"><span class="ts2">BDB</span></p>
+<p class="ps5"><span class="ts2">Simple and old</span></p>
+<p class="ps5"><span class="ts2">Use when you want an embedded database. Rarely used for web platforms. Has replication.</span></p>
+<p class="ps5"><a href="http://www.couchbase.com/" class="hs0">CouchBase</a></p>
+<p class="ps5"><span class="ts2">HTTP(S) transport, authentication, buckets, memcached compatible default bucket. Includes moxi proxy that can run on client side or with CouchBase instances.</span></p>
+<p class="ps5"><span class="ts2">Sharding, replication and online rebalancing. Often found in small Hadoop setup. Easy drop-in for memcached caching with no consistent hashing.</span></p>
+<p class="ps5"><a href="http://aws.amazon.com/en/dynamodb/" class="hs0">DynamoDB</a></p>
+<p class="ps5"><span class="ts2">HTTP transport, Amazon cloud</span></p>
+<p class="ps5"><span class="ts2">If you are in AWS anyway and want sharding and persistency</span></p>
+<p class="ps5"><a href="http://redis.io" class="hs0">Redis</a></p>
+<p class="ps5"><span class="ts2">Key difference is the rich data types: Hashes, Lists, Scanning for Keys, Replication</span></p>
+<p class="ps5"><span class="ts2">Great bindings. Good documentation. Flexible yet simple data types. Slower than memcached (</span><a href="http://systoilet.wordpress.com/2010/08/09/redis-vs-memcached/" class="hs0">read more</a><span class="ts2">).</span></p>
+<p class="ps5"><a href="http://basho.com/riak/" class="hs0">Riak</a></p>
+<p class="ps5"><span class="ts2">Sharded partitioning in a commerical cloud.</span></p>
+<p class="ps5"><span class="ts2">Key-value store as a service. Transparent scaling. Automatic sharding. Map reduce support.</span></p>
+<p class="ps5"><span class="ts2">Sphinx</span></p>
+<p class="ps5"><span class="ts2">Search Engine with SQL query caching</span></p>
+<p class="ps5"><span class="ts2">Supports sharding and full text search. Useful for static medium data sets (e.g. web site product search)</span></p>
+<p class="ps5"><span class="ts2">MySQL 5.6</span></p>
+<p class="ps5"><span class="ts2">Full RDBMS with memcached API</span></p>
+<p class="ps5"><span class="ts2">Because you can run queries against the DB via memcached protocol.</span></p>
+<p><span class="ts2">There are many more key-value stores. If you wonder what else is out there look at the </span><a href="http://db-engines.com/en/ranking" class="hs0">db-engines.com</a><span class="ts2">&nbsp;rankings.</span></p>
+<p class="ps0"><span class="ts0">Suggested Reading</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.usenix.org/sites/default/files/conference/protected-files/nishtala_nsdi13_slides.pdf" class="hs0">Scaling Memcache at Facebook</a><span class="ts2">&nbsp;(PDF)</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

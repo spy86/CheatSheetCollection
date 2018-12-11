@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Openshift</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 100;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Client Setup</span></p>
+<p class="ps9"><span class="ts5"># Follow instructions from GUI setup and download client</span><br /><span class="ts5">oc login</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Settings are stored in ~/.kube/config</span></p>
+<p class="ps0"><span class="ts0">CLI Commands</span></p>
+<p class="ps5"><span class="ts2">Note: all Kubernetes commands work with the oc client. So also check &lt;?add topic='Kubernetes'?&gt;</span></p>
+<p class="ps9"><span class="ts5">oc login [&lt;cluster&gt;]</span><br /><span class="ts5">oc projects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List projects</span><br /><span class="ts5">oc project &lt;project&gt;&nbsp;&nbsp;&nbsp;&nbsp; # Switch project</span><br /><span class="ts5">oc new-project &lt;project&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Creating application from remote repo</span></p>
+<p class="ps9"><span class="ts5">oc new-app https://github.com/name/project</span><br /><span class="ts5">oc new-app https://github.com/name/project --context-dir=&lt;build dir&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">For actual builds from a directory. </span><span class="ts7">Careful! If this is a git repo this won't work as the remote git repo will be used!</span></p>
+<p class="ps9"><span class="ts5">oc new-app --name=&lt;application&gt; .</span><br /><span class="ts5">oc start-build &lt;application&gt; --from-dir .</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">List available S2I templates</span></p>
+<p class="ps9"><span class="ts5">oc new-app --list</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Use specific template</span></p>
+<p class="ps9"><span class="ts5">oc new-app https://github.com/name/project --template=&lt;template&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Cluster Administration</span></p>
+<p><span class="ts2">Commands derived from </span><a href="https://jaxenter.com/manage-container-resource-kubernetes-141977.html" class="hs0">jaxenter.com</a><span class="ts2">&nbsp;for Openshift:</span></p>
+<p class="ps7"><span class="ts3">Set initial admin pwd</span></p>
+<p class="ps5"><span class="ts2">Either use</span></p>
+<p class="ps9"><span class="ts5">oc login -u system:admin</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">or create credential on master</span></p>
+<p class="ps9"><span class="ts5">sudo htpasswd -b /etc/openshift/openshift-passwd admin &lt;your_pass&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Print per cluster node resource usage</span></p>
+<p class="ps9"><span class="ts5">oc get nodes --no-headers | awk '{print $1}' | xargs -I {} sh -c 'echo {}; oc describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Working with Templates</span></p>
+<p class="ps5"><span class="ts2">Create a template from an existing project</span></p>
+<p class="ps9"><span class="ts5">oc export all --as-template my_project_template &gt;template.json</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Note that the resulting JSON will have no parameters yet. You'll have to identify places to replace with parameters (syntax is &quot;${PARAMETER}&quot;) and to declare those parameters.</span></p>
+<p class="ps0"><span class="ts0">Orchestration</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://medium.com/@fabiojose/platform-as-code-with-openshift-terraform-1da6af7348ce" class="hs0">Using Terraform with Openshift</a></p>
+<p class="ps0"><span class="ts0">Migrating Services to Openshift</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Middleware </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://blog.couchbase.com/couchbase-on-openshift-in-action/" class="hs0">Couchbase</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://www.nearform.com/blog/benchmarking-apache-kafka-deployed-on-openshift-with-helm/" class="hs0">Kafka</a><span class="ts2">&nbsp;(using Helm)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Runtimes </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://github.com/openshift/nodejs-ex.git" class="hs0">Nodejs</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://github.com/openshift/ruby-ex.git" class="hs0">Ruby</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Frameworks </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/spring_boot_microservices_on_red_hat_openshift_container_platform_3/index#software-stack" class="hs0">Spring Boot Stack</a></p>
+<p class="ps0"><span class="ts0">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Turning off sticky sessions:</span></p>
+<p class="ps2"><span class="ts8">oc annotate route &lt;name of route&gt; haproxy.router.openshift.io/disable_cookies='true'</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://docs.openshift.com/container-platform/3.6/dev_guide/secrets.html#service-serving-certificate-secrets" class="hs0">Securing inter-service communication with certificates</a><span class="ts2">: done via annotations at the service indicating a TLS cert/key in a secret</span></p>
+<p class="ps2"><span class="ts8">apiVersion: v1</span><br /><span class="ts8">&nbsp; kind: Service</span><br /><span class="ts8">&nbsp; metadata:</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; annotations:</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; service.alpha.openshift.io/serving-cert-secret-name: &lt;name&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">ebook: </span><a href="https://www.openshift.com/promotions/for-developers.html" class="hs0">OpenShift for Developers</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">OpenShift Cheat Sheets</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/" class="hs0">http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/</a></p>
+<p class="ps14"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">https://monodot.co.uk/openshift-cheatsheet/</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

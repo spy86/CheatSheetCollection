@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PHP_preg_match</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1360;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">Use preg_match() to match strings with regular expressions. Check the return value for true to see if the expression did match.</span></p>
+<p class="ps7"><span class="ts3">Syntax of preg_match</span></p>
+<p class="ps5"><span class="ts2">While full syntax is</span></p>
+<p class="ps9"><span class="ts5">int preg_match ( string $pattern , string $subject </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp; [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">You propably will use </span><span class="ts8">preg_match()</span><span class="ts2">&nbsp;mostly with two parameters for simply matching checks or with three to extract matches. You probably won't use the 4th and 5th parameter which can be used to return match offsets and limit matching to a given offset in the string.</span></p>
+<p class="ps7"><span class="ts3">Simple String Checks</span></p>
+<p class="ps5"><span class="ts2">Here are some syntax examples that check strings for certain content: </span><span class="ts4">Basic matching</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/PHP/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Match for an unbound literal</span><br /><span class="ts5">preg_match(&quot;/^PHP/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Match literal at start of string</span><br /><span class="ts5">preg_match(&quot;/PHP$/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Match literal at end of string</span><br /><span class="ts5">preg_match(&quot;/^PHP$/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp; # Match for exact string content</span><br /><span class="ts5">preg_match(&quot;/^$/&quot;, &quot;&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Match empty string</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Using different regex delimiters</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/PHP/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # / as commonly used delimiter</span><br /><span class="ts5">preg_match(&quot;@PHP@&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # @ as delimiter</span><br /><span class="ts5">preg_match(&quot;!PHP!&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ! as delimiter</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Changing the delimiter becomes useful in some cases</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/http:\/\//&quot;, &quot;http://&quot;);&nbsp;&nbsp;&nbsp;&nbsp; # match http:// protocol prefix with / delimiter</span><br /><span class="ts5">preg_match(&quot;#http://#&quot;,&nbsp;&nbsp; &quot;http://&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match http:// protocol prefix with # delimiter</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Case sensitivity</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/PHP/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # case sensitive string matching</span><br /><span class="ts5">preg_match(&quot;/php/i&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # case in-sensitive string matching</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Matching with wildcards</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/P.P/&quot;,&nbsp;&nbsp;&nbsp;&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match a single character</span><br /><span class="ts5">preg_match(&quot;/P.*P/&quot;,&nbsp;&nbsp;&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match multipe characters</span><br /><span class="ts5">preg_match(&quot;/P[A-Z]P/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match from character range A-Z</span><br /><span class="ts5">preg_match(&quot;/[PH]*/&quot;,&nbsp;&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match from character set P and H</span><br /><span class="ts5">preg_match(&quot;/P\wP/&quot;,&nbsp;&nbsp;&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match one word character</span><br /><span class="ts5">preg_match(&quot;/\bPHP\b/&quot;, &quot;regex in PHP&quot;)&nbsp;&nbsp; # match the word &quot;PHP&quot;, but not &quot;PHP&quot; as larger string</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Using quantifiers</span></p>
+<p class="ps9"><span class="ts5">preg_match(&quot;/[PH]{3}/&quot;,&nbsp;&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match exactly 3 characters from set [PH]</span><br /><span class="ts5">preg_match(&quot;/[PH]{3,3}/&quot;, &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match exactly 3 characters from set [PH]</span><br /><span class="ts5">preg_match(&quot;/[PH]{,3}/&quot;,&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match at most 3 characters from set [PH]</span><br /><span class="ts5">preg_match(&quot;/[PH]{3,}/&quot;,&nbsp; &quot;PHP&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # match at least 3 characters from set [PH]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Extracting Data</span></p>
+<p class="ps5"><span class="ts2">To extract data using regular expression we have to use capture/grouping syntax. Some basic examples</span></p>
+<p class="ps9"><span class="ts5"># Extract everything after the literal &quot;START&quot;</span><br /><span class="ts5">preg_match(&quot;/START(.*)/&quot;, $string, $results)&nbsp;&nbsp; </span><br /><br /><span class="ts5"># Extract the number from a date string </span><br /><span class="ts5">preg_match(&quot;/(\d{4})-(\d{2})-(\d{2})/&quot;, &quot;2012-10-20&quot;, $results)</span><br /><br /><span class="ts5"># Nesting of capture groups, extract full name, and both parts...</span><br /><span class="ts5">preg_match(&quot;/name is ((\w+), (\w+))/&quot;, &quot;name is Doe, John&quot;, $results)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">So you basically just enclose the sub patterns you want to extract with braces and fetch the results by passing a third parameter which preg_match() will fill as an array. Named Capture Groups</span></p>
+<p class="ps9"><span class="ts5"># Extract the number from a date string </span><br /><span class="ts5">preg_match(&quot;/(?P&lt;year&gt;\d{4})-(?P&lt;month&gt;\d{2})-(?P&lt;day&gt;\d{2})/&quot;, &quot;2012-10-20&quot;, $results)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Now the $result array will additionally to the position matches 1, 2 and 3 contain the keys &quot;year&quot;, &quot;month&quot; and &quot;day&quot;. The advantage is never having to think of the capture positions anymore when you modify the expression!</span></p>
+<p class="ps7"><span class="ts3">Check Processing Errors!</span></p>
+<p><span class="ts2">While it might often be unimportant be aware that applying a regular expression might fail due to PCRE constraints. This usually happens when matching overly long strings or strings with faulty encoding. The only way to notice that preg_match() was not able to check the string is by calling </span><span class="ts8">preg_last_error()</span><span class="ts2">&nbsp;Only if it returns PREG_NO_ERROR you got a safe result! Consider this when using preg_match() for security purposes.</span></p>
+<p class="ps7"><span class="ts3">Suggested Reading</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.amazon.de/PHP-Pocket-Reference-your-pocket/dp/1491969091/ref=as_li_ss_il?s=books-intl-de&amp;ie=UTF8&amp;qid=1509402246&amp;sr=1-5&amp;keywords=php+regular+expressions&amp;linkCode=li3&amp;tag=lzone04-21&amp;linkId=b19a6d2b9e501a2db36770b028ed72dc" class="hs0">PHP Pocket Reference: PHP in your pocket</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.amazon.de/Regular-Expression-Pocket-Reference-Expressions/dp/0596514271/ref=as_li_ss_il?s=books-intl-de&amp;ie=UTF8&amp;qid=1509402246&amp;sr=1-1&amp;keywords=php+regular+expressions&amp;linkCode=li3&amp;tag=lzone04-21&amp;linkId=ef88a1018bc76512ceded94172f603e0" class="hs0">Regular Expression Pocket Reference: Regular Expressions for Perl, Ruby, PHP, Python, C, Java and .NET (Pocket Reference (O'Reilly))</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

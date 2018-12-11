@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>KernelTracing</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 400;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Frameworks</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://elinux.org/Kernel_Trace_Systems" class="hs0">Kernel Trace Systems</a><span class="ts2">&nbsp;Overview</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://askubuntu.com/questions/148536/how-to-enable-sigquit-core-dumps-with-apport" class="hs0">Core Dumps with Ubuntu</a><span class="ts2">: Ubuntu per-default redirects cores to its bug reporting tool &quot;apport&quot; so you won't get core dumps. If you still need to overrule the core dump pipe in /proc/sys/kernel/core_pattern:</span></p>
+<p class="ps2"><span class="ts8">echo core &gt;/proc/sys/kernel/core_pattern </span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://dtrace.org/blogs/ahl/2011/10/05/dtrace-for-linux-2" class="hs0">Dtrace for Linux</a><span class="ts2">: the Solaris framework ported by Sun/Oracle</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://burzalodowa.wordpress.com/2013/07/09/linux-kernel-tracing/" class="hs0">FTrace</a><span class="ts2">: kernel trace point injection</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.mjmwired.net/kernel/Documentation/accounting/taskstats.txt" class="hs0">Task Stats</a><span class="ts2">: per-task accounting in Linux</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.ktap.org" class="hs0">ktap</a><span class="ts2">: Runs with just a kernel module without debugging symbols, requires debugfs</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/brendangregg/FlameGraph" class="hs0">FlameGraph</a><span class="ts2">: generate call stack volume graphs for SystemTap, DTrace, Perf...</span></p>
+<p class="ps7"><span class="ts3">Tutorials</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">https://github.com/goldshtn/linux-tracing-workshop</span></p>
+<p class="ps7"><span class="ts3">Event Tracing</span></p>
+<p class="ps5"><a href="https://www.kernel.org/doc/Documentation/trace/events.txt" class="hs0">Documentation</a></p>
+<p class="ps9"><span class="ts5">mount -t debugfs none /sys/kernel/debug</span><br /><br /><span class="ts5"># Variant 1</span><br /><span class="ts5">echo &quot;sched_wakeup&quot;&nbsp; &gt;&gt; /sys/kernel/debug/tracing/set_event</span><br /><span class="ts5">echo &quot;!sched_wakeup&quot; &gt;&gt; /sys/kernel/debug/tracing/set_event</span><br /><span class="ts5">echo &quot;sched:*&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; /sys/kernel/debug/tracing/set_event</span><br /><br /><span class="ts5"># Variant 2</span><br /><span class="ts5">echo 1 &gt; /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable</span><br /><span class="ts5">echo 0 &gt; /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable</span><br /><span class="ts5">echo 1 &gt; /sys/kernel/debug/tracing/events/sched/enable</span><br /><br /><span class="ts5"># Available events</span><br /><span class="ts5">find /sys/kernel/debug/tracing/events/sched</span><br /><br /><span class="ts5"># To add trace points from boot loader, add</span><br /><span class="ts5">trace_event=&lt;event name&gt;</span><br /><br /><span class="ts5"># Setting triggers: stacktrace, snapshot, traceon/off</span><br /><span class="ts5"># -&gt; Always stracktrace</span><br /><span class="ts5">echo 'stacktrace' &gt; /sys/kernel/debug/tracing/events/&lt;event&gt;/trigger</span><br /><br /><span class="ts5"># -&gt; Snapshot on next event</span><br /><span class="ts5">echo 'snapshot if nr_rq &gt; 1' &gt; /sys/kernel/debug/tracing/events/&lt;event&gt;/trigger</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Perf Probe</span></p>
+<p class="ps9"><span class="ts5">apt-get install linux-tools-common linux-tools-generic</span><br /><br /><span class="ts5">perf probe --line vfs_read</span><br /><span class="ts5">perf probe --add 'vfs_read file file-&gt;f_mode'</span><br /><span class="ts5">perf probe --list</span><br /><br /><span class="ts5"># Trace Event</span><br /><span class="ts5">perf trace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Trace to terminal (useless because terminal feedback loop)</span><br /><span class="ts5">perf trace &lt;command&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Trace a command execution</span><br /><br /><span class="ts5">perf record -e &quot;syscalls:*&quot; ls&nbsp;&nbsp;&nbsp;&nbsp; # Record system calls on execution of &quot;ls&quot;</span><br /><span class="ts5">perf record -e &quot;syscalls:*&quot; -aR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Record all processes until Ctrl-C is pressed</span><br /><br /><span class="ts5"># Note: when &quot;syscalls&quot; does not exist try &quot;raw_syscalls&quot;</span><br /><br /><span class="ts5">perf list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # For list of possible -e filters</span><br /><br /><span class="ts5">perf report -i perf.data</span><br /><br /><span class="ts5"># Delete Event</span><br /><span class="ts5">perf probe --del '*'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Misc perf stuff</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html" class="hs0">perf Flame Graphs</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/jrudolph/perf-map-agent" class="hs0">perf Java Symbols Mapper Agent</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://techblog.netflix.com/2015/07/java-in-flames.html" class="hs0">Direct JVM Symbol Mapping</a><span class="ts2">&nbsp;with -XX:+PreserveFramePointer</span></p>
+<p class="ps7"><span class="ts3">SystemTap</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://sourceware.org/systemtap/index.html" class="hs0">System Tap</a><span class="ts2">: Tracing framework by Red Hat, IBM, Hitachi, and Oracle.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://sourceware.org/systemtap/wiki/SystemtapOnDebian#head-81631b554b54f056056424eb4895912b67225b17" class="hs0">System Tap on Debian</a><span class="ts2">: Installation HowTo</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.ubuntu.com/Kernel/Systemtap" class="hs0">System Tap on Ubuntu</a><span class="ts2">: Installation HowTo, short version below</span></p>
+<p class="ps1"><span class="ts8">apt-get install systemtap systemtap-doc</span><br /><br /><span class="ts8"># Install kernel debug symbols</span><br /><span class="ts8">codename=$(lsb_release -c | awk&nbsp; '{print $2}')</span><br /><span class="ts8">sudo tee /etc/apt/sources.list.d/ddebs.list &lt;&lt; EOF</span><br /><span class="ts8">deb http://ddebs.ubuntu.com/ ${codename}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; main restricted universe multiverse</span><br /><span class="ts8">deb http://ddebs.ubuntu.com/ ${codename}-security main restricted universe multiverse</span><br /><span class="ts8">deb http://ddebs.ubuntu.com/ ${codename}-updates&nbsp; main restricted universe multiverse</span><br /><span class="ts8">deb http://ddebs.ubuntu.com/ ${codename}-proposed main restricted universe multiverse</span><br /><span class="ts8">EOF</span><br /><br /><span class="ts8">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ECDCAD72428D7C01</span><br /><span class="ts8">sudo apt-get update</span><br /><span class="ts8">sudo apt-get install linux-image-$(uname -r)-dbgsym</span><br /><br /><span class="ts8"># List existing SystemTap scripts</span><br /><span class="ts8">dpkg -L systemtap-doc | grep &quot;\.stp$&quot;</span><br /><br /><span class="ts8"># Run a script</span><br /><span class="ts8">/usr/share/doc/systemtap-doc/examples/io/iotop.stp</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">oprofile</span></p>
+<p class="ps5"><a href="http://oprofile.sourceforge.net/about/" class="hs0">statistical profiler for Linux (&lt;20% overhead)</a></p>
+<p class="ps11"><span class="ts5"># After boot run &quot;init&quot; and &quot;setup&quot; with or without kernel statistics</span><br /><span class="ts5">opcontrol --init</span><br /><span class="ts5">opcontrol --setup --no-vmlinux&nbsp; </span><br /><span class="ts5">opcontrol --setup --vmlinux=/usr/lib/debug/lib/modules/`uname -r`/vmlinux</span><br /><br /><span class="ts5">opcontrol --reset</span><br /><span class="ts5">opcontrol --start</span><br /><span class="ts5">opcontrol --dump</span><br /><span class="ts5">opcontrol --shutdown</span><br /><br /><span class="ts5"># Per library/image summaries</span><br /><span class="ts5">opreport</span><br /><span class="ts5">opreport /usr/sbin/sshd # Limit to this binary</span><br /><br /><span class="ts5"># Call graph for one application</span><br /><span class="ts5">opreport -cl --demangle=smart /usr/sbin/apache2</span><br /><br /><span class="ts5"># To resolve kernel symbols</span><br /><span class="ts5">opreport --symbols --image-path=/lib/modules/&lt;version&gt;/kernel</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

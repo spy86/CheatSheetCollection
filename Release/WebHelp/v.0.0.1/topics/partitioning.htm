@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Partitioning</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 520;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Disks</span></p>
+<p class="ps5"><span class="ts2">Setting/Listing disk UUIDs</span></p>
+<p class="ps9"><span class="ts5">blkid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all</span><br /><span class="ts5">findfs UUID=&lt;id&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Find specific id</span><br /><span class="ts5">ls -l /dev/disk/by-uuid/&lt;id&gt;</span><br /><br /><span class="ts5">uuidgen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # New id</span><br /><span class="ts5">tune2fs -U &lt;id&gt; /dev/sda1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Setting id</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Where to find different partition types</span></p>
+<p class="ps9"><span class="ts5">/dev/disk/by-uuid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; MBR partitions</span><br /><span class="ts5">/dev/disk/by-partuuid&nbsp; -&gt; GPT partitions</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">UEFI Secure Boot</span></p>
+<p class="ps5"><span class="ts2">Diagnose with</span></p>
+<p class="ps9"><span class="ts5">efibootmgr -v</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Grub Config Update</span></p>
+<p class="ps2"><span class="ts8">update-grub</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.troubleshooters.com/linux/ext2toext3.htm" class="hs0">Convert ext2 to ext3</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">tune2fs -j /dev/hda1</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cyberciti.biz/tips/linux-convert-ext3-to-ext4-file-system.html" class="hs0">Convert ext3 to ext4</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">tune2fs -O extents,uninit_bg,dir_index /dev/sda1</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cyberciti.biz/faq/linux-show-contents-of-filesystem-superblock-inode/" class="hs0">Determine Inode Count</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">tune2fs -l /dev/sda1 | grep Inode</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://liferea.blogspot.de/2010/06/serious-performance-issues-with-ext4fs.html" class="hs0">Disable ext4 barriers</a><span class="ts2">: Add &quot;barrier=0&quot; to the mount options.</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

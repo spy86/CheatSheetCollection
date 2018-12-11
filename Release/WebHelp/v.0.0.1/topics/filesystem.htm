@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Filesystem</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 8px 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 360;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://detox.sourceforge.net/" class="hs0">detox</a><span class="ts2">: Tool for recursive cleanup of file names.</span></p>
+<p class="ps2"><span class="ts8">detox -v -r &lt;directory&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.slashroot.in/which-is-the-fastest-method-to-delete-files-in-linux" class="hs0">Fast File Deletion</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">perl -e 'for(&lt;*&gt;){((stat)[9]&lt;(unlink))}'</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">POSIX ACLs:</span></p>
+<p class="ps2"><span class="ts8">getfacl &lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List ACLs for file </span><br /><span class="ts8">setfacl -m user:joe:rwx dir # Modify ACL</span><br /><span class="ts8">ls -ld &lt;file&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Check for active ACL (indicates a &quot;+&quot;)</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://unetbootin.sourceforge.net/" class="hs0">uNetBootin</a><span class="ts2">: Create bootable media for any distribution. Most useful with USB sticks.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">rsync - --delete doesn't work: It happens when you call rsync without a trailing slash in the source path like this:</span></p>
+<p class="ps2"><span class="ts8">rsync -az -e ssh --delete /data server:/data</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">It just won't delete anything. It will when running it like this:</span></p>
+<p class="ps2"><span class="ts8">rsync -az -e ssh --delete /data/ server:/data</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">List physical disk serial number</span></p>
+<p class="ps2"><span class="ts8"># As root</span><br /><span class="ts8">hdparm -I /dev/sda | grep Serial</span><br /><span class="ts8">lshw -class disk</span><br /><span class="ts8">smartctl -i /dev/sda</span><br /><span class="ts8">lsblk --nodeps -o name,serial</span><br /><br /><span class="ts8"># As user</span><br /><span class="ts8">/sbin/udevadm info --query=property --name=sda |grep SERIAL</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">inotify - Detect file access</span></p>
+<p class="ps2"><span class="ts8">apt-get install inotify-tools</span><br /><span class="ts8">inotifywait -m -r /var/log</span><br /><span class="ts8">inotifywait -m /var/log/auth.log</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">losetup</span></p>
+<p class="ps2"><span class="ts8">losetup /dev/loop0 &lt;disk image&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Create</span><br /><span class="ts8">losetup -e /dev/loop0 &lt;disk image&gt;&nbsp;&nbsp; # Create with encryption</span><br /><span class="ts8">losetup /dev/loop0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get info on loop0</span><br /><span class="ts8">losetup -d /dev/loop0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Detach</span><br /><span class="ts8">losetup -a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List used loop devices</span><br />&nbsp;</p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://cb.vu/unixtoolbox.xhtml#wluks" class="hs0">dm-crypt with/without LUKS</a></p>
+<p class="ps8"><span class="ts4">Automated Sync</span></p>
+<p class="ps5"><span class="ts2">Synching without a distributed filesystem</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://code.google.com/p/lsyncd/" class="hs0">lsyncd</a><span class="ts2">: inotify based rsync daemon</span></p>
+<p class="ps2"><span class="ts8">lsyncd -rsync /home remotehost.org::share/ </span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">Or in foreground</span></p>
+<p class="ps1"><span class="ts8">lsyncd -nodaemon -log all -rsyncssh &lt;local dir&gt; &lt;remote host&gt; &lt;remote dir&gt;</span><br />&nbsp;</p>
+<p class="ps8"><span class="ts4">Distributed Filesystems</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Name</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Vendor</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Distinguishing Features</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="http://hadoop.apache.org/" class="hs0">HDFS</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Hadoop</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">FUSE, NFS, HFTP, S3</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="http://ceph.com" class="hs0">Ceph</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Redhat</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">NFS, POSIX, S3, Swift, Fuse, Docker support</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="http://gluster.org" class="hs0">GlusterFS</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Redhat</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">NFS, POSIX, S3, Docker support, also as &quot;Redhat Storage Server&quot;</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="https://oss.oracle.com/projects/ocfs2/" class="hs0">OCFS2</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Oracle</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">POSIX, often used with </span><a href="http://www.drbd.org/" class="hs0">DRBD</a><span class="ts2">&nbsp;Block replication</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="http://lustre.org/" class="hs0">Lustre</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Oracle</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">POSIX, abandoned, used in HPC</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><a href="https://moosefs.com/" class="hs0">MooseFS</a></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Core Technology</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">POSIX, NFS drop-in</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Apache</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 610;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/articles/rewrite-migrate.htm" class="hs0">Apache vs. Lighttpd Rewrite Rules</a><span class="ts2">: How to migrate.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">List VHost Precedence</span></p>
+<p class="ps2"><span class="ts8">apache2ctl -S</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">List active modules</span></p>
+<p class="ps2"><span class="ts8">apache2ctl -M</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Rewrite on File Pattern</span></p>
+<p class="ps2"><span class="ts8">RewriteCond %{REQUEST_FILENAME} (.*)\.(html|htm)$</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Rewrite on User Agent</span></p>
+<p class="ps2"><span class="ts8">RewriteCond %{HTTP_USER_AGENT} (iPhone|iPad)</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Rewrite and add environment variable to request (for example pass along remote user)</span></p>
+<p class="ps2"><span class="ts8">RewriteRule .* - [E=PROXY_USER:%{LA-U:REMOTE_USER}]</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.apache.org/httpd/RewriteFlags/CO" class="hs0">Injecting cookies with RewriteRule and CO flag</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.loadbalancer.org/blog/apache-and-x-forwarded-for-headers/" class="hs0">Get X-Forwarded-For IPs in log</a></p>
+<p class="ps2"><span class="ts8"># Define a LogFormat printing X-Forwaded-For IPs</span><br /><span class="ts8">LogFormat &quot;%{X-Forwarded-For}i %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; proxy</span><br /><br /><span class="ts8"># Check if the header is set to an IP</span><br /><span class="ts8">SetEnvIf X-Forwarded-For &quot;^.*\..*\..*\..*&quot; forwarded</span><br /><br /><span class="ts8"># Depending on the check flag 'forwarded' switch between standard and XFF LogFormat</span><br /><span class="ts8">CustomLog &quot;logs/access_log&quot; combined env=!forwarded</span><br /><span class="ts8">CustomLog &quot;logs/access_log&quot; proxy env=forwarded</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://people.apache.org/~trawick/exception_hook.html" class="hs0">Exception Hook</a><span class="ts2">: Since 2.0.49 Apache has an exception hook to handle crashes.</span></p>
+<p class="ps2"><span class="ts8">EnableExceptionHook on</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">htaccess doesn't work:</span></p>
+<p class="ps2"><span class="ts8">AllowOverride All</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">environment variables via .htaccess:</span></p>
+<p class="ps1"><span class="ts8">SetEnv VARNAME somevalue</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Authentication</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Skip authentication for certain URIs</span></p>
+<p class="ps1"><span class="ts8">Require expr %{REQUEST_URI} =~ m#&lt;some pattern&gt;#</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Log Rotation</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Pipe CustomLog to a script:</span></p>
+<p class="ps2"><span class="ts8">&nbsp;LoadModule logio_module modules/mod_logio.so</span><br /><br /><span class="ts8">&lt;IfModule mod_logio.c&gt;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CustomLog &quot;| some-script.sh&quot;&nbsp; &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-agent}i\&quot;&quot;</span><br /><span class="ts8">&lt;/IfModule&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">Do logrotation using Apaches logrotate script:</span></p>
+<p class="ps2"><span class="ts8">CustomLog &quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400&quot; common </span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">Perform logrotation with </span><a href="http://sourceforge.net/projects/cronolog/" class="hs0">cronolog</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">CustomLog &quot;|/usr/local/sbin/cronolog /logs/%m-%d-%Y-access.log&quot; combined</span><br />&nbsp;</p>
+<p class="ps1"><span class="ts2">The advantage of cronolog is that you may pass filenames with strptime format patterns that are replaced by cronolog. And the are evaluated all the time so that over time cronolog writes into different files according to your pattern.</span></p>
+<p class="ps0"><span class="ts0">Data Privacy</span></p>
+<p class="ps5"><span class="ts2">Alternatives to avoid tracking users by IP:</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Completely remove IPs: Replace %h in you LogFormat with &quot;-&quot;, this ensures all log reading tools can still parse the logs</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Truncate/replace the IPs during log rotation.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use a piped CustomLog and replace the IP ad-hoc. Here is a simple IPv4 only example with sed</span></p>
+<p class="ps2"><span class="ts8">CustomLog &quot;|$/bin/sed 's/^\([^.]*\.[^.]*\.[^.]*\.\)[0-9][0-9]* \(.*\)$/\1.0 \2/' &gt;&gt;logs/access_log&quot; truncated_ip</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Truncate the IP using rewrite rules, by extracting all but the last octect of the IP using RewriteCond regex and save the result with the last octect set to 0 in an env variable in a RewriteRule, finally use the env variable in the LogFormat (see (StackOverflow)[https://stackoverflow.com/questions/19452624/apply-a-mask-to-ip-with-logformat])</span></p>
+<p class="ps1"><span class="ts8"># Note: also needs a IPv6 pattern</span><br /><span class="ts8">RewriteCond %{REMOTE_ADDR} ^(\d+\.\d+\.\d+\.)\d+$</span><br /><span class="ts8">RewriteRule &quot;^/.*&quot; &quot;/$1&quot; [E=truncated_ip:%1]</span><br /><span class="ts8">LogFormat &quot;%{ENV:truncated_ip} %l %u %t \&quot;%r\&quot; %&gt;s %b ...&quot; truncated_ip</span><br />&nbsp;</p>
+<p class="ps0"><span class="ts0">Mitigating security issues</span></p>
+<p class="ps6"><span class="ts3">Hide Server Name</span></p>
+<p class="ps9"><span class="ts5">ServerSignature Off</span><br /><span class="ts5">ServerTokens Prod</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Disable SSLv2 and SSLv3</span></p>
+<p class="ps9"><span class="ts5">SSLProtocol all -SSLv2 -SSLv3</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">DH downgrade</span></p>
+<p class="ps5"><span class="ts2">Create a unique DH group</span></p>
+<p class="ps9"><span class="ts5">openssl dhparam -out dhparams.pem 2048</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">and load it from Apache config</span></p>
+<p class="ps9"><span class="ts5">SSLOpenSSLConfCmd DHParameters &quot;{path to dhparams.pem}&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">finally load </span><a href="apache.htm#Sane Ciphers" class="hs0">sane ciphers</a><span class="ts2">.</span></p>
+<p class="ps7"><span class="ts3">Sane Ciphers</span></p>
+<p class="ps5"><span class="ts2">Suggestion from 22.5.2015 by </span><a href="https://weakdh.org/sysadmin.html" class="hs0">weakdh.org</a><span class="ts2">:</span></p>
+<p class="ps11"><span class="ts5">SSLCipherSuite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA</span><br /><br /><span class="ts5">SSLHonorCipherOrder&nbsp;&nbsp;&nbsp;&nbsp; on</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

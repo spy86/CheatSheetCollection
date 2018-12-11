@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Couchbase</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 630;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">CLI</span></p>
+<p class="ps9"><span class="ts5"># Binary usually</span><br /><span class="ts5">cli=/opt/couchbase/bin/couchbase-cli</span><br /><br /><span class="ts5"># Always provide credentials</span><br /><span class="ts5">auth=&quot;-u Administrator -p 12345&quot;</span><br /><br /><span class="ts5">$cli server-list $auth -c localhost</span><br /><span class="ts5">$cli server-info $auth -c &lt;host&gt;</span><br /><br /><span class="ts5"># Add to cluster</span><br /><span class="ts5">$cli server-add $auth -c localhost --server-add=&lt;host&gt;&nbsp;&nbsp; # add only</span><br /><span class="ts5">$cli rebalance&nbsp; $auth -c localhost --server-add=&lt;host&gt;</span><br /><br /><span class="ts5"># Remove from cluster</span><br /><span class="ts5">$cli rebalance&nbsp; $auth -c localhost --server-remove=&lt;host&gt;</span><br /><br /><span class="ts5"># Groups</span><br /><span class="ts5">$cli group-manage $auth -c localhost --list</span><br /><span class="ts5">$cli group-manage $auth -c localhost --&lt;create|delete&gt; --group-name=&lt;name&gt;</span><br /><br /><span class="ts5"># Buckets</span><br /><span class="ts5">$cli bucket-edit $auth -c localhost \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --bucket=&lt;name&gt; \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --bucket-port=11222 \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --bucket-ramsize=1000 \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --bucket-eviction-policy=fullEviction \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --enable-flush=1 \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --bucket-priority=high</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">REST API</span></p>
+<p class="ps11"><span class="ts5">/pools</span><br /><span class="ts5">/pools/default</span><br /><span class="ts5">/pools/&lt;pool name&gt;</span><br /><br /><span class="ts5">/pools/default/buckets/&lt;bucket name&gt;/docs/&lt;id&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

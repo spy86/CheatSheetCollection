@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Packaging</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 510;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Packaging</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://lzone.de/Save+tarball+space+with+make+dist-xz" class="hs0">Build Tarballs with XZ</a><span class="ts2">: Build different types of tarballs</span></p>
+<p class="ps2"><span class="ts8">make dist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # .tar.gz</span><br /><span class="ts8">make dist-bzip2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # .tar.bz2</span><br /><span class="ts8">make dist-lzma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # .tar.lzma</span><br /><span class="ts8">make dist-xz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # .tar.xz</span><br /><br /><span class="ts8"># Extract with</span><br /><span class="ts8">tar zxf archive.tar.gz</span><br /><span class="ts8">tar jxf archive.tar.bz2</span><br /><span class="ts8">tar Jxf archive.tar.lzma</span><br /><span class="ts8">tar Jxf archive.tar.xz</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Install Debian package build tools</span></p>
+<p class="ps2"><span class="ts8">apt-get install devscripts build-essential</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Rebuild Debian package (without apt-source)</span></p>
+<p class="ps2"><span class="ts8">mkdir build &amp;&amp; cd build</span><br /><span class="ts8"># Download xxxx.debian.tar.gz from package page</span><br /><span class="ts8"># Download xxxx.orig.tar.gz from package page (or upstream homepage)</span><br /><span class="ts8"># Download xxxx.dsc from package page</span><br /><br /><span class="ts8"># Extract/patch package files</span><br /><span class="ts8">dpkg-source -x &lt;name&gt;.dsc</span><br /><br /><span class="ts8"># Install missing deps reported by</span><br /><span class="ts8">dpkg-checkbuilddeps</span><br /><br /><span class="ts8"># Build using one of the following</span><br /><span class="ts8">cd &lt;package source dir&gt;</span><br /><span class="ts8">debuild -us -uc</span><br /><span class="ts8">dpkg-buildpackage -us -uc</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Rebuild Debian package (with apt-source)</span></p>
+<p class="ps2"><span class="ts8">mkdir build &amp;&amp; cd build</span><br /><span class="ts8">apt-get source &lt;name&gt;</span><br /><span class="ts8">apt-get build-dep &lt;name&gt;</span><br /><br /><span class="ts8"># And build</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Patch a Debian package by hand</span></p>
+<p class="ps2"><span class="ts8"># Extract .deb</span><br /><span class="ts8">dpkg-deb -R &lt;package name&gt; tmp</span><br /><br /><span class="ts8"># Or if -R switch is not yet available</span><br /><span class="ts8">dpkg-deb -x &lt;package name&gt; tmp</span><br /><span class="ts8">dpkg-deb -e &lt;package name&gt; tmp/DEBIAN</span><br /><br /><span class="ts8"># Rebuild with</span><br /><span class="ts8">dpkg-deb -b tmp &lt;package name&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Debhelper: How to solve when backporting</span></p>
+<p class="ps2"><span class="ts8">dh: Sorry, but 8 is the highest compatibility level supported by this debhelper.</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">Change the required version in</span></p>
+<p class="ps2"><span class="ts8">echo 8 &gt;debian/compat</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.debian.org/HardeningWalkthrough" class="hs0">Debian Package Hardening</a><span class="ts2">&nbsp;for C/C++</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.freedesktop.org/software/appstream/docs/sect-AppStream-Metadata-AppData.html" class="hs0">AppData freedesktop.org specification</a><span class="ts2">: Standard for end user SW description markup.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">AppData - Validation:</span></p>
+<p class="ps2"><span class="ts8">appdata-validate /usr/share/appdata/myapplication.appdata.xml</span><br />&nbsp;</p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

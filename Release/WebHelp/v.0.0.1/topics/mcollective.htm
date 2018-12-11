@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Mcollective</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 220;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Finding Hosts</span></p>
+<p class="ps9"><span class="ts5">mco ping</span><br /><span class="ts5">mco ping -W &quot;/some match pattern/&quot;</span><br /><span class="ts5">mco ping -S &quot;&lt;some select query&gt;&quot;</span><br /><br /><span class="ts5">mco find&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all hosts known</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Finding Groups of Hosts</span></p>
+<p class="ps5"><span class="ts2">Simple facts can be matched with -F</span></p>
+<p class="ps9"><span class="ts5">mco find -F ipaddress=192.168.1.1</span><br /><span class="ts5">mco find -F kernel_version=/3.4/ -F fqdn=/db/</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Structured facts (introduced with facter 2) can only be matched with -S like this</span></p>
+<p class="ps9"><span class="ts5">mco find -S 'fact(&quot;networking.network&quot;).value=192.168.5.0'</span><br /><span class="ts5">mco find -S 'fact(&quot;os.distro.codename&quot;).value=jessie'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Fact Histograms</span></p>
+<p class="ps5"><span class="ts2">To get the distribution of all fact values:</span></p>
+<p class="ps9"><span class="ts5">mco facts timezone</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Plugin Commands</span></p>
+<p class="ps9"><span class="ts5"># List agents, queries, plugins...</span><br /><span class="ts5">mco plugin doc</span><br /><span class="ts5">mco plugin doc &lt;name&gt;</span><br /><br /><span class="ts5"># Puppet runs</span><br /><span class="ts5">mco puppetd status</span><br /><span class="ts5">mco puppetd status -I &lt;host&gt;</span><br /><span class="ts5">mco puppetd runonce -I &lt;host&gt;</span><br /><span class="ts5">mco puppetd &lt;enable|disable&gt; -I &lt;host&gt;</span><br /><br /><span class="ts5">mco rpc puppetd status -F &lt;fact&gt;=&lt;value&gt;</span><br /><span class="ts5">mco rpc puppetd runonce -F &lt;fact&gt;=&lt;value&gt;</span><br /><span class="ts5">mco rpc puppetd runonce -W /pattern/</span><br /><br /><span class="ts5">mco rpc service start service=httpd</span><br /><span class="ts5">mco rpc service stop service=httpd</span><br /><br /><span class="ts5">mco facts &lt;keyword&gt;</span><br /><span class="ts5">mco inventory --lco&nbsp;&nbsp;&nbsp;&nbsp; # List collectives</span><br /><span class="ts5">mco inventory &lt;node name&gt;</span><br /><span class="ts5">mco rpc rpcutil inventory -I &lt;node name&gt;</span><br /><span class="ts5">mco rpc rpcutil get_fact fact=&lt;fact name&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Remote Command Execution</span></p>
+<p class="ps5"><span class="ts2">With Puppet RAL</span></p>
+<p class="ps9"><span class="ts5">mco rpc puppetral -F &lt;filter&gt; create type=exec title=&quot;/bin/bash -c 'echo Hallo'&quot;</span><br /><span class="ts5">mco rpc puppetral --batch 5 --batch-sleep 10 create type=package title=&quot;htop&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">(Note: when using RAL do not combine --limit with --batch as --batch would be ignored!)</span></p>
+<p class="ps5"><span class="ts2">With shell plugin installed</span></p>
+<p class="ps9"><span class="ts5">mco shell run &lt;command&gt;</span><br /><span class="ts5">mco shell run --tail &lt;command&gt;</span><br /><br /><span class="ts5">mco shell start &lt;command&gt;&nbsp;&nbsp;&nbsp; # Returns an id</span><br /><span class="ts5">mco shell watch &lt;id&gt;</span><br /><span class="ts5">mco shell kill &lt;id&gt;</span><br /><span class="ts5">mco shell list</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Formatted Reports</span></p>
+<p class="ps5"><span class="ts2">Formatting can be achieved using inventory scripts. General syntax:</span></p>
+<p class="ps9"><span class="ts5">mco inventory [&lt;some filter&gt;] --script &lt;mco script&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Example</span></p>
+<p class="ps9"><span class="ts5">mco inventory -F fqdn=/db/ --script &lt;(echo &quot;</span><br /><span class="ts5">inventory do</span><br /><span class="ts5">&nbsp; format '%s %s'</span><br /><span class="ts5">&nbsp; fields { [ identity, facts['operatingsystemrelease'] ] }</span><br /><span class="ts5">end</span><br /><span class="ts5">&quot;)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Ansible like Playbooks</span></p>
+<p class="ps5"><span class="ts2">YAML playbooks can be done with </span><a href="http://choria.io/docs/about/" class="hs0">Choria</a><span class="ts2">.</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

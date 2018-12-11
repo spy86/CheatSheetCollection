@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Perl</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1200;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Syntax</span></p>
+<p class="ps20"><span class="ts0">Installing Modules from CPAN</span></p>
+<p class="ps5"><span class="ts2">Invoke CPAN shell</span></p>
+<p class="ps9"><span class="ts5">perl -MCPAN -e shell </span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Install a module</span></p>
+<p class="ps9"><span class="ts5">cpan[1]&gt; install Some::Package</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">List CPAN installed modules</span></p>
+<p class="ps9"><span class="ts5">$ cpan -l</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://blog.thewebsitepeople.org/2012/06/perl-default-to-utf-8-encoding/" class="hs0">Proper UTF-8 CGI handling</a></p>
+<p class="ps2"><span class="ts8">use utf8;</span><br /><span class="ts8">use open ( &quot;:encoding(UTF-8)&quot;, &quot;:std&quot; );</span><br /><span class="ts8">use CGI (&quot;-utf8&quot;);</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Daemonize - </span><a href="http://world.std.com/~swmcd/steven/tech/daemon.html" class="hs0">Always double fork</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">use POSIX;</span><br /><br /><span class="ts8">sub daemonize</span><br /><span class="ts8">{</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; fork and exit;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; POSIX::setsid();</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; fork and exit;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; umask 0;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; chdir '/';</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; close STDIN;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; close STDOUT;</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; close STDERR;</span><br /><span class="ts8">}</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Regex - Always use named capture groups and %+, for example:</span></p>
+<p class="ps2"><span class="ts8">if($str =~ /(?&lt;field1&gt;\w+)\s+(?&lt;field2&gt;\w+)(\s+(?&lt;field3&gt;\w+))?/) {</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %result = %+;</span><br /><span class="ts8">}</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Perl - Random Values:</span></p>
+<p class="ps2"><span class="ts8">int(rand(10))</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Perl - Value Dumping</span></p>
+<p class="ps2"><span class="ts8">use Data::Dumper;</span><br /><br /><span class="ts8"># long form</span><br /><span class="ts8">print Data::Dumper-&gt;Dump([$var], [qw(var)]);&nbsp;&nbsp; # scalar variable</span><br /><span class="ts8">print Data::Dumper-&gt;Dump([$var]);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # scalar variable without name</span><br /><br /><span class="ts8"># short form</span><br /><span class="ts8">print Dumper(\@var);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # array variable</span><br /><span class="ts8">print Dumper(%var);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # hash as simple list</span><br /><span class="ts8">print Dumper(\%var);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # hash nicely indented</span><br /><span class="ts8">print Dumper($var);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # arbitrary referenc</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Perl - Fix for &quot;perl: warning: Setting locale failed.&quot;</span></p>
+<p class="ps2"><span class="ts8">locale-gen en_US.UTF-8&nbsp;&nbsp; # Insert listed locale(s)</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Ad-hoc JSON filtering with XPath</span></p>
+<p class="ps1"><span class="ts8">lwp-request https://example.com/api-endpoint | perl -MJSON::XS -MData::DPath=dpath -E 'say join(&quot;,&quot;, dpath(&quot;//status&quot;)-&gt;match(decode_json(join(&quot;&quot;,&lt;STDIN&gt;))))'</span><br />&nbsp;</p>
+<p class="ps0"><span class="ts0">Debugging</span></p>
+<p class="ps5"><span class="ts2">nyprof is a good debugger that supports flame graphs and a very useful static HTML client. To create HTML from a trace</span></p>
+<p class="ps9"><span class="ts5">nytprofhtml --file trace.out --open trace.out --out result</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To run CGIs with ad-hoc request parameters</span></p>
+<p class="ps11"><span class="ts5">QUERY_STRING='&lt;some query&gt;' REQUEST_METHOD=GET REMOTE_USER=&lt;user&gt; perl -d:NYTProf &lt;cgi script&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

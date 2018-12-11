@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>SED</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1660;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Command Syntax</span></p>
+<p class="ps9"><span class="ts5">/abc/p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Print all with &quot;abc&quot;</span><br /><span class="ts5">/abc/!p&nbsp;&nbsp;&nbsp;&nbsp; # Print all without &quot;abc&quot;</span><br /><span class="ts5">/abc/d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Delete all with &quot;abc&quot;</span><br /><span class="ts5">/abc/!d&nbsp;&nbsp;&nbsp;&nbsp; # Delete all without &quot;abc&quot;</span><br /><br /><span class="ts5">/start/,/end/!d&nbsp;&nbsp;&nbsp;&nbsp; # Select a block</span><br /><br /><span class="ts5">s/abc/def/</span><br /><span class="ts5">s/abc\(...\)ghi/\1/ # Back references </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # (see below for correct Shell quoting)</span><br /><br /><span class="ts5">/abc/{s/def/ghi)}&nbsp;&nbsp; # Conditional replace</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Appending lines</span></p>
+<p class="ps9"><span class="ts5">aHallo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Append 'Hallo' after each line</span><br /><span class="ts5">5 aHallo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Append 'Hallo' after line #5</span><br /><span class="ts5">$ aHallo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Append 'Hallo' to end of file</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Advanced use of sed</span></p>
+<p class="ps8"><span class="ts4">In-place Editing</span></p>
+<p class="ps5"><span class="ts2">To edit file use the -i option this safely changes the file contents without any output redirection needed.</span></p>
+<p class="ps9"><span class="ts5">sed -i 's/abc/ABC/' myfile.txt</span><br /><span class="ts5">sed -i '/deleteme/d' *</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Drop grep</span></p>
+<p class="ps5"><span class="ts2">Often grep and sed are used together. In all those cases grep can be dropped. For example</span></p>
+<p class="ps9"><span class="ts5">grep &quot;pattern&quot; file | sed &quot;s/abc/def/&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">can be written as</span></p>
+<p class="ps9"><span class="ts5">sed -n &quot;/pattern/p; s/abc/def/&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Grouping with sed</span></p>
+<p class="ps5"><span class="ts2">Always use single quotes!</span></p>
+<p class="ps9"><span class="ts5">sed 's/^.*\(pattern\).*/\1/'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Single Quoting Single Quotes</span></p>
+<p class="ps5"><span class="ts2">If you want to do extraction and need a pattern based on single quotes use \x27 instead of trying to insert a single quote. For example:</span></p>
+<p class="ps9"><span class="ts5">sed 's/.*var=\x27\([^\x27]*\)\x27.*/\1/'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">to extract &quot;some string&quot; from &quot;var='some string'&quot;. Or if you don't know about the quoting, but know there are quotes</span></p>
+<p class="ps9"><span class="ts5">sed 's/.*var=.\([^&quot;\x27]*\)..*/\1/'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Conditional Replace with sed</span></p>
+<p class="ps9"><span class="ts5">sed '/conditional pattern/{s/pattern/replacement/g}'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Prefix files with a boilerplate using sed</span></p>
+<p class="ps9"><span class="ts5">sed -i '1s/^/# DO NOT TOUCH THIS FILE!\n\n/' *</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Removing Newlines with sed</span></p>
+<p class="ps5"><span class="ts2">The only way to remove new line is this:</span></p>
+<p class="ps9"><span class="ts5">sed ':a;N;$!ba;s/\n//g' file</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Check out </span><a href="/Removing-newlines-with-sed" class="hs0">this explanation</a><span class="ts2">&nbsp;if you want to know why.</span></p>
+<p class="ps8"><span class="ts4">Selecting Blocks</span></p>
+<p class="ps11"><span class="ts5">sed '/first line/,/last line/!d' file</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

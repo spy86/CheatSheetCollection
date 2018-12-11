@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Linux HTML Widgets</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1180;
+</script>
+</head>
+<body>
+<p class="ps10"><span class="ts2">When you start a new open source project and decide to provide parts or the whole UI by an HTML widget you face the problem of first finding HTML widget libraries, especially light weight ones, and then using the correct one to avoid throwing away the code at a later point when you find one important feature missing. With this blog post I try to give a summary of existing open source HTML renderer libraries in the Linux world. I have some background experiences with the libraries from working on Liferea(http://liferea.sf.net) where we started with GtkHTML2, later added GtkMozembed support, then added Webkit support and finally switched to WebKit-only rendering. The following table tries to summarize the simple availability of the different HTML renderers:</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Name</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Toolkit</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Platform</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Derived From</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Driving Force</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Active</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KHTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">QT</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">%</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KDE</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KDE</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">YES</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">wxHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">wxWidgets GTK</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Windonws</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KHTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">wxWidgets</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">YES</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GTK+ 1.0</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GNOME 1</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KHTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GNOME 1</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">No, long gone</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml2</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GTK+ 2.0</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GNOME 2</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GNOME 2</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">No, v2.11: Aug 2007</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml3</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GTK+ 2.0</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GNOME 2</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Ximian, Evolution</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">No, v3.14: May 2008</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkMozEmbed</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GTK+ 2.0</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Gecko</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">%</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Mozilla</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Somewhat</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">WebKitGtk</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GTK+ 2.0</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Webkit</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KHTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">safari</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Yes</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps0"><span class="ts0">Note:</span></p>
+<p class="ps5"><span class="ts2">My summary somewhat complements this Wikipedia list. Still it focusses more on Linux renderers and does correctly distinguish between the rather mad history of GtkHtml*. Given the list above one could conclude the only acceptable renderers are KTHML, wxHtml and WebkitGtk simply based on project activity. Still other renderers like GtkHtml2 and GtkHtml3 have gone a long way and provide a limited but stable functionality. But the important question is: What features are supported by the different renderers?</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">NAME</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Widget Embed</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Full HTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">CSS</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">JS</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Java</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Flash Editor</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">KHTML</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">1,2,3</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">wxHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">none</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">none</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml2</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">1,2,inline</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkHtml3</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">none</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">GtkMozEmbed</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">1,2,3</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">WebKitGtk</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">1,2,3</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">y</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">n</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps10"><span class="ts2">The feature matrix along with the platform listing explains why a lot of those old renderer libraries are still around. Given you want to render simple markup in an email client you might still choose wxHtml or GtkHtml3, with the latter one providing you with a HTML editor for rich mail editing. Of course when you want to allow your users to have fully fledged inline browsing you need to use either KTHML, GtkMozEmbed or Webkit. Currently I believe WebKitGtk to be the best choice as it's widget gets a lot of attention, which GtkMozEmbed never had while being unstable and rather limited at the same time. If you find mistakes or have something to add please post a comment!</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

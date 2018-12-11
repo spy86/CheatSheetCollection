@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>SolutionsMonitoring</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1840;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Concepts</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.infoq.com/articles/monitoring-SRE-golden-signals" class="hs0">&quot;4&quot; golden monitoring signals</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Metrics to choose from </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Request Rate</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Error Rate</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Latency</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Saturation</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Utilization</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Golden Signals variants </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Google SRE</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">USE Method</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">RED Method</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.vldb.org/pvldb/vol8/p1816-teller.pdf" class="hs0">TSZ Compression Technique</a><span class="ts2">&nbsp;(Facebook Paper)</span></p>
+<p class="ps0"><span class="ts0">TSDBs (Time Series DBs)</span></p>
+<p class="ps5"><a href="https://docs.google.com/spreadsheets/d/1sMQe9oOKhMhIVw9WmuCEWdPtAoccJ4a-IuZv4fXDHxM/edit#gid=0" class="hs0">Wide-range TSDB Comparison</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://vimeo.com/274821002" class="hs0">M3</a><span class="ts2">&nbsp;(Prometheus, etcd, replication, Scale at Uber: 500Mio/s, Billions Storage)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/improbable-eng/thanos" class="hs0">Thanos</a><span class="ts2">&nbsp;(Prometheus, federation)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">InfluxDB (commercial, replication, good scale)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">eXtremeDB (commericial)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">TimescaleDB (Postgres, replication)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Graphite/Whisper (no replication)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Prometheus</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">DalmatinerDB</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Riak-TS</span></p>
+<p class="ps0"><span class="ts0">Alarming / Paging / SMS Notification</span></p>
+<p class="ps5"><span class="ts2">All SaaS</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">PagerDuty</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">VictorOps</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">BigPanda</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">OpsGenie</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">AlertOps</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">iLert</span></p>
+<p class="ps0"><span class="ts0">DNS, Ping</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://oss.oetiker.ch/smokeping/" class="hs0">SmokePing - Monitoring network latency and loss</a></p>
+<p class="ps0"><span class="ts0">Network Mapping</span></p>
+<p class="ps5"><span class="ts2">Mapping Solutions</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.slac.stanford.edu/xorg/nmtf/nmtf-tools.html#nmp-tool" class="hs0">NMPs Overview</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.frameflow.com/" class="hs0">FrameFlow</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.solarwinds.com/network-topology-mapper.aspx" class="hs0">Solarwinds Topology Mapper</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.sciencelogic.com/product/cloudmapper" class="hs0">ScienceLogic CloudMapper</a></p>
+<p class="ps5"><span class="ts2">Network Forensics</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://tnv.sourceforge.net/" class="hs0">TNV: network visualizer</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cs.umd.edu/projects/netgrok/" class="hs0">Netgrok</a></p>
+<p class="ps0"><span class="ts0">Host-based Service Monitoring</span></p>
+<p class="ps5"><span class="ts2">Self-hosted:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Nagios</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Icinga 2</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">check_mk</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Shinken</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Splunk</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://sensuapp.org/" class="hs0">Sensu</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Groundworks</span></p>
+<p class="ps5"><span class="ts2">Saas APMs:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">NewRelic</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">AppDynamics</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">DataDog</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Dynatrace</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Stackify Retrace</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Ruxit</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Sysdig Cloud</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Instana</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://signalfx.com/" class="hs0">SignalFX</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://sematext.com/" class="hs0">SemaText</a><span class="ts2">&nbsp;(Metrics &amp; Logs combined, correlation, Influx DB API for metrics, Elasticsearch API for logs)</span></p>
+<p class="ps0"><span class="ts0">Docker/Kubernetes</span></p>
+<p class="ps5"><span class="ts2">See also this </span><a href="http://rancher.com/comparing-monitoring-options-for-docker-deployments/" class="hs0">review</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Prometheus</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Hawkular</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">DataDog (SaaS)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Sensu</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Scout</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Sysdig Cloud</span></p>
+<p class="ps0"><span class="ts0">External Website Monitoring</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.gomez.com/" class="hs0">gomez.com</a><span class="ts2">&nbsp;(now dynatrace)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.yottaa.com/" class="hs0">yottaa.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.monitis.com/" class="hs0">monitis.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.pingdom.com/" class="hs0">pingdom.com</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://ruxit.com/" class="hs0">Ruxit</a><span class="ts2">&nbsp;(RUM)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.uptrends.com/" class="hs0">uptrends.com</a></p>
+<p class="ps0"><span class="ts0">Status Page Hosting</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.statuspage.io" class="hs0">statuspage.io</a></p>
+<p class="ps0"><span class="ts0">Event Correlation</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://simple-evcorr.sourceforge.net" class="hs0">SEC - Simple Event Correlation</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

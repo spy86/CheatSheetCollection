@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PackageVulnerabilities</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1730;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Scanners</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.enyo.de/fw/software/debsecan/" class="hs0">Debian - Package Vulnerability Scanner</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">debsecan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # all known</span><br /><span class="ts8">debsecan --suite=sid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # all affecting this release</span><br /><span class="ts8">debsecan --suite=sid --only-fixed&nbsp;&nbsp; # all with solutions</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.freebsd.org/doc/en/books/handbook/security-portaudit.html" class="hs0">FreeBSD - Package Vulnerability Scanner</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">portaudit -Fda</span><br />&nbsp;</p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.tenable.com/blog/linuxunix-patch-auditing-using-nessus" class="hs0">Linux/UNIX Package Auditing with Nessus</a></p>
+<p class="ps7"><span class="ts3">Linux Distribution Tools</span></p>
+<p class="ps5"><span class="ts2">Distribution</span></p>
+<p class="ps5"><span class="ts2">Scanner</span></p>
+<p class="ps5"><span class="ts2">Rating</span></p>
+<p class="ps5"><span class="ts2">Description</span></p>
+<p class="ps5"><span class="ts2">Debian</span></p>
+<p class="ps5"><a href="http://www.enyo.de/fw/software/debsecan/" class="hs0">debsecan</a></p>
+<p class="ps5"><span class="ts2">superb</span></p>
+<p class="ps5"><span class="ts2">Easy to use. Maintained by the Debian testing team. Lists packages, CVE numbers and details.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">Ubuntu</span></p>
+<p class="ps5"><a href="https://bugs.launchpad.net/ubuntu/+source/debsecan/+bug/95925" class="hs0">debsecan</a></p>
+<p class="ps5"><span class="ts2">useless</span></p>
+<p class="ps5"><span class="ts2">They just packaged the Debian scanner without providing a database for it! And since 2008 there is a </span><a href="https://bugs.launchpad.net/ubuntu/+source/debsecan/+bug/95925" class="hs0">bug</a><span class="ts2">&nbsp;about it being 100% useless.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">CentOS Fedora Redhat</span></p>
+<p class="ps5"><a href="http://www.cyberciti.biz/faq/redhat-fedora-centos-linux-yum-installs-security-updates/" class="hs0">&quot;yum list-security&quot;</a></p>
+<p class="ps5"><span class="ts2">good</span></p>
+<p class="ps5"><span class="ts2">Provides package name and CVE number. Note: On older systems there is only &quot;yum list updates&quot;.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">OpenSuSE</span></p>
+<p class="ps5"><a href="http://doc.opensuse.org/documentation/html/openSUSE/opensuse-startup/cha.sw_cl.html" class="hs0">&quot;zypper list-patches&quot;</a></p>
+<p class="ps5"><span class="ts2">ok</span></p>
+<p class="ps5"><span class="ts2">Provides packages names with security relevant updates. You need to filter the list yourself or use the &quot;--cve&quot; switch to limit to CVEs only.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">SLES</span></p>
+<p class="ps5"><a href="http://yourlinuxguy.com/?p=411" class="hs0">&quot;rug lu&quot;</a></p>
+<p class="ps5"><span class="ts2">ok</span></p>
+<p class="ps5"><span class="ts2">Provides packages names with security relevant updates. Similar to zypper you need to do the filtering yourself.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">Gentoo</span></p>
+<p class="ps5"><a href="http://www.gentoo.org/doc/en/gentoolkit.xml" class="hs0">glsa-check</a></p>
+<p class="ps5"><span class="ts2">bad</span></p>
+<p class="ps5"><span class="ts2">There is a dedicated scanner, but no documentation.</span></p>
+<p class="ps5"><br /><span class="ts2">&nbsp;\</span></p>
+<p class="ps5"><span class="ts2">FreeBSD</span></p>
+<p class="ps5"><a href="http://www.freshports.org/security/portaudit/" class="hs0">Portaudit</a></p>
+<p class="ps5"><span class="ts2">superb</span></p>
+<p><span class="ts2">No Linux? Still a nice solution... Lists vulnerable ports and vulnerability details.</span></p>
+<p class="ps7"><span class="ts3">Patch Orchestration</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://landscape.canonical.com/" class="hs0">Ubuntu Landscape</a><span class="ts2">&nbsp;(commercial) </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">USN based updates</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://access.redhat.com/products/red-hat-satellite" class="hs0">Redhat Satellite</a><span class="ts2">&nbsp;(commercial) </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">RPM based updates, supports Redhat, Fedora, Solaris</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://duckduckgo.com/?t=lm&amp;q=redhat+landscape" class="hs0">Redhat Spacewalk</a><span class="ts2">&nbsp;(OSS community version of Satellite)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.ibh.de/apt-dater/" class="hs0">apt-dater</a><span class="ts2">: Simple ncurses Debian batch installer</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

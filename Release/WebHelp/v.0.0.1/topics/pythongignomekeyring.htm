@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PythonGIGnomeKeyring</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1500;
+</script>
+</head>
+<body>
+<p class="ps10"><span class="ts2">Since GTK+ 3.0 and the broad introduction of GObject Introspection (GIR) one now can switch from using the existing </span><a href="http://www.mindbending.org/bending-gnome-keyring-with-python-part-1/" class="hs0">GnomeKeyring Python module</a><span class="ts2">&nbsp;to direct GIR-based access. This allows reducing the Python runtime dependency. Below you find a simple keyring access script unlocking a keyring named &quot;test&quot; adding a new entry and dumping all entries in the keyring. This code uses the generic secret keyring type and was originally written for a </span><a href="http://liferea.git.sourceforge.net/git/gitweb.cgi?p=liferea/liferea;a=blob_plain;f=plugins/gnome-keyring.py;hb=HEAD" class="hs0">Liferea plugin</a><span class="ts2">&nbsp;that allows </span><a href="http://liferea.sf.net" class="hs0">Liferea</a><span class="ts2">&nbsp;to store feed passwords into GnomeKeyring:</span></p>
+<p class="ps9"><span class="ts5">from gi.repository import GObject</span><br /><span class="ts5">from gi.repository import GnomeKeyring</span><br /><br /><span class="ts5">keyringName = 'test'</span><br /><br /><span class="ts5">def unlock():</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print 'Unlocking keyring %s...' % keyringName</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; GnomeKeyring.unlock_sync(keyringName, None)</span><br /><br /><span class="ts5">def dump_all():</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print &quot;Dump all keyring entries...&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; (result, ids) = GnomeKeyring.list_item_ids_sync(keyringName)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; for id in ids:&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (result, item) = GnomeKeyring.item_get_info_sync(keyringName, id)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if result != GnomeKeyring.Result.OK:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print '%s is locked!' % (id)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print '&nbsp; =&gt; %s = %s' % (item.get_display_name(), item.get_secret())</span><br /><br /><span class="ts5">def do_query(id):</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print 'Fetch secret for id %s' % id</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; attrs = GnomeKeyring.Attribute.list_new()</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; GnomeKeyring.Attribute.list_append_string(attrs, 'id', id)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; result, value = GnomeKeyring.find_items_sync(GnomeKeyring.ItemType.GENERIC_SECRET, attrs)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; if result != GnomeKeyring.Result.OK:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return</span><br /><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print '&nbsp; =&gt; password %s = %s' % (id, value[0].secret)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print '&nbsp;&nbsp;&nbsp;&nbsp; keyring id&nbsp; = %s' % value[0].item_id</span><br /><br /><span class="ts5">def do_store(id, username, password):</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print 'Adding keyring entry for id %s' % id</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; GnomeKeyring.create_sync(keyringName, None)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; attrs = GnomeKeyring.Attribute.list_new()</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; GnomeKeyring.Attribute.list_append_string(attrs, 'id', id)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; GnomeKeyring.item_create_sync(keyringName, GnomeKeyring.ItemType.GENERIC_SECRET, repr(id), attrs, '@@@'.join([username, password]), True)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; print '&nbsp; =&gt; Stored.'</span><br /><br /><span class="ts5"># Our test code...</span><br /><span class="ts5">unlock()</span><br /><span class="ts5">dump_all()</span><br /><span class="ts5">do_store('id1', 'User1', 'Password1')</span><br /><span class="ts5">do_query('id1')</span><br /><span class="ts5">dump_all()</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">For simplicity the username and password are stored together as the secret token separated by &quot;@@@&quot;. According to the documentation it should be possible to store them separately, but given my limited Python knowledge and the </span><a href="http://www.roojs.org/seed/gir-1.2-gtk-3.0/seed/" class="hs0">missing GIR documentation</a><span class="ts2">&nbsp;made me use this simple method. If I find a better way I'll update this post. If you know how to improve the code please post a comment! The code should raise a keyring password dialog when run for the first time in the session and give an output similar to this:</span></p>
+<p class="ps9"><span class="ts5">Unlocking keyring test...</span><br /><span class="ts5">Dump all keyring entries...</span><br /><span class="ts5">&nbsp; =&gt; 'id1' = TestA@@@PassA</span><br /><span class="ts5">Adding keyring entry for id id1</span><br /><span class="ts5">&nbsp; =&gt; Stored.</span><br /><span class="ts5">Fetch secret for id id1</span><br /><span class="ts5">&nbsp; =&gt; password id1 = TestA@@@PassA</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp; keyring id&nbsp; = 1</span><br /><span class="ts5">Dump all keyring entries...</span><br /><span class="ts5">&nbsp; =&gt; 'id1' = TestA@@@PassA</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">You can also check the keyring contents using the </span><span class="ts4">seahorse</span><span class="ts2">&nbsp;GUI where you should see the &quot;test&quot; keyring with an entry with id &quot;1&quot; as in the screenshot below.</span></p>
+<p class="ps5"><img width="430" height="289" alt="" src="images/python%20examples/images/image1.png" /></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>ulimit</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 590;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">This cheat sheet provides a systematic way to debug problems with system limits. Follow those steps and you can be sure that you find the problem or prove that there is no limit related problem.</span></p>
+<p class="ps0"><span class="ts0">1. Do not rely on ulimit anymore!</span></p>
+<p class="ps5"><span class="ts2">This is the most important takeaway. Given that modern init systems (systemd, upstart, start-stop-daemon) do not care about /etc/security/limits.conf anymore </span><span class="ts4">it is not safe to rely on ulimit anymore!</span></p>
+<p class="ps5"><span class="ts2">No matter what</span></p>
+<p class="ps9"><span class="ts5">ulimit -a</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">and</span></p>
+<p class="ps9"><span class="ts5">cat /etc/security/limits.conf</span><br /><span class="ts5">cat /etc/security/limits.d/*.conf</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">might still tell you it affects only process you directly start from your shell.</span></p>
+<p class="ps5"><span class="ts2">As soon as you use a command like</span></p>
+<p class="ps9"><span class="ts5">systemctl &lt;name&gt; restart</span><br /><span class="ts5">service restart &lt;name&gt; </span><br /><span class="ts5">/etc/init.d/&lt;name&gt; restart</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">those limits </span><span class="ts4">probably</span><span class="ts2">&nbsp;won't have any effect.</span></p>
+<p class="ps0"><span class="ts0">2. Always Check Effective Limit using prlimit</span></p>
+<p class="ps5"><span class="ts2">Check the per-process limit using</span></p>
+<p class="ps9"><span class="ts5">prlimit --pid=&lt;pid&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">or</span></p>
+<p class="ps9"><span class="ts5">cat /proc/&lt;pid&gt;/limits</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">prlimit has the more readable output:</span></p>
+<p class="ps9"><span class="ts5">RESOURCE&nbsp;&nbsp; DESCRIPTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HARD UNITS</span><br /><span class="ts5">AS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; address space limit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited Bytes</span><br /><span class="ts5">CORE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max core file size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 unlimited blocks</span><br /><span class="ts5">CPU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CPU time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited seconds</span><br /><span class="ts5">DATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max data size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited Bytes</span><br /><span class="ts5">FSIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max file size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited blocks</span><br /><span class="ts5">LOCKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max number of file locks held&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited </span><br /><span class="ts5">MEMLOCK&nbsp;&nbsp;&nbsp; max locked-in-memory address space&nbsp;&nbsp;&nbsp;&nbsp; 65536&nbsp;&nbsp;&nbsp;&nbsp; 65536 Bytes</span><br /><span class="ts5">MSGQUEUE&nbsp;&nbsp; max bytes in POSIX mqueues&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 819200&nbsp;&nbsp;&nbsp; 819200 Bytes</span><br /><span class="ts5">NICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max nice prio allowed to raise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 </span><br /><span class="ts5">NOFILE&nbsp;&nbsp;&nbsp;&nbsp; max number of open files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 65536&nbsp;&nbsp;&nbsp;&nbsp; 65536 </span><br /><span class="ts5">NPROC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max number of processes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15072&nbsp;&nbsp;&nbsp;&nbsp; 15072 </span><br /><span class="ts5">RSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max resident set size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited pages</span><br /><span class="ts5">RTPRIO&nbsp;&nbsp;&nbsp;&nbsp; max real-time priority&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 </span><br /><span class="ts5">RTTIME&nbsp;&nbsp;&nbsp;&nbsp; timeout for real-time tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlimited unlimited microsecs</span><br /><span class="ts5">SIGPENDING max number of pending signals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15072&nbsp;&nbsp;&nbsp;&nbsp; 15072 </span><br /><span class="ts5">STACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max stack size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8388608 unlimited Bytes</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts4">Note:</span><span class="ts2">&nbsp;Running &quot;prlimit&quot; or &quot;ulimit -a&quot; in the shell of the respective user rarely tells something because the init daemon responsible for launching services might be ignoring /etc/security/limits.conf as this is a configuration file for PAM only and is applied on login only per default.</span></p>
+<p class="ps7"><span class="ts3">Live update limits with prlimit</span></p>
+<p class="ps5"><span class="ts2">If you identified processes with a limit issue you can increase the limits without restarting by using prlimit. Here are some examples</span></p>
+<p class="ps9"><span class="ts5">prlimit --pid &lt;pid&gt; --nofile=15000:15000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Increase nr of files to 15000</span><br /><span class="ts5">prlimit --pid &lt;pid&gt; --core=100000000:100000000&nbsp; # Allow ~100MB core dump</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">General syntax is</span></p>
+<p class="ps9"><span class="ts5">prlimit --pid &lt;pid&gt; --&lt;resource&gt;=&lt;soft limit&gt;:&lt;hard limit&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">3. Always Check Global File Limit</span></p>
+<p class="ps5"><span class="ts2">If you suspect a limit hit on a system with many processes also check the global limit:</span></p>
+<p class="ps9"><span class="ts5">$ cat /proc/sys/fs/file-nr</span><br /><span class="ts5">7488&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 384224</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The first number is the number of all open files of all processes, the third is the maximum. If you need to increase the maximum run:</span></p>
+<p class="ps9"><span class="ts5"># sysctl -w fs.file-max=500000</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Ensure to persist this in /etc/sysctl.conf to not loose the setting on next reboot.</span></p>
+<p class="ps0"><span class="ts0">4. Check &quot;nofile&quot; Per Process</span></p>
+<p class="ps5"><span class="ts2">Just checking the number of files per process often helps to identify bottlenecks. For every process you can count open files from using lsof:</span></p>
+<p class="ps9"><span class="ts5">lsof -n -p &lt;pid&gt; | wc -l</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">So a quick check on a burning system might be:</span></p>
+<p class="ps9"><span class="ts5">lsof -n 2&gt;/dev/null | awk '{print $1 &quot; (PID &quot; $2 &quot;)&quot;}' | sort | uniq -c | sort -nr | head -25</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">which returns the top 25 file descriptor &quot;eating&quot; processes</span></p>
+<p class="ps9"><span class="ts5">&nbsp;139 mysqld (PID 2046)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 25956)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24384)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24377)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24301)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24294)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24239)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24120)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 24029)</span><br /><span class="ts5">&nbsp;105 httpd2-pr (PID 23714)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 3206)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 26176)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 26175)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 26174)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 25957)</span><br /><span class="ts5">&nbsp;104 httpd2-pr (PID 24378)</span><br /><span class="ts5">&nbsp;102 httpd2-pr (PID 32435)</span><br /><span class="ts5">&nbsp;53 sshd (PID 25607)</span><br /><span class="ts5">&nbsp;49 sshd (PID 25601)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The same more comfortable including the hard limit:</span></p>
+<p class="ps9"><span class="ts5">lsof -n 2&gt;/dev/null | awk '{print $1,$2}' | sort | uniq -c | sort -nr | head -25 | while read nr name pid ; do printf &quot;%10d / %-10d %-15s (PID %5s)\n&quot; $nr $(cat /proc/$pid/limits | grep 'open files' | awk '{print $5}') $name $pid; done</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">returns</span></p>
+<p class="ps9"><span class="ts5">&nbsp;105 / 1024 httpd2-pr (PID 5368)</span><br /><span class="ts5">&nbsp;105 / 1024 httpd2-pr (PID 3834)</span><br /><span class="ts5">&nbsp;105 / 1024 httpd2-pr (PID 3407)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 5392)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 5378)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 5377)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 4035)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 4034)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 3999)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 3902)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 3859)</span><br /><span class="ts5">&nbsp;104 / 1024 httpd2-pr (PID 3206)</span><br /><span class="ts5">&nbsp;102 / 1024 httpd2-pr (PID 32435)</span><br /><span class="ts5">&nbsp;55 / 1024 mysqld (PID 2046)</span><br /><span class="ts5">&nbsp;53 / 1024 sshd (PID 25607)</span><br /><span class="ts5">&nbsp;49 / 1024 sshd (PID 25601)</span><br /><span class="ts5">&nbsp;46 / 1024 dovecot-a (PID 1869)</span><br /><span class="ts5">&nbsp;42 / 1024 python (PID 1850)</span><br /><span class="ts5">&nbsp;41 / 1048576 named (PID 3130)</span><br /><span class="ts5">&nbsp;40 / 1024 su (PID 25855)</span><br /><span class="ts5">&nbsp;40 / 1024 sendmail (PID 3172)</span><br /><span class="ts5">&nbsp;40 / 1024 dovecot-a (PID 14057)</span><br /><span class="ts5">&nbsp;35 / 1024 sshd (PID 3160)</span><br /><span class="ts5">&nbsp;34 / 1024 saslauthd (PID 3156)</span><br /><span class="ts5">&nbsp;34 / 1024 saslauthd (PID 3146)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">5. Consider Typical Pitfalls with Limits</span></p>
+<p class="ps6"><span class="ts3">Systemd ignores /etc/security/limits.conf</span></p>
+<p class="ps5"><span class="ts2">When using systemd /etc/security/limits.conf doesn't apply anymore. </span><span class="ts4">Workaround:</span><span class="ts2">&nbsp;The only way to increase limits is in the systemd unit file. You can find out the name of the unit file using &quot;systemctl status &lt;service name&gt;&quot;. In the unit files [Service] section add a Limit line like below:</span></p>
+<p class="ps9"><span class="ts5">[Service]</span><br /><span class="ts5">...</span><br /><span class="ts5">LimitNOFILE=8092</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">The old ulimit names match to Limit&lt;upper case limit name&gt; fields and the value &quot;unlimited&quot; now is called &quot;infinity&quot;</span></p>
+<p class="ps7"><span class="ts3">Init Scripts with start-stop-daemon ignore /etc/security/limits.conf</span></p>
+<p class="ps5"><span class="ts2">A typical mistake is trying to set limits for a daemon starting by a Debian start script using &quot;start-stop-daemon&quot; which on modern distros just delegates to systemd or on older distros isn't integrated with PAM and for both reasons isn't affected by /etc/security/limits.conf.</span></p>
+<p class="ps5"><span class="ts4">Workaround:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">On systemd: Set Limit in the systemd unit file</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Otherwise: Set the limits manually in the start script.</span></p>
+<p class="ps7"><span class="ts3">Upstart ignores /etc/security/limits.conf</span></p>
+<p class="ps5"><span class="ts2">On older Ubuntu releases services are started by upstart which similar to systemd ignores /etc/security/limits.conf. To get upstart to change the limits of a managed service you need to insert a line like</span></p>
+<p class="ps9"><span class="ts5">limit nofile 10000 20000</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">into the upstart job file in /etc/init.</span></p>
+<p class="ps7"><span class="ts3">Special Debian Apache Handling</span></p>
+<p><span class="ts2">The Debian Apache package which is also included in Ubuntu has a separate way of configuring &quot;nofile&quot; limits. If you run the default Apache in 12.04 and check /proc/&lt;pid&gt;/limits of a Apache process you'll find it is allowing 8192 open file handles. No matter what you configured elsewhere. This is because Apache defaults to 8192 files. If you want another setting for &quot;nofile&quot; then you need to </span><a href="http://www.lzone.de/Ubuntu+Apache+and+ulimit" class="hs0">edit /etc/apache2/envvars</a><span class="ts2">.</span></p>
+<p class="ps0"><span class="ts0">Login Session Workarounds</span></p>
+<p class="ps6"><span class="ts3">When changing limits.conf re-login!</span></p>
+<p class="ps5"><span class="ts2">After you apply a change to /etc/security/limits.conf you need to login again to have the change applied to your next shell instance by PAM. Alternatively you can use </span><a href="http://lzone.de/apply+limits+immediately" class="hs0">sudo -i</a><span class="ts2">&nbsp;to switch to user whose limits you modified and simulate a login.</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

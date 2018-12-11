@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>React_PropTypes</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1110;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Importing PropTypes module</span></p>
+<p class="ps5"><span class="ts2">Since v15.5, React.PropTypes has moved into a different package named </span><a href="https://www.npmjs.com/package/prop-types" class="hs0">&quot;prop-types&quot;</a><span class="ts2">. Import it with</span></p>
+<p class="ps9"><span class="ts5">&nbsp;import PropTypes from 'prop-types';</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">And change your &quot;React.PropTypes.xxx&quot; to &quot;PropTypes.xxx&quot;</span></p>
+<p class="ps0"><span class="ts0">All Basic PropTypes</span></p>
+<p class="ps5"><span class="ts2">Here is a table of available PropTypes</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Name</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Type</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.any</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Anything</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.array</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Array (no type enforced, see PropTypes.arrayOf() for type enforcing)</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.bool</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Boolean</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.func</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Function</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.number</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Integer</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.object</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Javascript Object</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.string</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">String</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.symbol</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Symbols</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.node</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">A renderable type (number, string, element, array...)</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.element</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">React Element</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps0"><span class="ts0">Advanced PropTypes</span></p>
+<p class="ps5"><span class="ts2">For complex objects or real validation use those constructs</span></p>
+<div>
+  <table class="tbl0">
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Construct</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps21"><span class="ts4">Description</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.instanceOf(obj)</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Ensure instance of specific class</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.oneOf(array)</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Enum, ensure property matches one of the values in the array</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.oneOfType(array)</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Enum, ensure property matches one of the types in the array</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.arrayOf(type)</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Ensure property matches an array of elements of a given type</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.objectOf(type)</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Ensure property matches an object (hash) of elements of a given type</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">PropTypes.shape({ })</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Ensure object of certain shape with proptypes given as parameter</span></p>
+      </td>
+    </tr>
+    <tr class="row0">
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">xxx.isRequired</span></p>
+      </td>
+      <td class="cell0">
+        <p class="ps19"><span class="ts2">Require the property xxx</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="ps10"><span class="ts2">If this is not enough use functions passed to PropTypes.arrayOf() and PropTypes.objectOf() to declare real exotic types</span></p>
+<p class="ps9"><span class="ts5">myStrangeProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {</span><br /><span class="ts5">&nbsp; if (doSomeSpecialValidation(propValue[key])) {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp; return new Error('Invalid prop `' + propFullName + '` supplied to' + ' `' + componentName + '`. Validation failed.'</span><br /><span class="ts5">&nbsp; );</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Declaring Property Types</span></p>
+<p class="ps5"><span class="ts2">Simply add a propTypes member to your React.Component and declare the types for all expected properties</span></p>
+<p class="ps9"><span class="ts5">class MyApp extends React.Component {</span><br /><span class="ts5">&nbsp;&nbsp; render() {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;h1&gt;Some value: {this.props.value}&lt;/h1&gt;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">&nbsp;&nbsp; }</span><br /><span class="ts5">}</span><br /><br /><span class="ts5">// Add proptype for &quot;value&quot;</span><br /><span class="ts5">MyApp.propTypes = {</span><br /><span class="ts5">&nbsp;&nbsp; value: PropTypes.number</span><br /><span class="ts5">};</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Adding Defaults</span></p>
+<p class="ps5"><span class="ts2">To add some defaults declare a &quot;defaultProps&quot; member like this</span></p>
+<p class="ps11"><span class="ts5">MyApp.defaultProps = {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; name: 'Julia',</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; age: 18</span><br /><span class="ts5">};</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

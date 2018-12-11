@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Consul</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 620;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">CLI Commands</span></p>
+<p class="ps5"><span class="ts2">Start an agent</span></p>
+<p class="ps9"><span class="ts5">consul agent -server -bind=&lt;ip&gt; -client=&lt;ip&gt; -ui -data-dir=/data/consul -config-dir=/etc/consul -node=$(hostname) -datacenter=$datacenter &amp;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Join a cluster</span></p>
+<p class="ps9"><span class="ts5">consul join &lt;ip&gt; &lt;ip&gt; [&lt;ip&gt; [...]]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Show cluster info</span></p>
+<p class="ps9"><span class="ts5">consul info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # show active config summary</span><br /><span class="ts5">consul members&nbsp;&nbsp;&nbsp;&nbsp; # show cluster members</span><br /><span class="ts5">consul monitor&nbsp;&nbsp;&nbsp;&nbsp; # tail activity log</span><br /><span class="ts5">consul reload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # reload config</span><br /><br /><span class="ts5">consul keyring -list</span><br /><span class="ts5">consul keyring -install</span><br /><span class="ts5">consul keyring -use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Use a key which was previously installed</span><br /><span class="ts5">consul keyring -remove </span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Accessing the key-value store</span></p>
+<p class="ps9"><span class="ts5">consul kv get &lt;path&gt;</span><br /><span class="ts5">consul kv get --detailed &lt;path&gt;&nbsp;&nbsp;&nbsp; # include metadata</span><br /><span class="ts5">consul kv put &lt;path&gt; &lt;value&gt;</span><br /><span class="ts5">consul kv delete &lt;path&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Dumping and importing values from/to JSON</span></p>
+<p class="ps9"><span class="ts5">consul kv export [&lt;prefix&gt;] &gt;values.json</span><br /><span class="ts5">consul kv import &lt;values.json</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">REST API</span></p>
+<p class="ps5"><span class="ts2">Default Port is :8500</span></p>
+<p class="ps11"><span class="ts5">/v1/catalog/nodes</span><br /><span class="ts5">/v1/catalog/services</span><br /><span class="ts5">&nbsp;</span><br /><span class="ts5">/v1/agent/checks</span><br /><span class="ts5">/v1/agent/services</span><br /><span class="ts5">/v1/agent/service/register</span><br /><span class="ts5">&nbsp;</span><br /><span class="ts5">/v1/health/checks/&lt;service&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

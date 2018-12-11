@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>MySQL</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 760;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">Below you find a unordered list of solutions by tasks useful for a MySQL DBA:</span></p>
+<p class="ps7"><span class="ts3">Live Monitoring of MySQL</span></p>
+<p class="ps5"><span class="ts2">There are two useful tools:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">mytop</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">innotop</span></p>
+<p class="ps5"><span class="ts2">with &quot;mytop&quot; being an own Debian package, while &quot;innotop&quot; is included in the &quot;mysql-client&quot; package. From both innotop has the more advanced functionality. Both need to be called with credentials to connect to the database:</span></p>
+<p class="ps9"><span class="ts5">mytop -u &lt;user&gt; -p&lt;password&gt;</span><br /><span class="ts5">innotop -u &lt;user&gt; -p&lt;password&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Alternatively you can provide a .mytop file to provide the credentials automatically.</span></p>
+<p class="ps7"><span class="ts3">Show MySQL Status</span></p>
+<p class="ps5"><span class="ts2">You can get a very simple status by just entering &quot;\s&quot; in the &quot;mysql&quot; command line client prompt:</span></p>
+<p class="ps9"><span class="ts5">mysql&gt; \s</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">You can show the replication status using</span></p>
+<p class="ps9"><span class="ts5">SHOW SLAVE STATUS \G</span><br /><span class="ts5">SHOW MASTER STATUS \G</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note that the &quot;\G&quot; instead of &quot;;&quot; just makes the output more readable. If you have configured slaves to report names you can list them on the master with:</span></p>
+<p class="ps9"><span class="ts5">SHOW SLAVE HOSTS;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Check InnoDB status</span></p>
+<p class="ps9"><span class="ts5">show /*!50000 ENGINE*/ INNODB STATUS;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">List Databases/Tables/Colums</span></p>
+<p class="ps5"><span class="ts2">You can either use the &quot;mysqlshow&quot; tool:</span></p>
+<p class="ps9"><span class="ts5">mysqlshow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all databases</span><br /><span class="ts5">mysqlshow &lt;database&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all tables of the given database</span><br /><span class="ts5">mysqlshow &lt;database&gt; &lt;table&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all columns of the given table in the given DB</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">And you can also do it using queries:</span></p>
+<p class="ps9"><span class="ts5">SHOW DATABASES;</span><br /><br /><span class="ts5">USE &lt;database&gt;;</span><br /><span class="ts5">SHOW TABLES;</span><br /><span class="ts5">DESCRIBE &lt;table&gt;;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Check and Change Live Configuration Parameters</span></p>
+<p class="ps5"><span class="ts2">Note that you cannot change all existing parameters. Some like innodb_pool_buffer require a DB restart.</span></p>
+<p class="ps9"><span class="ts5">show variables;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all configuration settings</span><br /><span class="ts5">show variables like 'key_buffer_size';&nbsp;&nbsp; # List a specific parameter</span><br /><br /><span class="ts5">set global key_buffer_size=100000000;&nbsp;&nbsp;&nbsp; # Set a specific parameter</span><br /><br /><span class="ts5"># Finally ensure to edit my.cnf to make the change persistent</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">MySQL Parameter Optimization</span></p>
+<p class="ps5"><span class="ts2">You can check MySQL parameters of a running instance using tools like</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://raw.github.com/rackerhacker/MySQLTuner-perl/master/mysqltuner.pl" class="hs0">MySQLTuner</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://launchpad.net/mysql-tuning-primer" class="hs0">MySQL Tuning - Primer</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.percona.com/doc/percona-toolkit/2.1/pt-variable-advisor.html" class="hs0">pt-variable-advisor</a></p>
+<p><span class="ts2">Also have a look at this </span><a href="http://www.theadminzone.com/forums/showthread.php?t=8150" class="hs0">MySQL config parameter explanation</a><span class="ts2">.</span></p>
+<p class="ps7"><span class="ts3">Remote MySQL Dump and Import</span></p>
+<p class="ps5"><span class="ts2">The following command allows dumping a database from one source host that doesn't see the target host when executed on a third host that can access both. If both hosts can see each other and one has SSH access to the other you can simply drop one of the ssh calls.</span></p>
+<p class="ps9"><span class="ts5">ssh &lt;user@source host&gt; &quot;mysqldump --single-transaction -u root --password=&lt;DB root pwd&gt; &lt;DB name&gt;&quot; | ssh &lt;user@target host&gt; &quot;mysql -u root --password=&lt;DB root pwd&gt; &lt;DB name&gt;&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Troubleshooting</span></p>
+<p class="ps8"><span class="ts4">Connection refused</span></p>
+<p class="ps9"><span class="ts5">mysqladmin flush-hosts</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">How to solve: Could not find target log during relay log initialization</span></p>
+<p class="ps5"><span class="ts2">Happens on corrupted/missing relay logs. To get the DB working</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Stop MySQL</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Remove /var/lib/mysql/relay-log-index.*</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Remove all relay log files</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Remove relog log file index</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Start MySQL</span></p>
+<p class="ps8"><span class="ts4">mysqldump: Error 2013: Lost connection to MySQL server during query when dumping table</span></p>
+<p class="ps5"><span class="ts2">This is caused by timeouts when copying overly large database tables. The default network timeouts are very short per-default. So you can workaround this by increasing network timeouts</span></p>
+<p class="ps9"><span class="ts5">set global net_write_timeout = 100000;</span><br /><span class="ts5">set global net_read_timeout = 100000;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Dump Skip Event Table</span></p>
+<p class="ps5"><span class="ts2">If your MySQL backup tool or self-written script complains about an event table than you have run into an issue caused by newer MySQL versions (&gt;5.5.30) that introduced a new table &quot;events&quot; in the internal schema. </span><span class="ts4">If you run into this you need to decide wether you want to include or exclude the new events table when dumping your database.</span><span class="ts2">&nbsp;To skip: Due to a MySQL bug </span><a href="http://bugs.mysql.com/bug.php?id=68376" class="hs0">#68376</a><span class="ts2">&nbsp;you have two choices. You can check documentation and add the logical option</span></p>
+<p class="ps9"><span class="ts5">--skip-events</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">which will cause the event table not to be exported. But the warning won't go away. To also get rid of the warning you need to use this instead:</span></p>
+<p class="ps9"><span class="ts5">--events --ignore-table=mysql.events</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">And of course you can also choose just to dump the events table: Add the option</span></p>
+<p class="ps9"><span class="ts5">--events</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">to your &quot;mysqldump&quot; invocation. If you use a tool that invokes &quot;mysqldump&quot; indirectly check if the tool allows to inject additional parameters.</span></p>
+<p class="ps8"><span class="ts4">Forgotten root Password</span></p>
+<p class="ps9"><span class="ts5"># 1. Stop MySQL and start without grant checks</span><br /><br /><span class="ts5">/usr/bin/mysqld_safe --skip-grant-tables &amp;</span><br /><span class="ts5">mysql --user=root mysql</span><br /><br /><span class="ts5"># 2. Change root password</span><br /><span class="ts5">UPDATE user SET password=PASSWORD('xxxxx') WHERE user = 'root';</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Import a CSV file into MySQL</span></p>
+<p class="ps9"><span class="ts5">LOAD DATA IN '&lt;CSV filename&gt;' INTO TABLE &lt;table name&gt; FIELDS TERMINATED BY ',' (&lt;name of column #1&gt;,&lt;&lt;name of column #2&gt;,&lt;...&gt;);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">MySQL Pager - Output Handling</span></p>
+<p class="ps5"><span class="ts2">Using &quot;PAGER&quot; or \P you can control output handling. Instead of having 10k lines scrolling by you can write everything to a file or use &quot;less&quot; to scroll through it for example. To use less issue</span></p>
+<p class="ps9"><span class="ts5">pager less</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Page output into a script</span></p>
+<p class="ps9"><span class="ts5">pager /home/joe/myscript.sh</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Or if you have Percona installed get a tree-like &quot;EXPLAIN&quot; output with</span></p>
+<p class="ps9"><span class="ts5">pager mk-visual-explain</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">and then run the &quot;EXPLAIN&quot; query.</span></p>
+<p class="ps7"><span class="ts3">MySQL - Check Query Cache</span></p>
+<p class="ps9"><span class="ts5"># Check if enabled</span><br /><span class="ts5">SHOW VARIABLES LIKE 'have_query_cache';</span><br /><br /><span class="ts5"># Statistics</span><br /><span class="ts5">SHOW STATUS LIKE 'Qcache%';</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Check for currently running MySQL queries</span></p>
+<p class="ps9"><span class="ts5">show processlist;</span><br /><span class="ts5">show full processlist;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Filter items in process list by setting grep as a pager. The following example will only print replication connections:</span></p>
+<p class="ps9"><span class="ts5">\P grep system</span><br /><span class="ts5">show processlist;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Find top long running queries</span></p>
+<p class="ps9"><span class="ts5">SELECT id,host,state,command,time,left(replace(info,'\n','&lt;lf&gt;'),120)</span><br /><span class="ts5">FROM information_schema.processlist</span><br /><span class="ts5">WHERE command &lt;&gt; 'Sleep' </span><br /><span class="ts5">AND info NOT LIKE '%PROCESSLIST%'</span><br /><span class="ts5">ORDER BY time DESC LIMIT 25;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To abort/terminate a statement determine it's id and kill it:</span></p>
+<p class="ps9"><span class="ts5">kill &lt;id&gt;;&nbsp;&nbsp;&nbsp; # Kill running queries by id from process listing</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Show Recent Commands</span></p>
+<p class="ps9"><span class="ts5">SHOW BINLOG EVENTS;</span><br /><span class="ts5">SHOW BINLOG EVENTS IN '&lt;some bin file name&gt;';</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Inspect a MySQL binlog file</span></p>
+<p class="ps5"><span class="ts2">There is an extra tool to inspect bin logs:</span></p>
+<p class="ps9"><span class="ts5">mysqlbinlog &lt;binary log file&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Skip one statement on replication issue HA_ERR_FOUND_DUPP_KEY</span></p>
+<p class="ps5"><span class="ts2">If replication stops with &quot;HA_ERR_FOUND_DUPP_KEY&quot; you can skip the current statement and continue with the next one by running:</span></p>
+<p class="ps9"><span class="ts5">STOP SLAVE;</span><br /><span class="ts5">&nbsp;SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;</span><br /><span class="ts5">START SLAVE;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Changing Replication Format</span></p>
+<p class="ps5"><span class="ts2">When you want to change the replication format of a running setup you might want to follow this steps:</span></p>
+<p class="ps2"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Ensure you have a database backup</span></p>
+<p class="ps2"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Make master read-only by running</span></p>
+<p class="ps2"><span class="ts8">FLUSH TABLES WITH READ LOCK;</span><br />&nbsp;</p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Wait until all slaves do catch up</span></p>
+<p class="ps2"><span style="color: Black">4.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Stop all slaves (shutdown MySQL)</span></p>
+<p class="ps2"><span style="color: Black">5.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">On master:</span></p>
+<p class="ps2"><span class="ts8">FLUSH LOGS;</span><br /><span class="ts8">SET GLOBAL binlog_format='xxxxxx';</span><br /><span class="ts8">FLUSH LOGS;</span><br /><span class="ts8">UNLOCK TABLES;</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">(ensure to replace 'xxxxxx' with for example 'ROW')</span></p>
+<p class="ps2"><span style="color: Black">6.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Start all slaves</span></p>
+<p class="ps2"><span style="color: Black">7.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Ensure to put the new binlog_format in all /etc/mysql/my.cnf</span></p>
+<p><span class="ts2">Note: the second &quot;FLUSH LOGS;&quot; ensures that the a new binary log is opened on the master with the new binlog_format. The stopping of the slaves ensures that they open a new relay log matching the new binlog_format.</span></p>
+<p class="ps7"><span class="ts3">Munin MySQL Plugin Setup on Debian</span></p>
+<p class="ps9"><span class="ts5">apt-get install libcache-cache-perl</span><br /><br /><span class="ts5">for i in `./mysql_ suggest`</span><br /><span class="ts5">do</span><br /><span class="ts5">&nbsp;&nbsp; do ln -sf /usr/share/munin/plugins/mysql_ $i;</span><br /><span class="ts5">done</span><br /><br /><span class="ts5">/etc/init.d/munin-node reload</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Fix Slow Replication</span></p>
+<p class="ps5"><span class="ts2">When replication is slow check the status of the replication connection. If it is too often in &quot;invalidating query cache&quot; status you need to decrease your query cache size. You might even consider disabling query cache for the moment if the DB load does allow it:</span></p>
+<p class="ps9"><span class="ts5">set global query_cache_size=0;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Debug DB Response Time</span></p>
+<p class="ps5"><span class="ts2">There is generic TCP response analysis tool developed by Percona called </span><a href="http://www.percona.com/docs/wiki/tcprstat:start" class="hs0">tcprstat</a><span class="ts2">. Download the binary from Percona, make it executable and run it like</span></p>
+<p class="ps9"><span class="ts5">tcprstat -p 3306 -t 1 -n 0</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">to get continuous statistics on the response time. This is helpful each time some developer claims the DB doesn't respond fast enough!</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Pythonsplit</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1560;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Syntax</span></p>
+<p class="ps9"><span class="ts5">str.split(sep=None, maxsplit=-1)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note how the delimiter is optional. Passing None causes shell-like whitespace splitting.</span></p>
+<p><span class="ts2">By specifying the maxsplit parameter you can limit the number of results</span></p>
+<p class="ps0"><span class="ts0">Examples</span></p>
+<p class="ps9"><span class="ts5">&gt;&gt;&gt; 'Fri Nov&nbsp; 2 21:40:09 CET 2018'.split()</span><br /><span class="ts5">['Fri', 'Nov', '2', '21:40:09', 'CET', '2018']</span><br /><br /><span class="ts5">&gt;&gt;&gt; 'Fri Nov&nbsp; 2 21:40:09 CET 2018'.split(' ')</span><br /><span class="ts5">['Fri', 'Nov', '', '2', '21:40:09', 'CET', '2018']&nbsp;&nbsp;&nbsp;&nbsp; &lt;--- Note the extra empty string!</span><br /><br /><span class="ts5">&gt;&gt;&gt; 'a,b,c'.split(',', 1)</span><br /><span class="ts5">['a', 'b,c']</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Be careful on the border cases for empty strings!</span></p>
+<p class="ps9"><span class="ts5">&gt;&gt;&gt; ''.split()</span><br /><span class="ts5">[]</span><br /><br /><span class="ts5">&gt;&gt;&gt; ''.split(' ')</span><br /><span class="ts5">['']</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Related Methods</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">To split on newlines use </span><span class="ts7">str.splitlines()</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">When you split only a part of the string you can use </span><span class="ts7">str.rsplit()</span><span class="ts2">&nbsp;to start splitting from the right</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">When you want to split on regex patterns use </span><span class="ts7">re.search()</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

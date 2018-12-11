@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PythonReSub</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 8px 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1540;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Syntax</span></p>
+<p class="ps9"><span class="ts5">import re</span><br /><br /><span class="ts5">result = re.sub(pattern, repl, string, count=0, flags=0);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Simple Examples</span></p>
+<p class="ps9"><span class="ts5">result = re.sub('abc',&nbsp; '',&nbsp;&nbsp;&nbsp; input)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Delete pattern abc</span><br /><span class="ts5">result = re.sub('abc',&nbsp; 'def', input)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Replace pattern abc -&gt; def</span><br /><span class="ts5">result = re.sub(r'\s+', ' ',&nbsp;&nbsp; input)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Eliminate duplicate whitespaces</span><br /><span class="ts5">result = re.sub('abc(def)ghi', r'\1', input)&nbsp;&nbsp;&nbsp; # Replace a string with a part of itself</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts4">Note:</span><span class="ts2">&nbsp;Take care to always prefix patterns containing \ escapes with raw strings (by adding an r in front of the string). Otherwise the \ is used as an escape sequence and the regex won't work.</span></p>
+<p class="ps0"><span class="ts0">Advance Usage</span></p>
+<p class="ps6"><span class="ts3">Replacement Function</span></p>
+<p class="ps5"><span class="ts2">Instead of a replacement string you can provide a function performing dynamic replacements based on the match string like this:</span></p>
+<p class="ps9"><span class="ts5">def my_replace(m):</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; if :</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return &lt;replacement variant 1&gt;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; return &lt;replacement variant 2&gt;</span><br /><br /><span class="ts5">result = re.sub(&quot;\w+&quot;, my_replace, input)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Count Replacements</span></p>
+<p class="ps5"><span class="ts2">When you want to know how many replacements did happen use re.subn() instead:</span></p>
+<p class="ps9"><span class="ts5">result = re.subn(pattern, replacement, input)</span><br /><span class="ts5">print ('Result: ', result[0])</span><br /><span class="ts5">print ('Replacements: ', result[1])</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Using Backreferences</span></p>
+<p class="ps8"><span class="ts4">Numeric Backreferences</span></p>
+<p class="ps5"><span class="ts2">To use back reference define capture groups using () and reference to those using \1, \2, and so on. </span><span class="ts4">Do not forget the 'r' prefix on the back reference string, otherwise \1 will be interpreted as a character.</span></p>
+<p class="ps9"><span class="ts5">result = re.sub(&quot;(\d+) (\w+)&quot;, r&quot;\2 \1&quot;)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Named Backreferences</span></p>
+<p class="ps5"><span class="ts2">For named backreferences define a named capture group (?) and reference using \g. Again ensure to add the 'r' prefix on the backreference string.</span></p>
+<p class="ps11"><span class="ts5">result = re.sub(&quot;(?&lt;number&gt;\d+) (?&lt;word&gt;\w+)&quot;, r&quot;\g&lt;word&gt; \g&lt;number&gt;&quot;)</span><br /><span class="ts6">&nbsp;</span></p>
+<div>
+  <hr class="hline1" />
+</div>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

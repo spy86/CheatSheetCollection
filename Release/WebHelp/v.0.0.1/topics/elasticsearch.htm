@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>ElasticSearch</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 650;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">REST API</span></p>
+<p><span class="ts2">Generic endpoint is on port 9200</span></p>
+<p class="ps7"><span class="ts3">Cluster Status</span></p>
+<p class="ps9"><span class="ts5">/_cat/health?v</span><br /><span class="ts5">/_cat/nodes?v</span><br /><span class="ts5">/_cat/indices?v</span><br /><br /><span class="ts5">/_cluster/health</span><br /><span class="ts5">/_cluster/state&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # gives elected master and shard initialisation status</span><br /><span class="ts5">/_cluster/stats</span><br /><span class="ts5">/_cluster/settings</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Further introspection:</span></p>
+<p class="ps9"><span class="ts5">/_nodes/</span><br /><span class="ts5">/_nodes/process</span><br /><span class="ts5">/_nodes/settings</span><br /><span class="ts5">/_nodes/stats</span><br /><br /><span class="ts5">/_aliases</span><br /><span class="ts5">/_warmers</span><br /><span class="ts5">/_mappings</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Indexes</span></p>
+<p class="ps9"><span class="ts5">GET /_cat/indices?v</span><br /><span class="ts5">GET /&lt;index name&gt;?pretty</span><br /><span class="ts5">PUT /&lt;index name&gt;</span><br /><span class="ts5">DELETE /&lt;index name&gt;</span><br /><br /><span class="ts5">GET /_settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Print config for all indices</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/docs-reindex.html#reindex-from-remote" class="hs0">Copying indices using &quot;reindex&quot;</a><span class="ts2">: It is possible to copy indices partially/fully from local as well as from remote indices:</span></p>
+<p class="ps9"><span class="ts5">POST /_reindex</span><br /><span class="ts5">{</span><br /><span class="ts5">&nbsp; &quot;source&quot;: {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;remote&quot;: {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;host&quot;: &quot;http://otherhost:9200&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;username&quot;: &quot;user&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;password&quot;: &quot;pass&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; },</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;index&quot;: &quot;source&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;query&quot;: {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;match&quot;: {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;test&quot;: &quot;data&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">&nbsp; },</span><br /><span class="ts5">&nbsp; &quot;dest&quot;: {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;index&quot;: &quot;dest&quot;</span><br /><span class="ts5">&nbsp; }</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Index Aliases</span></p>
+<p class="ps5"><span class="ts2">Endpoints for index aliases are quite messy</span></p>
+<p class="ps9"><span class="ts5">GET /_aliases?pretty&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">POST /_aliases </span><br /><span class="ts5">{</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;actions&quot; : [</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { &quot;add&quot; : { &quot;index&quot; : &quot;&lt;index&gt;-000001&quot;, &quot;alias&quot; : &quot;my-&lt;index&gt;-alias&quot; } }</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; ]</span><br /><span class="ts5">&nbsp;}</span><br /><span class="ts5">&nbsp;DELETE /{index}/_alias/{name}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Trigger index rollover</span></p>
+<p class="ps9"><span class="ts5">POST /&lt;alias&gt;/_rollover</span><br /><span class="ts5">{</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;conditions&quot;: [</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;max_age&quot;: &quot;3d&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;max_docs&quot;: 1000000,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;max_size&quot;: &quot;30g&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; ]</span><br /><span class="ts5">&nbsp;}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Shard Allocation</span></p>
+<p class="ps5"><span class="ts2">List unassigned shards</span></p>
+<p class="ps9"><span class="ts5">curl -s &quot;&lt;server&gt;:9200/_cat/shards?v&quot; | grep -E &quot;UNASSIGNED|prirep&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Get info when shards are not allocated</span></p>
+<p class="ps9"><span class="ts5">GET /_cluster/allocation/explain</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Retry allocation of shards (after retry limit reached)</span></p>
+<p class="ps9"><span class="ts5">GET /_cluster/reroute?retry_failed=true</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Documents</span></p>
+<p class="ps9"><span class="ts5">GET /&lt;index name&gt;/external/1?pretty</span><br /><br /><span class="ts5"># Insert/Replace</span><br /><span class="ts5">PUT /&lt;index name&gt;/external/1</span><br /><span class="ts5">{ 'key': 'value' }</span><br /><br /><span class="ts5"># Update</span><br /><span class="ts5">POST /&lt;index name&gt;/external/1</span><br /><span class="ts5">{ &quot;doc&quot;: { 'count': 5 } }</span><br /><br /><span class="ts5">POST /&lt;index name&gt;/external/1</span><br /><span class="ts5">{ &quot;script&quot;: &quot;ctxt._source.count += 1&quot; }</span><br /><br /><span class="ts5">DELETE /&lt;index name&gt;/external/1</span><br /><span class="ts5">DELETE /&lt;index name&gt;/external/_query</span><br /><span class="ts5">{ &quot;query&quot;: { &quot;match&quot;: { 'key': 'value' } }</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Batch processing</span></p>
+<p class="ps9"><span class="ts5">POST /&lt;index name&gt;/external/_bulk</span><br /><span class="ts5">{&quot;index&quot;:{&quot;_id&quot;:&quot;1&quot;}}</span><br /><span class="ts5">{&quot;key1&quot;: &quot;value1&quot;}</span><br /><span class="ts5">{&quot;index&quot;:{&quot;_id&quot;:&quot;2&quot;}}</span><br /><span class="ts5">{&quot;key2&quot;: &quot;value2&quot;}</span><br /><span class="ts5">{&quot;update&quot;:{&quot;_id&quot;:&quot;3&quot;}}</span><br /><span class="ts5">{&quot;doc&quot;: { &quot;key3&quot;: &quot;value3&quot; }</span><br /><span class="ts5">{&quot;delete&quot;:{&quot;_id&quot;:&quot;4&quot;}}</span><br /><span class="ts5">[...]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Queries</span></p>
+<p class="ps5"><span class="ts2">Just a simple search example to explain query building</span></p>
+<p class="ps9"><span class="ts5">GET /&lt;index name&gt;/external/_search?q=*</span><br /><span class="ts5">POST /&lt;index name&gt;/external/_search</span><br /><span class="ts5">{</span><br /><span class="ts5">&nbsp;&nbsp; &quot;query&quot;: { &quot;match&quot;: { &quot;field1&quot;: &quot;abcdef&quot; } },</span><br /><span class="ts5">&nbsp;&nbsp; &quot;sort&quot;: { &quot;balance&quot;: { &quot;order&quot;: &quot;desc&quot; } },</span><br /><span class="ts5">&nbsp;&nbsp; &quot;from&quot;: 10,</span><br /><span class="ts5">&nbsp;&nbsp; &quot;size&quot;: 10,</span><br /><span class="ts5">&nbsp;&nbsp; &quot;_source&quot;: [&quot;field1&quot;, &quot;field2&quot;]</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Management Tools</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Index retention: Curator</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Webadmin: Cerebro</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Auth: XPack Security (previously &quot;Shield&quot;), SearchGuard</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Alerting: Elastalert, Logagent, Sentinl</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Monitoring: </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">by Elastic: Marvel, XPack</span></p>
+<p class="ps0"><span class="ts0">ELK Scaling Cheat Sheet</span></p>
+<p class="ps6"><span class="ts3">Sizing Examples</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://engineering.viki.com/blog/2015/log-processing-at-scale-elk-cluster-at-25k-events-per-second/" class="hs0">Viki 2015</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Ingest: 25k/s Access Logs</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">haproxy as Logstash LB</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Logstash single-threaded filters, 4 Nodes (8 CPU, 16GB)</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Logstash Forwarder Client with buffer log</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Elasticsearch: </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">20 Nodes (12 i7-3930k, 64GB, 3TB RAID0)</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">20 shards, 4 replicas</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">30GB heap</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://underthehood.meltwater.com/blog/2018/02/06/running-a-400+-node-es-cluster/" class="hs0">Meltwater 2018</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Search Volume: 3k/min complex search requests</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Index Size: 3*10^6 articles, 100*10^6 social posts, 200TB</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Elastischsearch: </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">430 data nodes: i3.2xlarge, 64GB RAM</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">3 master nodes</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">40k shards, 100MB cluster state!</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">26GB heap</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.slideshare.net/avleenvig/elk-mooseively-scaling-your-log-system" class="hs0">Etsy 2016</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Index Size: overall 1.5PB</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Ingest: 10^9 loglines/day, 400k/s peak</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Elasticsearch: </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">6 clusters, 141 Nodes (overall 4200 CPU Cores, 36TB)</span></p>
+<p class="ps7"><span class="ts3">Posts on Scaling:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://blog.codecentric.de/en/2014/05/elasticsearch-indexing-performance-cheatsheet/" class="hs0">codecentric.de Tuning Hints</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://medium.com/hipages-engineering/scaling-elasticsearch-b63fa400ee9e" class="hs0">hipages Engineering - Scaling ES</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Scaling on index size (metrics: documents per shard, documents per node) </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Change shards to trade search response time for search concurrency</span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Change nodes to trade resilience for memory usage</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Scaling on search time and througput </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><a href="https://docs.google.com/spreadsheets/d/1F6AlBLR0F9D1SD2upTsHMiJpD7Sz50P_nurosP-WeUs/edit?usp=sharing" class="hs0">Scalability Model</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.sumologic.com/wp-content/uploads/elk-stack-vs-sumologic.pdf" class="hs0">Evolution of an ELK Setup</a></p>
+<p class="ps13"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">ELK with 1 Logstash</span></p>
+<p class="ps13"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">ELK with loadbalanced horizontally scaled Logstash</span></p>
+<p class="ps13"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Kafka in front of logstash to buffer spikes ELK</span></p>
+<p class="ps13"><span style="color: Black">4.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Separation of client, data and master Elasticsearch nodes</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/capacity-planning.html" class="hs0">Determining the Number of Shards</a></p>
+<p class="ps7"><span class="ts3">General hints:</span></p>
+<p class="ps5"><span class="ts2">Note: credits for all those go to the post above. Consider this a compilation for ES begiinners.</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Set CPU scaling governor 'performance'</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use SSDs with RAID 0</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use HTTP transport protocol</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Change default mapping </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Avoid raw fields</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">or make raw field &quot;not_analyzed&quot;</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disable transparent huge pages</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disable numad</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disable swap, lock memory with bootstrap.mlockall: true</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.elastic.co/blog/a-heap-of-trouble" class="hs0">Do not optimize JVM settings for max memory usage!</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Try to live with 4GB heap</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Ensure not to give more than 30GB RAM (sometimes only as much as 26GB) as JVM heap address compression stops with larger RAM</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Check heap address mode by running with -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompressedOopsMode and if you see &quot;zero based Compressed Oops&quot; you are fine</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Check your heap usage curve. If you have a sawtooth give back the memory to the FS cache.</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">When profiling </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">check for &gt;15% ParNewGC</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">check SerialGC pauses </span></p>
+<p class="ps24"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&#9642;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">ensure you do not have the G1 garbage collector active</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Logstash: </span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">On HW consider turning off hyperthreading</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Increase flush_size</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Increase idle_flush_time</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Increase output workers</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Finally increase pipeline batch size</span></p>
+<p class="ps0"><span class="ts0">Resilience</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Avoid split-brain by setting </span><a href="https://qbox.io/blog/split-brain-problem-elasticsearch" class="hs0">discovery.zen.minimum_master_nodes</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Monitor fielddata cache to avoid running in OOM killing your cluster</span></p>
+<p class="ps0"><span class="ts0">Monitoring</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://logz.io/blog/logstash-pipelines/" class="hs0">Logstash Pipeline Monitoring</a><span class="ts2">&nbsp;using XPack + Kibana</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

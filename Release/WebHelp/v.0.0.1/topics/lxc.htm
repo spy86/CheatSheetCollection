@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>LXC</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1930;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Commands</span></p>
+<p class="ps9"><span class="ts5">lxc-ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List existing containers</span><br /><br /><span class="ts5"># Note: all commands take -n&nbsp; as parameter to specify the container </span><br /><span class="ts5">lxc-start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Start and attach</span><br /><span class="ts5">lxc-start -d&nbsp;&nbsp;&nbsp;&nbsp; # Start in background</span><br /><span class="ts5">lxc-console&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Attach to running container</span><br /><span class="ts5">lxc-stop</span><br /><br /><span class="ts5">lxc-clone &lt;source&gt; &lt;target&gt;</span><br /><span class="ts5">lxc-create -t &lt;template&gt; -f &lt;config file&gt;</span><br /><span class="ts5">lxc-destroy</span><br /><br /><span class="ts5">lxc-execute -n &lt;name&gt; -- &lt;command&gt;&nbsp; # Run command in new container</span><br /><span class="ts5">lxc-attach&nbsp; -n &lt;name&gt; -- &lt;command&gt;&nbsp; # Run command in running container</span><br /><br /><span class="ts5">lxc-monitor&nbsp;&nbsp;&nbsp; # Monitor containers for state changes</span><br /><span class="ts5">lxc-wait&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Wait for a state change</span><br /><span class="ts5">lxc-info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Give details on a container</span><br /><br /><span class="ts5">lxc-freeze</span><br /><span class="ts5">lxc-unfreeze</span><br /><br /><span class="ts5">lxc-netstat</span><br /><span class="ts5">lxc-ps</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Security</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://linuxcontainers.org/lxc/security/" class="hs0">Introduction LXC Security</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Limit users to LXC bridge. In /etc/lxc/lxc-usernet</span></p>
+<p class="ps1"><span class="ts8">lxcuser1 veth lxcbr0 10</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">LXC Config Check</span></p>
+<p class="ps2"><span class="ts8">lxc-checkconfig</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.debian.org/LXC#Incompatibility_with_systemd" class="hs0">LXC Problems with systemd on Debian Jessie</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://colinnewell.wordpress.com/2013/12/18/lxc-networking/" class="hs0">LXC dnsmasq issue on Debian Jessie</a><span class="ts2">&nbsp;(bad UDP checksums)</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

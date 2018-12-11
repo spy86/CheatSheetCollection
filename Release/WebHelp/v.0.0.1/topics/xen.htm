@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>XEN</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1990;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Xen</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Test if you are running a Xen kernel:</span></p>
+<p class="ps2"><span class="ts8">cat /sys/hypervisor/properties/capabilities </span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://virtually-a-machine.blogspot.de/2009/09/open-source-xen-vs-xenserver.html" class="hs0">Xen vs. Xen Server</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.debian-administration.org/articles/533" class="hs0">Xen - Commands</a></p>
+<p class="ps2"><span class="ts8">xm list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all domains</span><br /><span class="ts8">xm list vm1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List status of a single VM</span><br /><span class="ts8">xm list vm1 -l&nbsp;&nbsp;&nbsp; # Details for a VM </span><br /><span class="ts8">xm create vm1&nbsp;&nbsp;&nbsp;&nbsp; # Starts/Creates a VM</span><br /><span class="ts8">xm reboot vm1&nbsp;&nbsp;&nbsp;&nbsp; </span><br /><span class="ts8">xm shutdown vm1</span><br /><span class="ts8">xm destroy vm1</span><br /><br /><span class="ts8">xm network-list vm1</span><br /><br /><span class="ts8">xm console vm1&nbsp;&nbsp;&nbsp;&nbsp; # Open console to VM (escape like telnet)</span><br /><br /><span class="ts8">xm info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # HV infos</span><br /><span class="ts8">xm top&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Monitor HV and domains</span><br /><span class="ts8">xm log&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # View HV log</span><br /><br /><span class="ts8">xm dominfo</span><br /><span class="ts8">xm vcpuinfo</span><br /><span class="ts8">xm nodeinfo</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Ensure guest auto start on boot:</span></p>
+<p class="ps2"><span class="ts8">ln -s /etc/xen/&lt;instance&gt; /etc/xen/auto/&lt;instance&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Find out which dom0 you are on:</span></p>
+<p class="ps2"><span class="ts8">dmesg | grep &quot;command line&quot;</span><br /><br /><span class="ts8"># Should give you something like:</span><br /><span class="ts8">#</span><br /><span class="ts8"># Kernel command line:&nbsp; ro root=/dev/VolGroup00/LogVol00 console=xvc0 hostip=10.0.0.17</span><br /><span class="ts8">#</span><br /><span class="ts8"># Where &quot;hostip&quot; is the IP of the hypervisor</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Find out which IP a VM has:</span></p>
+<p class="ps1"><span class="ts8"># Grep and resolve MAC:</span><br /><span class="ts8">xm list -l &lt;VM name&gt; | grep mac</span><br /><span class="ts8">arp -a | grep -i &lt;MAC address&gt;</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Xen Server</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://wiki.xensource.com/xenwiki/XCP/XenServer_Feature_Matrix" class="hs0">Feature Matrix XenServer Free vs. Enterprise</a><span class="ts2">: Whats the difference and what features are provided by &quot;xe&quot; what &quot;xm&quot; doesn't have...</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.dabcc.com/article.aspx?id=11045" class="hs0">XenServer GUI Comparison Free vs. Enterprise</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://hafizpariabi.blogspot.com/2011/09/unable-to-shutdown-hang-vm-on-xenserver.html" class="hs0">Xen Server - Hanging Operation on Shutdown</a><span class="ts2">: This happens when for example a reboot doesn't work and you want to perform a shutdown to quickly restore an unresponding VM. The first task (reboot) is ineffective and won't complete and thereby will block the second task (the shutdown). Destroying the VM domain solves the issue:</span></p>
+<p class="ps2"><span class="ts8">xe vm-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 1. Resolve VM UUID with </span><br /><span class="ts8">list_domains | grep &lt;uuid&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 2. Get Domain Id</span><br /><span class="ts8">/opt/xensource/debug/destroy_domain -domid &lt;domid&gt;&nbsp; # 3. Kill Domain Id</span><br /><span class="ts8">xe vm-reboot uuid=&lt;uuid&gt; force=true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 4. Force Action</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">An alternative is described </span><a href="http://www.crucial.com.au/blog/2011/03/11/xenserver-vmvps-will-not-shutdown-force-shutdown/" class="hs0">here</a><span class="ts2">&nbsp;and involves determining the hanging task and cancelling it:</span></p>
+<p class="ps2"><span class="ts8">xe task-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get task uid</span><br /><span class="ts8">xe task-cancel uuid=&lt;task uuid&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # And cancel it</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.xendesktopmaster.com/how-to-add-an-additional-local-disk-to-your-xenserver-5-5-host/" class="hs0">XenServer - Add Another Physical Disk</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">xe host-list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # to get host UUID</span><br /><span class="ts8">xe sr-create host-uuid=&lt;host UUID&gt; shared=false type=lvm \</span><br /><span class="ts8">&nbsp;&nbsp; content-type=user device-config:device=/dev/sdb1 name-label=&quot;Another disk&quot;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://wiki.univention.de/index.php?title=Citrix_Xen_Server" class="hs0">XenServer - VM Paravirtualization</a><span class="ts2">: How to configure a single VM to be paravirtualized:</span></p>
+<p class="ps2"><span class="ts8"># Configure boot</span><br /><span class="ts8">xe vm-param-set uuid=&lt;VM UUID&gt; HVM-boot-policy=''</span><br /><span class="ts8">xe vm-param-set uuid=&lt;VM UUID&gt; PV-bootloader=pygrub</span><br /><br /><span class="ts8"># Configure console to work in XenCenter</span><br /><span class="ts8">xe vm-param-set uuid=&lt;VM UUID&gt; PV-args=&quot;console=tty0 xencons=tty&quot;</span><br /><br /><span class="ts8"># Determine boot disk and set it bootable for XenServer</span><br /><span class="ts8">xe vbd-list vm-uuid=$VMUUID type=Disk</span><br /><span class="ts8">xe vbd-param-set uuid=&lt;disk UUID&gt; bootable=true</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts9">XenServer - Configure LACP Bonding</span><span class="ts2">: When you want to run your XenServer with interface trunking.</span></p>
+<p class="ps2"><span class="ts8"># Determine UUIDs of interfaces to add</span><br /><span class="ts8">xe pif-list</span><br /><br /><span class="ts8"># Create new network (will return network UUID)</span><br /><span class="ts8">xe network-create name-label=bond0</span><br /><br /><span class="ts8"># Create bonding (will return bonding UUID)</span><br /><span class="ts8">xe bond-create network-uuid=&lt;network UUID&gt; pif-uuids=&lt;first pif UID&gt;,&lt;second pif UID&gt;[,...]</span><br /><br /><span class="ts8"># Set bonding flags for bond0</span><br /><span class="ts8">xe pif-param-set uuid=&lt;bond0 UUID&gt; other-config:bond-mode=802.3ad</span><br /><span class="ts8">xe pif-param-set uuid=&lt;bond0 UUID&gt; other-config:bond-mode=lacp</span><br /><br /><span class="ts8"># Once your switch is configured check bond0 with</span><br /><span class="ts8">cat /proc/net/bonding/bond0</span><br /><br /><span class="ts8"># Also try</span><br /><span class="ts8">ovs-appctl bond/show bond0</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://support.citrix.com/servlet/KbServlet/download/17141-102-671564/XenServer_Pool_Replication_-_Disaster_Recovery.pdf" class="hs0">XenServer - Restore VM from Image</a><span class="ts2">: Use &quot;xe vm-import&quot; to create a new VM with a new UUID:</span></p>
+<p class="ps2"><span class="ts8">xe vm-import filename=image.xva preserve=true</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/blkfront+barrier+empty+write+xvda+op+failed" class="hs0">Xen Server - Ubuntu bug: read-only filesystem</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

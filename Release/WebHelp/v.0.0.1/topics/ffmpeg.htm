@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>ffmpeg</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 350;
+</script>
+</head>
+<body>
+<p class="ps15"><span class="ts3">Repacking</span></p>
+<p class="ps8"><span class="ts4">Extracting Audio Stream</span></p>
+<p class="ps5"><span class="ts2">Combine &quot;-vn&quot; (for no video) with &quot;-acodec copy&quot;. Note that the output file extension must match the audio codec in the input file for &quot;-acodec copy&quot; to work.</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i file.mp4 -vn -acodec copy output.aac </span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Resample/Convert Audio</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Switching Containers</span></p>
+<p class="ps5"><span class="ts2">Change container from MKV to MP4</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i file.mkv -acodec copy -vcodec copy file.mp4</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Codec Issues</span></p>
+<p class="ps5"><span class="ts2">AAC: &quot;channel element not allocated&quot;</span></p>
+<p class="ps5"><span class="ts4">Update:</span><span class="ts2">&nbsp;The workaround for the problem doesn't work for ffmpeg versions more recent than 20.06.2011 as libfaad support was dropped in favour of the now stable native ffmpeg AAC encoder! If you still have a separate compilation of libfaad you can workaround using the &quot;faad&quot; encoder tool as described in the next section. If you are using recent ffmpeg versions to decode a .MOV file you might get the </span><a href="http://n4.nabble.com/error-when-downscaling-mp4-td940675.html" class="hs0">following error</a><span class="ts2">:</span></p>
+<p class="ps9"><span class="ts5">Stream #0.0(eng): Audio: aac, 48000 Hz, 2 channels, s16</span><br /><span class="ts5">Stream #0.1(eng): Video: h264, yuv420p, 1280x530, PAR 1:1 DAR 128:53, 25 tbr, 25 tbn, 50 tbc</span><br /><span class="ts5">Output #0, flv, to 'test.flv':</span><br /><span class="ts5">Stream #0.0(eng): Video: flv (hq), yuv420p, 400x164 [PAR 101:102 DAR 050:2091], </span><br /><span class="ts5">q=2-31, 300 kb/s, 1k tbn, 25 tbc</span><br /><span class="ts5">Stream #0.1(eng): Audio: libmp3lame, 22050 Hz, 2 channels, s16, 64 kb/s</span><br /><span class="ts5">Stream mapping:</span><br /><span class="ts5">Stream #0.1 -&gt; #0.0</span><br /><span class="ts5">Stream #0.0 -&gt; #0.1</span><br /><span class="ts5">Press [q] to stop encoding</span><br /><span class="ts5">[aac @ 0x80727a0]channel element 1.0 is not allocated</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">Error while decoding stream #0.0</span><br /><span class="ts5">[...]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The message &quot;Error while decoding stream #0.0&quot; is repeated continuously. The resulting video is either unplayable or has no sound. Still the input video is playable in all standard players (VLC, in Windows...). The reason for the problem as I understood it is that the ffmpeg-builtin AAC codec cannot handle an audio stream stream with index &quot;1.0&quot;. This is documented in various bugs (see ffmpeg issues </span><a href="https://roundup.ffmpeg.org/roundup/ffmpeg/issue800" class="hs0">#800</a><span class="ts2">, </span><a href="https://roundup.ffmpeg.org/roundup/ffmpeg/issue871" class="hs0">#871</a><span class="ts2">, </span><a href="https://roundup.ffmpeg.org/roundup/ffmpeg/issue999" class="hs0">#999</a><span class="ts2">, </span><a href="https://roundup.ffmpeg.org/roundup/ffmpeg/issue1733" class="hs0">#1733</a><span class="ts2">...). It doesn't look like this will be handled by ffmpeg very soon. In fact it could well be that they'll handle it as an invalid input file. </span><span class="ts4">Solution:</span><span class="ts2">&nbsp;Upgrade to latest ffmpeg and faad library version and add &quot; -acodec libfaad &quot; in front of the &quot;-i&quot; switch. This uses the libfaad AAC decoder, which is said to be a bit slower than the ffmpeg-builtin, but which decodes the AAC without complaining. For example:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -acodec libfaad -i input.mov -b 300kbit/s -ar 22050 -o test.flv</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">The &quot;-acodec&quot; preceding the &quot;-i&quot; option only influences the input audio decoding, not the audio encoding.</span></p>
+<p class="ps8"><span class="ts4">AAC: &quot;Can not resample 6 channels&quot;</span></p>
+<p class="ps5"><span class="ts2">When you try to encode with ffmpeg and you end up with such an error</span></p>
+<p class="ps9"><span class="ts5">Resampling with input channels greater than 2 unsupported.</span><br /><span class="ts5">Can not resample 6 channels @ 48000 Hz to 6 channels @ 48000</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">you are probably trying to encode from AAC with 5.1 audio to less than 6 channels or different audio sampling rate. There are three solutions:</span></p>
+<p class="ps1"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">As a solution either do not reduce the audio channels and change the audio sampling rate or do convert the audio with faad first.</span></p>
+<p class="ps1"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Apply one of the available ffmpeg patches to fix the AAC 6 channel issue...</span></p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Split video and audio and convert audio separately.</span></p>
+<p class="ps5"><span class="ts2">The third solution can be done as following:</span></p>
+<p class="ps2"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Extract audio with ffmpeg:</span></p>
+<p class="ps2"><span class="ts8">ffmpeg -y -i source.avi -acodec copy source.6.aac</span><br />&nbsp;</p>
+<p class="ps2"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Convert audio with faad:</span></p>
+<p class="ps2"><span class="ts8">faad -d -o source.2.pcm source.6.aac</span><br />&nbsp;</p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Merge video and audio again with ffmpeg:</span></p>
+<p class="ps2"><span class="ts8">ffmpeg -y -i source.avi -i source.2.pcm -map 0:0 -map 1:0 -vcodec copy -acodec copy output.avi</span><br />&nbsp;</p>
+<p><span class="ts4">Update</span><span class="ts2">: As hinted by a fellow commenter the big disadvantage is the quality loss as faad can only convert into PCM 16bit.</span></p>
+<p class="ps8"><span class="ts4">SVQ3: &quot;does not support multithreaded&quot;</span></p>
+<p class="ps5"><span class="ts2">Try decoding a video with SVQ3 video codec with multithreading enabled (e.g. -threads 4) ffmpeg r25526 simply refuses to decode it:</span></p>
+<p class="ps9"><span class="ts5">Stream #0.0(eng): Video: svq3, yuvj420p, 640x476, 1732 kb/s, 25 fps, 25 tbr, 600 tbn, 600 tbc</span><br /><span class="ts5">...</span><br /><span class="ts5">[svq3 @ 0x806bfe0] SVQ3 does not support multithreaded decoding, patch welcome! (check latest SVN too)</span><br /><span class="ts5">...</span><br /><span class="ts5">Error while opening decoder for input stream #0.0</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Instead of simply just using only one thread and just working ffmpeg bails. What a pain. You need to specify &quot;-threads 1&quot; or no threads option at all for decoding to work.</span></p>
+<div>
+  <hr class="hline1" />
+</div>
+<div>
+  <hr class="hline1" />
+</div>
+<p class="ps15"><span class="ts3">Fixing Async Video</span></p>
+<p class="ps8"><span class="ts4">Correcting Audio that is too slow/fast</span></p>
+<p class="ps5"><span class="ts2">This can be done using the </span><a href="http://ffmpeg-users.933282.n4.nabble.com/async-td935787.html" class="hs0">&quot;-async&quot; switch</a><span class="ts2">&nbsp;of ffmpeg which according to the documentation </span><span class="ts7">&quot;Stretches/squeezes&quot; the audio stream to match the timestamps</span><span class="ts2">. The parameter takes a numeric value for the samples per seconds to enforce. Example:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -async 25 -i input.mpg &lt;encoding options&gt; -r 25</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Try slowly increasing the -async value until audio and video matches.</span></p>
+<p class="ps8"><span class="ts4">Correcting Time-Shift (Variant 1)</span></p>
+<p class="ps5"><span class="ts2">Case 1: Audio ahead of video: As a special case the &quot;-async&quot; switch auto-corrects the start of the audio stream when passed as &quot;-async 1&quot;. So try running</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -async 1 -i input.mpg &lt;encoding options&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Case 2: Audio behind video: Instead of using &quot;-async&quot; you need to use &quot;-vsync&quot; to drop/duplicate frames in the video stream. There are two methods in the manual page &quot;-vsync 1&quot; and &quot;-vsync 2&quot; and an method auto-detection with &quot;-vsync -1&quot;. But using &quot;-map&quot; it is possible to specify the stream to sync against. Interestingly Google shows people using -aync and -vsync together. So it might be worth experimenting a bit to achieve the intended result :-)</span></p>
+<p class="ps8"><span class="ts4">Correcting Time-Shift (Variant 2)</span></p>
+<p class="ps5"><span class="ts2">If you have a constantly shifted sound/video track that the previous fix doesn't work with, but you know the time shift that needs to be corrected, then you can easily fix it with one of the following two commands: Case 1: Audio ahead of video:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i input.flv -itsoffset 00:00:03.0 -i input.flv -vcodec copy -acodec copy -map 0:1 -map 1:0 output_shift3s.flv</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Case 2: Audio behind video:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i input.flv -itsoffset 00:00:03.0 -i input.flv -vcodec copy -acodec copy -map 1:0 -map 0:1 output_shift3s.flv</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">The difference is in the mapping parameters which specify which of the two supplied input files to map on which output channel. The &quot;-itsoffset&quot; option indicates an offset (3 seconds in the example) for the following input file. The input file is required to have exactly one video channel at position 0 and one audio channel at position 1. I added &quot;-vcodec copy -acodec copy&quot; to avoid reencoding the video and loose quality. These parameters need to be added after the second input file and before the mapping options. Otherwise one runs into mapping errors. </span><span class="ts4">Update:</span><span class="ts2">&nbsp;Also check the comment of an anonymous user below mentioning that he needed a different mapping with a more recent version of ffmpeg. The commands above were tested using ffmpeg 0.5/0.6</span></p>
+<p class="ps7"><span class="ts3">Thumbnails</span></p>
+<p class="ps5"><span class="ts2">To create thumbnails every n seconds use &quot;-vf fps=1/n&quot; for example</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i &lt;input file&gt; -vf fps=1/60 thumbnails/thumb%03d.png</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Frame Exact Splitting</span></p>
+<p class="ps5"><span class="ts2">When preparing videos for Apples HTTP streaming for iPad/iPhone you need to split your video into 10s chunks and provide a play list for Quicktime to process. The problem lies with frame exact splitting of arbitrary video input material. Wether you split the file using </span><a href="http://ffmpeg.org" class="hs0">ffmpeg</a><span class="ts2">&nbsp;or the </span><a href="http://www.espend.de/artikel/iphone-ipad-ipod-http-streaming-segmenter-and-m3u8-windows.html" class="hs0">Apple segmenter tool</a><span class="ts2">&nbsp;you often end up with</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">asynchronous audio in some or all segments</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">missing video frames at the start of each segment</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">audio glitches between two segements</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">missing audio+video between otherwise audio-synchronous consecutive segments</span></p>
+<p class="ps5"><span class="ts2">When using the Apple segmenter the only safe way to split files is to convert into an intermediate format which allows frame-exact splitting. As the segmenter only supports transport stream only MPEG-2 TS and MPEG-4 TS do make sense. To allow frame-exact splitting on problematic input files the easiest way is to blow them up to consist only of I-frames. The parameter for this depends on the output video codec. An ffmpeg command line for MPEG-2 TS can look like this:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i inputfile -vcodec mpeg2video -pix_fmt yuv422p -qscale 1 -qmin 1 -intra outputfile</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">The relevant piece is the &quot;-intra&quot; switch. For MPEG-4 TS something like the following should work:</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -i inputfile -vcodec libx264 -vpre slow -vpre baseline -acodec libfaac -ab 128k -ar 44100 -intra -b 2000k -minrate 2000k -maxrate 2000k outputfile</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Note: It is important to watch the resulting muxing overhead which might lower the effective bitrate a lot! The resulting output files should be safe to be passed to the Apple segmenter.</span></p>
+<p class="ps7"><span class="ts3">Metadata Tagging Tools</span></p>
+<p class="ps5"><span class="ts2">This post is a comparison of the performance of different tools available to tag FLV and MP4 containers with specific metadata (e.g. title, keyframes, generator or other custom fields...). For FLV containers flvtool2, flvtool++ and yamdi are compared. For the MP4 container MP4box, AtomicParsley and ffmpeg are compared.</span></p>
+<p class="ps5"><span class="ts2">Here are the IMO three most important FLV taggers tested on a 125MB FLV:</span></p>
+<div>
+  <hr class="hline1" />
+</div>
+<p class="ps10"><span class="ts2">Name Duration Large Files In Memory Custom Tags Command</span></p>
+<div>
+  <hr class="hline1" />
+</div>
+<p class="ps10"><a href="http://www.inlet-media.de/flvtool2/" class="hs0">flvtool2 1.0.6</a><span class="ts2">&nbsp;3min 11s no no yes flvtool2 -UP -band:Test -user:Test -date:1995 -genres:pop test.flv</span></p>
+<p><a href="http://mirror.facebook.net/facebook/flvtool++/" class="hs0">flvtool++ 1.2.1</a><span class="ts2">&nbsp;3s no yes yes flvtool++ test.flv -tag band &quot;Test&quot; -tag user &quot;Test&quot; -tag date &quot;1995&quot; -tag genres &quot;pop&quot; test2.flv</span></p>
+<p class="ps0"><a href="http://yamdi.sourceforge.net/" class="hs3">yamdi 1.6</a><span class="ts0">&nbsp;1.5s yes no no\ yamdi -i test.flv -o test2.flv -c &quot;Test&quot; (</span><a href="/Custom+FLV+Tags+with+Yamdi" class="hs3">patch</a><span class="ts0">)</span></p>
+<p class="ps5"><span class="ts2">The performance of flvtool2 is horrendous. For films of 120min it will take hours to process. Therefore: </span><span class="ts4">Do not use it!</span><span class="ts2">&nbsp;Use Facebooks flvtool++ instead. I guess the bad performance results from it being built in Ruby. Also notice the &quot;Large File&quot; column indicating large file support which officially only yamdi support (by adding compile flag -D_FILE_OFFSET_BITS=64). Another important point is the &quot;In Memory&quot; column indicating that flvtool++ loads the entire file into memory when tagging, which is problematic when tagging large files. Given this results only </span><span class="ts4">yamdi should be used for FLV tagging</span><span class="ts2">!</span></p>
+<p class="ps5"><span class="ts2">Now for the MP4 tagging. Here you can select between a lot of tools from the net, but only a few of them are command line based and available for Unix. The MP4 test file used is 100MB large.</span></p>
+<p class="ps5"><span class="ts2">Name Duration Command</span></p>
+<div>
+  <hr class="hline1" />
+</div>
+<p class="ps10"><a href="http://atomicparsley.sourceforge.net/" class="hs0">AtomicParsely</a><span class="ts2">&nbsp;0.6s AtomicParsley test.mp4 --artist &quot;Test&quot; --genre &quot;Test&quot; --year &quot;1995&quot; </span><a href="http://www.videohelp.com/tools/mp4box" class="hs0">mp4box</a><span class="ts2">&nbsp;0.6s MP4Box -itags Name=Test:Artist=Me:disk=95/100 test.mp4 </span><a href="http://ffmpeg.org" class="hs0">ffmpeg 0.6</a><span class="ts2">&nbsp;0.8s ffmpeg -i test.mp4 -metadata title=&quot;Test&quot; -metadata artist=&quot;Test&quot; -metadata date=&quot;1995&quot; -acodec copy -vcodec copy test2.mp4</span></p>
+<p><span class="ts2">Given that recent ffmpeg brings the tagging for MP4 out of the box (it doesn't for FLV though) you do not even need an external tool to add the metadata,</span></p>
+<p class="ps15"><span class="ts3">Solving Runtime Errors</span></p>
+<p class="ps8"><span class="ts4">av_interleaved_write_frame() I/O error</span></p>
+<p class="ps5"><span class="ts2">If you are unlucky you might see the following ffmpeg error message:</span></p>
+<p class="ps9"><span class="ts5">Output #0, image2, to 'output.ppm':</span><br /><span class="ts5">Stream #0.0: Video: ppm, rgb24, 144x108, q=2-31, 200 kb/s, 90k tbn, 29.97 tbc</span><br /><span class="ts5">Stream mapping:</span><br /><span class="ts5">Stream #0.0 -&gt; #0.0</span><br /><span class="ts5">Press [q] to stop encoding</span><br /><span class="ts5">av_interleaved_write_frame(): I/O error occurred</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Usually that means that input file is truncated and/or corrupted. The above error message was produced with a command like this</span></p>
+<p class="ps9"><span class="ts5">ffmpeg -v 0 -y -i 'input.flv' -ss 00:00:01 -vframes 1 -an -sameq -vcodec ppm -s 140x100 'output.ppm'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">There are several possible reasons for the error message &quot;av_interleaved_write_frame(): I/O error occurred&quot;.</span></p>
+<p class="ps1"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">You are extracting a thumb and forgot to specify to extract a single frame only (-vframes 1)</span></p>
+<p class="ps1"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">You have a broken input file.</span></p>
+<p class="ps2"><span style="color: Black">3.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">And finally: The target file cannot be written.</span></p>
+<p><span class="ts2">The above was caused by problem three. After a lot of trying I found that the target directory did not exist. Quite confusing.</span></p>
+<p class="ps15"><span class="ts3">Compilation Issues</span></p>
+<p class="ps8"><span class="ts4">x264: sched_getaffinity()</span></p>
+<p><span class="ts2">If compilation fails with an error about the numbers of parameters in common/cpu.c you need to check which glibc version is used. Remove the second parameter to sched_getaffinity() if necessary and recompile.</span></p>
+<p class="ps8"><span class="ts4">x264: Linking</span></p>
+<p class="ps5"><span class="ts2">ffmpeg configure fails with:</span></p>
+<p class="ps9"><span class="ts5">ERROR: libx264 not found</span><br /><span class="ts5">If you think configure made a mistake, make sure you are using the latest</span><br /><span class="ts5">version from SVN.&nbsp; If the latest version fails, report the problem to the</span><br /><span class="ts5">ffmpeg-user@mplayerhq.hu mailing list or IRC #ffmpeg on irc.freenode.net.</span><br /><span class="ts5">Include the log file &quot;config.err&quot; produced by configure as this will help</span><br /><span class="ts5">solving the problem.</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">This can be caused by two effects:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Unintended library is used for linking. Check wether you have different ones installed. Avoid this and uninstall them if possible. If necessary use LD_LIBRARY_PATH or --extra-ldflags to change the search order.</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Incompatible combination of ffmpeg and libx264. Older libx264 provide a method x264_encoder_open which older ffmpeg versions do check for. More recent libx264 add a version number to the method name. Now when you compile a new libx264 against an older ffmpeg the libx264 detection that relies on the symbol name fails. As a workaround you could hack the configure script to check for &quot;x264_encoder_open_78&quot; instead of &quot;x264_encoder_open&quot; (given that 78 is the libx264 version you use).</span></p>
+<p class="ps8"><span class="ts4">x264: AMD64</span></p>
+<p class="ps5"><span class="ts2">ffmpeg compilation fails on AMD64 with:</span></p>
+<p class="ps9"><span class="ts5">libavcodec/svq3.c: In function 'svq3_decode_slice_header':</span><br /><span class="ts5">libavcodec/svq3.c:721: warning: cast discards qualifiers from pointer target type</span><br /><span class="ts5">libavcodec/svq3.c:724: warning: cast discards qualifiers from pointer target type</span><br /><span class="ts5">libavcodec/svq3.c: In function 'svq3_decode_init':</span><br /><span class="ts5">libavcodec/svq3.c:870: warning: dereferencing type-punned pointer will break strict-aliasing rules</span><br /><span class="ts5">/tmp/ccSySbTo.s: Assembler messages:</span><br /><span class="ts5">/tmp/ccSySbTo.s:10644: Error: suffix or operands invalid for `add'</span><br /><span class="ts5">/tmp/ccSySbTo.s:10656: Error: suffix or operands invalid for `add'</span><br /><span class="ts5">/tmp/ccSySbTo.s:12294: Error: suffix or operands invalid for `add'</span><br /><span class="ts5">/tmp/ccSySbTo.s:12306: Error: suffix or operands invalid for `add'</span><br /><span class="ts5">make: *** [libavcodec/h264.o] Error 1</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">This </span><a href="https://www.x86-64.org/pipermail/bugs/2001-May/000397.html" class="hs0">post</a><span class="ts2">&nbsp;explains that this is related to a glibc issue and how to patch it.</span></p>
+<p class="ps8"><span class="ts4">x264: x264_init</span></p>
+<p class="ps5"><span class="ts2">ffmpeg compilation fails with:</span></p>
+<p class="ps9"><span class="ts5">libavcodec/libx264.c: In function 'encode_nals':</span><br /><span class="ts5">libavcodec/libx264.c:60: warning: implicit declaration of function 'x264_nal_encode'</span><br /><span class="ts5">libavcodec/libx264.c: In function 'X264_init':</span><br /><span class="ts5">libavcodec/libx264.c:169: error: 'x264_param_t' has no member named 'b_bframe_pyramid'</span><br /><span class="ts5">make: *** [libavcodec/libx264.o] Error 1</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">This means you are using incompatible ffmpeg and libx264 versions. Try to upgrade ffmpeg or to downgrade libx264.</span></p>
+<p class="ps8"><span class="ts4">video4linux</span></p>
+<p class="ps9"><span class="ts5">/usr/include/linux/videodev.h:55: error: syntax error before &quot;ulong&quot;</span><br /><span class="ts5">/usr/include/linux/videodev.h:71: error: syntax error before '}' token</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Workaround:</span></p>
+<p class="ps9"><span class="ts5">--- configure.ac.080605 2005-06-08 21:56:04.000000000 +1200</span><br /><span class="ts5">+++ configure.ac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2005-06-08 21:56:42.000000000 +1200</span><br /><span class="ts5">@@ -1226,6 +1226,7 @@</span><br /><span class="ts5">&nbsp;AC_CHECK_HEADERS(linux/videodev.h,,,</span><br /><span class="ts5">&nbsp;[#ifdef HAVE_SYS_TIME_H</span><br /><span class="ts5">&nbsp;#include &lt;sys/time.h&gt;</span><br /><span class="ts5">+#include &lt;sys/types.h&gt;</span><br /><span class="ts5">&nbsp;#endif</span><br /><span class="ts5">&nbsp;#ifdef HAVE_ASM_TYPES_H</span><br /><span class="ts5">&nbsp;#include &lt;asm/types.h&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">http://www.winehq.org/pipermail/wine-devel/2005-June/037400.html oder Workaround: --disable-demuxer=v4l --disable-muxer=v4l --disable-demuxer=v4l2 --disable-muxer=v4l2</span></p>
+<p class="ps8"><span class="ts4">Old make</span></p>
+<p class="ps9"><span class="ts5">make: *** No rule to make target `libavdevice/libavdevice.so', needed by `all'.&nbsp; Stop.</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Problem: GNU make is too old, you need at least v3.81 http://www.mail-archive.com/ffmpeg-issues@live.polito.it/msg01284.html</span></p>
+<p class="ps9"><span class="ts5">make: *** No rule to make target `install-libs', needed by `install'.&nbsp; Stop.</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Problem: GNU make is too old, you need at least v3.81 http://ffmpeg.arrozcru.org/forum/viewtopic.php?f=1&amp;t=833</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

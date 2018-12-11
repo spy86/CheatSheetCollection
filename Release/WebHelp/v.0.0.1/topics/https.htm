@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>HTTPS</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1690;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Mitigations</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">BEAST: </span><a href="/cheat-sheet/nginx#BEAST" class="hs0">nginx</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://weakdh.org/sysadmin.html" class="hs0">DH downgrade</a><span class="ts2">: </span><a href="/cheat-sheet/Apache#DH%20downgrade" class="hs0">Apache</a><span class="ts2">, </span><a href="/cheat-sheet/nginx#DH%20downgrade" class="hs0">nginx</a></p>
+<p class="ps7"><span class="ts3">Perfect Forward Secrecy (PFS)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.heise.de/security/artikel/Zukunftssicher-Verschluesseln-mit-Perfect-Forward-Secrecy-1923800.html" class="hs0">HTTPS - Perfect Forward Secrecy (PFS)</a><span class="ts2">: Use</span></p>
+<p class="ps2"><span class="ts8">&nbsp;&nbsp;&nbsp; TLS_ECDHE_RSA_WITH_RC4_128_SHA</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA </span><br />&nbsp;</p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://community.qualys.com/blogs/securitylabs/2013/08/05/configuring-apache-nginx-and-openssl-for-forward-secrecy" class="hs0">Configure Forward Secrecy</a><span class="ts2">: HowTo for Apache, nginx and OpenSSL</span></p>
+<p class="ps7"><span class="ts3">Public Key Pinning (HPKP)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html" class="hs0">HPKP - HTTP Public Key Pinning</a><span class="ts2">: Headers look like</span></p>
+<p class="ps2"><span class="ts8">Public-Key-Pins-Report-Only</span><br /><br /><span class="ts8">Public-Key-Pins pin-&lt;algorithm&gt;=&quot;&lt;hash&gt;&quot;; pin-&lt;algorithm&gt;=&quot;&lt;hash&gt;&quot;; max-age=&lt;age&gt;[; includeSubdomains]</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html" class="hs0">Creating SPKI fingerprints</a></p>
+<p class="ps1"><span class="ts8">openssl x509 -noout -in certificate.pem -pubkey | \</span><br /><span class="ts8">openssl asn1parse -noout -inform pem -out public.key;</span><br /><span class="ts8">openssl dgst -sha256 -binary public.key | openssl enc -base64</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">OSCP</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/" class="hs0">Cloudflare: OSCP Stapling</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://raymii.org/s/tutorials/OCSP_Stapling_on_nginx.html" class="hs0">OCSP Stapling with nginx</a></p>
+<p class="ps7"><span class="ts3">HTTPS Testing</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.howsmyssl.com" class="hs0">HTTPS Client Test</a><span class="ts2">&nbsp;(online)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.ssllabs.com/ssltest" class="hs0">HTTPS Server Test</a><span class="ts2">&nbsp;(online)</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://testssl.sh/" class="hs0">HTTPS Server Test</a><span class="ts2">&nbsp;shell script</span></p>
+<p class="ps7"><span class="ts3">SSL Performance</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html" class="hs0">SSL Overclocking</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://insouciant.org/tech/ssl-performance-case-study/" class="hs0">SSL Performance Case Study Cloudflare</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

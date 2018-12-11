@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PHP_strpos</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1400;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">When using strpos() ensure to do the comparison the right way. Important: use the correct comparsion operator! With strpos() functions always use the identical operator </span><span class="ts8">&quot;===&quot;</span><span class="ts2">&nbsp;or </span><span class="ts8">&quot;!==&quot;</span><span class="ts2">&nbsp;and compare to </span><span class="ts8">&quot;false&quot;</span></p>
+<p class="ps7"><span class="ts3">CORRECT</span></p>
+<p class="ps9"><span class="ts5">if (strpos($str, $substr) === false) {</span><br /><span class="ts5">if (strpos($str, $substr) !== false) {</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">WRONG</span></p>
+<p class="ps9"><span class="ts5">if (strpos($str, $substr) != false) {</span><br /><span class="ts5">if (strpos($str, $substr) == false) {</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">The reason for using the identical operators (that also check for the type of the value) </span><span class="ts8">&quot;===&quot;</span><span class="ts2">&nbsp;or </span><span class="ts8">&quot;!==&quot;</span><span class="ts2">&nbsp;is that </span><span class="ts8">strpos(</span><span class="ts2">) might return </span><span class="ts8">&quot;0&quot;</span><span class="ts2">&nbsp;for match at the beginning or </span><span class="ts8">&quot;false&quot;</span><span class="ts2">&nbsp;for no match which cannot be distinguished by </span><span class="ts8">&quot;==&quot;</span><span class="ts2">&nbsp;or </span><span class="ts8">&quot;!=&quot;</span><span class="ts2">.</span></p>
+<p class="ps7"><span class="ts3">Case Sensitivity</span></p>
+<p><span class="ts2">Simply use stripos() instead of strpos() </span><span class="ts4">strpos()</span><span class="ts2">&nbsp;case sensitive searching </span><span class="ts4">stripos()</span><span class="ts2">&nbsp;case insensitive searching</span></p>
+<p class="ps7"><span class="ts3">Search From Offset</span></p>
+<p class="ps5"><span class="ts2">If you want to continue a search or want to skip something at the start use an offset as third parameter: </span><span class="ts8">if (strpos($str, $substr, 5) === false) {</span><span class="ts2">&nbsp;By using the return value of strpos() you can do repeated searches:</span></p>
+<p class="ps9"><span class="ts5">$pos1 = strpos($str, $substr);</span><br /><span class="ts5">$pos2 = strpos($str, $substr, $pos1 + strlen($pos1));</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Search Backwards</span></p>
+<p><span class="ts2">There is an additional set of methods for backwards searching: </span><span class="ts4">strrpos()</span><span class="ts2">&nbsp;case sensitive backwards searching </span><span class="ts4">strripos()</span><span class="ts2">&nbsp;case insensitive backwards searching</span></p>
+<p class="ps7"><span class="ts3">Extract Found Strings</span></p>
+<p class="ps5"><span class="ts2">If you want to extract a string at the position you've found you need to use the substr() method. An example:</span></p>
+<p class="ps9"><span class="ts5">$pos = strpos($str, $substr);</span><br /><span class="ts5">$result = substr($str, $pos);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">When not to use strpos()?</span></p>
+<p class="ps5"><span class="ts2">Do not use </span><span class="ts8">strpos()</span><span class="ts2">&nbsp;if you want to do the following things:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Test for a pattern at the start or end of a string -&gt; use preg_match()</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Extract multiple substrings -&gt; use preg_match()</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Match a string for a complex pattern -&gt; use preg_match()</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">If you want to split a string a delimiters -&gt; use strpbrk()</span></p>
+<p class="ps7"><span class="ts3">About Performance</span></p>
+<p class="ps5"><span class="ts2">If you are wondering how fast strpos() is compared to using regular expressions check this post: </span><span class="ts8">strpos()</span><span class="ts2">&nbsp;vs </span><span class="ts8">preg_match()</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

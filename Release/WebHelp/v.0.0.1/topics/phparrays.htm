@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PHPArrays</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1450;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Creating Arrays</span></p>
+<p class="ps5"><span class="ts2">Lists</span></p>
+<p class="ps9"><span class="ts5">$a = array(1, 2, 3, 4);	</span><br /><span class="ts5">$b = array(&quot;abc&quot;, &quot;def&quot;, &quot;ghi&quot;);</span><br /><span class="ts5">$empty = array();</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Assign values to specific indizes:</span></p>
+<p class="ps9"><span class="ts5">$list = array();</span><br /><span class="ts5">$list[1] = 'Tom';</span><br /><span class="ts5">$list[45] = 'Sam';</span><br /><span class="ts5">$list[100] = 'Julie';</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Hashes</span></p>
+<p class="ps5"><span class="ts2">To create an associative array create a list of key/value pairs:</span></p>
+<p class="ps9"><span class="ts5">$h = array(</span><br /><span class="ts5">	'command'	=&gt; 'grep',</span><br /><span class="ts5">	'path'		=&gt; '/usr/bin',</span><br /><span class="ts5">	'options'	=&gt; '-ac',</span><br /><span class="ts5">	'param1'	=&gt; '&quot;pattern&quot;',</span><br /><span class="ts5">	'param2'	=&gt; '/data/file1.txt'</span><br /><span class="ts5">);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">To create a multi-dimensional array just nest array() declarations as values:</span></p>
+<p class="ps7"><span class="ts3">Nesting Arrays</span></p>
+<p class="ps9"><span class="ts5">$a = array(</span><br /><span class="ts5">	array(&quot;key1&quot;, 4, 0, &quot;description 1&quot;),</span><br /><span class="ts5">	array(&quot;key2&quot;, 0, 33, &quot;&quot;),</span><br /><span class="ts5">	array(&quot;&quot;, 0, 10000, &quot;something)</span><br /><span class="ts5">);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Array &lt;-&gt; String</span></p>
+<p class="ps9"><span class="ts5">$s = implode($a, &quot;,&quot;);</span><br /><span class="ts5">$a = explode($s, &quot;,&quot;);</span><br /><br /><span class="ts5">array_push($a, &quot;new value&quot;);</span><br /><span class="ts5">array_unshift($a, &quot;new value&quot;);</span><br /><br /><span class="ts5">$value = array_pop($a);</span><br /><span class="ts5">$value = array_shift($a);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Array Functions</span></p>
+<p class="ps9"><span class="ts5">array_walk($a, 'callback_function');</span><br /><br /><span class="ts5">$a = array_unique($a);</span><br /><br /><span class="ts5">$keys&nbsp;&nbsp;&nbsp; = array_keys($a);</span><br /><span class="ts5">$indices = array_keys($a, 'key value');</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Get Length</span></p>
+<p class="ps9"><span class="ts5">echo count($list);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">List for</span></p>
+<p class="ps9"><span class="ts5">for($i = 0; $i &lt; count($list); $i++) {</span><br /><span class="ts5">	echo &quot;$i: $list[$i]\n&quot;;</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Iterating Arrays</span></p>
+<p class="ps5"><span class="ts2">List foreach</span></p>
+<p class="ps9"><span class="ts5">foreach($list as $element) {</span><br /><span class="ts5">	print &quot;$element\n&quot;;</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Hash foreach</span></p>
+<p class="ps11"><span class="ts5">foreach($hash as $key =&gt; $value) {</span><br /><span class="ts5">	print &quot;$key =&gt; $value\n&quot;;</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

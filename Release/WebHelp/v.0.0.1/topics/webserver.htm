@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Webserver</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 880;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">PHP</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Setting up a PHP debugger</span></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="/articles/apd-setup.htm" class="hs0">APD</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><a href="http://devzone.zend.com/1147/debugging-php-applications-with-xdebug/" class="hs0">XDebug</a></p>
+<p class="ps22"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">PHP - How to build Debian package for modules from PECL</span></p>
+<p class="ps2"><span class="ts8">apt-get install dh-make-php</span><br /><span class="ts8">dh-make-pecl &lt;module name&gt;</span><br /><span class="ts8">cd &lt;source directory&gt;</span><br /><span class="ts8">debuild</span><br /><span class="ts8"># .deb package will be in ...</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">PHP - Manual module compiling</span></p>
+<p class="ps2"><span class="ts8"># Ensure we see correct PHP</span><br /><span class="ts8">export PATH=/usr/local/php5.7:$PATH</span><br /><span class="ts8">cd &lt;module source dir&gt;</span><br /><span class="ts8">phpize</span><br /><span class="ts8">make</span><br /><span class="ts8">sudo make install</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">PHP - PECL package management</span></p>
+<p class="ps1"><span class="ts8">pecl list</span><br /><span class="ts8">pecl list-files &lt;name&gt;</span><br /><span class="ts8">pecl info &lt;name&gt;</span><br /><br /><span class="ts8">pecl install &lt;name&gt;</span><br /><span class="ts8">pecl install &lt;name&gt;-&lt;version&gt;</span><br /><span class="ts8">pecl uninstall &lt;name&gt;</span><br /><br /><span class="ts8">pecl list-upgrades</span><br /><span class="ts8">pecl upgrade &lt;name&gt;</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Rails</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://blog.scoutapp.com/articles/2009/12/08/production-rails-tuning-with-passenger-passengermaxprocesses" class="hs0">Passenger Tuning</a></p>
+<p class="ps7"><span class="ts3">memcached</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">&lt;?add topic='memcached'?&gt;</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://search.cpan.org/~dmaki/Memcached-libmemcached-0.4202/src/libmemcached/docs/memdump.pod" class="hs0">memcached - Key Dump Tool &quot;memdump&quot;</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.mikeperham.com/2009/01/14/consistent-hashing-in-memcache-client/" class="hs0">memcached - Persistent Hashing</a><span class="ts2">: How to survive server failures without the whole cluster degrading. Of course applies to any cache.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">memcachedb - Log Archiving: To clean unused memcachedb logs open a telnet session and run</span></p>
+<p class="ps2"><span class="ts8">db_archive</span><br />&nbsp;</p>
+<p class="ps1"><span class="ts2">to clean unused log files</span></p>
+<p class="ps7"><span class="ts3">CDN</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/" class="hs0">Linux HTTP/TCP Tuning for initcwnd</a></p>
+<p class="ps2"><span class="ts8">ip route change default via &lt;gateway&gt; dev eth0 initcwnd 10</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">consider also to increase net.ipv4.tcp_wmem[1]</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.cdnplanet.com/blog/initcwnd-settings-major-cdn-providers/" class="hs0">initcwnd settings used by different CDNs</a></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Alexa Pagerank API</span></p>
+<p class="ps2"><span class="ts8">http://data.alexa.com/data?cli=10&amp;url=$DOMAIN</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://developer.mozilla.org/en-US/docs/Controlling_DNS_prefetching" class="hs0">DNS Prefetching HTML</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8"># Turning it on/off globally</span><br /><span class="ts8">&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;off&quot;&gt;</span><br /><br /><span class="ts8"># Turning it on per-domain</span><br /><span class="ts8">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://www.spreadfirefox.com/&quot;&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.debian-administration.org/article/709/Using_the_haproxy_load-balancer_for_increased_availability" class="hs0">Setting up HAProxy</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Prevent out of ports on high traffic webserver due to FIN_WAIT and other issues:</span></p>
+<p class="ps2"><span class="ts8"># Ensure to maximize available ports</span><br /><span class="ts8">cat /proc/sys/net/ipv4/ip_local_port_range</span><br /><span class="ts8">echo 1024 65535 &gt;/proc/sys/net/ipv4/ip_local_port_range</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">and set sockets to reuse</span></p>
+<p class="ps2"><span class="ts8"># sysctl -p</span><br /><span class="ts8">net.ipv4.tcp_tw_reuse = 1</span><br /><span class="ts8">net.ipv4.tcp_tw_recycle = 1</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/gilt/gatling" class="hs0">gatling</a><span class="ts2">&nbsp;- HTTP stress testing</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://wiki.eclipse.org/Jetty/Howto/High_Load#TCP_Buffer_Sizes" class="hs0">Jetty Tuning</a></p>
+<p class="ps13"><span style="font-family: 'Courier New'; font-size: 10pt; color: Black">o</span><span style="display: inline-block; width: 22px"></span><span class="ts2">Network sysctl settings</span></p>
+<p class="ps22"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Start Rack Applications</span></p>
+<p class="ps2"><span class="ts8">cd $ROOT</span><br /><span class="ts8">rackup config.ru</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Phusion Passenger</span></p>
+<p class="ps2"><span class="ts8">passenger-status</span><br /><span class="ts8">passenger-memory-stats</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">[Squid - Quick Test Proxy Setup](blog/How to Quickly Set up Squid)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Wordpress - Hardening Scanner </span><a href="https://github.com/wpscanteam/wpscan" class="hs0">wpscan</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Determine redirect URLs</span></p>
+<p class="ps2"><span class="ts8">curl -Ls -w %{url_effective} -o /dev/null &lt;URL&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://css-tricks.com/favicon-quiz/" class="hs0">Favicon Standards</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://realfavicongenerator.net/" class="hs0">Favicon Generator / Checker</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

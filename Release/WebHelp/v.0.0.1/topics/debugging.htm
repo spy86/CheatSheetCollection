@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Debugging</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 310;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Debugging / Performance Tools</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">List last reboots</span></p>
+<p class="ps2"><span class="ts8">last reboot</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Reboot when /sbin is unusable</span></p>
+<p class="ps2"><span class="ts8">echo b &gt;/proc/sysrq-trigger</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">List Context Switches per Process</span></p>
+<p class="ps2"><span class="ts8">pidstat -w</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Drop Filesystem Cache</span></p>
+<p class="ps2"><span class="ts8">echo 1 &gt; /proc/sys/vm/drop_caches</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disk Performance Test</span></p>
+<p class="ps2"><span class="ts8">hdparm -tT /dev/...</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://rajar.am/post/555326598/identifying-process-causing-lots-of-iowait" class="hs0">dmesg - block IO debugging</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">echo 1 &gt; /proc/sys/vm/block_dump</span><br /><br /><span class="ts8"># wait some time...</span><br /><span class="ts8">echo 0 &gt; /proc/sys/vm/block_dump</span><br /><br /><span class="ts8"># Now check syslog for block dump lines</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Check for changed sysctl() settings:</span></p>
+<p class="ps2"><span class="ts8">sysctl -p</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.enigma.id.au/linux_tuning.txt" class="hs0">Tuning sysctl for busy large server</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/" class="hs0">TCP/IP tuning for scaling</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Increase max connection settings</span></p>
+<p class="ps2"><span class="ts8">sysctl -w net.core.somaxconn=1024</span><br /><span class="ts8">sysctl -w net.core.netdev_max_backlog=16000</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">SYN flood protection: Count connections</span></p>
+<p class="ps2"><span class="ts8">netstat -n -p TCP | grep SYN_RECV | grep $port | wc -l</span><br /><span class="ts8">netstat -s -P tcp | grep tcpHalfOpenDrop</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">and change settings</span></p>
+<p class="ps2"><span class="ts8">sysctl -w net.ipv4.tcp_syncookies=1&nbsp;&nbsp;&nbsp;&nbsp; # Set enabled</span><br /><span class="ts8">sysctl -w net.ipv4.tcp_max_syn_backlog=8192 # Increase as needed</span><br /><span class="ts8">sysctl -w net.ipv4.tcp_fin_timeout=30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Lower timeout as needed</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt" class="hs0">HTP Support Docs</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">sysctl -a | grep hugepage</span><br /><span class="ts8">cat /proc/meminfo | grep HugePage</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Enable OOM killer:</span></p>
+<p class="ps2"><span class="ts8">sysctl vm.overcommit_memory=0</span><br /><span class="ts8">sysctl vm.oom_kill_allocating_task=1</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disable OOM killer:</span></p>
+<p class="ps2"><span class="ts8">sysctl vm.overcommit_memory=2</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/blog/Filtering+dmesg+Output" class="hs0">dmesg - Filtering Output</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">dmesg -T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Enable human readable timestamps</span><br /><span class="ts8">dmesg -x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Show facility and log level</span><br /><span class="ts8">dmesg -f daemon&nbsp;&nbsp;&nbsp;&nbsp; # Filter for facility daemon</span><br /><span class="ts8">dmesg -l err,crit,alert,emerg # Filter for errors</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://prefetch.net/blog/index.php/2009/07/01/listing-file-system-lock-files-on-linux-hosts/" class="hs0">lslk - Find file locks</a><span class="ts2">: Use lslk to find which PID is blocking an flock() to a file.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://danielmiessler.com/study/lsof/" class="hs0">lsof</a><span class="ts2">&nbsp;- Find owners of open file handles:</span></p>
+<p class="ps2"><span class="ts8">lsof&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Complete list</span><br /><span class="ts8">lsof -i :22&nbsp;&nbsp;&nbsp; # Filter single TCP port</span><br /><span class="ts8">lsof [email protected]:22 # Filter single connection endpoint</span><br /><span class="ts8">lsof -u &lt;user&gt;&nbsp;&nbsp; # Filter per user</span><br /><span class="ts8">lsof -c &lt;name&gt;&nbsp;&nbsp; # Filter per process name</span><br /><span class="ts8">lsof -p 12345&nbsp;&nbsp;&nbsp; # Filter by PID</span><br /><span class="ts8">lsof /etc/hosts&nbsp;&nbsp; # Filter single file</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://perf.wiki.kernel.org/articles/t/u/t/Tutorial.html" class="hs0">Perf Tutorial</a><span class="ts2">: 2.6+ generic kernel performance statistics tool.</span></p>
+<p class="ps2"><span class="ts8">perf stat -B some_command</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://dag.wieers.com/home-made/dstat/" class="hs0">dstat</a><span class="ts2">: Replaces vmstat, iostat, netstat and ifstat and allows to determine PID that is most CPU and most I/O expensive</span></p>
+<p class="ps2"><span class="ts8">dstat -a --top-bio --top-cpu</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://guichaz.free.fr/iotop/" class="hs0">iotop</a><span class="ts2">: Python script to monitor I/O like top</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/draios/sysdig/wiki/Sysdig%20Examples" class="hs0">Sysdig</a><span class="ts2">: Some of the project examples</span></p>
+<p class="ps2"><span class="ts8">sysdig fd.name contains /etc</span><br /><span class="ts8">sysdig -c topscalls_time&nbsp;&nbsp;&nbsp; # Top system calls</span><br /><span class="ts8">sysdig -c topfiles_time proc.name=httpd&nbsp;&nbsp;&nbsp; # Top files by process</span><br /><span class="ts8">sysdig -c topfiles_bytes&nbsp;&nbsp;&nbsp;&nbsp; # Top I/O per file</span><br /><span class="ts8">sysdig -c fdcount_by fd.cip &quot;evt.type=accept&quot;&nbsp;&nbsp; # Top connections by IP</span><br /><span class="ts8">sysdig -c fdbytes_by fd.cip&nbsp; # Top bytes per IP</span><br /><br /><span class="ts8"># Monitor directory</span><br /><span class="ts8">sysdig evt.type=open and fd.name contains /var/</span><br /><br /><span class="ts8"># Monitor latency &gt;1ms</span><br /><span class="ts8">sysdig -c fileslower 1</span><br /><br /><span class="ts8"># Track I/O of a process</span><br /><span class="ts8">sysdig -A -c echo_fds proc.name=httpd</span><br /><br /><span class="ts8"># Sick MySQL check via Apache</span><br /><span class="ts8">sysdig -A -c echo_fds fd.sip=192.168.30.5 and proc.name=apache2 and evt.buffer contains SELECT</span><br /><br /><span class="ts8">sysdig -cl # List plugins</span><br /><span class="ts8">sysdig -c bottlenecks&nbsp; # Run bottlenecks plugin</span><br /><br /><span class="ts8"># To install sysdig</span><br /><span class="ts8">curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash</span><br />&nbsp;</p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

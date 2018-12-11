@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Maven</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 210;
+</script>
+</head>
+<body>
+<p class="ps18"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://maven.apache.org/pom.html" class="hs0">POM Syntax</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.sonatype.org/nexus/" class="hs0">Sonatype Nexus</a><span class="ts2">: self-hosting a Maven repository</span></p>
+<p class="ps7"><span class="ts3">Commands</span></p>
+<p class="ps5"><span class="ts2">General command structure</span></p>
+<p class="ps9"><span class="ts5">mvn -P&lt;profile&gt; &lt;command&gt; &lt;scope&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Simple stuff</span></p>
+<p class="ps9"><span class="ts5">mvn help</span><br /><span class="ts5">mvn compile</span><br /><span class="ts5">mvn validate</span><br /><span class="ts5">mvn verify</span><br /><span class="ts5">mvn test</span><br /><span class="ts5">mvn clean </span><br /><span class="ts5">mvn clean package</span><br /><span class="ts5">mvn clean install</span><br /><span class="ts5">mvn clean deploy</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Artifacts</span></p>
+<p class="ps9"><span class="ts5">mvn archetype:create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Create pom.xml</span><br /><br /><span class="ts5">mvn archetype:create -DgroupId=&lt;group&gt; \&nbsp;&nbsp;&nbsp;&nbsp; # Create JAR</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -DartifactId=&lt;new id&gt;</span><br /><br /><span class="ts5">mvn archetype:create -DgroupId=&lt;group&gt; \&nbsp;&nbsp;&nbsp;&nbsp; # Create WAR</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -DartifactId=&lt;new id&gt; \</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -DarchetypeArtifactId=maven-archetype-webapp</span><br /><br /><span class="ts5">mvn install:install-file &lt;params&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Install dependencies</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Releasing</span></p>
+<p class="ps9"><span class="ts5">mvn deploy:deploy-file &lt;params ...&gt;</span><br /><br /><span class="ts5"># Useful release options:</span><br /><span class="ts5">#</span><br /><span class="ts5">#&nbsp;&nbsp;&nbsp; -P &lt;profile&gt;</span><br /><span class="ts5">#&nbsp;&nbsp;&nbsp; -Dusername=&lt;user&gt;</span><br /><span class="ts5">#&nbsp;&nbsp;&nbsp; -Dpassword=&lt;password&gt;</span><br /><span class="ts5">#</span><br /><span class="ts5">mvn release:prepare</span><br /><span class="ts5">mvn release:clean</span><br /><span class="ts5">mvn release:perform</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Tomcat Plugin</span></p>
+<p class="ps9"><span class="ts5">mvn tomcat:deploy</span><br /><span class="ts5">mvn tomcat:redeploy</span><br /><span class="ts5">mvn tomcat:undeploy</span><br /><span class="ts5">mvn tomcat:stop</span><br /><span class="ts5">mvn tomcat:start</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">IDE integration</span></p>
+<p class="ps11"><span class="ts5">mvn -Declipse.workspace=&lt;path&gt; eclipse:add-maven-repo</span><br /><span class="ts5">mvn eclipse:eclipse</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

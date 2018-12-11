@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>SSH</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 570;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">OpenSSH Commands</span></p>
+<p class="ps5"><span class="ts2">Copy Keys</span></p>
+<p class="ps9"><span class="ts5">ssh-copy-id [-i keyfile] [email protected]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">100% non-interactive SSH: What parameters to use to avoid any interaction.</span></p>
+<p class="ps9"><span class="ts5">ssh -i my_priv_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no </span><br /><span class="ts5">-o PreferredAuthentications=publickey [email protected] -n &quot;/bin/ls&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Using SSH Agent</span></p>
+<p class="ps9"><span class="ts5">eval $(ssh-agent)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Start agent on demand</span><br /><br /><span class="ts5">ssh-add -l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List keys</span><br /><span class="ts5">ssh-add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Add default key</span><br /><span class="ts5">ssh-add ~/.ssh/id_rsa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Add specific key</span><br /><span class="ts5">ssh-add -t 3600 ~/.ssh/id_rsa&nbsp;&nbsp; # Add with timeout</span><br /><span class="ts5">ssh-add -D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Drop keys</span><br /><br /><span class="ts5">ssh -A ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Enforce agent forwarding</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><a href="http://sshmenu.sourceforge.net/articles/transparent-mulithop.html" class="hs0">Transparent Multi-Hop</a></p>
+<p class="ps9"><span class="ts5">ssh host1 -A -t host2 -A -t host3 ...</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><a href="http://magicmonster.com/kb/net/ssh/socks_proxy.html" class="hs0">How to use a SOCKS Proxy</a></p>
+<p class="ps5"><span class="ts2">On the client start proxy by</span></p>
+<p class="ps9"><span class="ts5">ssh -D &lt;port&gt; &lt;remote host&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Extract Public Key from Private Key</span></p>
+<p class="ps5"><span class="ts2">Use ssh-keygen</span></p>
+<p class="ps9"><span class="ts5">ssh-keygen -y -f ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa.pub</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">ssh_config</span></p>
+<p><span class="ts2">Read the </span><a href="http://www.eng.cam.ac.uk/help/jpmg/ssh/authorized_keys_howto.html" class="hs0">authorized_keys HowTo</a><span class="ts2">&nbsp;to learn about syntax and options...</span></p>
+<p class="ps8"><span class="ts4">Per Host Keys</span></p>
+<p class="ps9"><span class="ts5">Host example.com</span><br /><span class="ts5">IdentityFile ~/.ssh/example.com_id_rsa</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Agent Forwarding</span></p>
+<p class="ps5"><a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html" class="hs0">Agent Forwarding</a><span class="ts2">&nbsp;explained with pictures! Configured in /etc/ssh_config with</span></p>
+<p class="ps9"><span class="ts5">Host *</span><br /><span class="ts5">ForwardAgent yes</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Multiplexing Connections</span></p>
+<p class="ps5"><span class="ts2">This is done using a &quot;ControlMaster&quot;. This means the first SSH sessions connection will be used for all following ones saving you the connection overhead. </span><span class="ts4">Note:</span><span class="ts2">&nbsp;when you kill the first connection, all connections will die! Also the first connection won't terminate even if you request it to.</span></p>
+<p class="ps5"><span class="ts2">Create ~/.ssh/tmp before using below snippet</span></p>
+<p class="ps9"><span class="ts5">ControlMaster auto</span><br /><span class="ts5">ControlPath /home/&lt;user name&gt;/.ssh/tmp/%h_%p_%r</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">If you are using such an SSH configuration and want a real new connection add &quot;-S&quot; to the ssh invocation.</span></p>
+<p class="ps8"><span class="ts4">Use Gateway/Jumphost</span></p>
+<p class="ps5"><span class="ts2">You can configure jumphosts using ProxyCommand and netcat:</span></p>
+<p class="ps9"><span class="ts5">Host unreachable_host</span><br /><span class="ts5">&nbsp; ProxyCommand ssh -e none gateway_host exec nc %h %p</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Automatic Jump Host Proxying</span></p>
+<p class="ps9"><span class="ts5">Host &lt;your jump host&gt;</span><br /><span class="ts5">&nbsp; ForwardAgent yes</span><br /><span class="ts5">&nbsp; Hostname &lt;your jump host&gt;</span><br /><span class="ts5">&nbsp; User &lt;your user name on jump host&gt;</span><br /><br /><span class="ts5"># Note the server list can have wild cards, e.g. &quot;webserver-* database*&quot;</span><br /><span class="ts5">Host &lt;server list&gt;</span><br /><span class="ts5">&nbsp; ForwardAgent yes</span><br /><span class="ts5">&nbsp; User &lt;your user name on all these hosts&gt;</span><br /><span class="ts5">&nbsp; ProxyCommand ssh -q &lt;your jump host&gt; nc -q0 %h 22</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Automatic Port Knocking</span></p>
+<p class="ps9"><span class="ts5">Host myserver</span><br /><span class="ts5">&nbsp;&nbsp; User myuser</span><br /><span class="ts5">&nbsp;&nbsp; Host myserver.com</span><br /><span class="ts5">&nbsp;&nbsp; ProxyCommand bash -c '/usr/bin/knock %h 1000 2000 3000 4000; sleep 1; exec /bin/nc %h %p'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Troubleshooting</span></p>
+<p class="ps8"><span class="ts4">Pseudo-terminal will not be allocated...</span></p>
+<p><span class="ts2">This happens when piping shell commands through SSH. Try adding &quot;-T&quot; or &quot;-t -t&quot; when doing sudo.</span></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://jeff.robbins.ws/articles/setting-the-umask-for-sftp-transactions" class="hs0">SFTP chroot with umask</a><span class="ts2">: How to enforce a umask with SFTP</span></p>
+<p class="ps2"><span class="ts8">Subsystem sftp /usr/libexec/openssh/sftp-server -u 0002</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Parallel SSH on Debian</span></p>
+<p class="ps2"><span class="ts8">apt-get install pssh</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">and use it like this</span></p>
+<p class="ps2"><span class="ts8">pssh -h host_list.txt &lt;command&gt;</span><br /><span class="ts8">pssh -i -t 60 -h host_list.txt -- &lt;command&gt;&nbsp;&nbsp; # 60s timeout, list output</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Clustered SSH on Debian</span></p>
+<p class="ps2"><span class="ts8">apt-get install clusterssh</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">and use it like this</span></p>
+<p class="ps2"><span class="ts8">cssh server1 server2</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Vim Remote File Editing:</span></p>
+<p class="ps2"><span class="ts8">vim scp:[email protected]//some/directory/file.txt</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://web.monkeysphere.info/" class="hs0">MonkeySphere</a><span class="ts2">: Use GPG keys with SSH agent</span></p>
+<p class="ps1"><span class="ts8">monkeysphere subkey-to-ssh-agent -t 3600</span><br />&nbsp;</p>
+<p class="ps8"><span class="ts4">Port Knocking</span></p>
+<p class="ps5"><span class="ts2">Setup server:</span></p>
+<p class="ps9"><span class="ts5">apt-get install knockd iptables-persistent</span><br /><br /><span class="ts5"># Change sequence numbers in /etc/knockd.conf</span><br /><span class="ts5"># Default is sequence&nbsp;&nbsp;&nbsp; = 7000,8000,9000</span><br /><br /><span class="ts5"># set START_KNOCKD=1 in /etc/default/knockd</span><br /><br /><span class="ts5">service knockd start</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Use from client</span></p>
+<p class="ps9"><span class="ts5">knock &lt;server&gt; &lt;sequence&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">e.g.</span></p>
+<p class="ps9"><span class="ts5">knock example.com 7000 8000 9000</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">&quot;Secret&quot; Hot Keys</span></p>
+<p class="ps5"><span class="ts2">SSH Escape Key: Pressing &quot;~?&quot; (directly following a newline) gives a menu for escape sequences:</span></p>
+<p class="ps9"><span class="ts5">Supported escape sequences:</span><br /><span class="ts5">&nbsp; ~.&nbsp; - terminate connection (and any multiplexed sessions)</span><br /><span class="ts5">&nbsp; ~B&nbsp; - send a BREAK to the remote system</span><br /><span class="ts5">&nbsp; ~C&nbsp; - open a command line</span><br /><span class="ts5">&nbsp; ~R&nbsp; - Request rekey (SSH protocol 2 only)</span><br /><span class="ts5">&nbsp; ~^Z - suspend ssh</span><br /><span class="ts5">&nbsp; ~#&nbsp; - list forwarded connections</span><br /><span class="ts5">&nbsp; ~&amp;&nbsp; - background ssh (when waiting for connections to terminate)</span><br /><span class="ts5">&nbsp; ~?&nbsp; - this message</span><br /><span class="ts5">&nbsp; ~~&nbsp; - send the escape character by typing it twice</span><br /><span class="ts5">(Note that escapes are only recognized immediately after newline.)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">SSHFS</span></p>
+<p class="ps5"><span class="ts2">To mount a remote home dir</span></p>
+<p class="ps9"><span class="ts5">&nbsp;sshfs [email protected]: /mnt/home/user/</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Unmount again with</span></p>
+<p class="ps11"><span class="ts5">fuserumount -u /mnt/home/user</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

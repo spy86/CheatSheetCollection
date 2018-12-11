@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>ShellScripting</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1670;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">See Also:</span></p>
+<p class="ps15"><span class="ts3">Date Handling</span></p>
+<p class="ps8"><span class="ts4">Convert Date To Unix Timestamp</span></p>
+<p class="ps9"><span class="ts5">date -d &quot;$date&quot; +%s</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note that this only works for American style dates. European &quot;25.06.2014&quot; like dates are not supported. The simple solution is to convert them first to &quot;2014-06-25&quot; for example with</span></p>
+<p class="ps9"><span class="ts5">sed 's/\([0-9]*\)\.\([0-9]*\)\.([0-9]*\)/\3-\2-\1/'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Convert From Unix Timestamp</span></p>
+<p class="ps9"><span class="ts5">date -d &quot;1970-01-01 1234567890 sec GMT&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Calculate Last Day of Month</span></p>
+<p class="ps5"><span class="ts2">Found </span><a href="http://delicious.com/redirect?url=http://www.unix.com/shell-programming-scripting/21877-how-get-month-last-date-unix.html" class="hs0">here</a><span class="ts2">:</span></p>
+<p class="ps9"><span class="ts5">cal $(date &quot;+%M %y&quot;) | grep -v ^$ | tail -1 | sed 's/^.* \([0-9]*\)$/\1/'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Lock Files</span></p>
+<p class="ps5"><span class="ts2">Using &quot;flock&quot;:</span></p>
+<p class="ps9"><span class="ts5">flock /tmp/myapp.lock &lt;some command&gt;</span><br /><span class="ts5">flock -w 10 /tmp/myapp.lock &lt;some command&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Using &quot;lockfile-*&quot; commands:</span></p>
+<p class="ps9"><span class="ts5">lockfile-create /tmp/myapp.lock</span><br /><span class="ts5">lockfile-touch&nbsp; /tmp/myapp.lock</span><br /><span class="ts5">lockfile-remove /tmp/myapp.lock</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Parameter Handling</span></p>
+<p class="ps8"><span class="ts4">getopt</span></p>
+<p class="ps5"><span class="ts2">getopt is a standalone command, supporting GNU style long parameters and parameters mixed with options and can be used like this</span></p>
+<p class="ps9"><span class="ts5">PARAMS=`getopt -o a::bc: --long arga::,argb,argc: -n 'myscript.sh' -- &quot;$@&quot;`</span><br /><span class="ts5">eval set -- &quot;$PARAMS&quot;</span><br /><br /><span class="ts5">while true ; do</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; case &quot;$1&quot; in</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -a|--arga)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case &quot;$2&quot; in</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;) ARG_A='some default value' ; shift 2 ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *) ARG_A=$2 ; shift 2 ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esac ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -b|--argb) ARG_B=1 ; shift ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c|--argc)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case &quot;$2&quot; in</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;) shift 2 ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *) ARG_C=$2 ; shift 2 ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esac ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --) shift ; break ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *) echo &quot;Unknown option!&quot; ; exit 1 ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; esac</span><br /><span class="ts5">done</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">getopts</span></p>
+<p class="ps5"><span class="ts2">getopts is shell-builtin</span></p>
+<p class="ps9"><span class="ts5">while getopts &quot;:ap:&quot; opt; do</span><br /><span class="ts5">&nbsp; case $opt in</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; a)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;Option -a ist set&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; p)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;Parameter -p is given with value '$OPTARG'&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; \?)</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;Unknown option: -$OPTARG&quot;</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;;</span><br /><span class="ts5">&nbsp; esac</span><br /><span class="ts5">done</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">shflags - portable getotps</span></p>
+<p class="ps5"><span class="ts2">If you ever need to port between different Unix derivates use </span><a href="https://code.google.com/p/shflags/" class="hs0">shflags</a><span class="ts2">&nbsp;a Google library providing standard parameter handling. Example:</span></p>
+<p class="ps9"><span class="ts5">source shflags</span><br /><br /><span class="ts5">DEFINE_string 'value' '0' 'an example value to pass with default value &quot;0&quot;' 'v'</span><br /><br /><span class="ts5">FLAGS &quot;$@&quot; || exit $?</span><br /><span class="ts5">eval set -- &quot;${FLAGS_ARGV}&quot;</span><br /><br /><span class="ts5">echo &quot;${FLAGS_value}!&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Other Topics</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/koalaman/shellcheck" class="hs0">Shell Linting</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.panix.com/~kylet/unix-att.html" class="hs0">Mail Attachments</a><span class="ts2">: Dozens of variants to send mail attachments using Unix tools.</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://lzone.de/follow+file+with+tail+until+removed" class="hs0">tail -f until removed</a><span class="ts2">: When you want to tail a file until it gets removed</span></p>
+<p class="ps2"><span class="ts8">tail --follow=name myfile</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/how+to+join+CSV+Files" class="hs0">join - DB-like joining of CSV files</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">join -o1.2,2.3 -t &quot;;&quot; -1 1 -2 2 employee.csv tasks.csv</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">(Note: works only on CSVs without quotes or multi-line strings)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/geoffroy-aubry/awk-csv-parser" class="hs0">awk-based CSV Parser</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">list all commands:</span></p>
+<p class="ps2"><span class="ts8">compgen -c |sort -u</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Check for interactive terminal: Run &quot;tty&quot; in silent mode and check the exit code</span></p>
+<p class="ps2"><span class="ts8">tty -s</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/node/23" class="hs0">ANSI color matrix</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Sorting column: Use the -k switch of &quot;sort&quot; to sort lines by a column. E.g.</span></p>
+<p class="ps2"><span class="ts8">cat access.log | sort -k 1</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.commandlinefu.com/commands/tagged/583/watch" class="hs0">watch</a><span class="ts2">: wait for file/directory changes and run a command</span></p>
+<p class="ps2"><span class="ts8">watch -d ls -l</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://unix.stackexchange.com/questions/25372/turn-off-buffering-in-pipe" class="hs0">Unbuffer Output</a><span class="ts2">:</span></p>
+<p class="ps2"><span class="ts8">stdbuf -i0 -o0 -e0 &lt;some command&gt;&nbsp; # Best solution</span><br /><br /><span class="ts8">unbuffer &lt;some command&gt;&nbsp;&nbsp;&nbsp;&nbsp; # Wrapper script from expect</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/apply+limits+immediately" class="hs0">Apply ulimit change in /etc/security/limits.conf immediately</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/Debian+Ubuntu+ulimit+Check+List" class="hs0">ulimit check list</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/Ubuntu+Apache+and+ulimit" class="hs0">ulimit change Apache limits</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="/Nagios%20Check%20Plugin%20for%20nofile%20Limit" class="hs0">ulimit Nagios Check Plugin</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">dos2unix with vi:</span></p>
+<p class="ps2"><span class="ts8">:%s/^V^M//g</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Resolving any file path to absolute path</span></p>
+<p class="ps2"><span class="ts8">readlink -e &lt;file path&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span class="ts2">or use</span></p>
+<p class="ps2"><span class="ts8">pwd -P</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Timeouts in shell:</span></p>
+<p class="ps2"><span class="ts8">timeout &lt;nr seconds&gt; &lt;cmd&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Convert encodings (HTTP URI encoding, HTML entity encoding...)</span></p>
+<p class="ps2"><span class="ts8">recode ascii..html</span><br /><span class="ts8">recode html..ascii</span><br />&nbsp;</p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

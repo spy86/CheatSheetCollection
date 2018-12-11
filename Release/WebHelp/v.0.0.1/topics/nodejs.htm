@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Nodejs</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 790;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Node.js</span></p>
+<p class="ps5"><span class="ts2">Execute script</span></p>
+<p class="ps9"><span class="ts5">node &lt;script file&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">NPM</span></p>
+<p><span class="ts2">Node Package Manager</span></p>
+<p class="ps7"><span class="ts3">Commands</span></p>
+<p class="ps9"><span class="ts5">npm list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Show packages in local path</span><br /><span class="ts5">npm list -g&nbsp;&nbsp;&nbsp;&nbsp; # Show global packages</span><br /><span class="ts5">npm list -g -p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Show global packages, parseble list</span><br /><br /><span class="ts5">npm view &lt;package&gt;</span><br /><br /><span class="ts5">npm install &lt;package&gt;[@&lt;version&gt;]</span><br /><span class="ts5">npm uninstall &lt;package&gt;[@&lt;version&gt;]</span><br /><span class="ts5">npm rm &lt;package&gt;</span><br /><br /><span class="ts5">npm search &lt;something&gt;</span><br /><br /><span class="ts5">npm link &lt;package&gt;&nbsp;&nbsp;&nbsp; # Link global package into user env</span><br /><span class="ts5">npm unlink &lt;package&gt;</span><br /><br /><span class="ts5">npm link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Link package into global env (when in package dir)</span><br /><span class="ts5">npm unlink</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Development</span></p>
+<p class="ps9"><span class="ts5">npm init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Create new package</span><br /><br /><span class="ts5">npm publish</span><br /><span class="ts5">npm unpublish &lt;package&gt;</span><br /><br /><span class="ts5">npm adduser</span><br /><br /><span class="ts5">npm owner add &lt;user&gt; &lt;package&gt;</span><br /><span class="ts5">npm owner rm &lt;user&gt; &lt;package&gt;</span><br /><span class="ts5">npm owner ls &lt;package&gt;</span><br /><br /><span class="ts5">npm start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Start an app</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Misc:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/" class="hs0">NPM global vs locally installed modules</a></p>
+<p class="ps0"><span class="ts0">n Commands</span></p>
+<p class="ps5"><span class="ts2">Node Version Manager</span></p>
+<p class="ps9"><span class="ts5">npm install n</span><br /><br /><span class="ts5">n help</span><br /><span class="ts5">n ls</span><br /><span class="ts5">n &lt;version&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Install version</span><br /><span class="ts5">n use &lt;version&gt;</span><br /><span class="ts5">n bin &lt;version&gt;&nbsp;&nbsp; # Print bin path</span><br /><span class="ts5">n rm &lt;version&gt;</span><br /><span class="ts5">n --latest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Print latest version</span><br /><span class="ts5">n --stable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Print latest stable</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">PM2 Commands</span></p>
+<p class="ps5"><span class="ts2">PM2 Process Manager</span></p>
+<p class="ps9"><span class="ts5">pm2 log</span><br /><span class="ts5">pm2 flush</span><br /><br /><span class="ts5">pm2 list</span><br /><span class="ts5">pm2 kill</span><br /><span class="ts5">pm2 &lt;start|stop|restart|reload&gt; &lt;all|id|app_name&gt;</span><br /><span class="ts5">pm2 describe &lt;id&gt;</span><br /><span class="ts5">pm2 monit</span><br /><br /><span class="ts5">pm2 prettylist&nbsp;&nbsp;&nbsp; # For complete JSON process infos including</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # memory, CPU, restart, latency metrics</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Install PM2 as Systemd service:</span></p>
+<p class="ps9"><span class="ts5">sudo pm2 startup systemd</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Monitoring</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/etsy/statsd" class="hs0">Etsy Statsd</a></p>
+<p class="ps0"><span class="ts0">Node.js Enterprise Support</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://codewinds.com/assets/article/battle-ready-hardening-nodejs-enterprise.pdf" class="hs0">Running Node.js at enterprise level</a><span class="ts2">&nbsp;(slides, PDF)</span></p>
+<p class="ps0"><span class="ts0">Node.js with self-signed certs</span></p>
+<p class="ps5"><span class="ts2">Accept self-signed certs: set env variable</span></p>
+<p class="ps9"><span class="ts5">export NODE_TLS_REJECT_UNAUTHORIZED=0</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">or in your code set</span></p>
+<p class="ps11"><span class="ts5">process.env.NODE_TLS_REJECT_UNAUTHORIZED = &quot;0&quot;;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

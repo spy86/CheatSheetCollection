@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>etcd</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 660;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">CLI Commands</span></p>
+<p class="ps5"><span class="ts2">Cluster infos</span></p>
+<p class="ps9"><span class="ts5">etcdctl ls&nbsp; /_etc/machines --recursive&nbsp;&nbsp;&nbsp; # List all known hosts</span><br /><span class="ts5">etcdctl get /_etc/machines/&lt;token&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Details of a host</span><br /><span class="ts5">etcdctl get /_etc/config</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Accessing the key space</span></p>
+<p class="ps9"><span class="ts5">etcdctl ls /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get top-level keys</span><br /><span class="ts5">etcdctl ls / --recursive&nbsp; # Get full tree</span><br /><br /><span class="ts5">etcdctl get &lt;key path&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get key details</span><br /><span class="ts5">etcdctl get &lt;key path&gt; --print-value-only&nbsp;&nbsp; # Get key value only</span><br /><span class="ts5">etcdctl get &lt;key path&gt; --rev=&lt;number&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get older revision of a key</span><br /><span class="ts5">etcdctl -o extended get &lt;key path&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get key and metadata</span><br /><span class="ts5">etcdctl get &lt;key path&gt; -w=json&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Output in JSON with metadata</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Batch queries</span></p>
+<p class="ps9"><span class="ts5">etcdctl get key1 key10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get all keys key1, key2, key3, ..., key10</span><br /><span class="ts5">etcdctl get --prefix key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get all keys matching ^key</span><br /><span class="ts5">etcdctl get --prefix key --limit=10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Get max 10 keys matching ^key</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Creating a path</span></p>
+<p class="ps9"><span class="ts5">etcdctl mkdir /newpath</span><br /><span class="ts5">etcdctl rmdir /newpath&nbsp;&nbsp;&nbsp;&nbsp; # Removes only empty paths</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Manipulate keys</span></p>
+<p class="ps9"><span class="ts5">etcdctl mk&nbsp;&nbsp;&nbsp;&nbsp; /path/newkey some-data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Create key</span><br /><span class="ts5">etcdctl set&nbsp;&nbsp;&nbsp; /path/newkey some-data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Create or update key</span><br /><span class="ts5">etcdctl update /path/key new-data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Update key</span><br /><span class="ts5">etcdctl put&nbsp;&nbsp;&nbsp; /path/key new-data</span><br /><span class="ts5">etcdctl rm&nbsp;&nbsp;&nbsp;&nbsp; /path/key</span><br /><span class="ts5">etcdctl rm&nbsp;&nbsp;&nbsp;&nbsp; /path --recursive</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Make data and paths expire by passing --ttl when creating paths</span></p>
+<p class="ps9"><span class="ts5">etcdctl mkdir&nbsp;&nbsp;&nbsp;&nbsp; /path --ttl 120&nbsp;&nbsp;&nbsp;&nbsp; # Path with expiration</span><br /><span class="ts5">etcdctl updatedir /path --ttl 120&nbsp;&nbsp;&nbsp;&nbsp; # Reset path expiration</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Monitoring paths</span></p>
+<p class="ps9"><span class="ts5">etcdctl watch /path</span><br /><span class="ts5">etcdctl watch --recursive /path</span><br /><br /><span class="ts5"># Trigger command on event</span><br /><span class="ts5">etcdctl watch --recursive /path -- printf &quot;Path /path was changed.\n&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Compacting revisions</span></p>
+<p class="ps9"><span class="ts5">etcdctl compact &lt;number&gt;&nbsp;&nbsp;&nbsp;&nbsp; # Drop all revisions older than &lt;number&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">HTTP JSON API Usage</span></p>
+<p class="ps5"><span class="ts2">Sample curl</span></p>
+<p class="ps9"><span class="ts5">curl -L http://127.0.0.1:4001/v2/keys/</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Endpoints examples are</span></p>
+<p class="ps9"><span class="ts5">/version</span><br /><br /><span class="ts5">/v2/stats/self&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Node info</span><br /><span class="ts5">/v2/stats/store&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Statisitics ops/s</span><br /><span class="ts5">/v2/stats/leader&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Cluster master/slave details</span><br /><br /><span class="ts5">/v2/keys</span><br /><span class="ts5">/v2/keys/?recursive=true</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Separately from the port 4001 cluster API there is also an admin API for configuration changes on default port 7001</span></p>
+<p class="ps11"><span class="ts5">/v2/admin/config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # GET returns settings, XPUT changes settings</span><br /><span class="ts5">/v2/admin/machines&nbsp;&nbsp;&nbsp;&nbsp; # Cluster details</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

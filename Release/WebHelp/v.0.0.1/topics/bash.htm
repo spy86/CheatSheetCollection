@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Bash</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1610;
+</script>
+</head>
+<body>
+<p class="ps15"><span class="ts3">Syntax</span></p>
+<p class="ps8"><span class="ts4">File Operators</span></p>
+<p class="ps5"><span class="ts2">The complete list of bash 4.2 test operators:</span></p>
+<p class="ps9"><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -a FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file exists.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -b FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is block special.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is character special.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -d FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is a directory.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -e FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file exists.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -f FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file exists and is a regular file.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -g FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is set-group-id.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -h FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is a symbolic link.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -L FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is a symbolic link.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -k FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file has its `sticky' bit set.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -p FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is a named pipe.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -r FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is readable by you.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -s FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file exists and is not empty.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -S FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if file is a socket.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -t FD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if FD is opened on a terminal.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -u FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file is set-user-id.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -w FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file is writable by you.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -x FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file is executable by you.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -O FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file is effectively owned by you.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -G FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file is effectively owned by your group.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -N FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the file has been modified since it was last read.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FILE1 -nt FILE2&nbsp; True if file1 is newer than file2 (according to</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modification date).</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FILE1 -ot FILE2&nbsp; True if file1 is older than file2.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FILE1 -ef FILE2&nbsp; True if file1 is a hard link to file2.</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">String Operators</span></p>
+<p class="ps5"><span class="ts2">The complete list of bash 4.2 string operators:</span></p>
+<p class="ps9"><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -z STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if string is empty.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -n STRING</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if string is not empty.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; </span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STRING1 = STRING2</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the strings are equal.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STRING1 != STRING2</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if the strings are not equal.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STRING1 &lt; STRING2</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if STRING1 sorts before STRING2 lexicographically.</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STRING1 &gt; STRING2</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True if STRING1 sorts after STRING2 lexicographically.</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">String Manipulation</span></p>
+<p class="ps9"><span class="ts5">${str:position}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # substring starting at position</span><br /><span class="ts5">${str:position:len}&nbsp;&nbsp;&nbsp;&nbsp; # substring starting at position with length len</span><br /><span class="ts5">${str#ubstring}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # delete shortest match from front</span><br /><span class="ts5">${str##substring}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # delete longest match from front</span><br /><span class="ts5">${str%substring}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # delete shortest match from back</span><br /><span class="ts5">${str%%substring}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # delete longest match from back</span><br /><span class="ts5">${str/pattern/replacement}&nbsp; # pattern replace</span><br /><span class="ts5">${str/#pattern/replacement} # pattern replace at front</span><br /><span class="ts5">${str/%pattern/replacement} # pattern replace at end</span><br /><span class="ts5">${str//pattern/replacement} # global pattern replace</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Arrays</span></p>
+<p class="ps5"><span class="ts2">Indexed arrays require no declaration</span></p>
+<p class="ps9"><span class="ts5">arr=(&quot;string 1&quot;, &quot;string 2&quot;, &quot;string 3&quot;)</span><br /><span class="ts5">arr=([1]=&quot;string 1&quot;, [2]=&quot;string 2&quot;, [3]=&quot;string 3&quot;)</span><br /><br /><span class="ts5">arr[4]=&quot;string 4&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Check below under &quot;Hashes&quot; for accessing the different properties of an array.</span></p>
+<p class="ps8"><span class="ts4">Hashes</span></p>
+<p class="ps5"><span class="ts2">Since Bash v4</span></p>
+<p class="ps9"><span class="ts5"># Hashes need declaration!</span><br /><span class="ts5">declare -A arr</span><br /><br /><span class="ts5"># Assigning values to associative arrays</span><br /><span class="ts5">arr[my key]=&quot;my value&quot;</span><br /><span class="ts5">arr[&quot;my key&quot;]=&quot;my value&quot;</span><br /><span class="ts5">arr[$my_key]=&quot;my value&quot;</span><br /><br /><span class="ts5"># Fetching values</span><br /><span class="ts5">echo ${arr[my key]}</span><br /><span class="ts5">echo ${arr[&quot;my key&quot;]}</span><br /><span class="ts5">echo ${arr[$my_key]}</span><br /><br /><span class="ts5"># Accessing the array</span><br /><span class="ts5">${arr[@]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Returns all indizes and their items (doesn't work with associative arrays)</span><br /><span class="ts5">${arr[*]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Returns all items</span><br /><span class="ts5">${!arr[*]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Returns all indizes</span><br /><span class="ts5">${#arr[*]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Number elements</span><br /><span class="ts5">${#arr[$n]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Length of $nth item</span><br /><br /><span class="ts5"># Pushing to array</span><br /><span class="ts5">arr+=(&quot;new string value&quot;, &quot;another new value&quot;)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Here Document</span></p>
+<p class="ps5"><span class="ts2">Bash allow here documents like this</span></p>
+<p class="ps9"><span class="ts5">cat &lt;&lt;EOT</span><br /><span class="ts5">[...]</span><br /><span class="ts5">EOT</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To disable substitution in the here doc text quote the marker with single or double quotes.</span></p>
+<p class="ps9"><span class="ts5">cat &lt;&lt;'EOT'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To strip leading tabs use</span></p>
+<p class="ps9"><span class="ts5">cat &lt;&lt;-EOT</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Debugging Scripts</span></p>
+<p class="ps5"><span class="ts2">For simple tracing add a</span></p>
+<p class="ps9"><span class="ts5">set -x</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">in the script or append the &quot;-x&quot; to the shebang or run the script like this</span></p>
+<p class="ps9"><span class="ts5">bash -x &lt;script name&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">As &quot;set -x&quot; enables tracing you can disable it with &quot;set +x&quot; again. This allows tracing only a part of the code (e.g. a condition in an inner loop). Additionally to &quot;-x&quot; you may want to set &quot;-v&quot; to see the shell commands that are executed. Combine both to</span></p>
+<p class="ps9"><span class="ts5">set -xv</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Writing Safer Scripts</span></p>
+<p class="ps5"><span class="ts2">Using</span></p>
+<p class="ps9"><span class="ts5">set -e</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">in a script you ensure that you never forget to check an exit code. Because if you do and the command calls returns an exit code != 0 the script just terminates. Of course you can also use it to not write checks if it is ok to just bail out.</span></p>
+<p class="ps7"><span class="ts3">Network Connections</span></p>
+<p class="ps9"><span class="ts5"># Establish a connection to 91.92.93.94:80 on file handle 4 with</span><br /><span class="ts5">if ! exec 4&lt;&gt; /dev/tcp/91.92.93.94/80; then</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; echo &quot;ERROR: Connection failed!&quot;</span><br /><span class="ts5">fi</span><br /><br /><span class="ts5"># Write something</span><br /><span class="ts5">echo -e &quot;GET / HTTP/1.0\n&quot; &gt;&amp;4</span><br /><br /><span class="ts5"># Read something</span><br /><span class="ts5">cat &lt;&amp;4</span><br /><br /><span class="ts5"># Close the socket</span><br /><span class="ts5">exec &lt;&amp;4-</span><br /><span class="ts5">exec &gt;&amp;4-</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Simulate Reading From a File</span></p>
+<p class="ps5"><span class="ts2">Sometimes you might need to pass a file name when you want to pipe output from a commands. Then you could write to a file first and then used it, but you can also use the &quot;&gt;()&quot; or &quot;&lt;()&quot; operator. This can be used with all tools that demand a file name paramter:</span></p>
+<p class="ps9"><span class="ts5">diff &lt;(echo abc;echo def) &lt;(echo abc;echo abc)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">History</span></p>
+<p class="ps8"><span class="ts4">History Handling</span></p>
+<p class="ps5"><span class="ts2">Here are some improvements for the bash history handling:</span></p>
+<p class="ps9"><span class="ts5">unset HISTFILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Stop logging history in this bash instance</span><br /><span class="ts5">HISTIGNORE=&quot;[ ]*&quot;&nbsp;&nbsp; # Do not log commands with leading spaces</span><br /><span class="ts5">HISTIGNORE=&quot;&amp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Do not log a command multiple times</span><br /><br /><span class="ts5"># Change up/down arrow key behaviour to navigate only similar commands</span><br /><span class="ts5">bind '&quot;\e[A&quot;:history-search-backward'</span><br /><span class="ts5">bind '&quot;\e[B&quot;:history-search-forward'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Adding Timestamps</span></p>
+<p class="ps5"><span class="ts2">To add timestamps to your history set the following environment variable:</span></p>
+<p class="ps9"><span class="ts5">HISTTIMEFORMAT=&quot;%Y-%m-%d %H:%M:%S &quot; # Log with timestamps</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Easier History Navigation</span></p>
+<p class="ps5"><span class="ts2">If you do not like Ctrl-R to nagivate the history you can define other keys as PgUp and PgDown in /etc/inputrc:</span></p>
+<p class="ps9"><span class="ts5">&nbsp;&nbsp; &quot;\e[5~&quot;: history-search-backward</span><br /><span class="ts5">&nbsp;&nbsp; &quot;\e[6~&quot;: history-search-forward</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">History Hardening</span></p>
+<p class="ps5"><span class="ts2">For a secure bash configuration add the following settings to your global/users bashrc</span></p>
+<p class="ps9"><span class="ts5">HISTIGNORE=&quot;&quot;</span><br /><span class="ts5">HISTCONTROL=&quot;&quot;</span><br /><span class="ts5">HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S '</span><br /><span class="ts5">HISTFILE=~/.bash_history</span><br /><span class="ts5">HISTFILESIZE=2000</span><br /><span class="ts5">readonly HISTFILE</span><br /><span class="ts5">readonly HISTSIZE</span><br /><span class="ts5">readonly HISTFILESIZE</span><br /><span class="ts5">readonly HISTIGNORE</span><br /><span class="ts5">readonly HISTCONTROL</span><br /><span class="ts5">readonly HISTTIMEFORMAT</span><br /><span class="ts5">shopt -s histappend</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">and finally mark the history file append only</span></p>
+<p class="ps9"><span class="ts5">chattr +a $HISTFILE</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Misc</span></p>
+<p class="ps8"><span class="ts4">Command Completion</span></p>
+<p class="ps5"><span class="ts2">How to setup your own bash completion schemas. Here is a git example:</span></p>
+<p class="ps9"><span class="ts5">complete -W 'add branch checkout clone commit diff grep init log merge mv pull push rebase rm show status tag' git</span><br /><br /><span class="ts5">complete -p&nbsp;&nbsp;&nbsp; # To list defined completion schemes</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Note that the above example propably already comes prepared with your Linux distribution. You might want to check default definitions installed in /etc/bash_completion.d for a good starting point.</span></p>
+<p class="ps8"><span class="ts4">Kill all childs on exit</span></p>
+<p class="ps9"><span class="ts5">trap true TERM</span><br /><span class="ts5">kill -- -$$</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Apply ulimit Changes Instantly</span></p>
+<p class="ps5"><span class="ts2">The problem behind this is documented in </span><a href="/apply+limits+immediately" class="hs0">this blog post</a><span class="ts2">&nbsp;but it boils down to try to use the &quot;-i&quot; switch:</span></p>
+<p class="ps9"><span class="ts5">sudo -i -u &lt;user&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">If it doesn't work you might need to investigate and change the PAM configuration.</span></p>
+<p class="ps8"><span class="ts4">PS1: Escape Non-Print Chars</span></p>
+<p class="ps5"><span class="ts2">To avoid incorrect line break behaviour when editing the command line you need to escape control characters in PS1 like this:</span></p>
+<p class="ps9"><span class="ts5">\[color definition\]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">For example:</span></p>
+<p class="ps11"><span class="ts5">\[\033[31m\] some text \[\033[0m\]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>NFS</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 770;
+</script>
+</head>
+<body>
+<p class="ps15"><span class="ts3">NFS Shares</span></p>
+<p class="ps8"><span class="ts4">Update Exports</span></p>
+<p class="ps5"><span class="ts2">After editing /etc/exports run</span></p>
+<p class="ps9"><span class="ts5">exportfs -a</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">List Exports</span></p>
+<p class="ps9"><span class="ts5"># showmount -e</span><br /><span class="ts5">Export list for myserver:</span><br /><span class="ts5">/export/home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.1.0.0/24</span><br /><span class="ts5">#</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Show Clients</span></p>
+<p class="ps5"><span class="ts2">On the NFS server run 'showmount' to see mounting clients</span></p>
+<p class="ps9"><span class="ts5"># showmount </span><br /><span class="ts5">Hosts on myserver:</span><br /><span class="ts5">10.1.0.15</span><br /><span class="ts5">#</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">List Protocols/Services</span></p>
+<p class="ps5"><span class="ts2">To list local services run:</span></p>
+<p class="ps9"><span class="ts5"># rpcinfo -p</span><br /><span class="ts5">&nbsp;&nbsp; program vers proto&nbsp;&nbsp; port&nbsp; service</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100024&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; udp&nbsp; 48555&nbsp; status</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100024&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; tcp&nbsp; 49225&nbsp; status</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; tcp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; tcp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100227&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; tcp&nbsp;&nbsp; 2049</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100227&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp;&nbsp; 2049</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; udp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100003&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; udp&nbsp;&nbsp; 2049&nbsp; nfs</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100227&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; udp&nbsp;&nbsp; 2049</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100227&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp;&nbsp; 2049</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; udp&nbsp; 51841&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp; 51841&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; udp&nbsp; 51841&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; tcp&nbsp; 37319&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp; 37319&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100021&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; tcp&nbsp; 37319&nbsp; nlockmgr</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; udp&nbsp; 57376&nbsp; mountd</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; tcp&nbsp; 37565&nbsp; mountd</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; udp&nbsp; 36255&nbsp; mountd</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; tcp&nbsp; 36682&nbsp; mountd</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp; 54897&nbsp; mountd</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100005&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp; 51122&nbsp; mountd</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Above output is from an NFS server. You can also run it for remote servers by passing an IP. NFS clients usually just run status and portmapper:</span></p>
+<p class="ps9"><span class="ts5"># rpcinfo -p 10.1.0.15</span><br /><span class="ts5">&nbsp;&nbsp; program vers proto&nbsp;&nbsp; port&nbsp; service</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; tcp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100000&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; udp&nbsp;&nbsp;&nbsp; 111&nbsp; portmapper</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100024&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; udp&nbsp; 44152&nbsp; status</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 100024&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; tcp&nbsp; 53182&nbsp; status</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">NFSv4</span></p>
+<p class="ps8"><span class="ts4">Mounting NFSv4 Shares</span></p>
+<p class="ps5"><span class="ts2">The difference in mounting is that you need to provide &quot;nfs4&quot; and transport and port options like this:</span></p>
+<p class="ps9"><span class="ts5">mount -t nfs4 -o proto=tcp,port=2049 server:/export/home /mnt</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Ensure Running Id Mapper</span></p>
+<p class="ps5"><span class="ts2">When using NFSv4 share ensure to have the id mapper running on all clients. On Debian you need to explicitely start it:</span></p>
+<p class="ps9"><span class="ts5">service idmapd start</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Mapping Users</span></p>
+<p class="ps5"><span class="ts2">You might want to set useful NFSv4 default mappings and some explicit mappings for unknown users:</span></p>
+<p class="ps9"><span class="ts5">#cat /etc/idmapd.conf</span><br /><span class="ts5">[...]</span><br /><span class="ts5">[Mapping]</span><br /><span class="ts5">Nobody-User = nobody</span><br /><span class="ts5">Nobody-Group = nogroup</span><br /><br /><span class="ts5">[Static]</span><br /><span class="ts5">someuser@otherserver = localuser</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Tuning</span></p>
+<p class="ps8"><span class="ts4">Tuning NFS Clients</span></p>
+<p class="ps5"><span class="ts2">When optimizing for performance try the following client mount option changes:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use &quot;hard&quot; instead of &quot;soft&quot;</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Add &quot;intr&quot; to allow for dead server and killable client programs</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Increase &quot;mtu&quot; to maximum</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Increase &quot;rsize&quot; and &quot;wsize&quot; to maximum supported by clients and server</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Remove &quot;sync&quot;</span></p>
+<p class="ps5"><span class="ts2">After changing and remounting check for effective options using &quot;nfsstat -m&quot; which will give you a list like this:</span></p>
+<p class="ps9"><span class="ts5">$ nfsstat -m</span><br /><span class="ts5">/data from 10.1.0.16:/data</span><br /><span class="ts5">&nbsp;Flags: rw,relatime,vers=4.0,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,port=0,timeo=600,retrans=2,sec=sys,clientaddr=10.1.0.16,local_lock=none,addr=10.1.0.15</span><br /><span class="ts5">$</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">When synchronous shares are important try the &quot;noac&quot; mount option.</span></p>
+<p class="ps8"><span class="ts4">Tuning NFS Server</span></p>
+<p class="ps5"><span class="ts2">For the exported filesystem mount options:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use &quot;noatime&quot;</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use &quot;async&quot; if you can (risk of data corruption)</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use &quot;no_subtree_check&quot;</span></p>
+<p class="ps5"><span class="ts2">Other than that:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Use CFQ I/O scheduler</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Increase /sys/block/sda/device/block/sda/queue/max_sectors_kb</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Check /sys/block/sda/device/block/sda/queue/read_ahead_kb</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Increase number of nfsd threads</span></p>
+<p class="ps7"><span class="ts3">Getting NFS Statistics</span></p>
+<p class="ps5"><span class="ts2">Use &quot;nfsstat&quot; for detailed NFS statistics! The options are &quot;-c&quot; for client and &quot;-s&quot; for server statistics. On the server caching statistics are most interesting,</span></p>
+<p class="ps9"><span class="ts5"># nfsstat -o rc</span><br /><span class="ts5">Server reply cache:</span><br /><span class="ts5">hits&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; misses&nbsp;&nbsp;&nbsp;&nbsp; nocache</span><br /><span class="ts5">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 63619&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 885550&nbsp; </span><br /><span class="ts5">#</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">on the client probably errors and retries. Also note that you can get live per-interval results when running with &quot;--sleep=&lt;interval&gt;&quot;. For example</span></p>
+<p class="ps11"><span class="ts5"># nfsstat -o fh --sleep=2</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

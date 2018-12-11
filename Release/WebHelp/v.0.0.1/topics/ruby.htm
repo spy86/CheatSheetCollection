@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Ruby</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1230;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Using Gem</span></p>
+<p class="ps9"><span class="ts5">gem env</span><br /><span class="ts5">gem list</span><br /><span class="ts5">gem outdated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List Gems with updates available</span><br /><span class="ts5">gem update [&lt;name&gt;]</span><br /><span class="ts5">gem install &lt;name&gt; [-v &lt;version&gt;]</span><br /><span class="ts5">gem uninstall &lt;name&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Test with RSpec</span></p>
+<p class="ps9"><span class="ts5"># There are a lot of rspec launch variants:</span><br /><span class="ts5">autotest</span><br /><span class="ts5">rspec &lt;path to .rb spec file&gt;</span><br /><span class="ts5">rspec &lt;path to directory&gt;</span><br /><span class="ts5">bundle exec rspec &lt;path to .rb spec file&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Interactive Shell</span></p>
+<p class="ps9"><span class="ts5">$ irb</span><br /><span class="ts5">irb(main):001:0&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Launch a script interactively:</span></p>
+<p class="ps9"><span class="ts5">irb -r script.rb</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Inspect nested data structures:</span></p>
+<p class="ps9"><span class="ts5">puts &lt;something&gt;.inspect</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Pretty printing data structures:</span></p>
+<p class="ps9"><span class="ts5">require 'pp'</span><br /><span class="ts5">pp &lt;some object&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Print as YAML</span></p>
+<p class="ps9"><span class="ts5">y &lt;something&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Data Types</span></p>
+<p class="ps5"><span class="ts2">Debugging</span></p>
+<p class="ps9"><span class="ts5">var.inspect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # prints serialization</span><br /><span class="ts5">var.to_s&nbsp;&nbsp;&nbsp; # often prints class</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Checking for Undef</span></p>
+<p class="ps9"><span class="ts5">if (defined?(var)).nil?</span><br /><span class="ts5">&nbsp;&nbsp; puts &quot;undef&quot;</span><br /><span class="ts5">end</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Arrays</span></p>
+<p class="ps9"><span class="ts5">arr = []</span><br /><span class="ts5">arr.push(&quot;a&quot;)</span><br /><span class="ts5">arr.pop()</span><br /><span class="ts5">arr.insert(0, &quot;b&quot;)&nbsp;&nbsp;&nbsp; # Add b at index 0</span><br /><span class="ts5">arr.insert(-1, &quot;c&quot;)&nbsp;&nbsp; # Add c at the end</span><br /><span class="ts5">arr &lt;&lt; &quot;c&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Add c at the end</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Accessing ranges</span></p>
+<p class="ps9"><span class="ts5">arr[3:4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 4th and 5th element</span><br /><span class="ts5">arr[1000:-1]&nbsp;&nbsp;&nbsp; # Everything starting at 1001 element to the end</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Iterating arrays</span></p>
+<p class="ps9"><span class="ts5">array.each do |value|</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; # do something</span><br /><span class="ts5">end&nbsp;&nbsp; </span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Hashes</span></p>
+<p class="ps5"><span class="ts2">To merge hashes</span></p>
+<p class="ps9"><span class="ts5">h1.merge(h2)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To get hash keys in order</span></p>
+<p class="ps9"><span class="ts5">h.keys.sort</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">To get key-value pairs in order</span></p>
+<p class="ps9"><span class="ts5">h.sort.map do |key, value|</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; # do something</span><br /><span class="ts5">end</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">I/O</span></p>
+<p class="ps5"><span class="ts2">Write file</span></p>
+<p class="ps9"><span class="ts5">File.open('file.txt', 'w') { |file| file.write(&quot;text&quot;) }</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://yaml.org/YAML_for_ruby.html" class="hs0">YAML Cookbook for Ruby</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

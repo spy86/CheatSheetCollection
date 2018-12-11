@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Terraform</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 270;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">CLI Commands</span></p>
+<p class="ps9"><span class="ts5">terraform plan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # dry run</span><br /><span class="ts5">terraform apply</span><br /><span class="ts5">terraform refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # sync state with remote resources</span><br /><span class="ts5">terraform show</span><br /><span class="ts5">terraform destroy</span><br /><br /><span class="ts5">terraform validate&nbsp;&nbsp;&nbsp;&nbsp; # validate .tf file</span><br /><br /><span class="ts5">terraform taint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # mark resource for recreation</span><br /><span class="ts5">terraform untaint</span><br /><br /><span class="ts5">terraform state push&nbsp;&nbsp; # e.g. force push state to S3 bucket</span><br /><span class="ts5">terraform state pull &gt; terraform.tfstate&nbsp; # create a local state copy</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Change verbosity by setting environment variable TF_LOG</span></p>
+<p class="ps9"><span class="ts5">export TF_LOG=INFO</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Workspace Management</span></p>
+<p class="ps20"><span class="ts0">Terraform workspaces allow for the management of two or more different environments i.e. Dev or Prod separately without affecting the state of either environment.</span></p>
+<p class="ps9"><span class="ts5">terraform workspace new dev</span><br /><br /><span class="ts5">terraform workspace new test</span><br /><br /><span class="ts5">terraform workspace new prod</span><br /><br /><span class="ts5">terraform workspace select dev</span><br /><br /><span class="ts5">terraform workspace select default</span><br /><br /><span class="ts5">terraform workspace select prod</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Recovering Lost State</span></p>
+<p class="ps5"><span class="ts2">One of the worst things that you happen is </span><a href="https://www.reddit.com/r/devops/comments/93cee5/if_you_lost_your_terraform_state_you_will_lose/" class="hs0">loosing the terraform state</a><span class="ts2">. In such a case you can</span></p>
+<p class="ps9"><span class="ts5">terraform import &lt;address&gt; &lt;id&gt;</span><br /><br /><span class="ts5"># for example</span><br /><span class="ts5">terraform import aws_instance.myec2instance i-075c8d21cc91308dc</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">to let terraform reconstruct the resource state. Finally perform a</span></p>
+<p class="ps9"><span class="ts5">terraform state push</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">as import only imports into a local state file, even if you have an S3 bucket defined for keeping state!</span></p>
+<p><span class="ts2">To avoid this use S3 bucket with versioning enabled for keeping state.</span></p>
+<p class="ps0"><span class="ts0">Drift Management</span></p>
+<p class="ps5"><span class="ts2">Terraform </span><a href="https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform" class="hs0">doesn't really do</a><span class="ts2">&nbsp;much drift management. Only some resource attributes are checked. All detected drift is fixed by &quot;apply&quot;.</span></p>
+<p class="ps5"><span class="ts2">Manually dump drift</span></p>
+<p class="ps9"><span class="ts5">terraform show &gt;before</span><br /><span class="ts5">terraform refresh</span><br /><span class="ts5">terraform show &gt;after</span><br /><br /><span class="ts5">diff -u before after</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Prevent auto-destroy:</span></p>
+<p class="ps9"><span class="ts5">&nbsp;lifecycle {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; prevent_destroy = true</span><br /><span class="ts5">&nbsp;}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Bulk Imports</span></p>
+<p class="ps5"><span class="ts2">Check out https://github.com/jmcgill/formation</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

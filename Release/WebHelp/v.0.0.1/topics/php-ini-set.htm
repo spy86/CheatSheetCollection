@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PHP_ini_set</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1350;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Syntax of ini_set()</span></p>
+<p class="ps5"><span class="ts2">The ini_set() syntax is simple:</span></p>
+<p class="ps9"><span class="ts5">string ini_set ( string $varname , string $newvalue )</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">it is just a key value setter. The important question is which values can be set. Below you find a list of working examples. Please note that you cannot change all php.ini options especially those that need to be set before PHP initializes.</span></p>
+<p class="ps7"><span class="ts3">Useful Working ini_set() Examples</span></p>
+<p class="ps2"><span style="color: Black">1.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Enabling error display On production sites you typically do not show errors in the page for usability and security reasons. But when you when you debug something live you might want to enable it temporarily and just for you:</span></p>
+<p class="ps9"><span class="ts5"># Assuming 5.44.33.22 is your IP...</span><br /><span class="ts5">if ( $_SERVER[&quot;REMOTE_ADDR&quot;] == &quot;5.44.33.22&quot;) {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; ini_set('display_errors', '1');</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note: you may want to combine this with</span></p>
+<p class="ps9"><span class="ts5">error_reporting(E_ALL | E_STRICT);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps22"><span style="color: Black">2.</span><span style="display: inline-block; width: 18px"></span><span class="ts2">Changing Memory Limit When you need to increase memory from within the code:</span></p>
+<p class="ps9"><span class="ts5">ini_set(&quot;memory_limit&quot;,&quot;1000M&quot;);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note though that this might be prevent by a Suhosin hardended PHP installation. 3. Adding include paths Normally this shouldn't be necessary. It is way cleaner to do it in php.ini, but if you bundle libraries and you administrator doesn't know:</span></p>
+<p class="ps9"><span class="ts5">&lt;?php ini_set('include_path',ini_get('include_path').':../my-libs:');&nbsp; ?&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">When You Cannot Use ini_set()</span></p>
+<p class="ps5"><span class="ts2">For most php.ini settings you can't use ini_set(). To workaround consider deploying a .htaccess along with your code as this .htaccess can provide all PHP options to overwrite the default php.ini settings. For example to change the HTTP POST limit add this line to a .htaccess read by your webserver:</span></p>
+<p class="ps9"><span class="ts5">php_value post_max_size 2500000</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Note how the &quot;php_value&quot; prefix indicates settings for PHP. So simple syntax is</span></p>
+<p class="ps11"><span class="ts5">php_value &lt;key name&gt; &lt;value&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

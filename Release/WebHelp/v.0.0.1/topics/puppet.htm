@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Puppet</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 250;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Puppet CLI</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Bootstrap client</span></p>
+<p class="ps2"><span class="ts8">&nbsp; puppet agent -t --server &lt;puppet master&gt; [&lt;options&gt;]</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Display facts:</span></p>
+<p class="ps2"><span class="ts8">&nbsp; facter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # All system facts</span><br /><span class="ts8">&nbsp; facter -p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # All system and Puppet facts</span><br /><span class="ts8">&nbsp; facter -y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # YAML</span><br /><span class="ts8">&nbsp; facter -j&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # JSON</span><br /><br /><span class="ts8">&nbsp; facter [-p] &lt;name&gt;&nbsp; # A specific fact</span><br /><br /><span class="ts8">&nbsp; # Examples</span><br /><span class="ts8">&nbsp; facter memoryfree</span><br /><span class="ts8">&nbsp; facter is_virtual processor0</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Injecting Facts:</span></p>
+<p class="ps2"><span class="ts8">env FACTER_&lt;fact name&gt;=&lt;fact value&gt; puppet apply site.pp</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Find out effective classes on a node</span></p>
+<p class="ps2"><span class="ts8">cat /var/lib/puppet/classes.txt</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Find out when which file was modified</span></p>
+<p class="ps2"><span class="ts8">cd /var/lib/puppet</span><br /><span class="ts8">for i in $(find clientbucket/ -name paths); do</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp; echo &quot;$(stat -c %y $i | sed 's/\..*//')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $(cat $i)&quot;;</span><br /><span class="ts8">done | sort -n</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Puppet Dry Run:</span></p>
+<p class="ps2"><span class="ts8">puppet agent --noop --verbose</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Disable agent</span></p>
+<p class="ps2"><span class="ts8">puppet agent --disable</span><br /><span class="ts8">puppet agent --disable &lt;info message&gt;&nbsp;&nbsp; # Only recent versions</span><br /><span class="ts8">puppet agent --enable</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Executing selective classes</span></p>
+<p class="ps2"><span class="ts8">puppet agent --tags Some::Class</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Managing Certificates (on master)</span></p>
+<p class="ps2"><span class="ts8">puppet cert list</span><br /><span class="ts8">puppet cert list --all</span><br /><span class="ts8">puppet cert sign &lt;name&gt;</span><br /><span class="ts8">puppet cert clean &lt;name&gt;&nbsp;&nbsp; # removes cert</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Managing Nodes</span></p>
+<p class="ps2"><span class="ts8">puppet node clean &lt;name&gt;&nbsp;&nbsp; # removes node + cert</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Managing Modules</span></p>
+<p class="ps2"><span class="ts8">puppet module list</span><br /><span class="ts8">puppet module install &lt;name&gt;</span><br /><span class="ts8">puppet module uninstall &lt;name&gt;</span><br /><span class="ts8">puppet module upgrade &lt;name&gt;</span><br /><span class="ts8">puppet module search &lt;name&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Inspecting Resources/Types</span></p>
+<p class="ps2"><span class="ts8">puppet describe -l</span><br /><span class="ts8">puppet resource &lt;type name&gt;</span><br /><br /><span class="ts8"># Querying Examples</span><br /><span class="ts8">puppet resource user john.smith</span><br /><span class="ts8">puppet resource service apache</span><br /><span class="ts8">puppet resource mount /data</span><br /><span class="ts8">puppet resource file /etc/motd</span><br /><span class="ts8">puppet resource package wget</span><br /><br /><span class="ts8"># Trigger puppet run from master</span><br /><span class="ts8">puppet kick &lt;name&gt;</span><br /><span class="ts8">puppet kick -p 5 &lt;names&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 5 parallel</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Debugging deployment and rules on a local machine. This only makes sense in &quot;one time&quot; mode running in one of the following variants:</span></p>
+<p class="ps2"><span class="ts8">puppetd --test # enable standard debugging options</span><br /><span class="ts8">puppetd --debug # enable full debugging</span><br /><span class="ts8">puppetd --one-time --detailed-exitcodes # Enable exit codes:</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 2=changes applied</span><br /><span class="ts8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 4=failure</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://puppetlabs.com/blog/geppetto-a-puppet-ide" class="hs0">Gepetto: Puppet IDE</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://www.craigdunn.org/2012/05/239/" class="hs0">puppet - Correctly using Roles and Profiles</a></p>
+<p class="ps7"><span class="ts3">Puppet 2/3 Master</span></p>
+<p class="ps5"><span class="ts2">Enable debugging: Add to /etc/puppet/rack/config.ru</span></p>
+<p class="ps9"><span class="ts5">ARGV &lt;&lt; &quot;--debug&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">and restart the Passenger.</span></p>
+<p class="ps15"><span class="ts3">Puppet DSL</span></p>
+<p class="ps8"><span class="ts4">Snippets</span></p>
+<p class="ps9"><span class="ts5">notify { 'message': loglevel =&gt; 'err' }</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Check for file</span></p>
+<p class="ps9"><span class="ts5">if file_exists('somefile.txt') == 1 { }</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Execute commands (evil!)</span></p>
+<p class="ps9"><span class="ts5">exec { &quot;mkdir -p $dir&quot;:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; command =&gt; &quot;/bin/mkdir -p $dir&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; creates =&gt; $dir</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Merging Arrays</span></p>
+<p class="ps9"><span class="ts5">$result = split(inline_template(&quot;&lt;%= (array1+array2).join(',') %&gt;&quot;),',')</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Exceptions</span></p>
+<p class="ps9"><span class="ts5">fail('This is a parser time error')</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Conditions</span></p>
+<p class="ps9"><span class="ts5">if $var == 'value' {</span><br /><span class="ts5">}</span><br /><br /><span class="ts5">case $::lsbdistcodename {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; 'squeeze': {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'wheezy', 'jessie': {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">ERB Syntax</span></p>
+<p class="ps8"><span class="ts4">ERB Tags</span></p>
+<p class="ps9"><span class="ts5">&lt;%= ruby code, result inserted %&gt;</span><br /><span class="ts5">&lt;% ruby code, result not inserted %&gt;&nbsp; # use for loops, conditions...</span><br /><span class="ts5">&lt;%- like above, but strips leading+trailings spaces from output -%&gt;</span><br /><span class="ts5">&lt;%# comment %&gt;</span><br /><br /><span class="ts5">&lt;%%&nbsp; # literal &lt;%</span><br /><span class="ts5">%%&gt;&nbsp; # literal %&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Using Variables</span></p>
+<p class="ps9"><span class="ts5">&lt;%= @name %&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # variable visible in current scope</span><br /><span class="ts5">&lt;%= scope.lookupvar('name') %&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # search in all scopes</span><br /><span class="ts5">&lt;%= scope['somewhere::name'] %&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Puppet 3 scope access</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Conditions</span></p>
+<p class="ps9"><span class="ts5">&lt;% if @name != nil %&gt;</span><br /><span class="ts5">&nbsp;&nbsp; Well, @name is set!</span><br /><br /><span class="ts5">&nbsp;&nbsp; When checking if a variable exists/is set </span><br /><span class="ts5">&nbsp;&nbsp; always do check for nil! Everything else is unsafe.</span><br /><span class="ts5">&lt;% end %&gt;</span><br /><br /><span class="ts5">&lt;% if @name ~ /.* Smith$/ %&gt;</span><br /><span class="ts5">&nbsp;&nbsp; Matches</span><br /><span class="ts5">&lt;% end %&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Augeas</span></p>
+<p class="ps5"><a href="http://projects.puppetlabs.com/projects/1/wiki/Puppet_Augeas" class="hs0">Augeas - in Puppet</a><span class="ts2">: Using Puppet with Augeas</span></p>
+<p class="ps9"><span class="ts5">augeas { &quot;sshd_config&quot;:</span><br /><span class="ts5">&nbsp;changes =&gt; [</span><br /><span class="ts5">&nbsp;&quot;set /files/etc/ssh/sshd_config/PermitRootLogin no&quot;,</span><br /><span class="ts5">&nbsp;],</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Testing</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Validate manifest</span></p>
+<p class="ps2"><span class="ts8">puppet parser validate &lt;manifest&gt;</span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Validate ERBs</span></p>
+<p class="ps2"><span class="ts8">erb -x -T '-' &lt;template&gt; | ruby -c </span><br />&nbsp;</p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://rspec-puppet.com/" class="hs0">puppet-rspec</a><span class="ts2">: Testing Puppet modules with rspecs</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://github.com/puppetlabs/beaker/wiki/Overview" class="hs0">Beaker</a><span class="ts2">: Puppet acceptance testing in VMs</span></p>
+<p class="ps7"><span class="ts3">Misc</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="http://blog.netways.de/2012/10/30/puppet-und-vim/" class="hs0">Vim Autoformatting for Puppet</a></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://blog.netways.de/2012/11/13/vim-puppet-lint-und-syntastic/" class="hs0">Vim puppet-lint</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://atom.io/packages/atom-lint" class="hs0">Atom Editor puppet-lint</a></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

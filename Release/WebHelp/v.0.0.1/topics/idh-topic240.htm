@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>Puppet - Hiera</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 240;
+</script>
+</head>
+<body>
+<p class="ps0"><span class="ts0">Hiera Queries</span></p>
+<p class="ps5"><span class="ts2">On Puppet master:</span></p>
+<p class="ps9"><span class="ts5">hiera &lt;key&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # to query common.yaml only</span><br /><span class="ts5">hiera &lt;key&gt; -m &lt;FQDN&gt;&nbsp;&nbsp; # to query config of a given node (using mcollective)</span><br /><span class="ts5">hiera &lt;key&gt; -i &lt;FQDN&gt;&nbsp;&nbsp; # to query config of a given node (using Puppet inventory)</span><br /><span class="ts5">hiera &lt;key&gt; environment=production fqdn=myhost1&nbsp;&nbsp; # to pass values for hiera.yaml</span><br /><br /><span class="ts5"># To dump complex data</span><br /><span class="ts5">hiera -a &lt;array key&gt;</span><br /><span class="ts5">hiera -h &lt;hash key&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Escaping Hiera Literals</span></p>
+<p class="ps5"><span class="ts2">When passing string in Hiera you can use Hiera/Puppet functions with %{}</span></p>
+<p class="ps9"><span class="ts5">key: &quot;value %{lookup('something')}&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">If you actually need a &quot;%{&quot; literal you should use the function &quot;literal&quot; to insert it. So instead of writing</span></p>
+<p class="ps9"><span class="ts5">time_format: &quot;%{YYYY-MM-dd}&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">write</span></p>
+<p class="ps9"><span class="ts5">time_format: &quot;%{literal('%')}{YYYY-MM-dd}&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Effectively replace the occurence of '%{' with %{literal('%{')}. </span><span class="ts4">You can't use literal() multiple times in the same string!</span><span class="ts2">&nbsp;If you need to try replacing all % with %%{::} for example</span></p>
+<p class="ps9"><span class="ts5">value: '%%{::}{REQUEST_URI} %%{::}{SERVER}'</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Encryption with eyaml</span></p>
+<p class="ps5"><span class="ts2">Using eyaml CLI</span></p>
+<p class="ps9"><span class="ts5">eyaml encrypt -f &lt;filename&gt;</span><br /><span class="ts5">eyaml encrypt -s &lt;string&gt;</span><br /><span class="ts5">eyaml encrypt -p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Encrypt password, will prompt for it</span><br /><br /><span class="ts5">eyaml decrypt -f &lt;filename&gt;</span><br /><span class="ts5">eyaml decrypt -s &lt;string&gt;</span><br /><br /><span class="ts5">eyaml edit -f &lt;filename&gt;&nbsp;&nbsp;&nbsp; # Decrypts, launches in editor and reencrypts</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Debugging eyaml Problems</span></p>
+<p class="ps5"><span class="ts2">When using Hiera + Eyaml + GPG as Puppet configuration backend one can run into a multitude of really bad error message. The problem here is mostly the obscene layering of libraries e.g. Eyaml on top of Eyaml-GPG on top of either GPGME or Ruby GPG on top on GnuPG. Most errors originate from/are reported by GnuPG and are badly unspecified.</span></p>
+<p><span class="ts2">This post gives some hints on some of the errors</span></p>
+<p class="ps7"><span class="ts3">[hiera-eyaml-core] General error</span></p>
+<p class="ps5"><span class="ts2">This is one of the worst errors you can get. One common cause is an expired GPG key. Check for it using</span></p>
+<p class="ps9"><span class="ts5">LANG=C gpg -k | grep expired</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">and remove the expired key with</span></p>
+<p class="ps9"><span class="ts5">gpg --delete-key &lt;name</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">As the error label indicates this can have other causes. In such a case check out the GPGME Debugging section below.</span></p>
+<p class="ps7"><span class="ts3">[hiera-eyaml-core] no such file to load -- hiera/backend/eyaml/encryptors/gpg</span></p>
+<p class="ps5"><span class="ts2">If you got this you probably forgot to install the Ruby GEM. Fix it by running</span></p>
+<p class="ps9"><span class="ts5">gem install hiera-eyaml-gpg</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">[hiera-eyaml-core] GPG command (gpg --homedir /home/lars/.gnupg --quiet --no-secmem-warning --no-permission-warning --no-tty --yes --decrypt) failed with: gpg: Sorry, no terminal at all requested - can't get input</span></p>
+<p class="ps5"><span class="ts2">This error indicates a problem getting your secret key password. As Eyaml triggers GPG in background no password prompt can be issued. So the only way to get one is the PHP agent. In this case it might be dead.Check if one is running:</span></p>
+<p class="ps9"><span class="ts5">pgrep -fl gpg-agent</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">[gpg] !!! Fatal: Failed to decrypt ciphertext (check settings and that you are a recipient) [hiera-eyaml-core] !!! Decryption failed</span></p>
+<p class="ps5"><span class="ts2">If you get this error message you might want to check if you have a matching private key listed in your GPG recipient using</span></p>
+<p class="ps9"><span class="ts5">gpg -K</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">GPGME Debugging</span></p>
+<p class="ps5"><span class="ts2">No matter what error message you get if you cannot solve consider enabling debug traces by setting</span></p>
+<p class="ps9"><span class="ts5">export GPGME_DEBUG=9</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Then run &quot;eyaml&quot; and check the output for sections of &quot;_gpgme_io_read&quot; that indicate the GnuPG responses like this one:</span></p>
+<p class="ps9"><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_run_io_cb: call: item=0x2363d70, handler (0x21abc30, 7)</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: enter: fd=0x7, buffer=0x238b6c0, count=1024</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 5b474e5550473a5d 20494e565f524543 [GNUPG:] INV_REC</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 5020302035444136 3939343530393537 P 0 5DA699450957</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 3346354543394341 4138413232433134 3F5EC9CAA8A22C14</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 3846433938453339 374335430a5b474e 8FC98E397C5C.[GN</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 5550473a5d204641 494c55524520656e UPG:] FAILURE en</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: check: 6372797074203533 0a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; crypt 53.</span><br /><span class="ts5">GPGME 2016-06-16 12:33:55 &lt;0x45b7&gt;&nbsp;&nbsp;&nbsp; _gpgme_io_read: leave: result=89</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">If you overlook the bad wrapping you see the following info here:</span></p>
+<p class="ps9"><span class="ts5">INV_RECP 0 5DA699450957.... FAILURE encrypt 53</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">Google for those messages and you often get a GnuPG related result hinting on the cause. Above trace is about an invalid key with fingerprint 5DA699450957.... which you can find with listing your GPG keys and checking for expiration messages.</span></p>
+<p class="ps8"><span class="ts4">Hiera+Puppet Debugging</span></p>
+<p class="ps11"><span class="ts5">puppet apply -e &quot;notice(hiera_array('some key'))&quot;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

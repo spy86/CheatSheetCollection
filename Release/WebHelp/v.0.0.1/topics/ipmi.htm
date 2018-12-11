@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>IPMI</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 380;
+</script>
+</head>
+<body>
+<p class="ps15"><span class="ts3">ipmitool Commands</span></p>
+<p class="ps8"><a href="http://www.alleft.com/sysadmin/ipmi-sol-inexpensive-remote-console/" class="hs4">Server side initial setup</a></p>
+<p class="ps9"><span class="ts5">ipmitool lan set 1 ipsrc static</span><br /><span class="ts5">ipmitool lan set 1 ipaddr {YOUR DESIRED IP}</span><br /><span class="ts5">ipmitool lan set 1 netmask {YOUR NETMASK}</span><br /><span class="ts5">ipmitool lan set 1 auth ADMIN MD5,PASSWORD</span><br /><span class="ts5">ipmitool lan set 1 arp respond on</span><br /><span class="ts5">ipmitool lan set 1 access on</span><br /><span class="ts5">ipmitool user list 1</span><br /><span class="ts5">ipmitool user set password 2 {YOUR PASSWORD}</span><br /><span class="ts5">ipmitool lan print 1</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Hanging BMC</span></p>
+<p class="ps9"><span class="ts5">ipmitool bmc reset cold</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Change system state</span></p>
+<p class="ps9"><span class="ts5">ipmitool -H &lt;ip&gt; -U &lt;user&gt; chassis power &lt;status|on|off|cycle|reset&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Get debug info</span></p>
+<p class="ps9"><span class="ts5">ipmitool lan print</span><br /><br /><span class="ts5">ipmitool -H &lt;ip&gt; -U &lt;user&gt; shell&nbsp; # get ipmitool shell, type 'help'</span><br /><span class="ts5">ipmitool -H &lt;ip&gt; -U &lt;user&gt; sel list&nbsp;&nbsp; # Show system event log</span><br /><span class="ts5">ipmitool -H &lt;ip&gt; -U &lt;user&gt; sdr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List sensor data</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Get SOL console</span></p>
+<p class="ps11"><span class="ts5">modprobe lanplus&nbsp;&nbsp;&nbsp; # If not yet loaded</span><br /><br /><span class="ts5">ipmitool -H &lt;IP&gt; -U &lt;user&gt; -I lanplus sol activate</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

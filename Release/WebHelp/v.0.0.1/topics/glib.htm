@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>GLIB</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 900;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Debugging</span></p>
+<p class="ps9"><span class="ts5">// Delta-debugging...</span><br /><span class="ts5">g_print (&quot;Some string\n&quot;);</span><br /><span class="ts5">g_printf (&quot;Cannot open file %s\n&quot;, filename);</span><br /><br /><span class="ts5">g_warning (&quot;Some warning&quot;);</span><br /><span class="ts5">g_error (&quot;Some error&quot;);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Enable fatal warnings/criticals and other checks</span></p>
+<p class="ps9"><span class="ts5"># Stop on assertions:</span><br /><span class="ts5">export G_DEBUG=fatal_warnings</span><br /><span class="ts5">export G_DEBUG=fatal_criticals</span><br /><br /><span class="ts5"># Logging from all glib based libraries</span><br /><span class="ts5">export G_MESSAGES_DEBUG=all</span><br /><br /><span class="ts5"># Check memory allocation </span><br /><span class="ts5">export G_SLICE=debug-blocks</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Data Types</span></p>
+<p class="ps8"><span class="ts4">Strings</span></p>
+<p class="ps9"><span class="ts5">gchar *s = &quot;static&quot;;</span><br /><span class="ts5">s = g_strdup (&quot;copy&quot;);</span><br /><span class="ts5">s = g_strdup_printf (&quot;on the fly format: %s %d&quot;, s2, i);</span><br /><br /><span class="ts5">g_free (s);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">String Buffer</span></p>
+<p class="ps9"><span class="ts5">GString *s = g_string_new ();</span><br /><br /><span class="ts5">g_string_assign (s, &quot;new value&quot;);</span><br /><span class="ts5">g_string_printf (s, &quot;new value %s&quot;, s2);</span><br /><span class="ts5">g_string_prepend (s, &quot;prefix&quot;);</span><br /><span class="ts5">g_string_append (s, &quot;additional text&quot;);</span><br /><span class="ts5">g_string_append_printf (s, &quot;additional text %s&quot;, s2);</span><br /><br /><span class="ts5">g_string_append_uri_escaped (s, &quot;q=some search string&quot;, NULL, FALSE);</span><br /><br /><span class="ts5">g_string_free (s);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Arrays</span></p>
+<p class="ps9"><span class="ts5">GArray *a = g_array_new (FALSE, FALSE, sizeof (gint));</span><br /><br /><span class="ts5">gint index = 17;</span><br /><span class="ts5">gint value = 55;</span><br /><br /><span class="ts5">// Writing</span><br /><span class="ts5">g_array_append_val (a, value);</span><br /><span class="ts5">g_array_insert_val (a, index, value);</span><br /><span class="ts5">g_array_remove_index (a, index);</span><br /><br /><span class="ts5">// Reading</span><br /><span class="ts5">gint i = &amp;g_array_index (a, gint, index);</span><br /><br /><span class="ts5">g_array_free (a, FALSE);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Linked Lists</span></p>
+<p><span class="ts3">File System</span></p>
+<p class="ps8"><span class="ts4">Get XDG paths</span></p>
+<p class="ps9"><span class="ts5">g_get_user_config_dir ()</span><br /><span class="ts5">g_get_user_data_dir ()</span><br /><span class="ts5">g_get_user_cache_dir ()</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Filenames</span></p>
+<p class="ps9"><span class="ts5">g_strdup_printf (&quot;%s%s%s&quot;, directory, G_DIR_SEPARATOR_S, filename);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Check for file</span></p>
+<p class="ps9"><span class="ts5">if (g_file_test (filename, G_FILE_TEST_EXISTS)) {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; // File exists.</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Read file</span></p>
+<p class="ps9"><span class="ts5">gssize length;</span><br /><span class="ts5">gchar *content, *filename = 'input.txt';</span><br /><span class="ts5">if (g_file_get_contents (filename, &amp;content, &amp;length, NULL)) {</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; // Process contents</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; g_free (content);</span><br /><span class="ts5">}</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Write files</span></p>
+<p class="ps9"><span class="ts5">g_file_set_contents (backupFilename, content, length, NULL);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">GSettings (DConf)</span></p>
+<p class="ps5"><span class="ts2">General usage:</span></p>
+<p class="ps9"><span class="ts5">GSettings *settings = g_settings_new (&quot;org.myproject&quot;);</span><br /><br /><span class="ts5">g_signal_connect (</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; settings,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; &quot;changed::some-setting&quot;,</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; G_CALLBACK (some_settings_cb),</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; NULL</span><br /><span class="ts5">);</span><br /><br /><span class="ts5">gboolean b = g_settings_get_boolean (settings, key);</span><br /><span class="ts5">gchar *s = g_settings_get_string (settings, key);</span><br /><span class="ts5">gint i = g_settings_get_int (settings, key);</span><br /><br /><span class="ts5">g_settings_set_boolean (settings, key, b);</span><br /><span class="ts5">g_settings_set_string (settings, key, s);</span><br /><span class="ts5">g_settings_set_int (settings, key, i);</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">DConf - CLI</span></p>
+<p class="ps9"><span class="ts5"># Print a key value</span><br /><span class="ts5">gsettings get org.gnome.liferea browser</span><br /><br /><span class="ts5"># Set a key value</span><br /><span class="ts5">gsettings set net.sf.liferea browser 'firefox %s'</span><br /><br /><span class="ts5"># Print subtree (mandatory trailing slash!)</span><br /><span class="ts5">dconf dump /apps/liferea/</span><br /><br /><span class="ts5"># Dump and Restore non-default values</span><br /><span class="ts5">dconf dump /apps/liferea/&nbsp; &gt;liferea.dump</span><br /><span class="ts5">dconf load liferea.dump</span><br /><br /><span class="ts5"># Reset a single key to schema default</span><br /><span class="ts5">dconf reset /apps/liferea/last-window-height</span><br /><br /><span class="ts5"># Reset an entire tree to schema</span><br /><span class="ts5">dconf reset -f /apps/liferea/</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">GConf - CLI</span></p>
+<p class="ps9"><span class="ts5"># Print a key's schema</span><br /><span class="ts5">gconftool-2 --get /schemas/apps/liferea/browser</span><br /><br /><span class="ts5"># Print a key value</span><br /><span class="ts5">gconftool-2 --get /apps/liferea/browser</span><br /><br /><span class="ts5"># Set a key</span><br /><span class="ts5">gconftool-2 --type Boolean --set /desktop/gnome/peripherals/mouse/touchpad_enabled false</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">GConf/DConf Migration</span></p>
+<p class="ps5"><span class="ts2">Testing for GConf -&gt; DConf schema migration:</span></p>
+<p class="ps9"><span class="ts5">cd /usr/share/GConf/gsettings</span><br /><span class="ts5"># Here you find .convert files per application</span><br /><br /><span class="ts5"># Check for conversion using </span><br /><span class="ts5">gsettings-data-convert --verbose --dry-run &lt;.convert file name&gt; </span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">GTK Inspector</span></p>
+<p class="ps5"><span class="ts2">Enable GTK Inspector by configuring the following setting:</span></p>
+<p class="ps9"><span class="ts5">gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Some GNOME core apps now have a &quot;Help&quot; menu entry to start the inspector. Alternatively launch the inspector by pressing Ctrl-Shift-I or Crtl-Shift-D</span></p>
+<p class="ps5"><span class="ts2">Or explicitely start the application with open inspector</span></p>
+<p class="ps11"><span class="ts5">GTK_DEBUG=interactive &lt;program&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

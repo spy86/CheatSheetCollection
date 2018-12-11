@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PythonSyntax</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 1580;
+</script>
+</head>
+<body>
+<p class="ps7"><span class="ts3">Data Types</span></p>
+<p class="ps5"><span class="ts2">Dumping complex structures</span></p>
+<p class="ps9"><span class="ts5">import json</span><br /><span class="ts5">print json.dumps(something)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Arrays (Lists)</span></p>
+<p class="ps5"><span class="ts2">Print array of strings:</span></p>
+<p class="ps9"><span class="ts5">print &quot;\n&quot;.join(arr)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Iterating by index</span></p>
+<p class="ps9"><span class="ts5">for i in range(len(arr)):</span><br /><span class="ts5">&nbsp; print arr[i]</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps15"><span class="ts3">Standard Tasks</span></p>
+<p class="ps8"><span class="ts4">Read from Pipe</span></p>
+<p class="ps5"><span class="ts2">Line by line</span></p>
+<p class="ps9"><span class="ts5">proc = subprocess.Popen(['/bin/ls', 'something'],stdout=subprocess.PIPE)</span><br /><span class="ts5">while True:</span><br /><span class="ts5">&nbsp; line = proc.stdout.readline()</span><br /><span class="ts5">&nbsp; if line != '':</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; do_something</span><br /><span class="ts5">&nbsp; else:</span><br /><span class="ts5">&nbsp;&nbsp;&nbsp; break</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">Entire output at once</span></p>
+<p class="ps9"><span class="ts5">echo subprocess.check_output(['/bin/ls', 'something])</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Parse JSON</span></p>
+<p class="ps11"><span class="ts5">import json</span><br /><span class="ts5">data = json.loads(json_string)</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>PackageManagement</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 500;
+</script>
+</head>
+<body>
+<p class="ps15"><span class="ts3">Debian</span></p>
+<p class="ps8"><span class="ts4">apt Commands</span></p>
+<p class="ps9"><span class="ts5">apt-get install &lt;package&gt; </span><br /><span class="ts5">apt-get remove &lt;package&gt; # Remove files installed by &lt;package&gt;</span><br /><span class="ts5">apt-get purge &lt;package&gt;&nbsp; # Remove &lt;package&gt; and all the files it did create</span><br /><br /><span class="ts5">apt-get upgrade&nbsp;&nbsp;&nbsp; # Upgrade all packages</span><br /><span class="ts5">apt-get install &lt;package&gt; # Upgrade an install package</span><br /><br /><span class="ts5">apt-get dist-upgrade&nbsp; # Upgrade distribution</span><br /><br /><span class="ts5">apt-cache search &lt;package&gt; # Check if there is such a package name in the repos</span><br /><span class="ts5">apt-cache policy &lt;package&gt; # Check which repos in which order provide the package</span><br /><span class="ts5">apt-cache clean&nbsp;&nbsp;&nbsp; # Remove all downloaded .debs</span><br /><br /><span class="ts5">apt-mark showauto&nbsp;&nbsp; # List all automatically installed packages</span><br /><span class="ts5">apt-mark showmanual</span><br /><span class="ts5">apt-mark showhold</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps23"><span class="ts10">File to Package lookup</span></p>
+<p class="ps9"><span class="ts5">apt-get install apt-file</span><br /><span class="ts5">apt-file update</span><br /><span class="ts5">apt-file search &lt;some file&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps23"><span class="ts10">Install only Debian Security Updates</span></p>
+<p class="ps5"><span class="ts2">Tested with Squeeze, Wheezy, Jessie:</span></p>
+<p class="ps9"><span class="ts5">grep -h '^deb.*security' /etc/apt/sources.list /etc/apt/sources.list.d/* &gt;/tmp/b &amp;&amp; \</span><br /><span class="ts5">apt-get dist-upgrade -o Dir::Etc::SourceList=/tmp/b -o Dir::Etc::sourceparts=/nonexistingdir &amp;&amp; \</span><br /><span class="ts5">rm /tmp/b</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps23"><span class="ts10">100% Non-interactive</span></p>
+<p class="ps5"><span class="ts2">To achieve a useful 100% non-interactive &quot;apt-get install&quot; you need 4 things:</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Set Debian frontend &quot;noninteractive&quot;</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Pass &quot;-y&quot; to confirm everything</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Specify to keep old configs always</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Enforce config definitions</span></p>
+<p class="ps5"><span class="ts2">Ommitting any of those will cause interaction.</span></p>
+<p class="ps9"><span class="ts5">DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::=&quot;--force-confdef&quot; -o Dpkg::Options::=&quot;--force-confold&quot; &lt;package&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">dpkg Commands</span></p>
+<p class="ps9"><span class="ts5"># Resolve file to package</span><br /><span class="ts5">dpkg -S /etc/fstab</span><br /><br /><span class="ts5"># Print all files of a package</span><br /><span class="ts5">dpkg -L passwd # provided files</span><br /><span class="ts5">dpkg -c passwd # owned files</span><br /><br /><span class="ts5"># Find packages by name</span><br /><span class="ts5">dpkg -l gnome*</span><br /><br /><span class="ts5"># Package details</span><br /><span class="ts5">dpkg -p passwd</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Reconfigure after installation:</span></p>
+<p class="ps9"><span class="ts5">dpkg-reconfigure -a</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">From which repos are those packages?</span></p>
+<p class="ps9"><span class="ts5">apt-cache madison &lt;package&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts2">For example to find out which packages are not from the debian repos:</span></p>
+<p class="ps9"><span class="ts5">for i in $(dpkg -l | awk '{print $2}'); do apt-cache madison $i; done |grep -v debian.org</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">File Diversion:</span></p>
+<p class="ps9"><span class="ts5"># Register diverted path and move away</span><br /><span class="ts5">dpkg-divert --add --rename --divert &lt;renamed file path&gt; &amp;file path&gt;</span><br /><br /><span class="ts5"># Remove a diversion again (remove file first!)</span><br /><span class="ts5">dpkg-divert --rename --remove &lt;file path&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps10"><span class="ts4">Add another architecture</span></p>
+<p class="ps9"><span class="ts5">dpkg --add-architecture i386</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Unattended Upgrades</span></p>
+<p class="ps9"><span class="ts5">apt-get install unattended-upgrades</span><br /><span class="ts5">dpkg-reconfigure -plow unattended-upgrades </span><br /><span class="ts5"># and maybe set notification mail address in /etc/apt/apt.conf.d/50unattended-upgrades</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps8"><span class="ts4">Misc</span></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Manage Updates on multiple systems: </span><a href="http://www.ibh.de/apt-dater/" class="hs0">apt-dater</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">Debian Repo manager </span><a href="http://aptly.info" class="hs0">aptly.info</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">APT Repo with </span><a href="http://mirrorer.alioth.debian.org/" class="hs0">reprepro</a></p>
+<p class="ps1"><span class="ts8">cd &lt;repo dir&gt;</span><br /><span class="ts8">reprepro -v includedeb wheezy &lt;.deb file&gt;</span><br /><span class="ts8">reprepro remove wheezy &lt;name&gt;</span><br />&nbsp;</p>
+<p class="ps7"><span class="ts3">Ubuntu</span></p>
+<p class="ps5"><span class="ts2">Like Debian with the addition of</span></p>
+<p class="ps9"><span class="ts5"># 1. Edit settings in&nbsp; /etc/update-manager/release-upgrades</span><br /><span class="ts5"># e.g. set &quot;Prompt=lts&quot;</span><br /><br /><span class="ts5"># 2. Run upgrade</span><br /><span class="ts5">do-release-upgrade -d&nbsp;&nbsp; # For Ubuntu release upgrades</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">OpenSuSE</span></p>
+<p class="ps9"><span class="ts5">zypper install &lt;package&gt; </span><br /><br /><span class="ts5">zypper refresh&nbsp;&nbsp;&nbsp; # Update repository infos</span><br /><br /><span class="ts5">zypper list-updates</span><br /><span class="ts5">zypper repos&nbsp;&nbsp;&nbsp; # List configured repositories</span><br /><br /><span class="ts5">zypper dist-upgrade&nbsp;&nbsp; # Upgrade distribution</span><br /><span class="ts5">zypper dup&nbsp;&nbsp;&nbsp;&nbsp; # Upgrade distribution (alias)</span><br /><br /><span class="ts5">zypper search &lt;package&gt;&nbsp; # Search for &lt;package&gt;</span><br /><span class="ts5">zypper search --search-descriptions &lt;package&gt;</span><br /><br /><span class="ts5">zypper clean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Clean package cache</span><br /><br /><span class="ts5"># For safe updates:</span><br /><span class="ts5">zypper mr â&euro;&ldquo;keep-packages â&euro;&ldquo;remote # Enable caching of packages</span><br /><span class="ts5">zypper dup -D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Fetch packages using a dry run</span><br /><span class="ts5">zypper mr â&euro;&ldquo;all â&euro;&ldquo;no-refresh&nbsp; # Set cache usage for following dup</span><br /><span class="ts5">zypper dup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Upgrade!</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">Redhat</span></p>
+<p class="ps9"><span class="ts5">up2date</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps7"><span class="ts3">CentOS</span></p>
+<p class="ps11"><span class="ts5">yum update&nbsp;&nbsp;&nbsp;&nbsp; # Upgrade distro</span><br /><span class="ts5">yum install &lt;package&gt;&nbsp; # Install &lt;package&gt;</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html id="hs-topic-p">
+<!-- saved from url=(0025)http://www.helpsmith.com/ -->
+<head>
+<title>GlusterFS</title>
+<meta charset="windows-1250" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content="HelpSmith 8.0 (Build 18.1202)" />
+<style type="text/css" media="screen">
+html {
+  height: 100%;
+}
+body {
+  margin: 0 8px 0 8px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="../css/topics/style.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/settings.js?1845a896"></script>
+<script type="text/javascript" src="../js/core.min.js?392d0f49"></script>
+<script type="text/javascript" src="../js/topic.min.js?392d0f49"></script>
+<script type="text/javascript">
+	var topicContext = 680;
+</script>
+</head>
+<body>
+<p class="ps12"><span class="ts2">The following gives a quick overview on the different GlusterFS administration tools.</span></p>
+<p class="ps0"><span class="ts0">Add/Remove Peers</span></p>
+<p class="ps9"><span class="ts5"># Add peer</span><br /><span class="ts5">gluster peer probe &lt;host name&gt;</span><br /><br /><span class="ts5"># Remove peer</span><br /><span class="ts5">gluster peer detach &lt;host name&gt;</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Print Cluster Status</span></p>
+<p class="ps5"><span class="ts2">You can list the status of all known peers by running.</span></p>
+<p class="ps9"><span class="ts5">gluster peer status</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Print all GlusterFS Volumes</span></p>
+<p class="ps9"><span class="ts5">gluster volume info all</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Check free space per Node</span></p>
+<p class="ps9"><span class="ts5">gluster volume status &lt;volume&gt; detail</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps0"><span class="ts0">Mounting Volumes</span></p>
+<p class="ps5"><span class="ts2">You can do standard Unix mounting</span></p>
+<p class="ps9"><span class="ts5">mount -t glusterfs server1:/volume /mnt/volume</span><br /><span class="ts6">&nbsp;</span></p>
+<p class="ps12"><span class="ts2">which has the disadvantage of specifying one server IP. If this server is down you can't mount the volume even though it is available. What is important to know is that the given server is only used to fetch a volume info file, which itself lists all servers providing this volume. So the volume info file doesn't need to be on the volume servers. Also remember as with NFS consider noatime mount options when you have many small files accessed often.</span></p>
+<p class="ps7"><span class="ts3">Problems on Ubuntu 12.04</span></p>
+<p class="ps5"><span class="ts2">When adding GlusterFS share to /etc/fstab do not forget to add &quot;_netdev&quot; to the mount options. Otherwise on next boot your system will just hang!</span></p>
+<p class="ps5"><span class="ts2">Actually there doesn't seem to be a timeout. That would be nice too.</span></p>
+<p><span class="ts2">As a side-note: do not forget that Ubuntu 12.04 doesn't care about the &quot;_netdev&quot; even. So network is not guaranteed to be up when mounting. So an additional upstart task or init script is needed anyway. But you need &quot;_netdev&quot; to prevent hanging on boot.</span></p>
+<p class="ps0"><span class="ts0">Monitoring</span></p>
+<p class="ps6"><span class="ts3">Nagios</span></p>
+<p><span class="ts2">Best use the glfs-health.sh script from </span><a href="http://www.sirgroane.net/2010/04/monitoring-gluster-with-nagios/" class="hs0">http://www.sirgroane.net/2010/04/monitoring-gluster-with-nagios/</a><span class="ts2">&nbsp;but you can also write a Nagios check just based on the GlusterFS reported cluster status you get from &quot;gluster peer info&quot;.</span></p>
+<p class="ps7"><span class="ts3">Munin</span></p>
+<p><span class="ts2">You can enable monitoring using Munin for example to track protocol command statistics with this Munin plugin </span><a href="https://github.com/acrollet/munin-glusterfs" class="hs0">https://github.com/acrollet/munin-glusterfs</a><span class="ts2">.</span></p>
+<p class="ps0"><span class="ts0">Healing Split Brain</span></p>
+<p><span class="ts2">Check a helper Python script from here: </span><a href="http://www.gluster.org/2012/06/healing-split-brain/" class="hs0">http://www.gluster.org/2012/06/healing-split-brain/</a></p>
+<p class="ps0"><span class="ts0">Suggested Readings</span></p>
+<p class="ps1"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><a href="https://rosenha.in/blog/2016/10/migrating-to-gluster-with-existing-data/" class="hs0">Migrate existing data</a></p>
+<p class="ps2"><span style="font-size: 14pt; line-height: 0; vertical-align: middle; color: Black">&bull;</span><span style="display: inline-block; width: 24px"></span><span class="ts2">To learn more on GlusterFS ensure to read the </span><a href="http://www.gluster.org/wp-content/uploads/2012/05/Gluster_File_System-3.3.0-Administration_Guide-en-US.pdf" class="hs0">Gluster File System Administration Guide</a><span class="ts2">&nbsp;(PDF) from the official website. You might also want to check out the</span></p>
+<p class="ps3"><br /></p>
+<div>
+  <hr class="hline0" />
+</div>
+<p class="ps4"><span class="ts1">Created with an evaluation copy of HelpSmith.</span><br /><span class="ts1">To remove this notice, you should </span><a href="http://www.helpsmith.com/buynow.php" target="_blank" class="hs1">purchase the full version</a><span class="ts1">&nbsp;of the product.</span></p>
+</body>
+</html>
