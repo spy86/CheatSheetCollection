@@ -17,11 +17,12 @@
 - ### [Solutions](Solutions/List.md)
 - ### [Virtualization](Virtualization/List.md)
 - ### [Windows](Windows/List.md)
-- ### [Glib Examples]
+- ### [Glib Examples](Glib Examples/List.md)
 - ### [Go Examples](Go Examples/List.md)
 - ### [Javascript Examples](Javascript Examples/List.md)
 - ### [PHP Examples](PHP Examples/List.md)
 - ### [Python Examples](Python Examples/List.md)
+- ### [Programming Language Examples Alike Cookbook](Programming Language Examples Alike Cookbook/List.md)
 
 
 # Slack groups:
@@ -31,7 +32,7 @@
 |   | devopsengineers    | https://devopsengineers.slack.com/    |
 |   | securityhq         | https://devopsengineers.slack.com/    |
 |   | redhat-admins      | https://devopsengineers.slack.com/    |
-|   | devopslinks        | https://devopsengineers.slack.com/    |
+|   | devopslinks        | https://devopslinks.slack.com/        |
 |   | devspl             | https://devspl.slack.com/             |
 |   | chefcommunity      | https://chefcommunity.slack.com/      |
 |   | openstackcommunity | https://openstackcommunity.slack.com/ |

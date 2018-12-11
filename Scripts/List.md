@@ -1,6 +1,6 @@
 ## Collection cheat sheet for Scripts:
 
-- ### [APIs]9APIs.md)
+- ### [APIs](APIs.md)
 - ### [Bash Associative Array](BashAssociativeArray.md)
 - ### [Bash Functions](BashFunctions.md)
 - ### [Bash Regex](BashRegex.md)
