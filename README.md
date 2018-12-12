@@ -27,14 +27,18 @@
 
 # Slack groups:
 
-|   | Name               | URL                                   |
-|---|--------------------|---------------------------------------|
-|   | devopsengineers    | https://devopsengineers.slack.com/    |
-|   | securityhq         | https://devopsengineers.slack.com/    |
-|   | redhat-admins      | https://devopsengineers.slack.com/    |
-|   | devopslinks        | https://devopslinks.slack.com/        |
-|   | devspl             | https://devspl.slack.com/             |
-|   | chefcommunity      | https://chefcommunity.slack.com/      |
-|   | openstackcommunity | https://openstackcommunity.slack.com/ |
-|   | puppetcommunity    | https://puppetcommunity.slack.com/    |
-|   | winadmins          | https://winadmins.slack.com/          |
+|   | Name                         | URL                                     |
+|---|------------------------------|-----------------------------------------|
+|   | DevOps Engineers             | https://devopsengineers.slack.com       |
+|   | SecurityHQ                   | https://securityhq.slack.com            |
+|   | RedHat Admins                | https://redhat-admins.slack.com         |
+|   | DevOps Links                 | https://devopslinks.slack.com           |
+|   | DevsPL                       | https://devspl.slack.com                |
+|   | Chef Community               | https://chefcommunity.slack.com         |
+|   | Openstack Community          | https://openstackcommunity.slack.com    |
+|   | Puppet Community             | https://puppetcommunity.slack.com       |
+|   | Windows Admins               | https://winadmins.slack.com             |
+|   | OG-AWS                       | https://og-aws.slack.com                |
+|   | Azure Stack                  | https://azurestackblog.slack.com        |
+|   | Docker Community             | https://dockercommunity.slack.com       |
+|   | Google Cloud Community       | https://googlecloud-community.slack.com |       |
