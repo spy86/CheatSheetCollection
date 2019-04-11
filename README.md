@@ -17,12 +17,12 @@
 - ### [Solutions](Solutions/List.md)
 - ### [Virtualization](Virtualization/List.md)
 - ### [Windows](Windows/List.md)
-- ### [Glib Examples](Glib Examples/List.md)
-- ### [Go Examples](Go Examples/List.md)
-- ### [Javascript Examples](Javascript Examples/List.md)
-- ### [PHP Examples](PHP Examples/List.md)
-- ### [Python Examples](Python Examples/List.md)
-- ### [Programming Language Examples Alike Cookbook](Programming Language Examples Alike Cookbook/List.md)
+- ### [Glib Examples](Glib_Examples/List.md)
+- ### [Go Examples](Go_Examples/List.md)
+- ### [Javascript Examples](Javascript_Examples/List.md)
+- ### [PHP Examples](PHP_Examples/List.md)
+- ### [Python Examples](Python_Examples/List.md)
+- ### [Programming Language Examples Alike Cookbook](Programming_Language_Examples_Alike_Cookbook/List.md)
 
 
 # Slack groups:
