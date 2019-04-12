@@ -16,4 +16,4 @@
 - ### [Team of Teams](https://de.slideshare.net/codegenesys/teams-of-teams-slideshare)
 - ### [Use Cases](http://www.gatherspace.com/static/use_case_example.html)
 - ### [User Stories](https://www.mountaingoatsoftware.com/agile/user-stories)
-- ### [Wardley Maps](https://medium.com/wardleymaps/on-playing-chess-2634b825dbac)s
+- ### [Wardley Maps](https://medium.com/wardleymaps/on-playing-chess-2634b825dbac)
