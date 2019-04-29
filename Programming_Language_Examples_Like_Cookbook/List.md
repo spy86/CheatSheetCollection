@@ -1,6 +1,7 @@
 ## Collection of Programming Language Examples (Like Cookbook)
 
 ### PHP
+***
 - [ ] ***[PHP Strings](http://pleac.sourceforge.net/pleac_php/strings.html)***
 - [ ] ***[PHP Numbers](http://pleac.sourceforge.net/pleac_php/numbers.html)***
 - [ ] ***[PHP Date/Time](http://pleac.sourceforge.net/pleac_php/datesandtimes.html)***
@@ -11,7 +12,7 @@
 - [ ] ***[PHP IPC](http://pleac.sourceforge.net/pleac_php/processmanagementetc.html)***
 
 ### PERL
-
+***
 - [ ] ***[Perl Strings](http://pleac.sourceforge.net/pleac_perl/strings.html)***
 - [ ] ***[Perl Numbers](http://pleac.sourceforge.net/pleac_perl/numbers.html)***
 - [ ] ***[Perl Date/Time](http://pleac.sourceforge.net/pleac_perl/datesandtimes.html)***
@@ -31,6 +32,7 @@
 - [ ] ***[Perl CGI](http://pleac.sourceforge.net/pleac_perl/cgiprogramming.html)***
 
 ### PYTHON
+***
 - [ ] ***[Python Strings](http://pleac.sourceforge.net/pleac_python/strings.html)***
 - [ ] ***[Python Numbers](http://pleac.sourceforge.net/pleac_python/numbers.html)***
 - [ ] ***[Python Date/Time](http://pleac.sourceforge.net/pleac_python/datesandtimes.html)***
@@ -50,6 +52,7 @@
 - [ ] ***[Python CGI](http://pleac.sourceforge.net/pleac_python/cgiprogramming.html)***
 
 ### RUBY
+***
 - [ ] ***[Ruby Strings](http://pleac.sourceforge.net/pleac_ruby/strings.html)***
 - [ ] ***[Ruby Numbers](http://pleac.sourceforge.net/pleac_ruby/numbers.html)***
 - [ ] ***[Ruby Date/Time](http://pleac.sourceforge.net/pleac_ruby/datesandtimes.html)***
