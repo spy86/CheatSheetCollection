@@ -15,7 +15,7 @@
 - [ ] ***[Mcollective](Mcollective.md)***
 - [ ] ***[Monitoring](Monitoring.md)***
 - [ ] ***[Packer](https://devopscube.com/packer-tutorial-for-beginners/)***
-- [ ] ***[Puppet - Hiera](Puppet - Hiera.md)***
+- [ ] ***[Puppet - Hiera](Puppet_Hiera.md)***
 - [ ] ***[Puppet - Iterating](https://www.devco.net/archives/2015/12/16/iterating-in-puppet.php)***
 - [ ] ***[Puppet](Puppet.md)***
 - [ ] ***[Splunk](Splunk.md)***
