@@ -1,13 +1,13 @@
 ## Syntax
-
+```python
     str.split(sep=None, maxsplit=-1)
-
+```
 Note how the delimiter is optional. Passing None causes shell-like whitespace splitting.
 
 By specifying the maxsplit parameter you can limit the number of results
 
 ## Examples
-
+```python
     >>> 'Fri Nov  2 21:40:09 CET 2018'.split()
     ['Fri', 'Nov', '2', '21:40:09', 'CET', '2018']
     
@@ -16,17 +16,17 @@ By specifying the maxsplit parameter you can limit the number of results
     
     >>> 'a,b,c'.split(',', 1)
     ['a', 'b,c']
-
+```
 
 Be careful on the border cases for empty strings!
-
+```python
     >>> ''.split()
     []
 
     >>> ''.split(' ')
     ['']
 
-
+```
 
 ## Related Methods
 
