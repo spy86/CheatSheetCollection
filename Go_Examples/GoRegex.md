@@ -24,62 +24,62 @@ There are different matching methods
   - [ ] Signature: func Match(patter n string, b []byte) (matched bool, err error)
 ***
 - [ ] Method: MatchString
+  - [ ] Description: Test a string for match another string
+  - [ ] Signature: func MatchString(pattern string, s string) (matched bool, err error)
+***
+- [ ] Method: Find
+  - [ ] Description: Find first byte slices match and return it
+  - [ ] Signature: func (re *Regexp) Find(b []byte) []bye
+***
+- [ ] Method: FindIndex
+  - [ ] Description: Find first byte slices match and return it
+  - [ ] Signature: func (re *Regexp) FindIndex(b []byte) (loc []int)
+***
+- [ ] Method: FindSubmatch
+  - [ ] Description: Find first byte slices match and return it
+  - [ ] Signature: func (re *Regexp) FindSubmatch(b []byte) [][]byte
+***
+- [ ] Method: FindSubmatchIndex
+  - [ ] Description: Find first byte slices match and return it
+  - [ ] Signature: func (re *Regexp) FindSubmatchIndex(b[]byte) []int)
+***
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
-- [ ] Method: MatchString
-  - [ ] Description:
-  - [ ] Signature:
-***
-- [ ] Method: MatchString
-  - [ ] Description:
-  - [ ] Signature:
-***
-- [ ] Method: MatchString
-  - [ ] Description:
-  - [ ] Signature:
-***
-- [ ] Method: MatchString
-  - [ ] Description:
-  - [ ] Signature:
-***
-- [ ] Method: MatchString
-  - [ ] Description:
-  - [ ] Signature:
-***
-- [ ] Method: MatchString
+- [ ] Method: 
   - [ ] Description:
   - [ ] Signature:
 ***
