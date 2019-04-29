@@ -1,5 +1,5 @@
 ## Commands
-
+```shell
     kubectl cluster-info
 
     # In general query resource typs with
@@ -30,17 +30,17 @@
     kubectl resize --replicas=4 rc <name>
 
     kubectl expose rc <name> --port=<port> --public-ip=<ip>
-
+```
 ## Testing kubectl Commands
 
 Several commands allow passing "--dry-run" to test impact
-
+```shell
     kubectl run --dry-run [...]
-
+```
 ## Defining Limits and Quotas
 
 Conceptionally "quotas" limit the resource usage per namespace while "limits" are maximum allocation amounts per resource type (e.g. cpu, memory, storage, network policies...)
-
+```yaml
     apiVersion: v1
     kind: Template
     objects:
@@ -54,31 +54,31 @@ Conceptionally "quotas" limit the resource usage per namespace while "limits" ar
           limits:
             cpu: 2
             memory: 4Gi
-            
+```            
 JVM and CFS problems/solutions: https://engineering.squarespace.com/blog/2017/understanding-linux-container-scheduling
 
 ## Online Tutorials
 
-- [Katacoda](https://www.katacoda.com/courses/kubernetes)
+- [ ] [Katacoda](https://www.katacoda.com/courses/kubernetes)
 
 ## Accessing Kubernetes API from pods
-
+```shell
      curl -k -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://<mycluster>
-
+```
 ## Migration Stories
 
-- Saltside: https://engineering.saltside.se/migrating-to-kubernetes-day-20-problems-fbbda4905c23
+- [ ] Saltside: https://engineering.saltside.se/migrating-to-kubernetes-day-20-problems-fbbda4905c23
 
 ## Use Cases
 
-- [Web Caching with Kubernetes](https://github.com/Financial-Times?utf8=%E2%9C%93&q=varnish)
-- [MongoDB Replicas as Stateful Sets in GKE](https://pauldone.blogspot.de/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
-- [nginx SSL sidecar](https://vorozhko.net/kubernetes-sidecar-pattern-nginx-ssl-proxy-for-nodejs)
-- Operators
-     - [Kafka](https://github.com/strimzi/strimzi-kafka-operator)
-     - [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
+- [ ] [Web Caching with Kubernetes](https://github.com/Financial-Times?utf8=%E2%9C%93&q=varnish)
+- [ ] [MongoDB Replicas as Stateful Sets in GKE](https://pauldone.blogspot.de/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
+- [ ] [nginx SSL sidecar](https://vorozhko.net/kubernetes-sidecar-pattern-nginx-ssl-proxy-for-nodejs)
+- [ ] Operators
+     - [ ]- [Kafka](https://github.com/strimzi/strimzi-kafka-operator)
+     - [ ] [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
 
 
 ## Misc
 
-- [Issues when monitoring with Prometheus](http://linuxczar.net/blog/2017/06/15/prometheus-histogram-2/)
+- [ ] [Issues when monitoring with Prometheus](http://linuxczar.net/blog/2017/06/15/prometheus-histogram-2/)
