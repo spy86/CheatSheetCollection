@@ -24,39 +24,39 @@ done with an "=":
 Two important filters are "rex" and "regex". "rex" is for extraction a
 pattern and storing it as a new field. This is why you need to specifiy
 a named extraction group in Perl like manner "(?...)" for example
-
+```shell
     source="some.log" Fatal | rex "(?i) msg=(?P[^,]+)"
-
+```
 When running above query check the list of "interesting fields" it now
 should have an entry "FIELDNAME" listing you the top 10 fatal messages
 from "some.log" What is the difference to "regex" now? Well "regex" is
 like grep. Actually you can rephrase
-
+```shell
     source="some.log" Fatal
-
+```
 to
-
+```shell
     source="some.log" | regex _raw=".*Fatal.*"
-
+```
 and get the same result. The syntax of "regex" is simply "=". Using it
 makes sense once you want to filter for a specific field.
 
 ### Calculations
 
 Sum up a field and do some arithmetics:
-
+```shell
     ... | stats sum(<field>) as result | eval result=(result/1000)
-
+```
 Determine the size of log events by checking len() of \_raw. The p10()
 and p90() functions are returning the 10 and 90 percentiles:
-
+```shell
     | eval raw_len=len(_raw) | stats avg(raw_len), p10(raw_len), p90(raw_len) by sourcetype
-
+```
 ### Simple Useful Examples
 
 Splunk usually auto-detects access.log fields so you can do queries
 like:
-
+```shell
     source="/var/log/nginx/access.log" HTTP 500
     source="/var/log/nginx/access.log" HTTP (200 or 30*)
     source="/var/log/nginx/access.log" status=404 | sort - uri 
@@ -65,20 +65,20 @@ like:
     source="/var/log/nginx/access.log" | head 1000 | top 50 uri
     source="/var/log/nginx/access.log" | head 1000 | top 50 method
     ...
-
+```
 ### Emailing Results
 
 By appending "sendemail" to any query you get the result by mail!
-
+```shell
     ... | sendemail to="john@example.com"
-
+```
 ### Timecharts
 
 Create a timechart from a single field that should be summed up
-
+```shell
     ... | table _time, <field> | timechart span=1d sum(<field>)
     ... | table _time, <field>, name | timechart span=1d sum(<field>) by name
-
+```
 ## Index Statistics
 
 List All Indices
@@ -89,77 +89,73 @@ List All Indices
      | REST /services/data/indexes | table title splunk_server currentDBSizeMB frozenTimePeriodInSecs maxTime minTime totalEventCount
 
 on the command line you can call
-
+```shell
     $SPLUNK_HOME/bin/splunk list index
-
+```
 To query write amount of per index the metrics.log can be used:
-
+```shell
     index=_internal source=*metrics.log group=per_index_thruput series=* | eval MB = round(kb/1024,2) | timechart sum(MB) as MB by series
-
+```
 MB per day per indexer / index
-
+```shell
     index=_internal metrics kb series!=_* "group=per_host_thruput" monthsago=1 | eval indexed_mb = kb / 1024 | timechart fixedrange=t span=1d sum(indexed_mb) by series | rename sum(indexed_mb) as totalmb
 
     index=_internal metrics kb series!=_* "group=per_index_thruput" monthsago=1 | eval indexed_mb = kb / 1024 | timechart fixedrange=t span=1d sum(indexed_mb) by series | rename sum(indexed_mb) as totalmb
-
+```
 ## Reload apps
 
 Load base URL with appended
-
+```shell
     /debug/refresh
-
-* * * * *
-
-* * * * *
+```
 
 ## Debug Traces
 
 You can enable traces per trace topic listed in splunkd.log. To change
 permanently edit /opt/splunk/etc/log.cfg and change the trace level from
 "INFO" to "DEBUG". Example:
-
+```shell
     category.TcpInputProc=DEBUG
-
+```
 The same can be achieved non-persistent and on-the-fly in the "System
 Settings" GUI.
 
 ## Configuration
 
 To list effective configuration
-
+```shell
     $SPLUNK_HOME/bin/splunk btool inputs list
-
+```
 To check configuration syntax
-
+```shell
     $SPLUNK_HOME/bin/splunk btool check
-
+```
 ### Inputs
-
+```shell
     splunk _internal call /data/inputs/tcp/raw
     splunk _internal call /data/inputs/tcp/raw -get:search sourcetype=foo
     splunk _internal call /servicesNS/nobody/search/data/inputs/tcp/raw/7092 -post:sourcetype bar -post:index bardata
-
+```
 ### Licenses
-
+```shell
     splunk list licenses
-
+```
 ### User Management
 
 To reload authentication config from command line:
-
+```shell
     # At least for Splunk 6.x
     splunk _internal call /authentication/providers/services/_reload -auth admin:changeme
 
     # Older variant
     splunk _internal rpc-auth ''
-
+```
 To list
-
+```shell
     splunk _internal call /services/authentication/roles -get:search indexes_edit
     splunk _internal call /services/authentication/users -get:search john.smith
     splunk _internal call /services/authentication/users/john.smith -method DELETE
-
+```
 ## Capacity Planning
 
-There is a great online calculator at
-[splunk-sizing.appspot.com](https://splunk-sizing.appspot.com).
+- [ ] There is a great online calculator at [splunk-sizing.appspot.com](https://splunk-sizing.appspot.com).
