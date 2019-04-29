@@ -43,21 +43,21 @@ There are different matching methods
   - [ ] Description: Find first byte slices match and return it
   - [ ] Signature: func (re *Regexp) FindSubmatchIndex(b[]byte) []int)
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindString
+  - [ ] Description: Find first string match and return it
+  - [ ] Signature: func (re *Regexp) FindString(s string) string
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindStringIndex
+  - [ ] Description: Find first string match and return it
+  - [ ] Signature: func (re *Regexp) FindStringIndex(s string) (loc []int)
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindStringSubmatch
+  - [ ] Description: Find first string match and return it
+  - [ ] Signature: func (re *Regexp) FindStringSubmatch(s string) []string
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindStringSubmatchIndex
+  - [ ] Description: Find first string match and return it
+  - [ ] Signature: func (re *Regexp FindStringSubmatchIn dex(s string) []int
 ***
 - [ ] Method: 
   - [ ] Description:
