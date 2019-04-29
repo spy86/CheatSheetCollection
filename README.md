@@ -19,7 +19,7 @@
 - [ ] ***[Windows](Windows/List.md)***
 - [ ] ***[Glib Examples](Glib_Examples/List.md)***
 - [ ] ***[Go Examples](Go_Examples/List.md)***
-- [ ] ***[Javascript Examples](Javascript_Examples/List.md)***
+- [X] ***[Javascript Examples](Javascript_Examples/List.md)***
 - [X] ***[PHP Examples](PHP_Examples/List.md)***
 - [X] ***[Python Examples](Python_Examples/List.md)***
 - [X] ***[Programming Language Examples Alike Cookbook](Programming_Language_Examples_Like_Cookbook/List.md)***
