@@ -80,11 +80,9 @@ using a Script resource.
 ```
 ### Misc
 
-- [ ]   [Hardening
-    cookbook](https://github.com/hardening-io/chef-os-hardening)
+- [ ]   [Hardening cookbook](https://github.com/hardening-io/chef-os-hardening)
 - [ ]   [Drift Detection Cookbook](https://github.com/stathy/drift_tracking)
-- [ ]   [Fix RabbitMQ 100% CPU
-    usage](http://lzone.de/Solving+100%25+CPU+usage+of+Chef)
+- [ ]   [Fix RabbitMQ 100% CPU usage](http://lzone.de/Solving+100%25+CPU+usage+of+Chef)
 - [ ]   [Exporting Nagios
     Hostgroups](http://lzone.de/Simple-Chef-to-Nagios-Hostgroup-Export)
 - [ ]   [Chef - Manage Amazon EC2
