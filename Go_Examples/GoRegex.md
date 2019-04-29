@@ -15,17 +15,13 @@ To return all matches:
 ```go
     matches := regexp.FindAllString("([a-zA-Z0-9]+)", input)
 ```
-### Matching Methods
+### Matching Methods 
 
 There are different matching methods
 
-
-| Method                | Description           | Signature             |
-|-----------------------|-----------------------|-----------------------|
-| Match                 |Test a string for matching a byte slice|func Match(pattern string, b []byte) (matched bool, err error)|
-| MatchString| Test a string for match another string| func MatchString(pattern string, s string) (matched bool, err error)|
-| Find\| Find first byte slices match and return it| func (re *Regexp) Find(b []byte) []byte|
-
+- [ ] Method: Match
+  - [ ] Description: Test a string for matching a byte slice 
+  - [ ] Signature: func Match(patter n string, b []byte) (matched bool, err error)
 
 ### Replacing
 
