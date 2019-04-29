@@ -10,6 +10,7 @@ plugin](http://liferea.git.sourceforge.net/git/gitweb.cgi?p=liferea/liferea;a=bl
 that allows [Liferea](http://liferea.sf.net) to store feed passwords
 into GnomeKeyring:
 
+```python
     from gi.repository import GObject
     from gi.repository import GnomeKeyring
 
@@ -54,7 +55,7 @@ into GnomeKeyring:
     do_store('id1', 'User1', 'Password1')
     do_query('id1')
     dump_all()
-
+```
 For simplicity the username and password are stored together as the
 secret token separated by \"@@@\". According to the documentation it
 should be possible to store them separately, but given my limited Python
@@ -64,7 +65,7 @@ use this simple method. If I find a better way I\'ll update this post.
 If you know how to improve the code please post a comment! The code
 should raise a keyring password dialog when run for the first time in
 the session and give an output similar to this:
-
+```python
     Unlocking keyring test...
     Dump all keyring entries...
       => 'id1' = TestA@@@PassA
@@ -75,7 +76,7 @@ the session and give an output similar to this:
          keyring id  = 1
     Dump all keyring entries...
       => 'id1' = TestA@@@PassA
-
+```
 You can also check the keyring contents using the **seahorse** GUI where
 you should see the \"test\" keyring with an entry with id \"1\" as in
 the screenshot below.
