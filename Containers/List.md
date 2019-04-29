@@ -7,6 +7,6 @@
 - [ ] ***[Docker](Docker.md)***
 - [ ] ***[Helm](Helm.md)***
 - [ ] ***[Openshift](Openshift.md)***
-- [ ] ***[gcloud](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/infrastructure-as-a-service/cloud-services-compute/google-compute-engine-cheat-sheet)***
+- [ ] ***[gcloud](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-providers/google-cloud-platform-cheat-sheet)***
 - [ ] ***[Kubernetes](Kubernetes.md)***
 - [ ] ***[rkt](http://rocket.readthedocs.org/en/latest/Documentation/commands/)***
