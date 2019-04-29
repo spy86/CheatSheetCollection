@@ -1,7 +1,7 @@
 ## CLI Commands
 
 ### Cluster Management
-
+```shell
     docker swarm init --advertise-addr <ip>   # Set up master
     docker swarm init --force-new-cluster -advertise-addr <ip>   # Force manager on broken cluster
     
@@ -23,23 +23,23 @@
     
     docker node promote <node id>             # Promote node to manager
     docker node demote <node id>
-
+```
 ### Rebalancing
 
 Forced rebalance (dangerous)
-
+```shell
     docker service ls -q > dkr_svcs && for i in `cat dkr_svcs`; do docker service update "$i" --detach=false --force ; done
-
+```
 Draining a node
-
+```shell
     docker node update --availability drain <node id>
-    
+```    
 Undrain
-
+```shell
     docker node update --availability active <node id>
-
+```
 ### Managing Services
-
+```shell
     docker stack ls
     docker stack rm <name>
     
@@ -51,3 +51,4 @@ Undrain
     docker service ps <service id>
     
     docker service logs
+```
