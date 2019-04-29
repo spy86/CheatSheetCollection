@@ -55,7 +55,7 @@ or create credential on master
 Create a template from an existing project
 ```shell
     oc export all --as-template my_project_template >template.json
-  ```  
+```  
 Note that the resulting JSON will have no parameters yet. You'll have to 
 identify places to replace with parameters (syntax is "${PARAMETER}") and
 to declare those parameters.
@@ -80,18 +80,18 @@ to declare those parameters.
 - [ ] Turning off sticky sessions: 
 ```shell
       oc annotate route <name of route> haproxy.router.openshift.io/disable_cookies='true'
-    ```
+ ```
     
-- [Securing inter-service communication with certificates](https://docs.openshift.com/container-platform/3.6/dev_guide/secrets.html#service-serving-certificate-secrets): done via annotations at the service indicating a TLS cert/key in a secret
-    
+- [ ] [Securing inter-service communication with certificates](https://docs.openshift.com/container-platform/3.6/dev_guide/secrets.html#service-serving-certificate-secrets): done via annotations at the service indicating a TLS cert/key in a secret
+```shell    
       apiVersion: v1
         kind: Service
         metadata:
           annotations:
             service.alpha.openshift.io/serving-cert-secret-name: <name>
-    
-- ebook: [OpenShift for
+ ```   
+- [ ] ebook: [OpenShift for
     Developers](https://www.openshift.com/promotions/for-developers.html)
-- OpenShift Cheat Sheets
-    -   [http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/](http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/)
-    -   https://monodot.co.uk/openshift-cheatsheet/
+- [ ] OpenShift Cheat Sheets
+    - [ ]   [http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/](http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/)
+    - [ ]   https://monodot.co.uk/openshift-cheatsheet/
