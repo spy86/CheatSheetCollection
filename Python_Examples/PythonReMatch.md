@@ -13,7 +13,7 @@ re.search() when you want to match anywhere in a string.**
 
 #### Ad-hoc match
 
-``` {.brush:python}
+```python
 import re
 
 result = re.match(pattern, string, flags=0);
@@ -23,7 +23,7 @@ result = re.match(pattern, string, flags=0);
 
 Use this if you use a pattern multiple times.
 
-``` {.brush:python}
+```python
 import re
 
 pattern = re.compile('some pattern')
@@ -32,7 +32,7 @@ result = pattern.match(string [, pos [, end]]);
 
 ### Simple Examples
 
-``` {.brush:python}
+```python
 result = re.match(r'abc', input)               # Check for substring 'abc'
 result = re.match(r'^\w+$', input)             # Ensure string is one word
 
