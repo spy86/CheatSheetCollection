@@ -13,7 +13,7 @@
     knife bootstrap <FQDN/IP>
 ```
 #### Change Chef Run List
-``shell
+```shell
     knife node run_list <add|remove> <node> <cookbook>::<recipe>
 ```
 #### Runlist Status
@@ -28,7 +28,7 @@
     knife node show <node>
 ```
 #### List Nodes per Role
-``shell
+```shell
     knife search node 'roles:<role name>'
 ```
 #### Load role from file
@@ -53,8 +53,7 @@ you can also use patterns:
 
 #### Inheritance
 
-[Debugging Attribute
-Inheritance]
+[Debugging Attribute Inheritance]
 ```shell
     # Invoke chef shell in attribute mode
     chef-shell -z
