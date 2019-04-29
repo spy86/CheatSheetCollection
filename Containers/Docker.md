@@ -97,4 +97,4 @@ Start command
 
 ### Best Practices for Images
 
-- When using ext4: disable journaling
+- [ ] When using ext4: disable journaling
