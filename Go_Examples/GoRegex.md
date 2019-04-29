@@ -59,31 +59,30 @@ There are different matching methods
   - [ ] Description: Find first string match and return it
   - [ ] Signature: func (re *Regexp FindStringSubmatchIn dex(s string) []int
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindAll
+  - [ ] Description: Like the Find/FindString methods, just returning all matches
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindAllIndex
+  - [ ] Description: Like the Find/FindString methods, just returning all matches
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindAllString
+  - [ ] Description: Like the Find/FindString methods, just returning all matches   
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindAllStringIndex
+  - [ ] Description: Like the Find/FindString methods, just returning all matches
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
+- [ ] Method: FindAllStringSubmatch
+  - [ ] Description: Like the Find/FindString methods, just returning all matches
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
 ***
-- [ ] Method: 
-  - [ ] Description:
-  - [ ] Signature:
-***
-
+- [ ] Method: FindAllStringSubmatch Index
+  - [ ] Description: Like the Find/FindString methods, just returning all matches
+  - [ ] Signature: Like the Find/FindString methods, just returning arrays of matches
+  
 ### Replacing
 
 To replace text use ReplaceAll or ReplaceAllString
