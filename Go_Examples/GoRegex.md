@@ -22,6 +22,67 @@ There are different matching methods
 - [ ] Method: Match
   - [ ] Description: Test a string for matching a byte slice 
   - [ ] Signature: func Match(patter n string, b []byte) (matched bool, err error)
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
+- [ ] Method: MatchString
+  - [ ] Description:
+  - [ ] Signature:
+***
 
 ### Replacing
 
