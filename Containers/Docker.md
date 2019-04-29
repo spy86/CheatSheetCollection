@@ -1,7 +1,7 @@
 ### Commands
 
 Note container is either a container id, or a container name (if such is given to a container with the --name option on start). Both can be obtained with the "docker ps -a" command is either an image id, or an image name. Both can be obtained with the "docker image" command. Do not confuse with container id/name!
-
+```shell
     docker ps                           # List running instances
     docker ps -a                        # List all instances
     docker inspect <container>          # Instance details
@@ -38,61 +38,61 @@ Note container is either a container id, or a container name (if such is given t
                                         # Example: docker save -o /tmp/myimage.tar busybox
     docker history <image>              # Shows image creation history. Useful if you want to "recreate" the Dockerfile of an image -
                                         # in cases where you are interested how the image has been created.
-
+```
 ### Dockerfile Examples
 
 Installing packages
-
+```shell
     FROM debian:wheezy
     RUN apt-get update
     RUN apt-get -y install python git
-
+```
 Adding users
-
+```shell
     RUN useradd jsmith -u 1001 -s /bin/bash
-
+```
 Defining work directories and environment
-
+```shell
     WORKDIR /home/jsmith/
     ENV HOME /home/jsmith
-
+```
 Mounts
-
+```shell
     VOLUME ["/home"]
-
+```
 Opening ports
-
+```shell
     EXPOSE 22
     EXPOSE 80
-
+```
 Start command
-
+```shell
     USER jsmith
     WORKDIR /home/jsmith/
     ENTRYPOINT bin/my-start-script.sh
-    
+```    
 [Setting timezone](https://serverfault.com/a/683651)
-
+```shell
     ENV TZ=America/Los_Angeles
     RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
+```
 
 ### Misc
 
--   [kubernetes](https://github.com/googlecloudplatform/kubernetes):
+- [ ]  [kubernetes](https://github.com/googlecloudplatform/kubernetes):
     Docker container cluster management
--   [CoreOS Rocket](https://coreos.com/blog/rocket/) (commercial Docker
+- [ ]  [CoreOS Rocket](https://coreos.com/blog/rocket/) (commercial Docker
     alternative)
--   [Amazon EC2 Container Service](http://aws.amazon.com/ecs/) - Docker
+- [ ]   [Amazon EC2 Container Service](http://aws.amazon.com/ecs/) - Docker
     container support on AWS
--   [Docker Patterns](http://www.hokstad.com/docker/patterns) -
+- [ ]   [Docker Patterns](http://www.hokstad.com/docker/patterns) -
     container inheritance examples
--   [Docker Bench
+- [ ]   [Docker Bench
     Security](https://github.com/docker/docker-bench-security) - Test
     Docker containers for security issues
--   [Docker OpenSCAP
+- [ ]   [Docker OpenSCAP
     Checks](https://github.com/OpenSCAP/container-compliance)
--   [Container Hardening
+- [ ]   [Container Hardening
     Script](https://gist.github.com/jumanjiman/f9d3db977846c163df12)
 
 ### Best Practices for Images
