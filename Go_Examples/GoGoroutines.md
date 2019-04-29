@@ -1,0 +1,16 @@
+### How to write a goroutine
+
+You don\'t. You just write a function that you can asynchronously run
+using the go keyword. Example:
+
+    import "fmt"
+
+    func worker(msg string) {
+        fmt.Println(msg)
+    }
+
+    func main() {
+        worker("Synchronous Hello!");
+
+        go worker("Asynchronous Hello!")
+    }
