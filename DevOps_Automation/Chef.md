@@ -1,7 +1,7 @@
 ### General
 
 #### Chef Dry Run
-``shell
+```shell
     chef-client -Fmin --why-run
 ```
 #### List Facts
@@ -9,7 +9,7 @@
     ohai
 ```
 #### Bootstrap Chef client
-``shell
+```shell
     knife bootstrap <FQDN/IP>
 ```
 #### Change Chef Run List
@@ -17,14 +17,14 @@
     knife node run_list <add|remove> <node> <cookbook>::<recipe>
 ```
 #### Runlist Status
-``shell
+```shell
     knife status --run-list
     knife status "role:webserver" --run-list
 ```
 ### Nodes and Roles
 
 #### List Node Info
-``shell
+```shell
     knife node show <node>
 ```
 #### List Nodes per Role
@@ -32,17 +32,17 @@
     knife search node 'roles:<role name>'
 ```
 #### Load role from file
-``shell
+```shell
     knife role from file <file> [<file> [...]]
 ```
 ### Data Bags
 
 #### Load data bag from file
-``shell
+```shell
     knife data bag from file <data bag name> <file>
 ```
 ### knife + SSH
-``shell
+```shell
     knife ssh -a ipaddress name:server1 "chef-client"
 ```
 you can also use patterns:
