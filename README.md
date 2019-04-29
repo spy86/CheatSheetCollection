@@ -21,7 +21,7 @@
 - [ ] ***[Go Examples](Go_Examples/List.md)***
 - [ ] ***[Javascript Examples](Javascript_Examples/List.md)***
 - [ ] ***[PHP Examples](PHP_Examples/List.md)***
-- [ ] ***[Python Examples](Python_Examples/List.md)***
+- [X] ***[Python Examples](Python_Examples/List.md)***
 - [X] ***[Programming Language Examples Alike Cookbook](Programming_Language_Examples_Like_Cookbook/List.md)***
 
 
