@@ -1,7 +1,7 @@
 ## Collection of Javascript Examples:
 
 - [ ] ***[Dependency Test](https://david-dm.org/)***
-- [ ] ***[GraphQL](GraphQL.md)***
+- [ ] ***[GraphQL](Graph_QL.md)***
 - [ ] ***[Javascript Frameworks](Javascript_Frameworks.md)***
 - [ ] ***[Javascript RegExp](Javascript_RegExp.md)***
 - [ ] ***[Javascript Singleton](https://stackoverflow.com/questions/1635800/javascript-best-singleton-pattern#6733919)***
