@@ -21,7 +21,7 @@
 - [ ] ***[PgBouncer](PgBouncer.md)***
 - [ ] ***[Postgres](Postgres.md)***
 - [ ] ***[RabbitMQ](RabbitMQ.md)***
-- [ ] ***[Redis Sentinel](Redis Sentinel.md)***
+- [ ] ***[Redis Sentinel](RedisSentinel.md)***
 - [ ] ***[Redis](Redis.md)***
 - [ ] ***[Squid](Squid.md)***
 - [ ] ***[Tomcat](Tomcat.md)***
