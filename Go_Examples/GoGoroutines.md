@@ -2,7 +2,7 @@
 
 You don\'t. You just write a function that you can asynchronously run
 using the go keyword. Example:
-
+```go
     import "fmt"
 
     func worker(msg string) {
@@ -14,3 +14,4 @@ using the go keyword. Example:
 
         go worker("Asynchronous Hello!")
     }
+```
