@@ -1,26 +1,26 @@
 ## Collection cheat sheet for DevOps Automation:
 
-- ### [Ansible](Ansible.md)
-- ### [Bower](Bower.md)
-- ### [CI/CD](CI_CD.md)
-- ### [Chef](Chef.md)
-- ### [Gerrit](Gerrit.md)
-- ### [Git](Github.md)
-- ### [Github](Github.md)
-- ### [Hubot - Howto](http://www.icicletech.com/blog/automate-your-development-activities-with-hubot)
-- ### [IT-Ops](IT-Ops.md)
-- ### [Jenkins](Jenkins.md)
-- ### [Jinja](Jinja.md)
-- ### [Maven](Maven.md)
-- ### [Mcollective](Mcollective.md)
-- ### [Monitoring](Monitoring.md)
-- ### [Packer](https://devopscube.com/packer-tutorial-for-beginners/)
-- ### [Puppet - Hiera](Puppet - Hiera.md)
-- ### [Puppet - Iterating](https://www.devco.net/archives/2015/12/16/iterating-in-puppet.php)
-- ### [Puppet](Puppet.md)
-- ### [Splunk](Splunk.md)
-- ### [Terraform - official docs](https://www.terraform.io/docs/commands/index.html)
-- ### [Terraform](Terraform.md)
-- ### [cfengine](https://docs.cfengine.com/latest/guide.html)
-- ### [salt](https://github.com/saltstack/salt/wiki/Cheat-Sheet)
-- ### [saltstack](https://github.com/harkx/saltstack-cheatsheet)
+- [ ] ***[Ansible](Ansible.md)***
+- [ ] ***[Bower](Bower.md)***
+- [ ] ***[CI/CD](CI_CD.md)***
+- [ ] ***[Chef](Chef.md)***
+- [ ] ***[Gerrit](Gerrit.md)***
+- [ ] ***[Git](Github.md)***
+- [ ] ***[Github](Github.md)***
+- [ ] ***[Hubot - Howto](http://www.icicletech.com/blog/automate-your-development-activities-with-hubot)***
+- [ ] ***[IT-Ops](IT-Ops.md)***
+- [ ] ***[Jenkins](Jenkins.md)***
+- [ ] ***[Jinja](Jinja.md)***
+- [ ] ***[Maven](Maven.md)***
+- [ ] ***[Mcollective](Mcollective.md)***
+- [ ] ***[Monitoring](Monitoring.md)***
+- [ ] ***[Packer](https://devopscube.com/packer-tutorial-for-beginners/)***
+- [ ] ***[Puppet - Hiera](Puppet - Hiera.md)***
+- [ ] ***[Puppet - Iterating](https://www.devco.net/archives/2015/12/16/iterating-in-puppet.php)***
+- [ ] ***[Puppet](Puppet.md)***
+- [ ] ***[Splunk](Splunk.md)***
+- [ ] ***[Terraform - official docs](https://www.terraform.io/docs/commands/index.html)***
+- [ ] ***[Terraform](Terraform.md)***
+- [ ] ***[cfengine](https://docs.cfengine.com/latest/guide.html)***
+- [ ] ***[salt](https://github.com/saltstack/salt/wiki/Cheat-Sheet)***
+- [ ] ***[saltstack](https://github.com/harkx/saltstack-cheatsheet)***
