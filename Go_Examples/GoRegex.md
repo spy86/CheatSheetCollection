@@ -24,6 +24,8 @@ There are different matching methods
 |-----------------------|-----------------------|-----------------------|
 | Match                 |Test a string for matching a byte slice|func Match(pattern string, b []byte) (matched bool, err error)|
 | MatchString| Test a string for match another string| func MatchString(pattern string, s string) (matched bool, err error)|
+| Find\| Find first byte slices match and return it| func (re *Regexp) Find(b []byte) []byte|
+
 
 ### Replacing
 
