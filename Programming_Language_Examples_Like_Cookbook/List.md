@@ -1,4 +1,4 @@
-## Collection of Programming Language Examples (Alike Cookbook)***:
+## Collection of Programming Language Examples (Like Cookbook)
 
 ### PHP
 - [ ] ***[PHP Strings](http://pleac.sourceforge.net/pleac_php/strings.html)***
