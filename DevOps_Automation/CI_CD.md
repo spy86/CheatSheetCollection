@@ -4,5 +4,5 @@
 
 ## Consumer Contracts
 
-- [ ] [https://docs.pact.io/](Pact)
-- [ ] [https://cloud.spring.io/spring-cloud-contract/](SpringCloud Contract)
+- [ ] [pact.io](https://docs.pact.io)
+- [ ] [spring.io](https://spring.io/projects/spring-cloud-contract)
