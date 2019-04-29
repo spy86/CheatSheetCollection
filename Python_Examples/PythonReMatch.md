@@ -4,7 +4,7 @@ See also
 re.search() when you want to match anywhere in a string.**
 
 -   Use re.search() if you want to search anywhere inside a string
--   Use [re.sub()](Python%20re.sub) if you want to substitute
+-   Use [re.sub()](/Python_Examples/PythonReSub.md) if you want to substitute
     substrings.
 -   Use re.split() if you want to extract fields when you have a common
     field separator.
