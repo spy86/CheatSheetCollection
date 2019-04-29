@@ -8,12 +8,12 @@
 - [ ] ***[JSON](https://dzone.com/refcardz/core-json)***
 - [ ] ***[Javascript](https://code.google.com/archive/p/jslibs/wikis/JavascriptTips.wiki)***
 - [ ] ***[Linting](Linting.md)***
-- [ ] ***[Linux HTML Widgets](Linux HTML Widgets.html)***
+- [ ] ***[Linux HTML Widgets](LinuxHTMLWidgets.html)***
 - [ ] ***[Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)***
 - [ ] ***[PHP](PHP.md)***
 - [ ] ***[Perl](Perl.md)***
 - [ ] ***[Regex101](https://regex101.com/)***
-- [ ] ***[Ruby Bundler](Ruby Bundler.md)***
+- [ ] ***[Ruby Bundler](RubyBundler.md)***
 - [ ] ***[Ruby](Ruby.md)***
 - [ ] ***[SQL](SQL.md)***
 - [ ] ***[SVG Attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)***
