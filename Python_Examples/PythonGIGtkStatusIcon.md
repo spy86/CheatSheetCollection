@@ -5,7 +5,7 @@ respond to left clicking by toggling the application window like many
 instant messengers do. On right clicks it presents a menu with the
 options to toggle the application window or quit the application.
 
-``` {.brush:python}
+```python
 from gi.repository import GObject, Peas, PeasGtk, Gtk
 
 class TrayiconPlugin (GObject.Object, PeasActivatable):
