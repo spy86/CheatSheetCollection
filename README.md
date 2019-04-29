@@ -5,24 +5,24 @@
 ![](https://cookbook.fortinet.com/wp-content/uploads/sysadmin_notes-logo-2.gif)
 
 # List of contents:
-- ### [Containers](Containers/List.md)
-- ### [Agile](Agile/List.md)
-- ### [DevOps Automation](DevOps_Automation/List.md)
-- ### [DevOps Linux](DevOps_Linux/List.md)
-- ### [DevOps Services](DevOpsServices/List.md)
-- ### [Languages](Languages/List.md)
-- ### [Network](Network/List.md)
-- ### [Scripting](Scripts/List.md)
-- ### [Security](Security/List.md)
-- ### [Solutions](Solutions/List.md)
-- ### [Virtualization](Virtualization/List.md)
-- ### [Windows](Windows/List.md)
-- ### [Glib Examples](Glib_Examples/List.md)
-- ### [Go Examples](Go_Examples/List.md)
-- ### [Javascript Examples](Javascript_Examples/List.md)
-- ### [PHP Examples](PHP_Examples/List.md)
-- ### [Python Examples](Python_Examples/List.md)
-- ### [Programming Language Examples Alike Cookbook](Programming_Language_Examples_Alike_Cookbook/List.md)
+- [ ] ***[Containers](Containers/List.md)***
+- [ ] ***[Agile](Agile/List.md)***
+- [ ] ***[DevOps Automation](DevOps_Automation/List.md)***
+- [ ] ***[DevOps Linux](DevOps_Linux/List.md)***
+- [ ] ***[DevOps Services](DevOpsServices/List.md)***
+- [ ] ***[Languages](Languages/List.md)***
+- [ ] ***[Network](Network/List.md)***
+- [ ] ***[Scripting](Scripts/List.md)***
+- [ ] ***[Security](Security/List.md)***
+- [ ] ***[Solutions](Solutions/List.md)***
+- [ ] ***[Virtualization](Virtualization/List.md)***
+- [ ] ***[Windows](Windows/List.md)***
+- [ ] ***[Glib Examples](Glib_Examples/List.md)***
+- [ ] ***[Go Examples](Go_Examples/List.md)***
+- [ ] ***[Javascript Examples](Javascript_Examples/List.md)***
+- [ ] ***[PHP Examples](PHP_Examples/List.md)***
+- [ ] ***[Python Examples](Python_Examples/List.md)***
+- [ ] ***[Programming Language Examples Alike Cookbook](Programming_Language_Examples_Alike_Cookbook/List.md)***
 
 
 # Slack groups:
