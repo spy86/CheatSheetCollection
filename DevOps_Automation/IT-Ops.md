@@ -4,10 +4,10 @@ For a similar index have a loot at
 
 See also: 
 
-- ### [Solutions Automation Cheat Sheet](Solutions/Solutions_Automation.md) 
-- ### [Solutions Monitoring Cheat Sheet](Solutions/Solutions_Monitoring.md)
-- ### [Solutions NoSQL Cheat Sheet](Solutions/Solutions_NoSQL.md)
-- ### [Solutions Virtualization Cheat Sheet](Solutions/Solutions_Virtualizations.md)
+-  [Solutions Automation Cheat Sheet](Solutions/Solutions_Automation.md) 
+-  [Solutions Monitoring Cheat Sheet](Solutions/Solutions_Monitoring.md)
+-  [Solutions NoSQL Cheat Sheet](Solutions/Solutions_NoSQL.md)
+-  [Solutions Virtualization Cheat Sheet](Solutions/Solutions_Virtualizations.md)
 
 ### Software Firewalls, LBs
 
