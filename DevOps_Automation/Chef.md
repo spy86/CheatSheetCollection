@@ -53,7 +53,7 @@ you can also use patterns:
 
 #### Inheritance
 
-[Debugging Attribute Inheritance]
+Debugging Attribute Inheritance
 ```shell
     # Invoke chef shell in attribute mode
     chef-shell -z
@@ -66,7 +66,7 @@ you can also use patterns:
     chef:attributes > node["packages"]
     [...]
 ```
-### [Editing Files]
+### Editing Files
 
 using a Script resource.
 ```shell
