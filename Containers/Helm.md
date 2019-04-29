@@ -1,11 +1,11 @@
 ## Setup
 
 For instructions check [here](https://docs.helm.sh/using_helm/#quickstart-guide)
-
+```shell
     oc login       # Connect to Kubernetes/Openshift
     helm init
     helm repo update
-    
+```    
     # To get access to unstable charts
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 
@@ -16,19 +16,19 @@ For Openshift there is an [RBAC compatible installation proceduce](https://blog.
 ## List available packages
 
 To list charts (packages)
-
+```shell
     helm search
-
+```
 ## List installed releases
-
+```shell
     helm list
-
+```
 ## Install package
-
+```shell
     helm install stable/<name> --namespace <ns>     # Install from repo
     helm install ./<file name> --namespace <ns>     # Install from archive
-
+```
 ## Misc
 
-- (https://kubeapps.com/): Web GUI for installing Helm charts
-- (https://github.com/Praqma/helmsman): Helmsman, Helm charts as Code, Terraform like plan/apply
+- [ ] (https://kubeapps.com/): Web GUI for installing Helm charts
+- [ ] (https://github.com/Praqma/helmsman): Helmsman, Helm charts as Code, Terraform like plan/apply
