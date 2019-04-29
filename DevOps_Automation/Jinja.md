@@ -7,7 +7,7 @@ The syntax is somewhat similar to ERB except for {} instead of <> quotes
      {{ ... }}           # Escaping for expressions that create output
      {% ... %}           # Escaping for control statements
      # ... ##            # Line statements
-``````jinja
+```
 ## Loops
 ```jinja
      {% for i in list %} ... {% endfor %}
