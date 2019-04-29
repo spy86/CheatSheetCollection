@@ -6,7 +6,7 @@
 
 # List of contents:
 - [X] ***[Containers](Containers/List.md)***
-- [ ] ***[Agile](Agile/List.md)***
+- [X] ***[Agile](Agile/List.md)***
 - [ ] ***[DevOps Automation](DevOps_Automation/List.md)***
 - [ ] ***[DevOps Linux](DevOps_Linux/List.md)***
 - [ ] ***[DevOps Services](DevOpsServices/List.md)***
