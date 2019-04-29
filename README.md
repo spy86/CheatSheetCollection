@@ -29,16 +29,16 @@
 
 | Name                         | URL                                     |
 |------------------------------|-----------------------------------------|
-| DevOps Engineers             | https://devopsengineers.slack.com       |
-| SecurityHQ                   | https://securityhq.slack.com            |
-| RedHat Admins                | https://redhat-admins.slack.com         |
-| DevOps Links                 | https://devopslinks.slack.com           |
-| DevsPL                       | https://devspl.slack.com                |
-| Chef Community               | https://chefcommunity.slack.com         |
-| Openstack Community          | https://openstackcommunity.slack.com    |
-| Puppet Community             | https://puppetcommunity.slack.com       |
-| Windows Admins               | https://winadmins.slack.com             |
-| OG-AWS                       | https://og-aws.slack.com                |
-| Azure Stack                  | https://azurestackblog.slack.com        |
-| Docker Community             | https://dockercommunity.slack.com       |
-| Google Cloud Community       | https://googlecloud-community.slack.com |       |
+| ![Slack](SlackIcon.png) DevOps Engineers             | https://devopsengineers.slack.com       |
+| ![Slack](SlackIcon.png) SecurityHQ                   | https://securityhq.slack.com            |
+| ![Slack](SlackIcon.png) RedHat Admins                | https://redhat-admins.slack.com         |
+| ![Slack](SlackIcon.png) DevOps Links                 | https://devopslinks.slack.com           |
+| ![Slack](SlackIcon.png) DevsPL                       | https://devspl.slack.com                |
+| ![Slack](SlackIcon.png) Chef Community               | https://chefcommunity.slack.com         |
+| ![Slack](SlackIcon.png) Openstack Community          | https://openstackcommunity.slack.com    |
+| ![Slack](SlackIcon.png) Puppet Community             | https://puppetcommunity.slack.com       |
+| ![Slack](SlackIcon.png) Windows Admins               | https://winadmins.slack.com             |
+| ![Slack](SlackIcon.png) OG-AWS                       | https://og-aws.slack.com                |
+| ![Slack](SlackIcon.png) Azure Stack                  | https://azurestackblog.slack.com        |
+| ![Slack](SlackIcon.png) Docker Community             | https://dockercommunity.slack.com       |
+| ![Slack](SlackIcon.png) Google Cloud Community       | https://googlecloud-community.slack.com |       |
