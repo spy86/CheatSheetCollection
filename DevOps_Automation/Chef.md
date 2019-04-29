@@ -5,7 +5,7 @@
     chef-client -Fmin --why-run
 ```
 #### List Facts
-``shell
+```shell
     ohai
 ```
 #### Bootstrap Chef client
@@ -54,7 +54,7 @@ you can also use patterns:
 #### Inheritance
 
 [Debugging Attribute
-Inheritance](http://lzone.de/Chef-How-To-Debug-Active-Attributes)
+Inheritance]
 ```shell
     # Invoke chef shell in attribute mode
     chef-shell -z
