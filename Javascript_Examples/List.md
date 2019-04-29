@@ -3,7 +3,7 @@
 - [ ] ***[Dependency Test](https://david-dm.org/)***
 - [ ] ***[GraphQL](Graph_QL.md)***
 - [ ] ***[Javascript Frameworks](Javascript_Frameworks.md)***
-- [ ] ***[Javascript RegExp](Javascript_RegExp.md)***
+- [ ] ***[Javascript RegExp](JavascriptRegExp.md)***
 - [ ] ***[Javascript Singleton](https://stackoverflow.com/questions/1635800/javascript-best-singleton-pattern#6733919)***
 - [ ] ***[Javascript strptime](Javascript_strptime.md)***
 - [ ] ***[Javascript toggle visibility](Javascript_toggle_visibility.md)***
