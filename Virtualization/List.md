@@ -1,7 +1,7 @@
 ## Collection cheat sheet for virtualization:
 
 - [ ] ***[AWS - CLI](https://github.com/toddm92/aws/wiki/AWS-CLI-Cheat-Sheet)***
-- [ ] ***[AWS - Cost](https://blog.copper.io/aws-cost-cheat-sheet-2/)***
+- [ ] ***[AWS - Cost](https://www.slideshare.net/akashag1001/aws-cost-cheat-sheet)*** 
 - [ ] ***[AWS Lamba](AWSLambda.md)***
 - [ ] ***[AWS](AWS.md)***
 - [ ] ***[Deis](https://blog.copper.io/aws-cost-cheat-sheet-2/)***
