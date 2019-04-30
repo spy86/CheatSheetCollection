@@ -35,5 +35,5 @@ Especially important to have [pcid CPU flag present in guests](https://groups.go
 
 ### Misc
 
--   [libvirt XML documentation](http://libvirt.org/format.html)
+- [ ]   [libvirt XML documentation](http://libvirt.org/format.html)
 
