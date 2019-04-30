@@ -10,21 +10,21 @@
 
 ### Smaller automation tools
 
--   [Bcfg2](http://trac.mcs.anl.gov/projects/bcfg2/): Alternative to
+- [ ]   [Bcfg2](http://trac.mcs.anl.gov/projects/bcfg2/): Alternative to
     puppet and cfengine by Argonne National Laboratory. (IMO out-dated)
--   [cdist](http://www.nico.schottelius.org/software/cdist/):
+- [ ]   [cdist](http://www.nico.schottelius.org/software/cdist/):
     configuration with shell scripting
--   [EMC
+- [ ]   [EMC
     UIM](http://www.emc.com/data-center-management/unified-infrastructure-manager.htm)
     - Unified Infrastructure Manager, VCE VBlock (enterprise,
     commercial)
--   [slaughter](http://www.steve.org.uk/Software/slaughter/) (Perl,
+- [ ]   [slaughter](http://www.steve.org.uk/Software/slaughter/) (Perl,
     active, small user base)
--   [Sprinkle](https://github.com/crafterm/sprinkle) (Ruby, quite
+- [ ]   [Sprinkle](https://github.com/crafterm/sprinkle) (Ruby, quite
     recent)
--   [Rundeck](http://rundeck.org) - Workflow manager for node - role
+- [ ]   [Rundeck](http://rundeck.org) - Workflow manager for node - role
     systems like EC2, chef, puppet ...
--   [IBM
+- [ ]   [IBM
     Tivoli](http://www-03.ibm.com/software/products/en/serviceautomationmanager)
 
 Finally it is worth to check the [Wikipedia Comparison
@@ -33,19 +33,19 @@ for other less known and new tools!
 
 ## Automation Drift Management
 
-- [ScriptRock Guard](https://www.scriptrock.com/)
-- for Puppet
+- [ ] [ScriptRock Guard](https://www.scriptrock.com/)
+- [ ] for Puppet
    - PuppetDB
    - Foreman
    - [Debian Policy Scanner](https://github.com/lwindolf/polscan)
 
 ## Testing
 
-- [ServerSpec](https://serverspec.org/): RSpec for server configurations
+- [ ] [ServerSpec](https://serverspec.org/): RSpec for server configurations
 
 ## Misc
 
--   [Augeas](http://delicious.com/redirect?url=http%3A//packages.debian.org/wheezy/augeas-tools):
+- [ ]   [Augeas](http://delicious.com/redirect?url=http%3A//packages.debian.org/wheezy/augeas-tools):
     Very flexible file editor to be used with Puppet or standalone.
     Could also work with cfengine.
 
@@ -53,14 +53,14 @@ for other less known and new tools!
         augtool> set /files/etc/ssh/sshd_config/PermitRootLogin no
         augtool> save
 
--   cfengine - Force running shortly after a recent execution
+- [ ]   cfengine - Force running shortly after a recent execution
 
         cfagent -K
 
--   [cfengine - Design
+- [ ]   [cfengine - Design
     Center](http://cfengine.com/cfengine-design-center): Git repository
     with sketches and examples for cfengine.
--   cfengine - Find and install sketches from the Design Center
+- [ ]   cfengine - Find and install sketches from the Design Center
     repository
 
         # cf-sketch --search utilities
@@ -68,11 +68,11 @@ for other less known and new tools!
         [...]
         # cf-sketch --install Monitoring::nagios_plugin_agent
 
--   SaltStack - Run commands
+- [ ]   SaltStack - Run commands
 
         salt '*' cmd.run 'apt-get install bash'
 
--   SaltStack - Batch concurrency
+- [ ]  SaltStack - Batch concurrency
 
         salt '*' state.highstate -b <count>
 
