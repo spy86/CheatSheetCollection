@@ -1,14 +1,14 @@
 ### Debugging
-
+```c
     // Delta-debugging...
     g_print ("Some string\n");
     g_printf ("Cannot open file %s\n", filename);
 
     g_warning ("Some warning");
     g_error ("Some error");
-
+```
 Enable fatal warnings/criticals and other checks
-
+```c
     # Stop on assertions:
     export G_DEBUG=fatal_warnings
     export G_DEBUG=fatal_criticals
@@ -18,19 +18,19 @@ Enable fatal warnings/criticals and other checks
 
     # Check memory allocation 
     export G_SLICE=debug-blocks
-
+```
 ### Data Types
 
 #### Strings
-
+```c
     gchar *s = "static";
     s = g_strdup ("copy");
     s = g_strdup_printf ("on the fly format: %s %d", s2, i);
 
     g_free (s);
-
+```
 #### String Buffer
-
+```c
     GString *s = g_string_new ();
 
     g_string_assign (s, "new value");
@@ -42,9 +42,9 @@ Enable fatal warnings/criticals and other checks
     g_string_append_uri_escaped (s, "q=some search string", NULL, FALSE);
 
     g_string_free (s);
-
+```
 #### Arrays
-
+```c
     GArray *a = g_array_new (FALSE, FALSE, sizeof (gint));
 
     gint index = 17;
@@ -59,44 +59,44 @@ Enable fatal warnings/criticals and other checks
     gint i = &g_array_index (a, gint, index);
 
     g_array_free (a, FALSE);
-
+```
 #### Linked Lists
 
 ### File System
 
 #### Get XDG paths
-
+```c
     g_get_user_config_dir ()
     g_get_user_data_dir ()
     g_get_user_cache_dir ()
-
+```
 #### Filenames
-
+```c
     g_strdup_printf ("%s%s%s", directory, G_DIR_SEPARATOR_S, filename);
-
+```
 #### Check for file
-
+```c
     if (g_file_test (filename, G_FILE_TEST_EXISTS)) {
         // File exists.
     }
-
+```
 #### Read file
-
+```c
     gssize length;
     gchar *content, *filename = 'input.txt';
     if (g_file_get_contents (filename, &content, &length, NULL)) {
         // Process contents
         g_free (content);
     }
-
+```
 #### Write files
-
+```c
     g_file_set_contents (backupFilename, content, length, NULL);
-
+```
 ### GSettings (DConf)
 
 General usage:
-
+```c
     GSettings *settings = g_settings_new ("org.myproject");
 
     g_signal_connect (
@@ -113,9 +113,9 @@ General usage:
     g_settings_set_boolean (settings, key, b);
     g_settings_set_string (settings, key, s);
     g_settings_set_int (settings, key, i);
-
+```
 ### DConf - CLI
-
+```c
     # Print a key value
     gsettings get org.gnome.liferea browser
 
@@ -134,9 +134,9 @@ General usage:
 
     # Reset an entire tree to schema
     dconf reset -f /apps/liferea/
-
+```
 ### GConf - CLI
-
+```c
     # Print a key's schema
     gconftool-2 --get /schemas/apps/liferea/browser
 
@@ -145,25 +145,26 @@ General usage:
 
     # Set a key
     gconftool-2 --type Boolean --set /desktop/gnome/peripherals/mouse/touchpad_enabled false
-
+```
 ### GConf/DConf Migration
 
 Testing for GConf -\> DConf schema migration:
-
+```c
     cd /usr/share/GConf/gsettings
     # Here you find .convert files per application
 
     # Check for conversion using 
     gsettings-data-convert --verbose --dry-run <.convert file name> 
-    
+ ```   
 ### GTK Inspector
 
 Enable GTK Inspector by configuring the following setting:
-
+```c
     gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
-    
+```    
 Some GNOME core apps now have a "Help" menu entry to start the inspector. Alternatively launch the inspector by pressing Ctrl-Shift-I or Crtl-Shift-D
     
 Or explicitely start the application with open inspector
-
+```c
     GTK_DEBUG=interactive <program>
+```
