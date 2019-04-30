@@ -35,9 +35,9 @@ for other less known and new tools!
 
 - [ ] [ScriptRock Guard](https://www.scriptrock.com/)
 - [ ] for Puppet
-   - PuppetDB
-   - Foreman
-   - [Debian Policy Scanner](https://github.com/lwindolf/polscan)
+   - [ ] PuppetDB
+   - [ ] Foreman
+   - [ ] [Debian Policy Scanner](https://github.com/lwindolf/polscan)
 
 ## Testing
 
