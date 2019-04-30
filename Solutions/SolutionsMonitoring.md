@@ -94,18 +94,18 @@ See also this
 - [ ] Prometheus
 - [ ] Hawkular
 - [ ] DataDog (SaaS)
-- Sensu
-- Scout
-- Sysdig Cloud
+- [ ] Sensu
+- [ ] Scout
+- [ ] Sysdig Cloud
 
 ## External Website Monitoring
 
--   [gomez.com](http://www.gomez.com/) (now dynatrace)
--   [yottaa.com](http://www.yottaa.com/)
--   [monitis.com](http://www.monitis.com/)
--   [pingdom.com](http://www.pingdom.com/)
--   [Ruxit](https://ruxit.com/) (RUM)
--   [uptrends.com](http://www.uptrends.com/)
+- [ ]   [gomez.com](http://www.gomez.com/) (now dynatrace)
+- [ ]   [yottaa.com](http://www.yottaa.com/)
+- [ ]   [monitis.com](http://www.monitis.com/)
+- [ ]   [pingdom.com](http://www.pingdom.com/)
+- [ ]   [Ruxit](https://ruxit.com/) (RUM)
+- [ ]   [uptrends.com](http://www.uptrends.com/)
 
 ## Status Page Hosting
 
