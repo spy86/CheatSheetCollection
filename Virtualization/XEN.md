@@ -1,12 +1,12 @@
 ### Xen
 
--   Test if you are running a Xen kernel:
+- [ ]   Test if you are running a Xen kernel:
 
         cat /sys/hypervisor/properties/capabilities 
 
--   [Xen vs. Xen
+- [ ]   [Xen vs. Xen
     Server](http://virtually-a-machine.blogspot.de/2009/09/open-source-xen-vs-xenserver.html)
--   [Xen - Commands](http://www.debian-administration.org/articles/533)
+- [ ]   [Xen - Commands](http://www.debian-administration.org/articles/533)
 
         xm list           # List all domains
         xm list vm1       # List status of a single VM
@@ -28,11 +28,11 @@
         xm vcpuinfo
         xm nodeinfo
 
--   Ensure guest auto start on boot:
+- [ ]   Ensure guest auto start on boot:
 
         ln -s /etc/xen/<instance> /etc/xen/auto/<instance>
 
--   Find out which dom0 you are on:
+- [ ]   Find out which dom0 you are on:
 
         dmesg | grep "command line"
 
@@ -42,7 +42,7 @@
         #
         # Where "hostip" is the IP of the hypervisor
 
--   Find out which IP a VM has:
+- [ ]   Find out which IP a VM has:
 
         # Grep and resolve MAC:
         xm list -l <VM name> | grep mac
@@ -50,13 +50,13 @@
 
 ### Xen Server
 
--   [Feature Matrix XenServer Free vs.
+- [ ]   [Feature Matrix XenServer Free vs.
     Enterprise](http://wiki.xensource.com/xenwiki/XCP/XenServer_Feature_Matrix):
     Whats the difference and what features are provided by "xe" what
     "xm" doesn't have...
--   [XenServer GUI Comparison Free vs.
+- [ ]   [XenServer GUI Comparison Free vs.
     Enterprise](http://www.dabcc.com/article.aspx?id=11045)
--   [Xen Server - Hanging Operation on
+- [ ]   [Xen Server - Hanging Operation on
     Shutdown](http://hafizpariabi.blogspot.com/2011/09/unable-to-shutdown-hang-vm-on-xenserver.html):
     This happens when for example a reboot doesn't work and you want to
     perform a shutdown to quickly restore an unresponding VM. The first
@@ -76,14 +76,14 @@
         xe task-list                          # Get task uid
         xe task-cancel uuid=<task uuid>       # And cancel it
 
--   [XenServer - Add Another Physical
+- [ ]   [XenServer - Add Another Physical
     Disk](http://www.xendesktopmaster.com/how-to-add-an-additional-local-disk-to-your-xenserver-5-5-host/):
 
         xe host-list                         # to get host UUID
         xe sr-create host-uuid=<host UUID> shared=false type=lvm \
            content-type=user device-config:device=/dev/sdb1 name-label="Another disk"
 
--   [XenServer - VM
+- [ ]   [XenServer - VM
     Paravirtualization](http://wiki.univention.de/index.php?title=Citrix_Xen_Server):
     How to configure a single VM to be paravirtualized:
 
@@ -98,7 +98,7 @@
         xe vbd-list vm-uuid=$VMUUID type=Disk
         xe vbd-param-set uuid=<disk UUID> bootable=true
 
--   [XenServer - Configure LACP Bonding](): When you want to run your
+- [ ]   [XenServer - Configure LACP Bonding](): When you want to run your
     XenServer with interface trunking.
 
         # Determine UUIDs of interfaces to add
@@ -120,12 +120,12 @@
         # Also try
         ovs-appctl bond/show bond0
 
--   [XenServer - Restore VM from
+- [ ]   [XenServer - Restore VM from
     Image](http://support.citrix.com/servlet/KbServlet/download/17141-102-671564/XenServer_Pool_Replication_-_Disaster_Recovery.pdf):
     Use "xe vm-import" to create a new VM with a new UUID:
 
         xe vm-import filename=image.xva preserve=true
 
--   [Xen Server - Ubuntu bug: read-only
+- [ ]   [Xen Server - Ubuntu bug: read-only
     filesystem](/blkfront+barrier+empty+write+xvda+op+failed)
 
