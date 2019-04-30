@@ -14,7 +14,7 @@
 - [ ] ***[Network](Network/List.md)***
 - [ ] ***[Scripting](Scripts/List.md)***
 - [ ] ***[Security](Security/List.md)***
-- [ ] ***[Solutions](Solutions/List.md)***
+- [X] ***[Solutions](Solutions/List.md)***
 - [X] ***[Virtualization](Virtualization/List.md)***
 - [X] ***[Windows](Windows/List.md)***
 - [X] ***[Glib Examples](Glib_Examples/List.md)***
