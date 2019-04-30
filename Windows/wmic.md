@@ -1,7 +1,7 @@
 ## Useful Examples
 
 Getting to know the system
-
+```cmd
     wmic bios get Manufacturer,Name,Version    # BIOS info,
     wmic diskdrive get model,name,size         # physical disks,
     wmic logicaldisk get name                  # logical disks,
@@ -10,13 +10,14 @@ Getting to know the system
     wmci printerconfig list                    # printer config,
     wmic os list brief                         # Wubdiws version incl. serial
     wmic product list brief                    # installed programs  
-
+```
 For interactive mode just run
-
+```cmd
     wmic
-
+```
 from there use "quit" or "exit" to terminate again.
 
 ## Remote Access
-
+```cmd
     wmic /node:[ip] /user:[user] /password:[password] os list brief
+```    
