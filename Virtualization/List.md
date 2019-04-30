@@ -4,7 +4,7 @@
 - [ ] ***[AWS - Cost](https://www.slideshare.net/akashag1001/aws-cost-cheat-sheet)*** 
 - [ ] ***[AWS Lamba](AWSLambda.md)***
 - [ ] ***[AWS](AWS.md)***
-- [ ] ***[Deis](https://blog.copper.io/aws-cost-cheat-sheet-2/)***
+- [ ] ***[Deis](https://www.slideshare.net/akashag1001/aws-cost-cheat-sheet)***
 - [ ] ***[EC2 API Tools](http://ricostacruz.com/cheatsheets/ec2.html)***
 - [ ] ***[ESX](http://richgoldstein.net/KB/esx_cheatsheet.html)***
 - [ ] ***[Flynn](http://ricostacruz.com/cheatsheets/flynn.html)***
