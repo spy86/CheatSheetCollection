@@ -109,9 +109,9 @@ See also this
 
 ## Status Page Hosting
 
--   [statuspage.io](https://www.statuspage.io)
+- [ ]   [statuspage.io](https://www.statuspage.io)
 
 ## Event Correlation
 
--   [SEC - Simple Event
+- [ ]   [SEC - Simple Event
     Correlation](http://simple-evcorr.sourceforge.net)
