@@ -42,7 +42,7 @@ find the target directories:
 
 Given your application being named "coolApp" and you want to create a
 cache file named "render.dat" you could use the following C snippet:
-```shell
+```c
     g_build_filename (g_get_user_cache_dir (), "coolApp", "render.dat", NULL);
 ```
 to produce a path. Most likely you'll get something like
