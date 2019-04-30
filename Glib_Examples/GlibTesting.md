@@ -1,6 +1,6 @@
 ### Unit Tests with Glib
 
--   [Glib
+- [ ]   [Glib
     Testing](https://developer.gnome.org/glib/stable/glib-Testing.html):
     Unit test framework for Glib based programs
 ```shell
@@ -11,6 +11,6 @@
         make full-report
         make check
 ```
--   [Glib Testing
+- [ ]  [Glib Testing
     Tutorial](https://testbit.eu/23062008-writing-unit-tests-with-glib/)
 
