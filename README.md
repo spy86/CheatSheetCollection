@@ -8,8 +8,8 @@
 - [X] ***[Containers](Containers/List.md)***
 - [X] ***[Agile](Agile/List.md)***
 - [X] ***[DevOps Automation](DevOps_Automation/List.md)***
-- [ ] ***[DevOps Linux](DevOps_Linux/List.md)***
-- [ ] ***[DevOps Services](DevOpsServices/List.md)***
+- [X] ***[DevOps Linux](DevOps_Linux/List.md)***
+- [X] ***[DevOps Services](DevOpsServices/List.md)***
 - [X] ***[Languages](Languages/List.md)***
 - [X] ***[Network](Network/List.md)***
 - [X] ***[Scripting](Scripts/List.md)***
