@@ -10,7 +10,7 @@
 - [X] ***[DevOps Automation](DevOps_Automation/List.md)***
 - [ ] ***[DevOps Linux](DevOps_Linux/List.md)***
 - [ ] ***[DevOps Services](DevOpsServices/List.md)***
-- [ ] ***[Languages](Languages/List.md)***
+- [X] ***[Languages](Languages/List.md)***
 - [X] ***[Network](Network/List.md)***
 - [ ] ***[Scripting](Scripts/List.md)***
 - [ ] ***[Security](Security/List.md)***
