@@ -20,8 +20,7 @@
 
         hdparm -tT /dev/...
 
--   [dmesg - block IO
-    debugging](http://rajar.am/post/555326598/identifying-process-causing-lots-of-iowait):
+-   [dmesg - block IO debugging]:
 
         echo 1 > /proc/sys/vm/block_dump
 
@@ -34,10 +33,8 @@
 
         sysctl -p
 
--   [Tuning sysctl for busy large
-    server](http://www.enigma.id.au/linux_tuning.txt)
--   [TCP/IP tuning for
-    scaling](http://www.lognormal.com/blog/2012/09/27/linux-tcpip-tuning/)
+-   [Tuning sysctl for busy large server]
+-   [TCP/IP tuning for scaling]
 -   Increase max connection settings
 
         sysctl -w net.core.somaxconn=1024
@@ -54,8 +51,7 @@
         sysctl -w net.ipv4.tcp_max_syn_backlog=8192 # Increase as needed
         sysctl -w net.ipv4.tcp_fin_timeout=30       # Lower timeout as needed
 
--   [HTP Support
-    Docs](https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt):
+-   [HTP Support Docs]:
 
         sysctl -a | grep hugepage
         cat /proc/meminfo | grep HugePage
@@ -69,18 +65,15 @@
 
         sysctl vm.overcommit_memory=2
 
--   [dmesg - Filtering Output](/blog/Filtering+dmesg+Output):
+-   [dmesg - Filtering Output]:
 
         dmesg -T      # Enable human readable timestamps
         dmesg -x      # Show facility and log level
         dmesg -f daemon     # Filter for facility daemon
         dmesg -l err,crit,alert,emerg # Filter for errors
 
--   [lslk - Find file
-    locks](http://prefetch.net/blog/index.php/2009/07/01/listing-file-system-lock-files-on-linux-hosts/):
-    Use lslk to find which PID is blocking an flock() to a file.
--   [lsof](http://danielmiessler.com/study/lsof/) - Find owners of open
-    file handles:
+-   [lslk - Find file locks]:Use lslk to find which PID is blocking an flock() to a file.
+-   [lsof] - Find owners of open file handles:
 
         lsof      # Complete list
         lsof -i :22    # Filter single TCP port
