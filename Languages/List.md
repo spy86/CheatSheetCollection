@@ -8,7 +8,7 @@
 - [ ] ***[JSON](https://dzone.com/refcardz/core-json)***
 - [ ] ***[Javascript](https://code.google.com/archive/p/jslibs/wikis/JavascriptTips.wiki)***
 - [ ] ***[Linting](Linting.md)***
-- [ ] ***[Linux HTML Widgets](LinuxHTMLWidgets.html)***
+- [ ] ***[Linux HTML Widgets](inuxHTMLWidgets.md)***
 - [ ] ***[Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)***
 - [ ] ***[PHP](PHP.md)***
 - [ ] ***[Perl](Perl.md)***
