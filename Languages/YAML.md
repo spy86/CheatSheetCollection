@@ -55,3 +55,41 @@ another:
 
 ### Hash of hashes
 my_hash: {nr1: 5, nr2: 6}
+
+# HereDoc
+
+### block notation (newlines become spaces)
+
+content:                         
+  Arbitrary free text            
+  over multiple lines stopping   
+  after indentation changes...   
+                                 
+### literal style (newlines are preserved)                             
+content:                        
+  Arbitrary free text            
+  over "multiple lines" stopping 
+  after indentation changes...   
+                                 
+### + indicator (keep extra newlines after block)                      
+content: +                      
+  Arbitrary free text with two n ewlines after                        
+                                 
+                                 
+### - indicator (remove extra newlines after block)                    
+content: -                      
+  Arbitrary free text without newlines after it                      
+                                 
+                                 
+### folded style (folded newlines  are preserved)                       
+content: >                       
+  Arbitrary free text            
+  over "multiple lines" stopping 
+  after indentation changes...   
+
+# Multiple Documents
+
+---
+content: doc1 
+---
+content: doc2
