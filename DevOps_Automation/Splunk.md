@@ -158,4 +158,4 @@ To list
 ```
 ## Capacity Planning
 
-- [ ] There is a great online calculator at [splunk-sizing.appspot.com](https://splunk-sizing.appspot.com).
+- There is a great online calculator at [splunk-sizing.appspot.com](https://splunk-sizing.appspot.com).

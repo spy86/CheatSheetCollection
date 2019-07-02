@@ -1,5 +1,5 @@
-- [ ]   [POM Syntax](http://maven.apache.org/pom.html)
-- [ ]  [Sonatype Nexus](http://www.sonatype.org/nexus/): self-hosting a Maven repository
+-  [POM Syntax](http://maven.apache.org/pom.html)
+-  [Sonatype Nexus](http://www.sonatype.org/nexus/): self-hosting a Maven repository
 
 ### Commands
 

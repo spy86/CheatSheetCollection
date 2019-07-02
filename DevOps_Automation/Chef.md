@@ -80,13 +80,13 @@ using a Script resource.
 ```
 ### Misc
 
-- [ ]   [Hardening cookbook](https://github.com/hardening-io/chef-os-hardening)
-- [ ]   [Drift Detection Cookbook](https://github.com/stathy/drift_tracking)
-- [ ]   [Fix RabbitMQ 100% CPU usage](http://lzone.de/Solving+100%25+CPU+usage+of+Chef)
-- [ ]   [Exporting Nagios Hostgroups](http://lzone.de/Simple-Chef-to-Nagios-Hostgroup-Export)
-- [ ]   [Chef - Manage Amazon EC2 instances](http://gerhardlazu.com/2010/08/using-chef-to-manage-amazon-ec2-instances-part1/)
-- [ ]   [Chef - Tutorial on how to Setup Nagios in EC2](http://wiki.opscode.com/display/chef/Nagios+Quick+Start)
-- [ ]   [Chef Enterprise - Push Jobs using the Push Cookbook](https://github.com/opscode-cookbooks/push-jobs)
+-   [Hardening cookbook](https://github.com/hardening-io/chef-os-hardening)
+-   [Drift Detection Cookbook](https://github.com/stathy/drift_tracking)
+-   [Fix RabbitMQ 100% CPU usage](http://lzone.de/Solving+100%25+CPU+usage+of+Chef)
+-   [Exporting Nagios Hostgroups](http://lzone.de/Simple-Chef-to-Nagios-Hostgroup-Export)
+-   [Chef - Manage Amazon EC2 instances](http://gerhardlazu.com/2010/08/using-chef-to-manage-amazon-ec2-instances-part1/)
+-   [Chef - Tutorial on how to Setup Nagios in EC2](http://wiki.opscode.com/display/chef/Nagios+Quick+Start)
+-   [Chef Enterprise - Push Jobs using the Push Cookbook](https://github.com/opscode-cookbooks/push-jobs)
 ```shell
         knife job start ...
         knife job list

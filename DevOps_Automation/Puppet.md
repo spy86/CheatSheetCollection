@@ -1,10 +1,10 @@
 ### Puppet CLI
 
-- [ ] Bootstrap client
+- Bootstrap client
 ```shell
         puppet agent -t --server <puppet master> [<options>]
 ```
-- [ ] Display facts:
+- Display facts:
 ```shell
         facter              # All system facts
         facter -p           # All system and Puppet facts
@@ -17,47 +17,47 @@
         facter memoryfree
         facter is_virtual processor0
 ```
-- [ ] Injecting Facts:
+- Injecting Facts:
 ```shell
       env FACTER_<fact name>=<fact value> puppet apply site.pp
 ```     
-- [ ]   Find out effective classes on a node
+-   Find out effective classes on a node
 ```shell
         cat /var/lib/puppet/classes.txt
 ```
-- [ ]   Find out when which file was modified
+-   Find out when which file was modified
 ```shell
         cd /var/lib/puppet
         for i in $(find clientbucket/ -name paths); do
             echo "$(stat -c %y $i | sed 's/\..*//')       $(cat $i)";
         done | sort -n
 ```
-- [ ]   Puppet Dry Run:
+-   Puppet Dry Run:
 ```shell
         puppet agent --noop --verbose
 ```
-- [ ]   Disable agent
+-   Disable agent
 ```shell
         puppet agent --disable
         puppet agent --disable <info message>   # Only recent versions
         puppet agent --enable
 ```
-- [ ]   Executing selective classes
+-   Executing selective classes
 ```shell
         puppet agent --tags Some::Class
 ```
-- [ ]   Managing Certificates (on master)
+-   Managing Certificates (on master)
 ```shell
         puppet cert list
         puppet cert list --all
         puppet cert sign <name>
         puppet cert clean <name>   # removes cert
 ```
-- [ ]   Managing Nodes
+-   Managing Nodes
 ```shell
         puppet node clean <name>   # removes node + cert
 ```
-- [ ]   Managing Modules
+-   Managing Modules
 ```shell
         puppet module list
         puppet module install <name>
@@ -65,7 +65,7 @@
         puppet module upgrade <name>
         puppet module search <name>
 ```
-- [ ]   Inspecting Resources/Types
+-   Inspecting Resources/Types
 ```shell
         puppet describe -l
         puppet resource <type name>
@@ -81,7 +81,7 @@
         puppet kick <name>
         puppet kick -p 5 <names>      # 5 parallel
 ```
-- [ ]   Debugging deployment and rules on a local machine. This only makes
+-   Debugging deployment and rules on a local machine. This only makes
     sense in "one time" mode running in one of the following variants:
 ```shell
         puppetd --test # enable standard debugging options
@@ -90,8 +90,8 @@
                    # 2=changes applied
                    # 4=failure
 ```
-- [ ]   [Gepetto: Puppet IDE](http://puppetlabs.com/blog/geppetto-a-puppet-ide)
-- [ ]   [puppet - Correctly using Roles and Profiles](http://www.craigdunn.org/2012/05/239/)
+-   [Gepetto: Puppet IDE](http://puppetlabs.com/blog/geppetto-a-puppet-ide)
+-   [puppet - Correctly using Roles and Profiles](http://www.craigdunn.org/2012/05/239/)
 
 ### Puppet 2/3 Master
 
@@ -184,7 +184,7 @@ Using Puppet with Augeas
 ```
 ### Testing
 
-- [ ]   Validate manifest
+-   Validate manifest
 ```shell
         puppet parser validate <manifest>
 ```

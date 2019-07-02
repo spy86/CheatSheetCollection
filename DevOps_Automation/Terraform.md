@@ -74,4 +74,4 @@ Prevent auto-destroy:
 
 ## Bulk Imports
 
-- [ ] Check out https://github.com/jmcgill/formation
+- Check out https://github.com/jmcgill/formation
