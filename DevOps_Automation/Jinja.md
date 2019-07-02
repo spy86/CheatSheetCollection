@@ -10,7 +10,7 @@ The syntax is somewhat similar to ERB except for {} instead of <> quotes
 ```
 ## Loops
 ```jinja
-     {{% for i in list %} ... {% endfor %}}
+     {{% for i in list %}} ... {{% endfor %}}
 ```
 ## Functions
 
