@@ -1,40 +1,40 @@
 ## Collection cheat sheet for DevOps Linux:
 
-- [ ] ***[DBUS](DBUS.md)***
-- [ ] ***[DKMS](DKMS.md)***
-- [ ] ***[DRBD](DRBD.md)***
-- [ ] ***[DXVK](DXVK.md)***
-- [ ] ***[Debian](Debian.md)***
-- [ ] ***[Debugging](Debugging.md)***
-- [ ] ***[Filesystem](Filesystem.md)***
-- [ ] ***[GPG](GPG.md)***
-- [ ] ***[IPMI](IPMI.md)***
-- [ ] ***[Kernel Tracing](KernelTracing.md)***
-- [ ] ***[LVM](LVM.md)***
-- [ ] ***[Linux Insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)***
-- [ ] ***[Linux-Commands](LinuxCommands.md)***
-- [ ] ***[Linux-HA](LinuxHA.md)***
-- [ ] ***[Linux-Networking](LinuxNetworking.md)***
-- [ ] ***[Linux-Sysadmin](LinuxSysadmin.md)***
-- [ ] ***[Linux-Virtualization](LinuxVirtualization.md)***
-- [ ] ***[Mail](Mail.md)***
-- [ ] ***[Package Management](PackageManagement.md)***
-- [ ] ***[Packaging](Packaging.md)***
-- [ ] ***[Partitioning](Partitioning.md)***
-- [ ] ***[Quota](http://www.yolinux.com/TUTORIALS/LinuxTutorialQuotas.html)***
-- [ ] ***[RAID](RAID.md)***
-- [ ] ***[SSH](SSH.md)***
-- [ ] ***[Solaris](Solaris.md)***
-- [ ] ***[SysRq](SysRq.md)***
-- [ ] ***[Sysctl - Net](https://www.frozentux.net/ipsysctl-tutorial/ipsysctl-tutorial.html#AEN398)***
-- [ ] ***[UEFI Install](https://wiki.ubuntuusers.de/EFI_USB-Stick/)***
-- [ ] ***[auditd](auditd.md)***
-- [ ] ***[ffmpeg](ffmpeg.md)***
-- [ ] ***[jq](jq.md)***
-- [ ] ***[netfilter]()***
-- [ ] ***[perf](perf.md)***
-- [ ] ***[screen-vs-tmux](screen-vs-tmux.md)***
-- [ ] ***[sssd](http://lhermie.net/sssd/)***
-- [ ] ***[systemd](systemd.md)***
-- [ ] ***[ulimit](ulimit.md)***
-- [ ] ***[vi - Advanced](http://www.lagmonster.org/docs/vi2.html)***
+- ***[DBUS](DBUS.md)***
+- ***[DKMS](DKMS.md)***
+- ***[DRBD](DRBD.md)***
+- ***[DXVK](DXVK.md)***
+- ***[Debian](Debian.md)***
+- ***[Debugging](Debugging.md)***
+- ***[Filesystem](Filesystem.md)***
+- ***[GPG](GPG.md)***
+- ***[IPMI](IPMI.md)***
+- ***[Kernel Tracing](KernelTracing.md)***
+- ***[LVM](LVM.md)***
+- ***[Linux Insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)***
+- ***[Linux-Commands](LinuxCommands.md)***
+- ***[Linux-HA](LinuxHA.md)***
+- ***[Linux-Networking](LinuxNetworking.md)***
+- ***[Linux-Sysadmin](LinuxSysadmin.md)***
+- ***[Linux-Virtualization](LinuxVirtualization.md)***
+- ***[Mail](Mail.md)***
+- ***[Package Management](PackageManagement.md)***
+- ***[Packaging](Packaging.md)***
+- ***[Partitioning](Partitioning.md)***
+- ***[Quota](http://www.yolinux.com/TUTORIALS/LinuxTutorialQuotas.html)***
+- ***[RAID](RAID.md)***
+- ***[SSH](SSH.md)***
+- ***[Solaris](Solaris.md)***
+- ***[SysRq](SysRq.md)***
+- ***[Sysctl - Net](https://www.frozentux.net/ipsysctl-tutorial/ipsysctl-tutorial.html#AEN398)***
+- ***[UEFI Install](https://wiki.ubuntuusers.de/EFI_USB-Stick/)***
+- ***[auditd](auditd.md)***
+- ***[ffmpeg](ffmpeg.md)***
+- ***[jq](jq.md)***
+- ***[netfilter]()***
+- ***[perf](perf.md)***
+- ***[screen-vs-tmux](screen-vs-tmux.md)***
+- ***[sssd](http://lhermie.net/sssd/)***
+- ***[systemd](systemd.md)***
+- ***[ulimit](ulimit.md)***
+- ***[vi - Advanced](http://www.lagmonster.org/docs/vi2.html)***
