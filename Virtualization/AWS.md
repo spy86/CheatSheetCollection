@@ -1,22 +1,22 @@
 ## EBS
 
-- [ ] [Calculate EBS pricing](https://www.reddit.com/r/aws/comments/90j5zy/programmaticaly_get_price_of_ebs_volumes/)
+- [Calculate EBS pricing](https://www.reddit.com/r/aws/comments/90j5zy/programmaticaly_get_price_of_ebs_volumes/)
 - [Find unattached EBS volumes](https://www.reddit.com/r/devops/comments/9156d4/find_unattached_aws_ebs_volumes/)
 
 ## ELB
 
-- [ ] [Configuring HTTPS redirects](https://aws.amazon.com/about-aws/whats-new/2018/07/elastic-load-balancing-announces-support-for-redirects-and-fixed-responses-for-application-load-balancer/)
+- [Configuring HTTPS redirects](https://aws.amazon.com/about-aws/whats-new/2018/07/elastic-load-balancing-announces-support-for-redirects-and-fixed-responses-for-application-load-balancer/)
 
 ## CloudFormation
 
-- [ ] Nesting Templates with [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+- Nesting Templates with [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 
       Transform:
         Name: 'AWS::Include'
         Parameters:
         Location: 's3://MyAmazonS3BucketName/MyFileName.yaml'
 
-- [ ] CLI Stack Handling
+- CLI Stack Handling
 
       # Check if stack exists
       if aws cloudformation describe-stacks --stack-name "$STACK_NAME" >/dev/null 2>/dev/null; then
@@ -37,7 +37,7 @@
       aws cloudformation wait stack-create-complete --stack-name "$STACK_NAME"
       
 
-- [ ] Automation with Ansible
-   - [ ] [How-To Create Stacks](http://darrylcauldwell.com/aws-cloudformation/)
-   - [ ] [Define Stacks in YAML using Jinja](https://gist.github.com/jheller/c4fa0075e4eccf094769)
+- Automation with Ansible
+   - [How-To Create Stacks](http://darrylcauldwell.com/aws-cloudformation/)
+   - [Define Stacks in YAML using Jinja](https://gist.github.com/jheller/c4fa0075e4eccf094769)
    

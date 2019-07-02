@@ -27,21 +27,21 @@
 
 ### Security
 
-- [ ]   [Introduction LXC
+-   [Introduction LXC
     Security](https://linuxcontainers.org/lxc/security/)
-- [ ]   Limit users to LXC bridge. In /etc/lxc/lxc-usernet
+-   Limit users to LXC bridge. In /etc/lxc/lxc-usernet
 
         lxcuser1 veth lxcbr0 10
 
 ### Misc
 
-- [ ]   LXC Config Check
+-   LXC Config Check
 
         lxc-checkconfig
 
-- [ ]   [LXC Problems with systemd on Debian
+-   [LXC Problems with systemd on Debian
     Jessie](https://wiki.debian.org/LXC#Incompatibility_with_systemd)
-- [ ]   [LXC dnsmasq issue on Debian
+-   [LXC dnsmasq issue on Debian
     Jessie](https://colinnewell.wordpress.com/2013/12/18/lxc-networking/)
     (bad UDP checksums)
 
