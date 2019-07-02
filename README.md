@@ -26,8 +26,8 @@
 
 # Slack groups:
 
-| Name                         | URL                                     |
-|------------------------------|-----------------------------------------|
+| Name                         | URL                                                             |
+|------------------------------|-----------------------------------------------------------------|
 | ![Slack](SlackIcon.png) DevOps Engineers             | https://devopsengineers.slack.com       |
 | ![Slack](SlackIcon.png) SecurityHQ                   | https://securityhq.slack.com            |
 | ![Slack](SlackIcon.png) RedHat Admins                | https://redhat-admins.slack.com         |
@@ -40,4 +40,4 @@
 | ![Slack](SlackIcon.png) OG-AWS                       | https://og-aws.slack.com                |
 | ![Slack](SlackIcon.png) Azure Stack                  | https://azurestackblog.slack.com        |
 | ![Slack](SlackIcon.png) Docker Community             | https://dockercommunity.slack.com       |
-| ![Slack](SlackIcon.png) Google Cloud Community       | https://googlecloud-community.slack.com |       |
+| ![Slack](SlackIcon.png) Google Cloud Community       | https://googlecloud-community.slack.com |
