@@ -5,22 +5,22 @@ This is a cheat sheet for the Jinja templating syntax.
 The syntax is somewhat similar to ERB except for {} instead of <> quotes
 ```jinja
      {{ ... }}           # Escaping for expressions that create output
-     {% ... %}           # Escaping for control statements
+     {{% ... %}}           # Escaping for control statements
      # ... ##            # Line statements
 ```
 ## Loops
 ```jinja
-     {% for i in list %} ... {% endfor %}
+     {{% for i in list %} ... {% endfor %}}
 ```
 ## Functions
 
 Defining functions
 ```jinja
-     {% macro myfunct(param1, param2) %}
+     {{% macro myfunct(param1, param2) %}}
      ...
-     {% endmacro %}
+     {{% endmacro %}}
  ```    
 Using functions
 ```jinja
-     {% myfunc(var, 5) %}
+     {{% myfunc(var, 5) %}}
 ```
