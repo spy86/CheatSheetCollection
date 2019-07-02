@@ -1,28 +1,27 @@
-# CheatSheetCollection
 
 ![alt text](https://www.researchgate.net/profile/Henrique_Gaspar/publication/325361376/figure/fig2/AS:630135694831618@1527247465316/DevOps-as-culture-in-software-development-Kornilova-2018.png)
 
 ![](https://cookbook.fortinet.com/wp-content/uploads/sysadmin_notes-logo-2.gif)
 
 # List of contents:
-- [X] ***[Containers](Containers/List.md)***
-- [X] ***[Agile](Agile/List.md)***
-- [X] ***[DevOps Automation](DevOps_Automation/List.md)***
-- [X] ***[DevOps Linux](DevOps_Linux/List.md)***
-- [X] ***[DevOps Services](DevOpsServices/List.md)***
-- [X] ***[Languages](Languages/List.md)***
-- [X] ***[Network](Network/List.md)***
-- [X] ***[Scripting](Scripts/List.md)***
-- [X] ***[Security](Security/List.md)***
-- [X] ***[Solutions](Solutions/List.md)***
-- [X] ***[Virtualization](Virtualization/List.md)***
-- [X] ***[Windows](Windows/List.md)***
-- [X] ***[Glib Examples](Glib_Examples/List.md)***
-- [X] ***[Go Examples](Go_Examples/List.md)***
-- [X] ***[Javascript Examples](Javascript_Examples/List.md)***
-- [X] ***[PHP Examples](PHP_Examples/List.md)***
-- [X] ***[Python Examples](Python_Examples/List.md)***
-- [X] ***[Programming Language Examples Alike Cookbook](Programming_Language_Examples_Like_Cookbook/List.md)***
+- ***[Containers](Containers/List.md)***
+- ***[Agile](Agile/List.md)***
+- ***[DevOps Automation](DevOps_Automation/List.md)***
+- ***[DevOps Linux](DevOps_Linux/List.md)***
+- ***[DevOps Services](DevOpsServices/List.md)***
+- ***[Languages](Languages/List.md)***
+- ***[Network](Network/List.md)***
+- ***[Scripting](Scripts/List.md)***
+- ***[Security](Security/List.md)***
+- ***[Solutions](Solutions/List.md)***
+- ***[Virtualization](Virtualization/List.md)***
+- ***[Windows](Windows/List.md)***
+- ***[Glib Examples](Glib_Examples/List.md)***
+- ***[Go Examples](Go_Examples/List.md)***
+- ***[Javascript Examples](Javascript_Examples/List.md)***
+- ***[PHP Examples](PHP_Examples/List.md)***
+- ***[Python Examples](Python_Examples/List.md)***
+- ***[Programming Language Examples Alike Cookbook](Programming_Language_Examples_Like_Cookbook/List.md)***
 
 
 # Slack groups:
