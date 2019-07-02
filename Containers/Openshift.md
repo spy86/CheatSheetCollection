@@ -66,23 +66,23 @@ to declare those parameters.
 
 ## Migrating Services to Openshift
 
-- [ ] Middleware
-  - [ ] [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
-  - [ ] [Kafka](https://www.nearform.com/blog/benchmarking-apache-kafka-deployed-on-openshift-with-helm/) (using Helm)
-- [ ] Runtimes
-  - [ ] [Nodejs](https://github.com/openshift/nodejs-ex.git)
-  - [ ] [Ruby](https://github.com/openshift/ruby-ex.git)
-- [ ] Frameworks
-  - [ ] [Spring Boot Stack](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/spring_boot_microservices_on_red_hat_openshift_container_platform_3/index#software-stack)
+- Middleware
+  - [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
+  - [Kafka](https://www.nearform.com/blog/benchmarking-apache-kafka-deployed-on-openshift-with-helm/) (using Helm)
+- Runtimes
+  - [Nodejs](https://github.com/openshift/nodejs-ex.git)
+  - [Ruby](https://github.com/openshift/ruby-ex.git)
+- Frameworks
+  - [Spring Boot Stack](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/spring_boot_microservices_on_red_hat_openshift_container_platform_3/index#software-stack)
 
 ## Misc
 
-- [ ] Turning off sticky sessions: 
+- Turning off sticky sessions: 
 ```shell
       oc annotate route <name of route> haproxy.router.openshift.io/disable_cookies='true'
  ```
     
-- [ ] [Securing inter-service communication with certificates](https://docs.openshift.com/container-platform/3.6/dev_guide/secrets.html#service-serving-certificate-secrets): done via annotations at the service indicating a TLS cert/key in a secret
+- [Securing inter-service communication with certificates](https://docs.openshift.com/container-platform/3.6/dev_guide/secrets.html#service-serving-certificate-secrets): done via annotations at the service indicating a TLS cert/key in a secret
 ```shell    
       apiVersion: v1
         kind: Service
@@ -90,8 +90,8 @@ to declare those parameters.
           annotations:
             service.alpha.openshift.io/serving-cert-secret-name: <name>
  ```   
-- [ ] ebook: [OpenShift for
+- ebook: [OpenShift for
     Developers](https://www.openshift.com/promotions/for-developers.html)
-- [ ] OpenShift Cheat Sheets
-    - [ ]   [http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/](http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/)
-    - [ ]   https://monodot.co.uk/openshift-cheatsheet/
+- OpenShift Cheat Sheets
+    -   [http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/](http://akrambenaissi.com/2015/11/12/openshift-cheat-sheet-for-beginners/)
+    -   https://monodot.co.uk/openshift-cheatsheet/

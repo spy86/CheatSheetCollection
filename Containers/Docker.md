@@ -79,22 +79,22 @@ Start command
 
 ### Misc
 
-- [ ]  [kubernetes](https://github.com/googlecloudplatform/kubernetes):
+-  [kubernetes](https://github.com/googlecloudplatform/kubernetes):
     Docker container cluster management
-- [ ]  [CoreOS Rocket](https://coreos.com/blog/rocket/) (commercial Docker
+-  [CoreOS Rocket](https://coreos.com/blog/rocket/) (commercial Docker
     alternative)
-- [ ]   [Amazon EC2 Container Service](http://aws.amazon.com/ecs/) - Docker
+-   [Amazon EC2 Container Service](http://aws.amazon.com/ecs/) - Docker
     container support on AWS
-- [ ]   [Docker Patterns](http://www.hokstad.com/docker/patterns) -
+-   [Docker Patterns](http://www.hokstad.com/docker/patterns) -
     container inheritance examples
-- [ ]   [Docker Bench
+-   [Docker Bench
     Security](https://github.com/docker/docker-bench-security) - Test
     Docker containers for security issues
-- [ ]   [Docker OpenSCAP
+-   [Docker OpenSCAP
     Checks](https://github.com/OpenSCAP/container-compliance)
-- [ ]   [Container Hardening
+-   [Container Hardening
     Script](https://gist.github.com/jumanjiman/f9d3db977846c163df12)
 
 ### Best Practices for Images
 
-- [ ] When using ext4: disable journaling
+- When using ext4: disable journaling

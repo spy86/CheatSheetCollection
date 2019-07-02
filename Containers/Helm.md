@@ -30,5 +30,5 @@ To list charts (packages)
 ```
 ## Misc
 
-- [ ] (https://kubeapps.com/): Web GUI for installing Helm charts
-- [ ] (https://github.com/Praqma/helmsman): Helmsman, Helm charts as Code, Terraform like plan/apply
+- (https://kubeapps.com/): Web GUI for installing Helm charts
+- (https://github.com/Praqma/helmsman): Helmsman, Helm charts as Code, Terraform like plan/apply

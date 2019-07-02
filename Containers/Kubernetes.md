@@ -59,7 +59,7 @@ JVM and CFS problems/solutions: https://engineering.squarespace.com/blog/2017/un
 
 ## Online Tutorials
 
-- [ ] [Katacoda](https://www.katacoda.com/courses/kubernetes)
+- [Katacoda](https://www.katacoda.com/courses/kubernetes)
 
 ## Accessing Kubernetes API from pods
 ```shell
@@ -67,18 +67,18 @@ JVM and CFS problems/solutions: https://engineering.squarespace.com/blog/2017/un
 ```
 ## Migration Stories
 
-- [ ] Saltside: https://engineering.saltside.se/migrating-to-kubernetes-day-20-problems-fbbda4905c23
+- Saltside: https://engineering.saltside.se/migrating-to-kubernetes-day-20-problems-fbbda4905c23
 
 ## Use Cases
 
-- [ ] [Web Caching with Kubernetes](https://github.com/Financial-Times?utf8=%E2%9C%93&q=varnish)
-- [ ] [MongoDB Replicas as Stateful Sets in GKE](https://pauldone.blogspot.de/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
-- [ ] [nginx SSL sidecar](https://vorozhko.net/kubernetes-sidecar-pattern-nginx-ssl-proxy-for-nodejs)
-- [ ] Operators
-     - [ ] [Kafka](https://github.com/strimzi/strimzi-kafka-operator)
-     - [ ] [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
+- [Web Caching with Kubernetes](https://github.com/Financial-Times?utf8=%E2%9C%93&q=varnish)
+- [MongoDB Replicas as Stateful Sets in GKE](https://pauldone.blogspot.de/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
+- [nginx SSL sidecar](https://vorozhko.net/kubernetes-sidecar-pattern-nginx-ssl-proxy-for-nodejs)
+- Operators
+     - [Kafka](https://github.com/strimzi/strimzi-kafka-operator)
+     - [Couchbase](https://blog.couchbase.com/couchbase-on-openshift-in-action/)
 
 
 ## Misc
 
-- [ ] [Issues when monitoring with Prometheus](http://linuxczar.net/blog/2017/06/15/prometheus-histogram-2/)
+- [Issues when monitoring with Prometheus](http://linuxczar.net/blog/2017/06/15/prometheus-histogram-2/)
